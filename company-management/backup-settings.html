@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Backup Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+<div class="cm-toolbar">
+<div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Backup Settings</span></div>
+<div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="company-profile.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</div>
+<div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab " data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab active" data-href="backup-settings.html">Backup Settings</button></div></div>
+<section class="cm-page">
+<div class="ui-card cm-section"><div class="cm-page-title"><i class="fa-solid fa-gear"></i><div><h1>Backup Settings</h1><p>Configure and manage backup preferences to keep your data safe and secure.</p></div></div>
+<div class="backup-layout"><div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-calendar"></i> Backup Schedule</div><div class="cm-form-grid">
+<div class="ui-field"><label>Backup Frequency <span class="req">*</span></label><select class="ui-select"><option>Daily</option></select></div><div class="ui-field"><label>Backup Time <span class="req">*</span></label><input class="ui-input" value="02:00 AM"></div><div class="ui-field"><label>Backup Retention <span class="req">*</span></label><select class="ui-select"><option>30 Days</option></select></div><div class="ui-field"><label>Start From <span class="req">*</span></label><input class="ui-input" type="date" value="2025-05-15"></div>
+</div><div class="ui-info-box" style="margin:0 16px 16px;text-align:center">Next backup is scheduled on 16/05/2025 at 02:00 AM</div></div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-rectangle-list"></i> Backup Options</div><div class="cm-form-grid cols-2">
+<div class="setting-list"><label class="ui-checkbox"><input type="checkbox" checked> Full Backup</label><label class="ui-checkbox"><input type="checkbox" checked> Database Backup</label><label class="ui-checkbox"><input type="checkbox" checked> File Backup</label><label class="ui-checkbox"><input type="checkbox" > Configuration Backup</label></div>
+<div class="setting-list"><div class="ui-field"><label>Compression</label><select class="ui-select"><option>Zip (Recommended)</option></select></div><div class="ui-field"><label>Backup Location <span class="req">*</span></label><select class="ui-select"><option>Cloud Storage</option></select></div><div class="ui-field"><label>Cloud Provider <span class="req">*</span></label><select class="ui-select"><option>AWS S3</option></select></div></div>
+</div></div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-envelope"></i> Email Notifications</div><div class="cm-form-grid"><label class="ui-checkbox"><input type="checkbox" checked> Enable Email Notifications</label><div class="ui-field"><label>Success Email Recipients</label><input class="ui-input" value="admin@zmartsupermarket.com, it@zmartsupermarket.com"></div><div class="ui-field"><label>Failure Email Recipients</label><input class="ui-input" value="admin@zmartsupermarket.com"></div></div></div>
+<div class="ui-card"><div class="ui-card-title"><i class="fa-solid fa-sliders"></i> Advanced Settings</div><div class="cm-form-grid cols-2"><label class="ui-checkbox"><input type="checkbox" checked> Backup Before Update</label><label class="ui-checkbox"><input type="checkbox" checked> Verify Backup Integrity</label><label class="ui-checkbox"><input type="checkbox"> Exclude Logs</label><div class="ui-field"><label>Throttle Upload Speed</label><select class="ui-select"><option>No Limit</option></select></div></div></div>
+</div>
+<div>
+<div class="ui-card cm-section"><div class="ui-card-title">Backup Overview</div><div class="backup-stats"><div><i class="fa-solid fa-database"></i><strong>45</strong><span>Total Backups</span></div><div><i class="fa-regular fa-circle-check"></i><strong>42</strong><span>Successful Backups</span></div><div><i class="fa-solid fa-triangle-exclamation"></i><strong>3</strong><span>Failed Backups</span></div><div><i class="fa-solid fa-hard-drive"></i><strong>128.45 GB</strong><span>Storage Used</span></div></div></div>
+<div class="ui-card cm-section"><div class="invoice-preview-head"><strong>Backup History</strong><button class="ui-btn ui-btn-sm">View All</button></div><table class="ui-table"><tr><th>Date &amp; Time</th><th>Type</th><th>Size</th><th>Status</th><th>Actions</th></tr>
+<tr><td>15/05/2025 02:00 AM</td><td>Full Backup</td><td>3.24 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>14/05/2025 02:00 AM</td><td>Full Backup</td><td>3.18 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>13/05/2025 02:00 AM</td><td>Full Backup</td><td>3.22 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>12/05/2025 02:00 AM</td><td>Full Backup</td><td>3.20 GB</td><td><span class="ui-badge muted">Failed</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>11/05/2025 02:00 AM</td><td>Full Backup</td><td>3.15 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>10/05/2025 02:00 AM</td><td>Full Backup</td><td>3.21 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>09/05/2025 02:00 AM</td><td>Full Backup</td><td>3.10 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr><tr><td>08/05/2025 02:00 AM</td><td>Full Backup</td><td>3.09 GB</td><td><span class="ui-badge success">Success</span></td><td><button class="ui-icon-btn"><i class="fa-solid fa-download"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-file-lines"></i></button></td></tr>
+</table></div>
+<div class="ui-card"><div class="ui-card-title">Storage Usage</div><div class="storage-usage"><div class="storage-bar"><span></span></div><div class="storage-grid"><ul><li>Database Backups <b>68.45 GB</b></li><li>File Backups <b>45.20 GB</b></li><li>Configuration Backups <b>10.80 GB</b></li><li>Others <b>4.00 GB</b></li></ul><div class="storage-donut"><strong>128.45<br><small>GB</small></strong></div></div></div></div>
+</div></div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

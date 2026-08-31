@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+:root{--sidebar-width:260px;--sidebar-collapsed:74px;--topbar-height:64px;--sidebar-bg:#082536;--sidebar-bg2:#061f30;--brand-green:#56bd42;--active-green:#46b63c}
+.app-sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-width);height:100vh;background:linear-gradient(180deg,var(--sidebar-bg),var(--sidebar-bg2));color:#fff;display:flex;flex-direction:column;z-index:70;transition:width .22s ease,transform .22s ease;box-shadow:5px 0 22px rgba(2,20,31,.08)}
+.sidebar-brand{height:76px;display:grid;place-items:center;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}
+.sidebar-brand img{width:150px;height:64px;object-fit:contain;filter:brightness(1.07)}
+.sidebar-nav{flex:1;padding:10px 7px;overflow-y:auto;scrollbar-width:none}.sidebar-nav::-webkit-scrollbar{display:none}
+.nav-group{margin-bottom:3px}.nav-item{width:100%;height:44px;border:0;background:transparent;color:#fff;border-radius:4px;display:flex;align-items:center;gap:11px;padding:0 10px;cursor:pointer;text-align:left;font:500 13px/1.25 'Poppins',sans-serif;transition:.16s ease}
+.nav-item:hover{background:rgba(255,255,255,.08)}.nav-group.active>.nav-item{background:linear-gradient(90deg,#2b9b2a,#52c33e);box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)}
+.nav-icon{width:22px;display:grid;place-items:center;font-size:15px}.nav-label{flex:1;white-space:nowrap}.nav-chevron{font-size:9px;transition:transform .2s ease}.nav-group.open .nav-chevron{transform:rotate(180deg)}
+.submenu{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .22s ease,opacity .2s ease}.submenu>*{overflow:hidden}.nav-group.open .submenu{grid-template-rows:1fr;opacity:1}.submenu{padding-left:34px}.submenu button{display:none;width:100%;padding:8px 8px;border:0;background:transparent;color:#cfe0e8;text-align:left;font:400 12px 'Poppins',sans-serif;cursor:pointer;border-left:1px solid rgba(255,255,255,.15)}.nav-group.open .submenu button{display:block}.submenu button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.sidebar-bottom{display:none}
+.sidebar-collapsed .app-sidebar{width:var(--sidebar-collapsed)}.sidebar-collapsed .sidebar-brand img{width:54px;object-fit:cover;object-position:left}.sidebar-collapsed .nav-label,.sidebar-collapsed .nav-chevron,.sidebar-collapsed .submenu{display:none}.sidebar-collapsed .nav-item{justify-content:center;padding:0}.sidebar-collapsed .nav-icon{font-size:17px}.sidebar-collapsed 
+@media(max-width:900px){.app-sidebar{transform:translateX(-100%);width:var(--sidebar-width)!important}.sidebar-mobile-open .app-sidebar{transform:translateX(0)}.sidebar-collapsed .nav-label,.sidebar-collapsed .nav-chevron{display:initial}.sidebar-collapsed .nav-item{justify-content:flex-start;padding:0 10px}}
+
+
+/* Responsive sidebar screen-click close overlay */
+.sidebar-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:rgba(0,0,0,.35);
+  cursor:default;
+  z-index:75;
+}
+@media(max-width:900px){
+  .sidebar-mobile-open .sidebar-overlay{
+    display:block;
+  }
+  .sidebar-mobile-open .app-sidebar{
+    z-index:80;
+  }
+}
+
+
+/* v16 active submenu state */
+.submenu button.active{
+  display:block!important;
+  color:#fff!important;
+  background:linear-gradient(90deg,rgba(24,132,45,.92),rgba(31,157,53,.72))!important;
+  border-left:3px solid #64d352!important;
+  font-weight:600!important;
+  border-radius:2px!important;
+  padding-left:10px!important;
+}
+.submenu button.active:hover{
+  background:linear-gradient(90deg,#18842d,#259b39)!important;
+}
+.nav-group.active.open>.nav-item{
+  background:linear-gradient(90deg,#218f30,#45bb3d)!important;
+}
+
+
+/* Sidebar typography */
+.sidebar,#sidebarMount{font-family:"Poppins",Arial,sans-serif!important}
+
+/* Icon font preservation */
+#sidebarMount .fa-solid,#sidebarMount .fa-regular,#sidebarMount .fa-brands{
+  font-style:normal!important;
+}
+#sidebarMount .fa-solid{font-family:"Font Awesome 6 Free"!important;font-weight:900!important}
+#sidebarMount .fa-regular{font-family:"Font Awesome 6 Free"!important;font-weight:400!important}
+#sidebarMount .fa-brands{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important}

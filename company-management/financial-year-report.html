@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Generate Financial Year Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+  <div class="cm-toolbar">
+    <div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Financial Year > Generate Financial Year Report</span></div>
+    <div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="financial-year.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="download-report"><i class="fa-solid fa-download"></i> Download Report</button></div>
+  </div>
+  <div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab active" data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+  <section class="cm-page">
+<div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-file-lines"></i> Generate Financial Year Report</div><div class="report-layout" style="padding:12px">
+<div class="ui-card"><div class="cm-card-body"><h2 style="font-size:14px;color:#0a7a29">Report Parameters</h2><div class="setting-list" style="padding:0"><div class="ui-field"><label>Financial Year <span class="req">*</span></label><select class="ui-select"><option>2025 - 2026 (01 Apr 2025 - 31 Mar 2026)</option></select></div><div class="ui-field"><label>Report Type <span class="req">*</span></label><div><label class="ui-radio"><input type="radio" checked name="rt"> Summary Report</label><br><label class="ui-radio"><input type="radio" name="rt"> Detailed Report</label><br><label class="ui-radio"><input type="radio" name="rt"> Comparative Report</label></div></div><div class="ui-field"><label>Date Range</label><div class="cm-grid cols-2"><input class="ui-input" type="date" value="2025-04-01"><input class="ui-input" type="date" value="2026-03-31"></div></div><label class="ui-checkbox"><input type="checkbox"> Yes, include inactive accounts</label><label class="ui-checkbox"><input type="checkbox"> Yes, include zero balance accounts</label><div class="ui-field"><label>Report Sections <span class="req">*</span></label><div class="cm-grid cols-2"><label class="ui-checkbox"><input type="checkbox" checked> Financial Summary</label><label class="ui-checkbox"><input type="checkbox" checked> Income Summary</label><label class="ui-checkbox"><input type="checkbox" checked> Expense Summary</label><label class="ui-checkbox"><input type="checkbox" checked> Profit & Loss Summary</label><label class="ui-checkbox"><input type="checkbox" checked> Balance Sheet Summary</label><label class="ui-checkbox"><input type="checkbox" checked> Tax Summary</label></div></div><div class="ui-field"><label>Report Format <span class="req">*</span></label><div><label class="ui-radio"><input type="radio" checked name="fmt"> PDF</label> &nbsp;&nbsp;<label class="ui-radio"><input type="radio" name="fmt"> Excel</label> &nbsp;&nbsp;<label class="ui-radio"><input type="radio" name="fmt"> CSV</label></div></div></div><div class="cm-bottom-actions"><button class="ui-btn"><i class="fa-solid fa-rotate-left"></i> Reset</button><button class="ui-btn ui-btn-primary" data-action="generate-report"><i class="fa-regular fa-file-lines"></i> Generate Report</button></div></div></div>
+<div><h3 style="font-size:14px;color:#0c7b28;margin:4px 0 10px">Report Preview</h3><div class="report-preview"><div class="fake-report"><div class="fake-report-head"><img src="../assets/images/logo-zmart.png" style="width:100px"><div><h2 style="font-size:14px;margin:0">Financial Year Summary Report</h2><b>Financial Year: 2025 - 2026</b><br>Period: 01 Apr 2025 - 31 Mar 2026</div><div>Generated On : 15/05/2025 10:30 AM<br>Generated By : Super Admin<br>Branch : Head Office</div></div><h3 style="color:#16812c">1. Financial Summary</h3><div class="fake-report-grid"><table class="ui-table"><tr><th>Particulars</th><th>Amount (INR)</th></tr><tr><td>Total Income</td><td>₹ 12,45,60,000.00</td></tr><tr><td>Total Expenses</td><td>₹ 9,25,30,000.00</td></tr><tr><td>Gross Profit</td><td>₹ 3,20,30,000.00</td></tr><tr><td>Net Profit</td><td>₹ 2,15,75,000.00</td></tr></table><div class="report-chart"></div></div><div class="fake-report-grid"><div><h3 style="color:#16812c">2. Income Summary</h3><table class="ui-table"><tr><th>Income Head</th><th>Amount</th></tr><tr><td>Sales</td><td>₹ 11,25,00,000</td></tr><tr><td>Other Income</td><td>₹ 1,20,20,000</td></tr></table></div><div><h3 style="color:#16812c">3. Expense Summary</h3><table class="ui-table"><tr><th>Expense Head</th><th>Amount</th></tr><tr><td>Cost of Goods Sold</td><td>₹ 6,45,30,000</td></tr><tr><td>Operating Expenses</td><td>₹ 2,20,00,000</td></tr></table></div></div></div></div></div>
+</div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

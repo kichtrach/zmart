@@ -1,0 +1,2 @@
+/* Topbar Font Awesome icon rules kept separate for shared-component reuse. */
+.app-topbar .hamburger i{width:20px}.app-topbar .notification-btn i{font-size:19px}.app-topbar .avatar i{font-size:17px}.app-topbar .topbar-search i{font-size:13px}

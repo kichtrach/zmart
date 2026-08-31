@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Invoice Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+<div class="cm-toolbar">
+<div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Invoice Settings</span></div>
+<div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="company-profile.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</div>
+<div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab " data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab active" data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+<section class="cm-page">
+<div class="ui-card cm-section">
+  <div class="cm-page-title"><i class="fa-solid fa-gear"></i><div><h1>Invoice Settings</h1><p>Configure invoice preferences, numbering, templates and other invoice related settings.</p></div></div>
+  <div class="cm-inner-tabs">
+    <button class="cm-inner-tab active" data-invoice-tab="general">General Settings</button>
+    <button class="cm-inner-tab" data-invoice-tab="numbering">Invoice Numbering</button>
+    <button class="cm-inner-tab" data-invoice-tab="taxes">Tax &amp; Charges</button>
+    <button class="cm-inner-tab" data-invoice-tab="template">Template &amp; Design</button>
+    <button class="cm-inner-tab" data-invoice-tab="terms">Terms &amp; Conditions</button>
+    <button class="cm-inner-tab" data-invoice-tab="additional">Additional Settings</button>
+  </div>
+  <div class="invoice-layout" id="invoiceTabContent">
+    <div class="invoice-left-grid">
+      <div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-building"></i> Business Information</div>
+        <div class="setting-list">
+          <div class="ui-field"><label>Business Name</label><input class="ui-input" value="ZMart Supermarket Private Limited"></div>
+          <div class="ui-field"><label>GSTIN</label><input class="ui-input" value="29AAACZ1234A1Z5"></div>
+          <div class="ui-field"><label>Address</label><textarea class="ui-textarea">No. 123, ZMart Towers, Business Park, Outer Ring Road, Bangalore - 560103, Karnataka, India.</textarea></div>
+          <div class="ui-field"><label>Phone</label><input class="ui-input" value="+91 98765 43210"></div>
+          <div class="ui-field"><label>Email</label><input class="ui-input" value="info@zmart.com"></div>
+          <div class="ui-field"><label>Website</label><input class="ui-input" value="www.zmart.com"></div>
+          <div class="ui-field"><label>Logo</label>
+  <div class="invoice-logo-upload">
+    <input class="ui-file-input" id="invoiceLogoInput" type="file" accept="image/png,image/jpeg,image/webp">
+    <div class="invoice-logo-file">
+      <i class="fa-regular fa-image"></i>
+      <span id="invoiceLogoFileName">ZMart_Logo.png</span>
+    </div>
+    <button class="ui-btn ui-btn-sm" type="button" data-action="change-invoice-logo"><i class="fa-solid fa-upload"></i> Change</button>
+  </div>
+  <div class="invoice-logo-preview-wrap">
+    <span>Recommended size: 300 × 80px</span>
+    <img id="invoiceLogoPreview" src="../assets/images/logo-zmart.png" alt="Invoice logo preview">
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-rectangle-list"></i> Invoice Preferences</div>
+        <div class="setting-list">
+          <div class="ui-field"><label>Default Invoice Type</label><select class="ui-select"><option>Tax Invoice</option></select></div>
+          <div class="ui-field"><label>Default Currency</label><select class="ui-select"><option>INR - Indian Rupee</option></select></div>
+          <div class="ui-field"><label>Default Due Date (Days)</label><input class="ui-input" value="15"></div>
+          <div class="ui-field"><label>Default Payment Terms</label><select class="ui-select"><option>Net 15 Days</option></select></div>
+          <div class="setting-row"><span>Show Business Address in Invoice</span><label class="ui-switch"><input type="checkbox" checked><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Show Customer GSTIN in Invoice</span><label class="ui-switch"><input type="checkbox" checked><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Show Item Description</span><label class="ui-switch"><input type="checkbox" checked><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Show HSN/SAC Code</span><label class="ui-switch"><input type="checkbox" checked><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Show Authorized Signature</span><label class="ui-switch"><input type="checkbox" checked><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Show Company Stamp</span><label class="ui-switch"><input type="checkbox" ><span class="ui-switch-track"></span></label></div><div class="setting-row"><span>Allow Edit Invoice After Save</span><label class="ui-switch"><input type="checkbox" ><span class="ui-switch-track"></span></label></div>
+        </div>
+      </div>
+      <div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-note-sticky"></i> Invoice Footer Note</div><div class="cm-card-body"><textarea class="ui-textarea">Thank you for your business! Please make payments within the due date.</textarea></div></div>
+      <div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-message"></i> Default Notes to Customer</div><div class="cm-card-body"><textarea class="ui-textarea">Goods once sold will not be taken back or exchanged. Please check the goods before delivery.</textarea></div></div>
+    </div>
+    <div class="ui-card invoice-preview-card">
+      <div class="invoice-preview-head"><strong>Invoice Preview</strong><button class="ui-btn ui-btn-sm">Preview in Full Page <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+      <div class="invoice-paper">
+        <div class="invoice-brand"><img id="invoicePreviewBrandLogo" src="../assets/images/logo-zmart.png"><div><h2>TAX INVOICE</h2><p>Invoice #: INV-2025-000123<br>Date: 15/05/2025</p></div></div>
+        <strong>ZMart Supermarket Private Limited</strong><p>No. 123, ZMart Towers, Business Park<br>Outer Ring Road, Bangalore - 560103, Karnataka, India.<br>GSTIN: 29AAACZ1234A1Z5<br>Ph: +91 98765 43210 | Email: info@zmart.com</p>
+        <hr><div class="cm-grid cols-2"><div><strong>Bill To</strong><p>Customer Name<br>No. 45, 2nd Cross, MG Road<br>Bangalore - 560001, Karnataka</p></div><div><strong>Ship To</strong><p>Customer Name<br>No. 45, 2nd Cross, MG Road<br>Bangalore - 560001, Karnataka</p></div></div>
+        <table class="ui-table"><tr><th>#</th><th>Item Description</th><th>HSN/SAC</th><th>Qty</th><th>Unit Price</th><th>Tax (%)</th><th>Amount</th></tr>
+          <tr><td>1</td><td>Basmati Rice 1kg</td><td>1006</td><td>5</td><td>80.00</td><td>5%</td><td>400.00</td></tr>
+          <tr><td>2</td><td>Sunflower Oil 1L</td><td>1512</td><td>3</td><td>150.00</td><td>5%</td><td>450.00</td></tr>
+          <tr><td>3</td><td>Sugar 1kg</td><td>1701</td><td>2</td><td>45.00</td><td>5%</td><td>90.00</td></tr>
+        </table>
+        <div class="invoice-total"><span>Subtotal</span><b>₹ 940.00</b><span>CGST (2.5%)</span><b>₹ 23.50</b><span>SGST (2.5%)</span><b>₹ 23.50</b><span>Total Amount</span><b>₹ 987.00</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui-info-box"><i class="fa-solid fa-circle-info"></i> These settings will be applied to all invoices generated across the system.</div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

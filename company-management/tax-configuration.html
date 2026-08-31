@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Tax Configuration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+<div class="cm-toolbar">
+<div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Tax Configuration</span></div>
+<div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="company-profile.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</div>
+<div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab " data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab active" data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+<section class="cm-page">
+<div class="ui-card cm-section">
+<div class="cm-page-title"><i class="fa-solid fa-gear"></i><div><h1>Tax Configuration</h1><p>Configure how taxes are applied and calculated in invoices.</p></div></div>
+<div class="invoice-layout">
+<div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-solid fa-building-columns"></i> Tax Application Settings</div><div class="cm-form-grid">
+<div class="ui-field"><label>Apply Taxes On <span class="req">*</span></label><select class="ui-select"><option>Taxable Amount</option></select></div>
+<div class="ui-field"><label>Tax Calculation Method <span class="req">*</span></label><select class="ui-select"><option>Compound (Additive)</option></select></div>
+<div class="ui-field"><label>Tax Rounding Method</label><select class="ui-select"><option>Round Off to 2 Decimal Places</option></select></div>
+<div class="ui-field"><label>Tax Display Type</label><select class="ui-select"><option>Show as Separate Line Items</option></select></div>
+<div class="ui-field"><label>Price Display Preference</label><select class="ui-select"><option>Inclusive of Tax</option></select></div>
+<div class="ui-field"><label>Tax Inclusive Pricing</label><select class="ui-select"><option>Yes</option></select></div>
+</div></div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-solid fa-shield"></i> Tax Priority Configuration</div>
+<div class="cm-card-body"><table class="ui-table"><tr><th></th><th>Priority</th><th>Tax Name</th><th>Tax Type</th><th>Apply On</th><th>Status</th><th>Action</th></tr>
+<tr><td><i class="fa-solid fa-grip-vertical"></i></td><td><input class="ui-input" style="width:52px" value="1"></td><td>CGST</td><td>Central Tax</td><td>Taxable Amount</td><td><span class="ui-badge success">Active</span></td><td><button class="ui-icon-btn" data-action="edit-priority"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td><i class="fa-solid fa-grip-vertical"></i></td><td><input class="ui-input" style="width:52px" value="2"></td><td>SGST</td><td>State Tax</td><td>Taxable Amount</td><td><span class="ui-badge success">Active</span></td><td><button class="ui-icon-btn" data-action="edit-priority"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td><i class="fa-solid fa-grip-vertical"></i></td><td><input class="ui-input" style="width:52px" value="3"></td><td>IGST</td><td>Integrated Tax</td><td>Taxable Amount</td><td><span class="ui-badge success">Active</span></td><td><button class="ui-icon-btn" data-action="edit-priority"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td><i class="fa-solid fa-grip-vertical"></i></td><td><input class="ui-input" style="width:52px" value="4"></td><td>CESS</td><td>Cess</td><td>Taxable Amount</td><td><span class="ui-badge success">Active</span></td><td><button class="ui-icon-btn" data-action="edit-priority"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr>
+</table><div class="ui-info-box" style="margin-top:10px">Taxes will be applied in the order shown above. Drag and drop to reorder.</div></div></div>
+<div class="ui-card"><div class="ui-card-title"><i class="fa-solid fa-shield-halved"></i> Advanced Options</div><div class="cm-form-grid cols-2">
+<label class="ui-checkbox"><input type="checkbox" checked> Allow Manual Tax Override</label><label class="ui-checkbox"><input type="checkbox" checked> Apply Tax on Shipping Charges</label>
+<label class="ui-checkbox"><input type="checkbox"> Restrict Tax Changes in Final Invoice</label><label class="ui-checkbox"><input type="checkbox"> Apply Tax on Additional Charges</label>
+<label class="ui-checkbox"><input type="checkbox" checked> Validate HSN/SAC for Tax</label><label class="ui-checkbox"><input type="checkbox" checked> Recalculate Taxes on Edit</label>
+</div></div>
+</div>
+<div class="ui-card invoice-preview-card"><div class="invoice-preview-head"><strong>Invoice Preview</strong></div><div class="invoice-paper">
+<div class="invoice-brand"><img src="../assets/images/logo-zmart.png"><div><h2>TAX INVOICE</h2><p>Invoice #: INV-2025-000001<br>Date: 15/05/2025</p></div></div>
+<p><strong>ZMart Supermarket Private Limited</strong><br>No. 123, ZMart Towers, Business Park, Bangalore - 560103</p><hr>
+<table class="ui-table"><tr><th>#</th><th>Item Description</th><th>HSN/SAC</th><th>Qty</th><th>Unit Price</th><th>Amount</th></tr><tr><td>1</td><td>Basmati Rice 1kg</td><td>1006</td><td>5</td><td>80.00</td><td>400.00</td></tr><tr><td>2</td><td>Sunflower Oil 1L</td><td>1512</td><td>3</td><td>150.00</td><td>450.00</td></tr><tr><td>3</td><td>Sugar 1kg</td><td>1701</td><td>2</td><td>45.00</td><td>90.00</td></tr></table>
+<div class="invoice-total"><span>Subtotal</span><b>₹ 940.00</b><span>CGST (2.5%)</span><b>₹ 23.50</b><span>SGST (2.5%)</span><b>₹ 23.50</b><span>Total Amount</span><b>₹ 987.00</b></div>
+</div></div></div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

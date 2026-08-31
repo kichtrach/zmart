@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#082436" />
+  <title>ZMart | Super Admin Dashboard</title>
+
+  <!-- Poppins + Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <!-- Reusable component styles -->
+  <link rel="stylesheet" href="components/sidebar/css/sidebar.css" />
+  <link rel="stylesheet" href="components/sidebar/icons/sidebar-icons.css" />
+  <link rel="stylesheet" href="components/topbar/css/topbar.css" />
+  <link rel="stylesheet" href="components/topbar/icons/topbar-icons.css" />
+  <link rel="stylesheet" href="components/ui/icons/ui-icons.css" />
+  <link rel="stylesheet" href="components/ui/css/ui-components.css" />
+
+  <!-- Dashboard module styles -->
+  <link rel="stylesheet" href="assets/css/dashboard.css" />
+</head>
+<body>
+  <aside id="sidebarMount" aria-label="Main navigation"></aside>
+
+  <div class="app-shell">
+    <header id="topbarMount"></header>
+
+    <main class="dashboard-main" id="mainContent">
+      <section class="page-heading">
+        <div>
+          <h1>Welcome back, Super Admin!</h1>
+          <p>Here's what's happening across your supermarket chain.</p>
+        </div>
+        <div class="heading-tools">
+          <label class="control select-control ui-select-wrap" aria-label="Branch filter">
+            <select id="branchFilter" class="ui-select ui-select-branch">
+              <option>All Branches</option>
+              <option>ZMart - Chennai</option>
+              <option>ZMart - Coimbatore</option>
+              <option>ZMart - Madurai</option>
+              <option>ZMart - Trichy</option>
+              <option>ZMart - Salem</option>
+            </select>
+          </label>
+
+          <div class="date-picker-wrap">
+          <button class="control date-control ui-date-control ui-calendar-control" id="dateRangeBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            <span class="calendar-icon"><i class="fa-regular fa-calendar-days"></i></span>
+            <span class="date-range-label">01 May 2025 - 31 May 2025</span>
+            <i class="fa-solid fa-chevron-down calendar-caret"></i>
+          </button>
+          <div class="date-popover ui-date-picker" id="datePopover" hidden role="dialog" aria-label="Select date range">
+            <div class="date-picker-title">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Select Date Range</span>
+            </div>
+            <div class="date-picker-header">
+              <button type="button" class="calendar-nav" id="calendarPrev" aria-label="Previous month"><i class="fa-solid fa-chevron-left"></i></button>
+              <strong id="calendarMonthLabel">May 2025</strong>
+              <button type="button" class="calendar-nav" id="calendarNext" aria-label="Next month"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-weekdays" aria-hidden="true">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-range-summary">
+              <div><small>From</small><strong id="calendarFrom">01 May 2025</strong></div>
+              <i class="fa-solid fa-arrow-right"></i>
+              <div><small>To</small><strong id="calendarTo">31 May 2025</strong></div>
+            </div>
+            <div class="calendar-actions">
+              <button type="button" class="calendar-clear" id="calendarClear">Clear</button>
+              <button type="button" class="calendar-apply" id="calendarApply">Apply</button>
+            </div>
+          </div>
+          </div>
+
+          <button class="btn btn-refresh ui-btn ui-btn-primary" id="refreshBtn" type="button">
+            <i class="fa-solid fa-rotate"></i> Refresh
+          </button>
+        </div>
+      </section>
+
+      <section class="metrics metrics-primary" aria-label="Business summary">
+        <article class="metric-card">
+          <span class="metric-icon green"><i class="fa-solid fa-cart-shopping"></i></span>
+          <div><p>Total Sales</p><h3>₹12,45,60,890</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 18.6%</small><small> vs Apr 2025</small></div>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon blue"><i class="fa-solid fa-building-columns"></i></span>
+          <div><p>Branch-wise Sales</p><h3>₹11,32,20,450</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 15.3%</small><small> vs Apr 2025</small></div>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon purple"><i class="fa-solid fa-chart-simple"></i></span>
+          <div><p>Profit &amp; Loss</p><h3>₹1,45,80,440</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 22.4%</small><small> vs Apr 2025</small></div>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon orange"><i class="fa-solid fa-bag-shopping"></i></span>
+          <div><p>Purchase Summary</p><h3>₹7,85,40,230</h3><small class="down"><i class="fa-solid fa-caret-down"></i> -6.5%</small><small> vs Apr 2025</small></div>
+        </article>
+        <article class="metric-card">
+          <span class="metric-icon cyan"><i class="fa-solid fa-cube"></i></span>
+          <div><p>Inventory Summary</p><h3>₹9,25,30,540</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 9.8%</small><small> vs Apr 2025</small></div>
+        </article>
+      </section>
+
+      <section class="metrics metrics-secondary" aria-label="Operational summary">
+        <article class="metric-card compact"><span class="metric-icon ghost-green"><i class="fa-solid fa-user-group"></i></span><div><p>Customers</p><h3>1,24,580</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 12.5%</small></div></article>
+        <article class="metric-card compact"><span class="metric-icon ghost-blue"><i class="fa-solid fa-user"></i></span><div><p>Employees</p><h3>2,354</h3><small class="up"><i class="fa-solid fa-caret-up"></i> 8.7%</small></div></article>
+        <article class="metric-card compact"><span class="metric-icon ghost-red"><i class="fa-solid fa-receipt"></i></span><div><p>Live Billing</p><h3>₹2,35,890</h3><small>Today's Live Sales</small></div></article>
+        <article class="metric-card compact"><span class="metric-icon ghost-purple"><i class="fa-solid fa-building"></i></span><div><p>Active Branches</p><h3>28</h3><small>of 32 Total Branches</small></div></article>
+        <article class="metric-card compact"><span class="metric-icon ghost-orange"><i class="fa-solid fa-triangle-exclamation"></i></span><div><p>Low Stock Alerts</p><h3>126</h3><small>Items</small></div></article>
+        <article class="metric-card compact"><span class="metric-icon ghost-red"><i class="fa-solid fa-kit-medical"></i></span><div><p>Expiry Alerts</p><h3>58</h3><small>Items</small></div></article>
+      </section>
+
+      <section class="dashboard-grid grid-main">
+        <article class="panel sales-panel">
+          <div class="panel-header">
+            <h2>Sales Overview</h2>
+            <select class="mini-select ui-select"><option>This Month</option><option>Last Month</option></select>
+          </div>
+          <div class="chart-legend"><span><i class="legend-line current"></i>Sales</span><span><i class="legend-line previous"></i>Previous Month</span></div>
+          <div class="sales-chart" aria-label="Sales overview line chart">
+            <div class="ylabels"><span>20L</span><span>15L</span><span>10L</span><span>5L</span><span>0</span></div>
+            <svg viewBox="0 0 600 240" preserveAspectRatio="none" role="img">
+              <g class="gridlines"><line x1="0" y1="12" x2="600" y2="12"/><line x1="0" y1="64" x2="600" y2="64"/><line x1="0" y1="116" x2="600" y2="116"/><line x1="0" y1="168" x2="600" y2="168"/><line x1="0" y1="220" x2="600" y2="220"/></g>
+              <polyline class="prev-line" points="15,204 58,190 98,178 140,142 182,119 224,145 266,112 308,138 350,111 392,132 434,101 476,126 518,86 560,108 594,90"/>
+              <polyline class="sales-line" points="15,173 58,153 98,70 140,38 182,102 224,126 266,56 308,82 350,75 392,127 434,145 476,176 518,123 560,137 594,38"/>
+              <g class="chart-dots">
+                <circle cx="15" cy="173" r="4"/><circle cx="58" cy="153" r="4"/><circle cx="98" cy="70" r="4"/><circle cx="140" cy="38" r="4"/><circle cx="182" cy="102" r="4"/><circle cx="224" cy="126" r="4"/><circle cx="266" cy="56" r="4"/><circle cx="308" cy="82" r="4"/><circle cx="350" cy="75" r="4"/><circle cx="392" cy="127" r="4"/><circle cx="434" cy="145" r="4"/><circle cx="476" cy="176" r="4"/><circle cx="518" cy="123" r="4"/><circle cx="560" cy="137" r="4"/><circle cx="594" cy="38" r="4"/>
+              </g>
+            </svg>
+            <div class="xlabels"><span>1 May</span><span>8 May</span><span>15 May</span><span>22 May</span><span>31 May</span></div>
+          </div>
+        </article>
+
+        <article class="panel branch-panel">
+          <div class="panel-header"><h2>Branch Sales Performance</h2><select class="mini-select ui-select"><option>This Month</option><option>Last Month</option></select></div>
+          <div class="branch-table-wrap">
+            <table class="branch-table">
+              <thead><tr><th>Branch</th><th>Sales</th><th>Target</th><th>Achievement</th></tr></thead>
+              <tbody>
+                <tr><td>ZMart - Chennai</td><td>₹2,45,30,200</td><td>₹2,00,00,200</td><td><span>122%</span><b><i style="width:92%"></i></b></td></tr>
+                <tr><td>ZMart - Coimbatore</td><td>₹1,85,40,500</td><td>₹1,80,00,000</td><td><span>103%</span><b><i style="width:80%"></i></b></td></tr>
+                <tr><td>ZMart - Madurai</td><td>₹1,50,80,300</td><td>₹1,40,00,000</td><td><span>108%</span><b><i style="width:86%"></i></b></td></tr>
+                <tr><td>ZMart - Trichy</td><td>₹1,25,60,250</td><td>₹1,20,00,000</td><td><span>105%</span><b><i style="width:84%"></i></b></td></tr>
+                <tr><td>ZMart - Salem</td><td>₹1,15,30,400</td><td>₹1,10,00,000</td><td><span>105%</span><b><i style="width:84%"></i></b></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <button class="panel-link" data-action="branch-performance">View All Branch Performance <i class="fa-solid fa-arrow-right-long"></i></button>
+        </article>
+
+        <article class="panel alerts-panel">
+          <div class="panel-header"><h2>Alerts &amp; Notifications</h2><button class="text-link" data-action="view-alerts">View All</button></div>
+          <div class="alert-list">
+            <button class="alert-row"><span class="alert-icon danger"><i class="fa-solid fa-triangle-exclamation"></i></span><span><strong>Low Stock Alert</strong><small>126 items are running low in stock.</small></span><time>10 min ago</time></button>
+            <button class="alert-row"><span class="alert-icon warning"><i class="fa-solid fa-calendar-plus"></i></span><span><strong>Expiry Alert</strong><small>58 items will expire within 30 days.</small></span><time>25 min ago</time></button>
+            <button class="alert-row"><span class="alert-icon success"><i class="fa-solid fa-cart-shopping"></i></span><span><strong>High Demand</strong><small>12 items have high demand this week.</small></span><time>1 hr ago</time></button>
+            <button class="alert-row"><span class="alert-icon info"><i class="fa-solid fa-building"></i></span><span><strong>Branch Target</strong><small>5 branches achieved 100% of target.</small></span><time>2 hrs ago</time></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid grid-bottom">
+        <article class="panel categories-panel">
+          <div class="panel-header"><h2>Top Selling Categories</h2><select class="mini-select ui-select"><option>This Month</option></select></div>
+          <div class="category-content">
+            <div class="category-list">
+              <span><i class="swatch s1"></i>Groceries <b>32%</b></span>
+              <span><i class="swatch s2"></i>Fruits &amp; Vegetables <b>18%</b></span>
+              <span><i class="swatch s3"></i>Dairy Products <b>14%</b></span>
+              <span><i class="swatch s4"></i>Beverages <b>11%</b></span>
+              <span><i class="swatch s5"></i>Snacks &amp; Foods <b>9%</b></span>
+              <span><i class="swatch s6"></i>Others <b>16%</b></span>
+            </div>
+            <div class="donut"><div><small>Total Sales</small><strong>₹12,45,60,890</strong></div></div>
+          </div>
+        </article>
+
+        <article class="panel summary-panel">
+          <div class="panel-header"><h2>Purchase Summary</h2><select class="mini-select ui-select"><option>This Month</option></select></div>
+          <div class="summary-list">
+            <p><span>Total Purchase</span><b>₹7,85,40,230</b></p>
+            <p><span>Total GRN</span><b>₹7,25,60,980</b></p>
+            <p><span>Pending Bills</span><b class="danger-text">₹59,79,250</b></p>
+            <p><span>Returned Items</span><b class="danger-text">₹12,45,300</b></p>
+          </div>
+          <button class="panel-link" data-action="purchase-report">View Purchase Report <i class="fa-solid fa-arrow-right-long"></i></button>
+        </article>
+
+        <article class="panel summary-panel">
+          <div class="panel-header"><h2>Inventory Summary</h2><select class="mini-select ui-select"><option>This Month</option></select></div>
+          <div class="summary-list">
+            <p><span>Total Stock Value</span><b>₹9,25,30,540</b></p>
+            <p><span>Total Items</span><b>12,540</b></p>
+            <p><span>Active Items</span><b class="success-text">10,890</b></p>
+            <p><span>Inactive Items</span><b class="danger-text">1,650</b></p>
+          </div>
+          <button class="panel-link" data-action="inventory-report">View Inventory Report <i class="fa-solid fa-arrow-right-long"></i></button>
+        </article>
+
+        <article class="panel billing-panel">
+          <div class="panel-header"><h2>Live Billing</h2><button class="text-link" data-action="live-billing">View All</button></div>
+          <div class="billing-list">
+            <button><i class="fa-regular fa-file-lines bill-green"></i><span><b>INV-2505-1258</b><small>ZMart - Chennai</small></span><em><b>₹2,540</b><small>10:35 AM</small></em></button>
+            <button><i class="fa-regular fa-file-lines bill-blue"></i><span><b>INV-2505-1257</b><small>ZMart - Coimbatore</small></span><em><b>₹1,890</b><small>10:34 AM</small></em></button>
+            <button><i class="fa-regular fa-file-lines bill-purple"></i><span><b>INV-2505-1256</b><small>ZMart - Madurai</small></span><em><b>₹3,250</b><small>10:33 AM</small></em></button>
+            <button><i class="fa-regular fa-file-lines bill-purple"></i><span><b>INV-2505-1255</b><small>ZMart - Trichy</small></span><em><b>₹2,120</b><small>10:32 AM</small></em></button>
+            <button><i class="fa-regular fa-file-lines bill-cyan"></i><span><b>INV-2505-1254</b><small>ZMart - Salem</small></span><em><b>₹1,450</b><small>10:31 AM</small></em></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel quick-actions-panel">
+        <h2>Quick Actions</h2>
+        <div class="quick-actions">
+          <button data-action="add-branch"><i class="fa-solid fa-building qa-green"></i><span>Add Branch</span></button>
+          <button data-action="add-product"><i class="fa-solid fa-box qa-blue"></i><span>Add Product</span></button>
+          <button data-action="new-purchase"><i class="fa-solid fa-cart-shopping qa-purple"></i><span>New Purchase Order</span></button>
+          <button data-action="stock-transfer"><i class="fa-solid fa-truck qa-orange"></i><span>Stock Transfer</span></button>
+          <button data-action="create-offer"><i class="fa-solid fa-tag qa-red"></i><span>Create Offer</span></button>
+          <button data-action="add-employee"><i class="fa-solid fa-user-plus qa-cyan"></i><span>Add Employee</span></button>
+          <button data-action="customer-registration"><i class="fa-solid fa-users qa-green"></i><span>Customer Registration</span></button>
+          <button data-action="backup"><i class="fa-solid fa-cloud-arrow-up qa-blue"></i><span>Backup Now</span></button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Reusable component scripts -->
+  <script src="components/sidebar/js/sidebar.js"></script>
+  <script src="components/topbar/js/topbar.js"></script>
+  <script src="components/ui/js/ui-components.js"></script>
+  <!-- Dashboard module script -->
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

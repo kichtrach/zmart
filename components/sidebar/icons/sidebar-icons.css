@@ -1,0 +1,2 @@
+/* Sidebar icon sizing is isolated here for easy reuse/change across modules. */
+.app-sidebar .fa-solid,.app-sidebar .fa-regular{width:1.1em;text-align:center}.app-sidebar .nav-item .fa-house{font-size:14px}

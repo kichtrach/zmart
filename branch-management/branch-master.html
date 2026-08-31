@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Branch Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../components/ui/icons/ui-icons.css">
+<link rel="stylesheet" href="../assets/css/branch-management.css"></head><body>
+<aside id="sidebarMount"></aside><div class="app-shell"><header id="topbarMount"></header><main class="branch-main" id="mainContent">
+<div class="branch-head"><div class="breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Branch Management</span><i class="fa-solid fa-chevron-right"></i><span>Branch Master</span></div></div>
+<div class="branch-head" style="margin-top:-8px"><div></div><div class="page-actions"><button class="btn" data-action="export"><i class="fa-solid fa-download"></i> Export</button><button class="btn btn-primary" data-href="add-branch.html"><i class="fa-solid fa-plus"></i> Add Branch</button></div></div>
+<div class="stats-grid">
+<div class="stat"><div class="stat-icon"><i class="fa-regular fa-building"></i></div><div>Total Branches<strong>12</strong><small>All Time</small></div></div>
+<div class="stat"><div class="stat-icon"><i class="fa-regular fa-building"></i></div><div>Active Branches<strong>10</strong><small>83.33%</small></div></div>
+<div class="stat"><div class="stat-icon"><i class="fa-solid fa-users"></i></div><div>Inactive Branches<strong>2</strong><small>16.67%</small></div></div>
+<div class="stat"><div class="stat-icon"><i class="fa-regular fa-building"></i></div><div>States Covered<strong>6</strong><small>Across India</small></div></div>
+</div>
+<div class="branch-grid">
+<div class="panel"><div class="panel-body">
+<div class="filters">
+<div class="field search-wrap"><input id="branchSearch" class="input" placeholder="Search by branch name, code, city..."><i class="fa-solid fa-magnifying-glass"></i></div>
+<div class="field"><label>Status</label><select id="statusFilter" class="select"><option>All</option><option>Active</option><option>Inactive</option></select></div>
+<div class="field"><label>State</label><select class="select"><option>All</option><option>Tamil Nadu</option><option>Karnataka</option><option>Maharashtra</option></select></div>
+<div class="field"><label>City</label><select class="select"><option>All</option><option>Chennai</option><option>Bangalore</option><option>Coimbatore</option></select></div>
+<button class="btn" data-action="reset"><i class="fa-solid fa-rotate"></i> Reset</button>
+</div>
+<div class="table-wrap"><table class="data-table" id="branchTable"><thead><tr><th>#</th><th>Branch Code</th><th>Branch Name</th><th>Manager</th><th>State</th><th>City</th><th>Status</th><th>Actions</th></tr></thead><tbody><tr data-code="ZM001" data-name="ZMart Head Office" data-manager="Ramesh Kumar" data-state="Tamil Nadu" data-city="Chennai" data-status="Active">
+<td>1</td><td>ZM001</td><td>ZMart Head Office</td><td>Ramesh Kumar</td><td>Tamil Nadu</td><td>Chennai</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM002" data-name="ZMart Anna Nagar" data-manager="Karthik Raj" data-state="Tamil Nadu" data-city="Chennai" data-status="Active">
+<td>2</td><td>ZM002</td><td>ZMart Anna Nagar</td><td>Karthik Raj</td><td>Tamil Nadu</td><td>Chennai</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM003" data-name="ZMart T. Nagar" data-manager="Priya Sharma" data-state="Tamil Nadu" data-city="Chennai" data-status="Active">
+<td>3</td><td>ZM003</td><td>ZMart T. Nagar</td><td>Priya Sharma</td><td>Tamil Nadu</td><td>Chennai</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM004" data-name="ZMart Coimbatore" data-manager="Suresh Babu" data-state="Tamil Nadu" data-city="Coimbatore" data-status="Active">
+<td>4</td><td>ZM004</td><td>ZMart Coimbatore</td><td>Suresh Babu</td><td>Tamil Nadu</td><td>Coimbatore</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM005" data-name="ZMart Bangalore" data-manager="Anil Verma" data-state="Karnataka" data-city="Bangalore" data-status="Active">
+<td>5</td><td>ZM005</td><td>ZMart Bangalore</td><td>Anil Verma</td><td>Karnataka</td><td>Bangalore</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM006" data-name="ZMart Hyderabad" data-manager="Vijay Reddy" data-state="Telangana" data-city="Hyderabad" data-status="Active">
+<td>6</td><td>ZM006</td><td>ZMart Hyderabad</td><td>Vijay Reddy</td><td>Telangana</td><td>Hyderabad</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM007" data-name="ZMart Mumbai" data-manager="Meera Joshi" data-state="Maharashtra" data-city="Mumbai" data-status="Inactive">
+<td>7</td><td>ZM007</td><td>ZMart Mumbai</td><td>Meera Joshi</td><td>Maharashtra</td><td>Mumbai</td><td><span class="badge inactive">Inactive</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM008" data-name="ZMart Kochi" data-manager="Arun Nair" data-state="Kerala" data-city="Kochi" data-status="Active">
+<td>8</td><td>ZM008</td><td>ZMart Kochi</td><td>Arun Nair</td><td>Kerala</td><td>Kochi</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM009" data-name="ZMart Pune" data-manager="Rohit Patil" data-state="Maharashtra" data-city="Pune" data-status="Inactive">
+<td>9</td><td>ZM009</td><td>ZMart Pune</td><td>Rohit Patil</td><td>Maharashtra</td><td>Pune</td><td><span class="badge inactive">Inactive</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM010" data-name="ZMart Ahmedabad" data-manager="Jay Patel" data-state="Gujarat" data-city="Ahmedabad" data-status="Active">
+<td>10</td><td>ZM010</td><td>ZMart Ahmedabad</td><td>Jay Patel</td><td>Gujarat</td><td>Ahmedabad</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM011" data-name="ZMart Madurai" data-manager="Sanjay Kumar" data-state="Tamil Nadu" data-city="Madurai" data-status="Active">
+<td>11</td><td>ZM011</td><td>ZMart Madurai</td><td>Sanjay Kumar</td><td>Tamil Nadu</td><td>Madurai</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-code="ZM012" data-name="ZMart Trichy" data-manager="Asha Devi" data-state="Tamil Nadu" data-city="Trichy" data-status="Active">
+<td>12</td><td>ZM012</td><td>ZMart Trichy</td><td>Asha Devi</td><td>Tamil Nadu</td><td>Trichy</td><td><span class="badge active">Active</span></td>
+<td><button class="icon-btn branch-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr></tbody></table></div>
+<div class="pagination"><span>Showing 1 to 10 of 12 entries</span><div class="pages"><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button></div></div>
+</div></div>
+<div class="panel detail-card"><div class="panel-title"><span><i class="fa-regular fa-building"></i> Branch Details</span><button class="btn" style="height:34px">Collapse <i class="fa-solid fa-chevron-up"></i></button></div><div class="panel-body">
+<div class="branch-hero"><div class="branch-icon"><i class="fa-regular fa-building"></i></div><div><h3 style="margin:0">ZMart Head Office <span class="badge active">Active</span></h3><p>Branch Code &nbsp;: &nbsp; ZM001</p></div></div>
+<div class="detail-section"><h4>Contact Information</h4><div class="kv"><b>Phone Number</b><span>+91 44 1234 5678</span><b>Email</b><span>headoffice@zmartsupermarket.com</span><b>Website</b><span>www.zmartsupermarket.com</span></div></div>
+<div class="detail-section"><h4>Address</h4><div class="kv"><b>Address</b><span>No. 45, Market Street, Anna Salai</span><b>City</b><span>Chennai</span><b>State</b><span>Tamil Nadu</span><b>Pincode</b><span>600002</span></div></div>
+<div class="detail-section"><h4>Branch Manager</h4><div class="kv"><b>Manager Name</b><span>Ramesh Kumar</span><b>Designation</b><span>Chief Operating Officer</span><b>Phone</b><span>+91 98765 43210</span><b>Email</b><span>ramesh.kumar@zmartsupermarket.com</span></div></div>
+<div class="detail-section"><h4>Business Information</h4><div class="kv"><b>Date of Opening</b><span>01/01/2018</span><b>Business Type</b><span>Retail Supermarket</span><b>GST Number</b><span>33AAACZ1234A1Z5</span><b>PAN Number</b><span>AAACZ1234A</span><b>Status</b><span>Active</span></div></div>
+</div></div></div>
+<div class="info-note"><i class="fa-solid fa-circle-info"></i> Last updated on 15/05/2025 10:30 AM by Super Admin</div>
+</main></div>
+<div id="branchToast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/branch-management.js"></script>
+</body></html>

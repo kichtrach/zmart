@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Currency Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+<div class="cm-toolbar">
+<div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Currency Settings</span></div>
+<div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="company-profile.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</div>
+<div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab " data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab active" data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+<section class="cm-page">
+<div class="ui-card cm-section"><div class="cm-page-title"><i class="fa-solid fa-gear"></i><div><h1>Currency Settings</h1><p>Configure the default currency and exchange rate preferences for invoices and reports.</p></div></div>
+<div class="invoice-layout"><div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-money-bill-1"></i> Basic Currency Settings</div><div class="cm-form-grid">
+<div class="ui-field"><label>Default Currency <span class="req">*</span></label><select class="ui-select"><option>INR - Indian Rupee (₹)</option></select></div><div class="ui-field"><label>Currency Symbol <span class="req">*</span></label><input class="ui-input" value="₹"></div><div class="ui-field"><label>Currency Position <span class="req">*</span></label><select class="ui-select"><option>Before Amount (₹100.00)</option></select></div>
+<div class="ui-field"><label>Decimal Places <span class="req">*</span></label><select class="ui-select"><option>2</option></select></div><div class="ui-field"><label>Thousands Separator <span class="req">*</span></label><select class="ui-select"><option>Comma (,)</option></select></div><div class="ui-field"><label>Decimal Separator <span class="req">*</span></label><select class="ui-select"><option>Dot (.)</option></select></div>
+</div></div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-solid fa-coins"></i> Exchange Rate Settings</div><div class="cm-form-grid cols-2">
+<label class="ui-checkbox"><input type="checkbox" checked> Enable Multi Currency</label><div class="ui-field"><label>Base Currency <span class="req">*</span></label><select class="ui-select"><option>INR - Indian Rupee</option></select></div>
+<div class="ui-field"><label>Exchange Rate Date <span class="req">*</span></label><input class="ui-input" type="date" value="2025-05-15"></div><div class="ui-field"><label>Rate Update Frequency <span class="req">*</span></label><select class="ui-select"><option>Daily</option></select></div>
+</div></div>
+<div class="ui-card"><div class="tax-section-head"><span><i class="fa-solid fa-table-list"></i> Currency List</span><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="add-currency"><i class="fa-solid fa-plus"></i> Add Currency</button></div>
+<div style="overflow:auto"><table class="ui-table"><tr><th>#</th><th>Currency</th><th>Currency Code</th><th>Symbol</th><th>Exchange Rate (vs INR)</th><th>Status</th><th>Last Updated</th><th>Action</th></tr>
+<tr><td>1</td><td>Indian Rupee</td><td>INR</td><td>₹</td><td>1.0000</td><td><span class="ui-badge success">Base Currency</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>2</td><td>US Dollar</td><td>USD</td><td>$</td><td>83.1200</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>3</td><td>Euro</td><td>EUR</td><td>€</td><td>90.3500</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>4</td><td>British Pound</td><td>GBP</td><td>£</td><td>105.6200</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>5</td><td>UAE Dirham</td><td>AED</td><td>د.إ</td><td>22.6400</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>6</td><td>Saudi Riyal</td><td>SAR</td><td>﷼</td><td>22.1700</td><td><span class="ui-badge muted">Inactive</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>7</td><td>Singapore Dollar</td><td>SGD</td><td>S$</td><td>61.4500</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr><tr><td>8</td><td>Japanese Yen</td><td>JPY</td><td>¥</td><td>0.5400</td><td><span class="ui-badge success">Active</span></td><td>15/05/2025 10:00 AM</td><td><button class="ui-icon-btn"><i class="fa-regular fa-pen-to-square"></i></button> <button class="ui-icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr>
+</table></div></div></div>
+<div class="ui-card invoice-preview-card"><div class="invoice-preview-head"><strong>Invoice Preview</strong></div><div class="invoice-paper"><div class="invoice-brand"><img src="../assets/images/logo-zmart.png"><div><h2>TAX INVOICE</h2></div></div><p><strong>ZMart Supermarket Private Limited</strong><br>No. 123, ZMart Towers, Bangalore</p><table class="ui-table"><tr><th>#</th><th>Item</th><th>Qty</th><th>Price</th><th>Amount</th></tr><tr><td>1</td><td>Basmati Rice</td><td>5</td><td>80.00</td><td>400.00</td></tr><tr><td>2</td><td>Sunflower Oil</td><td>3</td><td>150.00</td><td>450.00</td></tr></table><div class="invoice-total"><span>Total Amount</span><b>₹ 987.00</b></div><p><strong>Currency:</strong> INR - Indian Rupee (₹)</p></div></div>
+</div></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

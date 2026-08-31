@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Branch Targets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../components/ui/icons/ui-icons.css">
+<link rel="stylesheet" href="../assets/css/branch-management.css"></head><body>
+<aside id="sidebarMount"></aside><div class="app-shell"><header id="topbarMount"></header><main class="branch-main target-page" id="mainContent">
+<section id="targetsListView">
+<div class="target-toolbar">
+  <div class="breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Branch Management</span><i class="fa-solid fa-chevron-right"></i><span>Branch Targets</span></div>
+  <div class="target-selectors">
+    <div class="field"><label>Select Financial Year</label><select class="select"><option>2025 - 2026 (01 Apr 2025 - 31 Mar 2026)</option></select></div>
+    <div class="field"><label>Select Branch</label><select class="select"><option>All Branches</option><option>ZMart Anna Nagar</option></select></div>
+    <button class="btn btn-primary" id="addTargetBtn"><i class="fa-solid fa-plus"></i> Add Target</button>
+  </div>
+</div>
+
+<div class="target-kpis">
+  <article><span class="kpi-icon green"><i class="fa-solid fa-cart-shopping"></i></span><div><small>Total Sales Target</small><strong>₹ 50,00,00,000</strong><button data-target-kpi="sales">View Details <i class="fa-solid fa-chevron-right"></i></button></div></article>
+  <article><span class="kpi-icon blue"><i class="fa-solid fa-bullseye"></i></span><div><small>Total Achievement</small><strong>₹ 12,75,30,500</strong><em>25.51% of Target</em></div></article>
+  <article><span class="kpi-icon violet"><i class="fa-solid fa-chart-column"></i></span><div><small>Profit Target</small><strong>₹ 5,00,00,000</strong><button>View Details <i class="fa-solid fa-chevron-right"></i></button></div></article>
+  <article><span class="kpi-icon orange"><i class="fa-regular fa-chart-pie"></i></span><div><small>Profit Achievement</small><strong>₹ 1,28,40,000</strong><em>25.68% of Target</em></div></article>
+  <article><span class="kpi-icon lime"><i class="fa-regular fa-square-check"></i></span><div><small>Active Targets</small><strong>8</strong><em>This Financial Year <i class="fa-solid fa-chevron-right"></i></em></div></article>
+</div>
+
+<div class="targets-layout">
+  <div class="targets-main">
+    <section class="target-card">
+      <div class="target-card-head"><div><h3>Branch Targets</h3><p>Set, track and manage targets for branches.</p></div><button class="btn" data-action="target-export"><i class="fa-solid fa-download"></i> Export</button></div>
+      <div class="target-filter-row">
+        <div class="field"><label>Target Type</label><select class="select" id="targetTypeFilter"><option>All</option><option>Sales Target</option><option>Profit Target</option></select></div>
+        <div class="field"><label>Status</label><select class="select" id="targetStatusFilter"><option>All</option><option>Active</option><option>At Risk</option></select></div>
+        <div class="field target-search"><input class="input" id="targetSearch" placeholder="Search by branch name..."><i class="fa-solid fa-magnifying-glass"></i></div>
+      </div>
+      <div class="table-wrap"><table class="data-table target-table"><thead><tr><th>#</th><th>Branch Name</th><th>Target Type</th><th>Sales Target (₹)</th><th>Profit Target (₹)</th><th>Start Date</th><th>End Date</th><th>Achievement</th><th>Status</th><th>Actions</th></tr></thead><tbody><tr data-target-row data-branch="ZMart Anna Nagar" data-type="Sales Target" data-sales="8,00,00,000" data-profit="80,00,000" data-achievement="22.45" data-status="Active">
+<td>1</td><td>ZMart Anna Nagar</td><td>Sales Target</td><td>₹ 8,00,00,000</td><td>₹ 80,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>22.45%</span><i><b style="width:22.45%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart T. Nagar" data-type="Sales Target" data-sales="6,50,00,000" data-profit="65,00,000" data-achievement="28.12" data-status="Active">
+<td>2</td><td>ZMart T. Nagar</td><td>Sales Target</td><td>₹ 6,50,00,000</td><td>₹ 65,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>28.12%</span><i><b style="width:28.12%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Velachery" data-type="Sales Target" data-sales="6,00,00,000" data-profit="60,00,000" data-achievement="23.67" data-status="Active">
+<td>3</td><td>ZMart Velachery</td><td>Sales Target</td><td>₹ 6,00,00,000</td><td>₹ 60,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>23.67%</span><i><b style="width:23.67%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Coimbatore" data-type="Sales Target" data-sales="7,50,00,000" data-profit="75,00,000" data-achievement="19.88" data-status="Active">
+<td>4</td><td>ZMart Coimbatore</td><td>Sales Target</td><td>₹ 7,50,00,000</td><td>₹ 75,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>19.88%</span><i><b style="width:19.88%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Trichy" data-type="Profit Target" data-sales="-" data-profit="55,00,000" data-achievement="26.43" data-status="Active">
+<td>5</td><td>ZMart Trichy</td><td>Profit Target</td><td>₹ -</td><td>₹ 55,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>26.43%</span><i><b style="width:26.43%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Madurai" data-type="Sales Target" data-sales="5,50,00,000" data-profit="55,00,000" data-achievement="21.30" data-status="Active">
+<td>6</td><td>ZMart Madurai</td><td>Sales Target</td><td>₹ 5,50,00,000</td><td>₹ 55,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>21.30%</span><i><b style="width:21.30%"></b></i></div></td>
+<td><span class="badge active">Active</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Salem" data-type="Sales Target" data-sales="4,50,00,000" data-profit="45,00,000" data-achievement="18.02" data-status="At Risk">
+<td>7</td><td>ZMart Salem</td><td>Sales Target</td><td>₹ 4,50,00,000</td><td>₹ 45,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>18.02%</span><i><b style="width:18.02%"></b></i></div></td>
+<td><span class="badge risk">At Risk</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr data-target-row data-branch="ZMart Erode" data-type="Sales Target" data-sales="5,00,00,000" data-profit="50,00,000" data-achievement="15.60" data-status="At Risk">
+<td>8</td><td>ZMart Erode</td><td>Sales Target</td><td>₹ 5,00,00,000</td><td>₹ 50,00,000</td><td>01 Apr 2025</td><td>31 Mar 2026</td>
+<td><div class="target-ach"><span>15.60%</span><i><b style="width:15.60%"></b></i></div></td>
+<td><span class="badge risk">At Risk</span></td>
+<td><button class="icon-btn target-actions" title="Actions"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr></tbody></table></div>
+      <div class="pagination"><span>Showing 1 to 8 of 8 entries</span><div class="pages"><button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button><button class="page-btn active">1</button><button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button></div></div>
+    </section>
+
+    <div class="target-chart-row">
+      <section class="target-card"><h3>Sales Target vs Achievement (₹)</h3><div class="bar-chart" id="salesBars"></div></section>
+      <section class="target-card"><h3>Achievement % by Branch</h3><div class="horizontal-bars" id="achievementBars"></div></section>
+    </div>
+  </div>
+
+  <aside class="targets-side">
+    <section class="target-card"><div class="target-card-head"><h3>Target Summary</h3><select class="select mini-select"><option>Sales Target</option></select></div>
+      <div class="donut target-donut" style="--p:25.51"><div><strong>25.51%</strong><small>Overall Achievement</small></div></div>
+      <div class="legend-stack"><span><i class="dot green"></i><b>Achievement</b><strong>₹ 12,75,30,500</strong></span><span><i class="dot gray"></i><b>Remaining</b><strong>₹ 37,24,69,500</strong></span><span><i class="dot gray2"></i><b>Total Target</b><strong>₹ 50,00,00,000</strong></span></div>
+    </section>
+    <section class="target-card"><div class="target-card-head"><h3>Top Performing Branches</h3><button>View All</button></div>
+      <div class="rank-list"><div><b>1</b><span>ZMart T. Nagar<i><em style="width:89.98400000000001%"></em></i></span><strong>28.12%</strong></div><div><b>2</b><span>ZMart Velachery<i><em style="width:75.74400000000001%"></em></i></span><strong>23.67%</strong></div><div><b>3</b><span>ZMart Anna Nagar<i><em style="width:71.84%"></em></i></span><strong>22.45%</strong></div><div><b>4</b><span>ZMart Madurai<i><em style="width:68.16000000000001%"></em></i></span><strong>21.30%</strong></div><div><b>5</b><span>ZMart Coimbatore<i><em style="width:63.616%"></em></i></span><strong>19.88%</strong></div></div>
+    </section>
+    <section class="target-card"><div class="target-card-head"><h3>Recent Actions</h3><button>View All</button></div>
+      <div class="recent-actions"><div><b>Target updated for ZMart Anna Nagar</b><span>By Super Admin</span><time>10:30 AM</time></div><div><b>New target added for ZMart Salem</b><span>By Super Admin</span><time>Yesterday</time></div><div><b>Target updated for ZMart Coimbatore</b><span>By Super Admin</span><time>29 Apr 2025</time></div></div>
+    </section>
+  </aside>
+</div>
+<div class="info-note"><i class="fa-solid fa-circle-info"></i><b>Note:</b> Targets are calculated for the selected financial year. Achievement is based on actual billing data.</div>
+</section>
+
+<section id="targetPerformanceView" hidden></section>
+</main></div><div id="branchToast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/branch-management.js"></script></body></html>

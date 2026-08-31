@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Edit Financial Year</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+  <div class="cm-toolbar">
+    <div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Financial Year > Edit Financial Year</span></div>
+    <div class="cm-actions"><button class="ui-btn ui-btn-sm" data-href="financial-year.html"><i class="fa-solid fa-arrow-left"></i> Back to List</button><button class="ui-btn ui-btn-primary ui-btn-sm" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+  </div>
+  <div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab " data-href="company-profile.html">Company Profile</button><button class="ui-tab active" data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+  <section class="cm-page">
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-calendar-days"></i> Edit Financial Year</div><div class="cm-form-grid"><div class="ui-field"><label>Financial Year Code <span class="req">*</span></label><input class="ui-input" value="FY2025-26"></div><div class="ui-field"><label>Financial Year Name <span class="req">*</span></label><input class="ui-input" value="Financial Year 2025 - 2026"></div><div class="ui-field"><label>Status <span class="req">*</span></label><select class="ui-select"><option>Active</option></select></div></div></div>
+<div class="cm-grid cols-2">
+<div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-calendar-days"></i> Period Information</div><div class="cm-form-grid cols-2"><div class="ui-field"><label>Start Date <span class="req">*</span></label><input class="ui-input" type="date" value="2025-04-01"></div><div class="ui-field"><label>End Date <span class="req">*</span></label><input class="ui-input" type="date" value="2026-03-31"></div><div class="ui-field"><label>No. of Months <span class="req">*</span></label><input class="ui-input" value="12"></div><div class="ui-field"><label>Duration</label><input class="ui-input" value="12 Months" readonly></div><div class="ui-field"><label>First Month <span class="req">*</span></label><select class="ui-select"><option>April</option></select></div><div class="ui-field"><label>Last Month <span class="req">*</span></label><select class="ui-select"><option>March</option></select></div><div class="ui-field"><label>Current Month</label><select class="ui-select"><option>May 2025</option></select></div><div class="ui-field"><label>Current Period</label><input class="ui-input" value="2 / 12" readonly></div></div></div>
+<div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-building"></i> Accounting Information</div><div class="cm-form-grid cols-2"><div class="ui-field"><label>Opening Balance Date <span class="req">*</span></label><input class="ui-input" type="date" value="2025-04-01"></div><div class="ui-field"><label>Opening Stock Date <span class="req">*</span></label><input class="ui-input" type="date" value="2025-04-01"></div><div class="ui-field"><label>Profit & Loss Account <span class="req">*</span></label><select class="ui-select"><option>P&L - 2025-26</option></select></div><div class="ui-field"><label>Default Tax Setup <span class="req">*</span></label><select class="ui-select"><option>GSTIN - 33AAACZ1234A1Z5</option></select></div><div class="ui-field"><label>Default Currency <span class="req">*</span></label><select class="ui-select"><option>INR - Indian Rupee</option></select></div><div class="ui-field"><label>Rounding Off</label><select class="ui-select"><option>Two Decimal Places (0.01)</option></select></div></div></div>
+</div>
+<div class="cm-grid cols-2" style="margin-top:12px"><div class="ui-card"><div class="ui-card-title"><i class="fa-solid fa-stamp"></i> Tax Information</div><div class="cm-form-grid"><div class="ui-field"><label>GST Number <span class="req">*</span></label><input class="ui-input" value="33AAACZ1234A1Z5"></div><div class="ui-field"><label>PAN Number <span class="req">*</span></label><input class="ui-input" value="AAACZ1234A"></div><div class="ui-field"><label>TAN Number</label><input class="ui-input" value="CHNZ12345D"></div></div></div><div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-note-sticky"></i> Notes</div><div class="cm-form-grid cols-2"><div class="ui-field"><label>Description</label><textarea class="ui-textarea">Financial Year for accounting and reporting period from 01 April 2025 to 31 March 2026.</textarea></div><div class="ui-field"><label>Remarks</label><textarea class="ui-textarea" placeholder="Enter remarks (optional)"></textarea></div></div></div></div>
+<div class="cm-bottom-actions"><button class="ui-btn" data-action="reset"><i class="fa-solid fa-rotate"></i> Reset</button><button class="ui-btn ui-btn-primary" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

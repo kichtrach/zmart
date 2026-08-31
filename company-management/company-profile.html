@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Company Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/icons/ui-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/company-management.css">
+</head>
+<body>
+<aside id="sidebarMount" aria-label="Main navigation"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="company-main" id="mainContent">
+  <div class="cm-toolbar">
+    <div class="breadcrumb"><span>Company Management</span><i class="fa-solid fa-chevron-right"></i><span>Company Profile</span></div>
+    <div class="cm-actions"></div>
+  </div>
+  <div class="cm-tabs-wrap"><div class="ui-tabs"><button class="ui-tab active" data-href="company-profile.html">Company Profile</button><button class="ui-tab " data-href="financial-year.html">Financial Year</button><button class="ui-tab " data-href="business-settings.html">Business Settings</button><button class="ui-tab " data-href="gst-settings.html">GST Settings</button><button class="ui-tab " data-href="invoice-settings.html">Invoice Settings</button><button class="ui-tab " data-href="tax-configuration.html">Tax Configuration</button><button class="ui-tab " data-href="currency-settings.html">Currency Settings</button><button class="ui-tab " data-href="backup-settings.html">Backup Settings</button></div></div>
+  <section class="cm-page">
+<div class="ui-card cm-section">
+  <div class="ui-card-title"><i class="fa-regular fa-building"></i> Basic Information</div>
+  <div class="cm-form-grid">
+    <div class="ui-field"><label>Company Name <span class="req">*</span></label><input class="ui-input" value="ZMart Supermarket Pvt. Ltd."></div>
+    <div class="ui-field"><label>Business Type <span class="req">*</span></label><select class="ui-select"><option>Private Limited</option></select></div>
+    <div class="ui-field"><label>Email <span class="req">*</span></label><input class="ui-input" value="info@zmartsupermarket.com"></div>
+    <div class="ui-field"><label>Company Logo</label>
+      <div class="logo-upload">
+        <div>
+          <div class="logo-preview"><img id="companyLogoPreview" src="../assets/images/logo-zmart.png" alt="Company Logo"></div>
+          <span class="logo-file-name" id="companyLogoFileName">Current company logo</span>
+        </div>
+        <input class="ui-file-input" id="companyLogoInput" type="file" accept="image/png,image/jpeg,image/webp">
+        <button class="ui-btn ui-btn-sm" type="button" data-action="change-logo"><i class="fa-solid fa-upload"></i> Change Logo</button>
+      </div>
+    </div>
+    <div class="ui-field"><label>Tagline</label><input class="ui-input" value="Smart Living Starts Here"></div>
+    <div class="ui-field"><label>Phone Number <span class="req">*</span></label><input class="ui-input" value="+91 44 1234 5678"></div>
+    <div class="ui-field"><label>Registration Number</label><input class="ui-input" value="U51909TN2020PTC138593"></div>
+    <div class="ui-field"><label>Date of Incorporation</label><input class="ui-input" type="date" value="2020-08-15"></div>
+    <div class="ui-field"><label>Website</label><input class="ui-input" value="www.zmartsupermarket.com"></div>
+  </div>
+</div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-regular fa-building"></i> Registered Address</div>
+<div class="cm-form-grid"><div class="ui-field"><label>Address Line 1 <span class="req">*</span></label><input class="ui-input" value="No. 45, Market Street"></div><div class="ui-field"><label>Address Line 2</label><input class="ui-input" value="Near City Centre"></div><div class="ui-field"><label>Country <span class="req">*</span></label><select class="ui-select"><option>India</option></select></div><div class="ui-field"><label>State <span class="req">*</span></label><select class="ui-select"><option>Tamil Nadu</option></select></div><div class="ui-field"><label>City <span class="req">*</span></label><select class="ui-select"><option>Chennai</option></select></div><div class="ui-field"><label>Pincode <span class="req">*</span></label><input class="ui-input" value="600002"></div></div></div>
+<div class="ui-card cm-section"><div class="ui-card-title"><i class="fa-solid fa-stamp"></i> Tax Information</div><div class="cm-form-grid"><div class="ui-field"><label>GST Number <span class="req">*</span></label><input class="ui-input" value="33AAACZ1234A1Z5"></div><div class="ui-field"><label>PAN Number <span class="req">*</span></label><input class="ui-input" value="AAACZ1234A"></div><div class="ui-field"><label>TAN Number</label><input class="ui-input" value="CHNZ12345D"></div></div></div>
+<div class="ui-card"><div class="ui-card-title"><i class="fa-regular fa-address-card"></i> Contact Person</div><div class="cm-form-grid"><div class="ui-field"><label>Contact Person Name <span class="req">*</span></label><input class="ui-input" value="Ramesh Kumar"></div><div class="ui-field"><label>Designation</label><input class="ui-input" value="Chief Operating Officer"></div><div class="ui-field"><label>Phone Number <span class="req">*</span></label><input class="ui-input" value="+91 98765 43210"></div><div class="ui-field"><label>Email <span class="req">*</span></label><input class="ui-input" value="ramesh.kumar@zmartsupermarket.com"></div></div></div>
+<div class="cm-bottom-actions"><button class="ui-btn" data-action="reset"><i class="fa-solid fa-rotate"></i> Reset</button><button class="ui-btn ui-btn-primary" data-action="save"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button></div>
+</section>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/company-management.js"></script>
+</body></html>

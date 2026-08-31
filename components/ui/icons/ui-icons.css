@@ -1,0 +1,6 @@
+/* Shared UI icon helpers. Font Awesome remains the icon source across modules. */
+.ui-icon{color:var(--zm-theme);width:18px;text-align:center}
+.ui-icon-muted{color:#667085}
+.ui-icon-danger{color:#dc3545}
+.ui-icon-warning{color:#f79009}
+.ui-icon-success{color:var(--zm-theme)}
