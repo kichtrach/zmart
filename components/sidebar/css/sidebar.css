@@ -66,3 +66,11 @@
 #sidebarMount .fa-solid{font-family:"Font Awesome 6 Free"!important;font-weight:900!important}
 #sidebarMount .fa-regular{font-family:"Font Awesome 6 Free"!important;font-weight:400!important}
 #sidebarMount .fa-brands{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important}
+
+/* Reusable sidebar footer/support area */
+.sidebar-bottom{display:block;padding:10px 12px 18px;border-top:1px solid rgba(255,255,255,.08)}
+.sidebar-support{width:100%;height:42px;border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;gap:9px;font:500 12px 'Poppins',sans-serif;cursor:pointer}
+.sidebar-support:hover{background:rgba(255,255,255,.08)}
+.sidebar-footer{display:flex;flex-direction:column;gap:8px;margin-top:14px;font:400 10px/1.4 'Poppins',sans-serif;color:#fff}
+.sidebar-footer strong{font-weight:500}.sidebar-footer span{opacity:.92}
+.sidebar-collapsed .sidebar-support span,.sidebar-collapsed .sidebar-footer{display:none}.sidebar-collapsed .sidebar-support{padding:0}

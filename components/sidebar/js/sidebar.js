@@ -11,13 +11,11 @@
     ['supplier','fa-cubes-stacked','Supplier Management',true],
     ['purchase','fa-cart-shopping','Purchase Management',true],
     ['inventory','fa-box-archive','Inventory Management',true],
-    ['pricing','fa-tags','Pricing & Promotions',true],
+    ['sales','fa-cash-register','Sales & Billing',true],
     ['customer','fa-user','Customer Management',true],
     ['employee','fa-user-tie','Employee Management',true],
     ['finance','fa-file-invoice-dollar','Accounting & Finance',true],
-    ['crm','fa-bullseye','CRM',true],
     ['reports','fa-chart-pie','Reports & Analytics',true],
-    ['permissions','fa-user-lock','User & Permission Mgmt',true],
     ['settings','fa-gear','System Settings',true],
   ];
 
@@ -25,18 +23,16 @@
     company:['Company Profile','Financial Year','Business Settings','GST Settings','Invoice Settings','Tax Configuration','Currency Settings','Backup Settings'],
     branch:['Branch Master','Branch Configuration','Branch Targets','Branch Performance','Branch Expenses','Branch Status','Branch Dashboard'],
     warehouse:['Warehouse Overview','Warehouse Master','Stock by Warehouse','Stock Transfers','Rack & Bin Management'],
-    product:['Categories','Sub Categories','Brands','Products','Product Variants'],
+    product:['Categories','Sub Categories','Brands','Products','Product Variants','Units','Barcode Management','Batch Management'],
     supplier:['Supplier Master','Supplier Ledger','Supplier Performance'],
     purchase:['Purchase Orders','GRN','Purchase Returns','Supplier Payments'],
-    inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count'],
-    pricing:['Discount Campaigns','Combo Offers','Buy X Get Y','Happy Hours'],
-    customer:['Customer Master','Loyalty Program','Customer Groups','Customer Feedback'],
-    employee:['Employee Master','Roles & Permissions','Attendance','Shift Management'],
-    finance:['Income','Expenses','Bank Accounts','Journals','Reports'],
-    crm:['CRM Dashboard','Customer Segments','Campaigns'],
-    reports:['Sales Reports','Purchase Reports','Inventory Reports','Branch Performance'],
-    permissions:['Users','Roles','Permissions','Audit Logs'],
-    settings:['General Settings','Notifications','Backup & Restore']
+    inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Management','Batch Tracking','Damage / Wastage'],
+    sales:['POS Billing','Sales Orders','Sales Returns','Credit Sales','Pending Bills','Day Close','Counterwise Sales','Payment Collection'],
+    customer:['Customer Master','Loyalty Program','Customer Groups','Customer Feedback','Customer Offers'],
+    employee:['Employee Master','Roles & Permissions','Attendance','Shift Management','Payroll Integration'],
+    finance:['Income','Expenses','Bank Accounts','Journals','Contra Entries','Tax','Reports'],
+    reports:['Sales Reports','Purchase Reports','Inventory Reports','Profit & Loss','GST Reports','Branch Performance','Product Performance','Customer Reports','Employee Reports'],
+    settings:['General Settings','Notification Settings','User Management','Audit Logs','Backup & Restore']
   };
 
   mount.className = 'app-sidebar';
@@ -56,6 +52,8 @@
         </div>`).join('')}
     </nav>
     <div class="sidebar-bottom">
+      <button class="sidebar-support" type="button" data-nav="support"><i class="fa-solid fa-headset"></i><span>Support</span></button>
+      <div class="sidebar-footer"><strong>© 2025 ZMart Supermarket.</strong><span>All rights reserved.</span></div>
     </div>`;
 
   const sidebar = mount;
@@ -85,6 +83,7 @@
     'add-warehouse.html':'Warehouse Master',
     'stock-by-warehouse.html':'Stock by Warehouse',
     'stock-transfers.html':'Stock Transfers',
+    'new-stock-transfer.html':'Stock Transfers',
     'rack-bin-management.html':'Rack & Bin Management'
   };
 

@@ -9,6 +9,7 @@
         location.pathname.includes("/warehouse-management/add-warehouse") ? "Add Warehouse" :
         location.pathname.includes("/warehouse-management/warehouse-master") ? "Warehouse Master" :
         location.pathname.includes("/warehouse-management/stock-by-warehouse") ? "Stock by Warehouse" :
+        location.pathname.includes("/warehouse-management/new-stock-transfer") ? "New Stock Transfer" :
         location.pathname.includes("/warehouse-management/stock-transfers") ? "Stock Transfers" :
         location.pathname.includes("/warehouse-management/rack-bin-management") ? "Rack & Bin Management" :
         location.pathname.includes("/warehouse-management/") ? "Warehouse Management" :

@@ -117,11 +117,19 @@
   });
 
   const configContent=document.getElementById('configContent');
+  const configSideMount=document.getElementById('configSideMount');
+  const configNote=document.getElementById('configNote');
   if(configContent){
     const sw=(label,on=true)=>`<div class="switch-row"><span>${label}</span><label class="switch"><input type="checkbox" ${on?'checked':''}><span></span></label></div>`;
+    const swDesc=(title,desc,on=true)=>`<div class="switch-setting"><div><b>${title}</b>${desc?`<small>${desc}</small>`:''}</div><label class="switch"><input type="checkbox" ${on?'checked':''}><span></span></label></div>`;
+    const inputSuffix=(value,suffix)=>`<div class="input-suffix"><input class="input" value="${value}"><span>${suffix}</span></div>`;
     const field=(label,html)=>`<div class="field"><label>${label}</label>${html}</div>`;
     const sel=v=>`<select class="select"><option>${v}</option></select>`;
     const table=(headers,rows)=>`<div class="table-wrap"><table class="small-table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map((r,ri)=>`<tr data-config-row="${ri}">${r.map((c,ci)=>`<td>${headers[ci]==='Actions' ? `<button type="button" class="config-row-action" data-config-actions aria-label="Open actions"><i class="fa-solid fa-ellipsis-vertical"></i></button>` : c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    const miniSwitch=(on=true,attrs='')=>`<label class="switch compact-switch"><input type="checkbox" ${on?'checked':''} ${attrs}><span></span></label>`;
+    const radioDot=(checked=false,name='config-default')=>`<label class="config-radio"><input type="radio" name="${name}" ${checked?'checked':''}><span></span></label>`;
+    const channelIcons=(icons)=>`<span class="channel-icons">${icons.map(i=>`<i class="${i}"></i>`).join('')}</span>`;
+    const timeInput=(value)=>`<div class="time-input"><input class="input" type="time" value="${value}"><i class="fa-regular fa-clock"></i></div>`;
 
     const general=()=>`<div class="config-layout"><div class="config-main"><div class="section-card"><h3>General Settings</h3><div class="config-grid">
       ${field('Branch Name','<input class="input" value="ZMart Head Office">')}${field('Branch Code','<input class="input" value="ZM001" readonly>')}
@@ -146,41 +154,96 @@
       <div class="section-card"><h3>Invoice Footer</h3>${field('Footer Note (Line 1)','<textarea class="textarea">Thank you for shopping with ZMart.</textarea>')}${field('Footer Note (Line 2)','<textarea class="textarea">Goods once sold will not be taken back.</textarea>')}${field('Footer Note (Line 3)','<textarea class="textarea">This is a computer generated invoice.</textarea>')}</div>
     </div></div><div class="config-side"><div class="section-card"><h3>Invoice Types</h3><button class="btn"><i class="fa-solid fa-plus"></i> Add Invoice Type</button>${table(['#','Invoice Type','Primary','Status','Actions'],[['1','Tax Invoice','●','Active','⋮'],['2','Proforma Invoice','○','Active','⋮'],['3','Credit Note','○','Active','⋮'],['4','Debit Note','○','Active','⋮']])}</div><div class="section-card"><h3>Payment Methods</h3>${['Cash','Card','UPI','Net Banking','Cheque','Credit (Ledger)'].map((x,i)=>sw(x,i!==4)).join('')}</div></div></div>`;
 
-    const inventory=()=>`<div class="config-layout"><div class="config-main"><div class="section-card"><h3>Inventory Settings</h3><div class="config-grid cols-3">
-      ${field('Inventory Valuation Method',sel('Weighted Average'))}${field('Inventory Account',sel('Inventory - ZM001'))}${field('Negative Stock Warning',sw('Enable warning for negative stock',true))}
-      ${field('Stock Entry Method',sel('Allow Below Zero Stock'))}${field('Low Stock Alert','<input class="input" value="10">')}${field('Batch Management',sw('Enable batch tracking',true))}
-      ${field('Default Unit of Measure',sel('Piece'))}${field('Expiry Alert Days','<input class="input" value="30">')}${field('Serial Number Tracking',sw('Enable serial number tracking',false))}
-    </div></div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-      <div class="section-card"><h3>Reorder Settings</h3>${field('Reorder Level Calculation',sel('Based on Average Sales'))}${field('Reorder Period',sel('7 Days'))}${field('Safety Stock Days','<input class="input" value="5">')}${sw('Auto Reorder Suggestion',true)}</div>
-      <div class="section-card"><h3>Stock Transfer Settings</h3>${sw('Allow Inter-Branch Transfer',true)}${sw('Require Approval for Transfer',true)}${field('Default Transfer Warehouse',sel('ZMart Head Office Warehouse'))}${sw('Allow Partial Transfer',true)}</div>
-      <div class="section-card"><h3>Stock Adjustment Settings</h3>${sw('Allow Stock Adjustment',true)}${sw('Require Approval for Adjustment',false)}${sw('Adjustment Reason Mandatory',true)}${field('Adjustment Limit','<input class="input" value="5">')}</div>
-    </div></div><div class="config-side"><div class="section-card"><h3>Warehouses</h3><button class="btn"><i class="fa-solid fa-plus"></i> Add Warehouse</button>${table(['#','Warehouse Name','Code','Default','Status','Actions'],[['1','ZMart Head Office Warehouse','WH001','★','Active','⋮'],['2','ZMart Secondary Warehouse','WH002','☆','Active','⋮'],['3','ZMart Return Warehouse','WH003','☆','Active','⋮']])}</div><div class="section-card"><h3>Bin / Location Settings</h3>${sw('Enable bin location management',true)}${sw('Make default bin mandatory',true)}${sw('Bin Barcode Scanning',true)}</div><div class="section-card"><h3>Stock Count Settings</h3>${sw('Enable physical stock count',true)}${field('Stock Count Frequency',sel('Monthly'))}${sw('Count Approval Required',true)}${field('Count Tolerance %','<input class="input" value="2">')}</div></div></div>`;
+    const inventory=()=>`<div class="config-layout"><div class="config-main"><div class="section-card"><h3>Inventory Settings</h3><div class="config-grid cols-3 inventory-primary-grid">
+      ${field('Inventory Valuation Method <span class="req">*</span>',sel('Weighted Average'))}${field('Inventory Account <span class="req">*</span>',sel('Inventory - ZM001'))}${field('Negative Stock Warning',swDesc('', 'Enable warning for negative stock', true))}
+      ${field('Stock Entry Method <span class="req">*</span>',sel('Allow Below Zero Stock'))}${field('Low Stock Alert',inputSuffix('10','% of reorder level'))}${field('Batch Management',swDesc('', 'Enable batch tracking', true))}
+      ${field('Default Unit of Measure <span class="req">*</span>',sel('Piece'))}${field('Expiry Alert Days <span class="req">*</span>',inputSuffix('30','days before expiry'))}${field('Serial Number Tracking',swDesc('', 'Enable serial number tracking', false))}
+    </div></div><div class="inventory-lower-grid">
+      <div class="section-card"><h3>Reorder Settings</h3>${field('Reorder Level Calculation <span class="req">*</span>',sel('Based on Average Sales'))}${field('Reorder Period <span class="req">*</span>',sel('7 Days'))}${field('Safety Stock Days <span class="req">*</span>',inputSuffix('5','days'))}${swDesc('Auto Reorder Suggestion','Enable auto reorder suggestion on low stock',true)}</div>
+      <div class="section-card"><h3>Stock Transfer Settings</h3>${swDesc('Allow Inter-Branch Transfer','Allow stock transfer between branches',true)}${swDesc('Require Approval for Transfer','Require approval for stock transfer',true)}${field('Default Transfer Warehouse <span class="req">*</span>',sel('ZMart Head Office Warehouse'))}${swDesc('Allow Partial Transfer','Allow partial quantity transfer',true)}</div>
+      <div class="section-card"><h3>Stock Adjustment Settings</h3>${swDesc('Allow Stock Adjustment','Allow manual stock adjustments',true)}${swDesc('Require Approval for Adjustment','Require approval for adjustments',false)}${swDesc('Adjustment Reason Mandatory','Make reason mandatory for adjustments',true)}${field('Adjustment Limit',inputSuffix('5','%  Max adjustment percentage'))}</div>
+    </div></div><div class="config-side"><div class="section-card warehouse-settings-card"><h3>Warehouses</h3><small class="section-subtitle">Manage warehouses for this branch.</small><div class="center-action"><button class="btn"><i class="fa-solid fa-plus"></i> Add Warehouse</button></div>${table(['#','Warehouse Name','Code','Default','Status','Actions'],[['1','ZMart Head Office Warehouse','WH001','★','Active','⋮'],['2','ZMart Secondary Warehouse','WH002','☆','Active','⋮'],['3','ZMart Return Warehouse','WH003','☆','Active','⋮']])}</div><div class="section-card"><h3>Bin / Location Settings</h3><small class="section-subtitle">Manage bin and location preferences.</small>${swDesc('','Enable bin location management',true)}${swDesc('','Make default bin mandatory',true)}${swDesc('Bin Barcode Scanning','Enable barcode scanning for bins',true)}</div><div class="section-card"><h3>Stock Count Settings</h3><small class="section-subtitle">Configure stock counting preferences.</small>${swDesc('','Enable physical stock count',true)}${field('Stock Count Frequency',sel('Monthly'))}${swDesc('Count Approval Required','Require approval for stock count',true)}${field('Count Tolerance %',inputSuffix('2','%  Allowed variance percentage'))}</div></div></div>`;
 
-    const pos=()=>`<div class="config-layout"><div class="config-main"><div class="section-card"><h3>POS Settings</h3><div class="config-grid cols-3">
-      ${field('Default POS Layout',sel('Modern Layout'))}${field('Payment Settings',sel('Cash'))}${field('POS Behavior',sw('Show Stock Availability in POS',true))}
-      ${field('Default Sales Type',sel('Retail'))}${field('Allow Multiple Payment Methods',sw('Allow multiple payment in single invoice',true))}${field('Show Last Selling Price',sw('Enabled',true))}
-      ${field('Default Customer Type',sel('Walk-in Customer'))}${field('Default Cash Received Account',sel('Cash in Hand'))}${field('Show Item Discount',sw('Enabled',true))}
-      ${field('Hold Invoice Duration','<input class="input" value="24">')}${field('Default Refund Account',sel('Sales Return'))}${field('Show Customer Balance',sw('Enabled',true))}
-    </div></div><div class="section-card"><h3>Receipt & Invoice Settings</h3><div class="config-grid">
-      ${field('Invoice Header','<input class="input" value="Thank you for shopping with ZMart.">')}${field('Terms & Conditions',sw('Show Terms & Conditions',true))}
-      ${field('Invoice Footer','<input class="input" value="Goods once sold will not be taken back or exchanged.">')}${field('Logo on Receipt','<input type="file" class="input">')}
-    </div></div></div><div class="config-side"><div class="section-card"><h3>POS Devices</h3><button class="btn"><i class="fa-solid fa-plus"></i> Add Device</button>${table(['#','Device Name','Type','Status','Actions'],[['1','Main POS Terminal','POS Terminal','Active','⋮'],['2','Receipt Printer - 1','Receipt Printer','Active','⋮'],['3','Barcode Scanner - 1','Barcode Scanner','Active','⋮'],['4','Cash Drawer - 1','Cash Drawer','Active','⋮'],['5','Customer Display - 1','Customer Display','Inactive','⋮']])}</div><div class="section-card"><h3>Other Settings</h3>${sw('Enable Kitchen/Service Printing',true)}${sw('Enable Token System',false)}${sw('Enable Table Management (Dine-in)',true)}${sw('Enable Loyalty Points in POS',true)}${sw('Ask for customer before invoice',true)}${field('Default Warehouse',sel('ZMart Head Office Warehouse'))}</div></div></div>`;
+    const pos=()=>`<div class="config-main"><div class="section-card"><h3>POS Settings</h3><div class="pos-settings-grid">
+      <div class="pos-column">${field('Default POS Layout <span class="req">*</span>',sel('Modern Layout'))}${field('Default Sales Type <span class="req">*</span>',sel('Retail'))}${field('Default Customer Type <span class="req">*</span>',sel('Walk-in Customer'))}${field('Hold Invoice Duration <span class="req">*</span>',inputSuffix('24','hours'))}<h4>Print Settings</h4><label class="check"><input type="checkbox" checked> Auto print invoice after payment</label><label class="check"><input type="checkbox"> Print duplicate copy</label><label class="check"><input type="checkbox" checked> Show items with images on invoice</label><label class="check"><input type="checkbox" checked> Print barcode on invoice</label></div>
+      <div class="pos-column"><h4>Payment Settings</h4>${field('Default Payment Method <span class="req">*</span>',sel('Cash'))}${field('Allow Multiple Payment Methods',sw('Allow multiple payment in single invoice',true))}${field('Default Cash Received Account <span class="req">*</span>',sel('Cash in Hand'))}${field('Default Refund Account <span class="req">*</span>',sel('Sales Return'))}${field('Round Off Setting','<div class="inline-pair">'+sel('Round to nearest')+'<input class="input" value="₹ 0.50"></div>')}${field('Enable Price Override',sw('Allow price override in POS',true))}${field('Price Override Approval',sel('Manager Approval Required'))}</div>
+      <div class="pos-column"><h4>POS Behavior</h4>${sw('Show Stock Availability in POS',true)}${sw('Show Last Selling Price',true)}${sw('Show Item Discount',true)}${sw('Show Customer Balance',true)}${field('Default Quantity','<input class="input" value="1">')}${field('Quick Keypad',sel('Enable'))}${field('Barcode Scanner',sel('USB Scanner'))}${field('Customer Display',sel('Enable'))}</div>
+    </div></div><div class="section-card receipt-settings"><h3>Receipt & Invoice Settings</h3><div class="receipt-grid"><div class="receipt-copy">${field('Invoice Header','<div class="counter-input"><input class="input" maxlength="100" value="Thank you for shopping with ZMart."><small>38/100</small></div>')}${field('Invoice Footer','<div class="counter-input"><input class="input" maxlength="100" value="Goods once sold will not be taken back or exchanged."><small>54/100</small></div>')}</div><div class="receipt-options"><div class="receipt-terms-row"><span class="receipt-label">Show Terms & Conditions</span>${sw('',true)}</div><button type="button" class="btn btn-outline-green manage-terms-btn" data-pos-action="manage-terms">Manage Terms</button>${field('Logo on Receipt','<div class="file-control"><label class="btn file-btn">Choose File<input type="file" accept="image/*" data-pos-logo hidden></label><span data-pos-file title="pos-logo.png">pos-logo.png</span><button type="button" class="icon-btn danger" aria-label="Remove receipt logo" data-pos-action="remove-logo"><i class="fa-regular fa-trash-can"></i></button></div>')}</div></div></div></div>`;
 
-    const payment=()=>`<div class="config-layout"><div class="config-main"><div style="display:grid;grid-template-columns:1fr 1.2fr;gap:12px">
-      <div class="section-card"><h3>General Payment Settings</h3>${field('Default Currency',sel('INR - Indian Rupee'))}${field('Rounding Off',sel('Round to nearest'))}${field('Payment Timeout (Minutes)','<input class="input" value="15">')}${sw('Allow split payment for invoices',true)}${sw('Allow tip / service charge',true)}${field('Default Tip Percentage (%)','<input class="input" value="5">')}${sw('Show payment success screen',true)}${sw('Automatically print receipt',true)}</div>
-      <div class="section-card"><h3>Accepted Payment Methods</h3>${table(['#','Payment Method','Enabled','Default','Actions'],[['1','Cash','Yes','●','⋮'],['2','Credit / Debit Card','Yes','○','⋮'],['3','UPI','Yes','○','⋮'],['4','Net Banking','Yes','○','⋮'],['5','Wallet','Yes','○','⋮'],['6','Cheque','No','○','⋮'],['7','Gift Card','Yes','○','⋮'],['8','Store Credit','Yes','○','⋮']])}<button class="btn" style="margin-top:10px"><i class="fa-solid fa-plus"></i> Add Payment Method</button></div>
-    </div></div><div class="config-side"><div class="section-card"><h3>Online Payment Settings</h3>${sw('Enable Online Payments',true)}${field('Payment Gateway',sel('Razorpay'))}${field('Merchant ID','<input class="input" value="rzp_live_MERCHANT12345">')}${field('API Key','<input class="input" type="password" value="secret12345">')}${field('Webhook Secret','<input class="input" type="password" value="secret98765">')}<button class="btn"><i class="fa-solid fa-wifi"></i> Test Connection</button></div><div class="section-card"><h3>Refund Settings</h3>${sw('Allow Refund',true)}${field('Refund Mode',sel('Original Payment Method'))}${sw('Refund Approval Required',true)}${field('Refund Amount Limit (₹)','<input class="input" value="50000.00">')}${field('Refund Time Limit (Days)','<input class="input" value="30">')}</div></div></div>`;
+    const posSide=()=>`<div class="config-side"><div class="section-card"><h3>POS Devices</h3><small class="section-subtitle">Manage devices used in this branch POS.</small><div class="section-action"><button type="button" class="btn btn-outline-green" data-pos-action="add-device"><i class="fa-solid fa-plus"></i> Add Device</button></div>${table(['#','Device Name','Type','Status','Actions'],[['1','Main POS Terminal','POS Terminal','Active','⋮'],['2','Receipt Printer - 1','Receipt Printer','Active','⋮'],['3','Barcode Scanner - 1','Barcode Scanner','Active','⋮'],['4','Cash Drawer - 1','Cash Drawer','Active','⋮'],['5','Customer Display - 1','Customer Display','Inactive','⋮']])}</div><div class="section-card"><h3>Other Settings</h3>${sw('Enable Kitchen/Service Printing',true)}${sw('Enable Token System',false)}${sw('Enable Table Management (Dine-in)',true)}${sw('Enable Loyalty Points in POS',true)}${sw('Ask for customer before invoice',true)}${field('Default Warehouse <span class="req">*</span>',sel('ZMart Head Office Warehouse'))}</div><div class="section-card"><h3>Shortcut Keys (POS)</h3>${table(['Action','Shortcut Key'],[['New Invoice','F1'],['Hold Invoice','F3'],['Search Item','F4'],['Discount','F6'],['Payment','F7'],['Cancel Invoice','F12']])}</div></div>`;
 
-    const notifications=()=>`<div class="config-layout"><div class="config-main"><div class="section-card"><div style="display:flex;justify-content:space-between;align-items:center"><div><h3 style="margin-bottom:4px">Notification Settings</h3><small>Configure notifications and alerts for this branch.</small></div><div>${sw('Enable All',true)}${sw('Disable All',false)}</div></div>${table(['#','Notification Type','Description','Channels','Enabled','Recipient','Actions'],[['1','Low Stock Alert','Notify when item stock falls below reorder level','🔔 ✉ 💬','Yes','Store Manager, Inventory Manager','⋮'],['2','Expiry Alert','Notify for items approaching expiry','🔔 ✉ 💬','Yes','Inventory Manager','⋮'],['3','Purchase Order Approval','Notify when a purchase order requires approval','🔔 ✉ 💬','Yes','Purchase Manager, Approver','⋮'],['4','GRN Received','Notify when a new GRN is received','🔔 ✉ 💬','Yes','Store Manager, Accounts','⋮'],['5','Invoice Due','Notify for supplier invoices due for payment','🔔 ✉','Yes','Accounts Manager','⋮'],['6','Sales Target Alert','Notify when sales target is achieved or missed','🔔 ✉','No','Branch Manager','⋮'],['7','Day Close Reminder','Reminder to perform day close','🔔','Yes','Cashier, Branch Manager','⋮'],['8','System Alerts','Important system updates and alerts','🔔 ✉','Yes','All Admin Users','⋮'],['9','Payment Received','Notify when customer payment is received','✉ 💬','Yes','Accounts Manager','⋮'],['10','User Activity','Notify for important user activities','🔔','No','System Administrator','⋮']])}<button class="btn" style="margin-top:12px"><i class="fa-solid fa-plus"></i> Add Custom Notification</button></div></div><div class="config-side"><div class="section-card"><h3>Notification Channels</h3>${sw('In-App Notification',true)}${sw('Email',true)}${sw('SMS',true)}</div><div class="section-card"><h3>Quiet Hours</h3>${sw('Enable Quiet Hours',true)}${field('From Time','<input class="input" value="10:00 PM">')}${field('To Time','<input class="input" value="07:00 AM">')}${field('Time Zone',sel('(UTC+05:30) Asia/Kolkata'))}</div><div class="section-card"><h3>Escalation Settings</h3>${sw('Enable Escalation',true)}${field('Escalate After (Hours)','<input class="input" value="24">')}${field('Escalate To',sel('Branch Manager, System Administrator'))}</div></div></div>`;
+    const payment=()=>`<div class="config-layout payment-config"><div class="config-main"><div class="payment-top-grid">
+      <div class="section-card"><h3>General Payment Settings</h3>${field('Default Currency <span class="req">*</span>',sel('INR - Indian Rupee'))}<div class="payment-inline rounding-row">${field('Rounding Off',sel('Round to nearest'))}${field('&nbsp;','<input class="input" value="0.50">')}</div>${field('Payment Timeout (Minutes) <span class="req">*</span>','<input class="input" value="15">')}<div class="split-setting"><div class="split-setting-main"><span class="split-title">Maximum Split</span>${miniSwitch(true,'data-payment-split')}</div><small>Allow split payment for invoices</small></div>${field('Maximum Split Count','<input class="input" type="number" min="2" max="10" value="5" data-max-split>')}${swDesc('Tip/Service Charge','Allow tip / service charge',true)}${field('Default Tip Percentage (%)',inputSuffix('5','%'))}${swDesc('Payment Confirmation','Show payment success screen',true)}${swDesc('Print Receipt After Payment','Automatically print receipt',true)}</div>
+      <div class="section-card payment-method-card"><h3>Accepted Payment Methods</h3><small class="section-subtitle">Enable or disable payment methods for this branch.</small>${table(['#','Payment Method','Enabled','Default','Actions'],[['1','Cash',miniSwitch(true),radioDot(true,'payment-default')],['2','Credit / Debit Card',miniSwitch(true),radioDot(false,'payment-default')],['3','UPI',miniSwitch(true),radioDot(false,'payment-default')],['4','Net Banking',miniSwitch(true),radioDot(false,'payment-default')],['5','Wallet',miniSwitch(true),radioDot(false,'payment-default')],['6','Cheque',miniSwitch(false),radioDot(false,'payment-default')],['7','Gift Card',miniSwitch(true),radioDot(false,'payment-default')],['8','Store Credit',miniSwitch(true),radioDot(false,'payment-default')]])}<button class="btn btn-outline-green" data-payment-action="add-method"><i class="fa-solid fa-plus"></i> Add Payment Method</button></div>
+    </div><div class="payment-bottom-grid"><div class="section-card"><h3>Cheque Settings</h3>${field('Cheque Verification',sel('On Deposit'))}<div class="clearing-days-row">${field('Cheque Clearing Days','<input class="input" value="3">')}<span class="field-suffix">days</span></div><div class="payment-inline">${field('Bounce Charge (₹)','<input class="input" value="500.00">')}${field('Cheque Validity (Days)','<input class="input" value="90">')}</div></div><div class="section-card"><h3>Store Credit Settings</h3>${swDesc('Enable Store Credit','',true)}${field('Credit Expiry (Days)','<input class="input" value="365">')}${field('Minimum Balance to Use (₹)','<input class="input" value="10.00">')}${swDesc('Notify on Credit Expiry','',true)}</div><div class="section-card"><h3>Gift Card Settings</h3>${swDesc('Enable Gift Card','',true)}${field('Minimum Load Amount (₹)','<input class="input" value="100.00">')}${field('Maximum Load Amount (₹)','<input class="input" value="10000.00">')}${field('Gift Card Validity (Months)','<input class="input" value="12">')}</div></div></div><div class="config-side"><div class="section-card online-payment-card"><h3>Online Payment Settings</h3>${swDesc('Enable Online Payments','',true)}${field('Payment Gateway <span class="req">*</span>',sel('Razorpay'))}${field('Merchant ID','<input class="input" value="rzp_live_MERCHANT12345">')}${field('API Key','<div class="password-field"><input class="input" type="password" value="secret12345"><button type="button" data-toggle-password aria-label="Show API key"><i class="fa-regular fa-eye-slash"></i></button></div>')}${field('Webhook Secret','<div class="password-field"><input class="input" type="password" value="secret98765"><button type="button" data-toggle-password aria-label="Show webhook secret"><i class="fa-regular fa-eye-slash"></i></button></div>')}<button class="btn btn-outline-green" data-payment-action="test"><i class="fa-solid fa-wifi"></i> Test Connection</button></div><div class="section-card refund-card"><h3>Refund Settings</h3>${swDesc('Allow Refund','',true)}${field('Refund Mode <span class="req">*</span>',sel('Original Payment Method'))}${swDesc('Refund Approval Required','',true)}${field('Refund Amount Limit (₹)','<input class="input" value="50000.00">')}${field('Refund Time Limit (Days)','<input class="input" value="30">')}</div></div></div>`;
+
+    const notifications=()=>`<div class="config-layout notification-config"><div class="config-main"><div class="section-card notification-settings-card"><div class="notification-head"><div><h3>Notification Settings</h3><small class="section-subtitle">Configure notifications and alerts for this branch.</small></div><div class="notification-master"><div class="master-toggle"><span>Enable All</span>${miniSwitch(true,'data-notification-master="enable"')}</div><div class="master-toggle"><span>Disable All</span>${miniSwitch(false,'data-notification-master="disable"')}</div></div></div>${table(['#','Notification Type','Description','Channels','Enabled','Recipient','Actions'],[['1','Low Stock Alert','Notify when item stock falls below reorder level',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope','fa-regular fa-comment-dots']),miniSwitch(true,'data-notification-row'), 'Store Manager, Inventory Manager'],['2','Expiry Alert','Notify for items approaching expiry',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope','fa-regular fa-comment-dots']),miniSwitch(true,'data-notification-row'),'Inventory Manager'],['3','Purchase Order Approval','Notify when a purchase order requires approval',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope','fa-regular fa-comment-dots']),miniSwitch(true,'data-notification-row'),'Purchase Manager, Approver'],['4','GRN Received','Notify when a new GRN is received',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope','fa-regular fa-comment-dots']),miniSwitch(true,'data-notification-row'),'Store Manager, Accounts'],['5','Invoice Due','Notify for supplier invoices due for payment',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope']),miniSwitch(true,'data-notification-row'),'Accounts Manager'],['6','Sales Target Alert','Notify when sales target is achieved or missed',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope']),miniSwitch(false,'data-notification-row'),'Branch Manager'],['7','Day Close Reminder','Reminder to perform day close',channelIcons(['fa-regular fa-bell']),miniSwitch(true,'data-notification-row'),'Cashier, Branch Manager'],['8','System Alerts','Important system updates and alerts',channelIcons(['fa-regular fa-bell','fa-regular fa-envelope']),miniSwitch(true,'data-notification-row'),'All Admin Users'],['9','Payment Received','Notify when a customer payment is received',channelIcons(['fa-regular fa-envelope','fa-regular fa-comment-dots']),miniSwitch(true,'data-notification-row'),'Accounts Manager'],['10','User Activity','Notify for important user activities',channelIcons(['fa-regular fa-bell']),miniSwitch(false,'data-notification-row'),'System Administrator']])}<button class="btn btn-outline-green" data-notification-action="add"><i class="fa-solid fa-plus"></i> Add Custom Notification</button></div></div><div class="config-side"><div class="section-card notification-channels-card"><h3>Notification Channels</h3><small class="section-subtitle">Configure notification delivery channels.</small><div class="channel-setting"><i class="fa-regular fa-bell"></i><div><b>In-App Notification</b><small>Show notifications in the application</small></div>${miniSwitch(true)}</div><div class="channel-setting"><i class="fa-regular fa-envelope"></i><div><b>Email</b><small>Send notifications via email</small></div>${miniSwitch(true)}</div><div class="channel-setting"><i class="fa-regular fa-comment-dots"></i><div><b>SMS</b><small>Send notifications via SMS</small></div>${miniSwitch(true)}</div></div><div class="section-card quiet-hours-card"><h3>Quiet Hours</h3><small class="section-subtitle">Do not send non-urgent notifications during quiet hours.</small>${swDesc('Enable Quiet Hours','',true)}<div class="quiet-time-grid">${field('From Time',timeInput('22:00'))}${field('To Time',timeInput('07:00'))}</div>${field('Time Zone',sel('(UTC+05:30) Asia/Kolkata'))}</div><div class="section-card escalation-card"><h3>Escalation Settings</h3><small class="section-subtitle">Escalate unread notifications after a period of time.</small>${swDesc('Enable Escalation','',true)}${field('Escalate After (Hours)','<input class="input" value="24">')}${field('Escalate To',sel('Branch Manager, System Administrator'))}</div></div></div>`;
 
     const views={general,billing,inventory,pos,payment,notifications};
-    const render=name=>{configContent.innerHTML=(views[name]||general)();};
+    const render=name=>{
+      const notes={
+        general:'General branch settings control core branch information, access and working hours.',
+        billing:'Billing & invoice settings will be applied to all billing counters and transactions in this branch.',
+        inventory:'Inventory settings will be applied to all inventory transactions and stock operations in this branch.',
+        pos:'POS settings will be applied to all POS terminals and users of this branch.',
+        payment:'Payment settings will be applied to all POS terminals and transactions in this branch.',
+        notifications:'Critical notifications (System Alerts, Low Stock, Expiry Alert) will always be sent regardless of quiet hours.'
+      };
+      if(configNote){configNote.querySelector('span').textContent='Note: '+(notes[name]||notes.general);}
+      const host=document.createElement('div');
+      host.innerHTML=(views[name]||general)();
+      const layout=host.querySelector('.config-layout');
+      const main=layout?.querySelector('.config-main');
+      let side=layout?.querySelector('.config-side');
+      if(name==='pos'){ const tmp=document.createElement('div'); tmp.innerHTML=posSide(); side=tmp.querySelector('.config-side'); }
+      const modeClasses=['general-config','billing-config','inventory-config','pos-config','payment-config','notification-config'];
+      configContent.classList.remove(...modeClasses);
+      configContent.classList.add(name+'-config');
+      configContent.innerHTML='';
+      if(main) configContent.appendChild(main);
+      else configContent.innerHTML=host.innerHTML;
+      if(configSideMount){
+        configSideMount.classList.remove(...modeClasses);
+        configSideMount.classList.add(name+'-config');
+        configSideMount.innerHTML='';
+        if(side) configSideMount.appendChild(side);
+      }
+    };
     render('general');
     document.querySelectorAll('[data-config-tab]').forEach(b=>b.addEventListener('click',()=>{
       document.querySelectorAll('[data-config-tab]').forEach(x=>x.classList.toggle('active',x===b));
       closeConfigActions();
       render(b.dataset.configTab);
     }));
+
+    document.addEventListener('click',e=>{
+      const b=e.target.closest('[data-pos-action]'); if(!b)return;
+      const action=b.dataset.posAction;
+      if(action==='add-device') overlay('modal',`<div class="modal"><div class="modal-head"><h2>Add POS Device</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">${field('Device Name <span class="req">*</span>','<input class="input" placeholder="Enter device name">')}${field('Device Type <span class="req">*</span>',sel('POS Terminal'))}${field('Status',sel('Active'))}</div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-pos-save="device">Add Device</button></div></div>`);
+      if(action==='manage-terms') overlay('modal',`<div class="modal"><div class="modal-head"><h2>Terms & Conditions</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><textarea class="textarea" rows="7">Thank you for shopping with ZMart. Terms and conditions apply.</textarea></div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-pos-save="terms">Save Terms</button></div></div>`);
+      if(action==='remove-logo'){const f=document.querySelector('[data-pos-file]');if(f)f.textContent='No file chosen';toast('Receipt logo removed.');}
+    });
+    document.addEventListener('change',e=>{if(e.target.matches('[data-pos-logo]')){const f=document.querySelector('[data-pos-file]');if(f)f.textContent=e.target.files?.[0]?.name||'No file chosen';}});
+    document.addEventListener('click',e=>{const b=e.target.closest('[data-pos-save]');if(!b)return;toast(b.dataset.posSave==='device'?'POS device added successfully.':'Terms & Conditions saved.');b.closest('.modal-overlay')?.remove();});
+
+    document.addEventListener('click',e=>{
+      const p=e.target.closest('[data-payment-action]');
+      if(p){
+        if(p.dataset.paymentAction==='test') toast('Payment gateway connection successful.');
+        if(p.dataset.paymentAction==='add-method') overlay('modal',`<div class="modal"><div class="modal-head"><h2>Add Payment Method</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">${field('Payment Method <span class="req">*</span>','<input class="input" placeholder="Enter payment method">')}${field('Status',sel('Enabled'))}${swDesc('Set as Default','Use as the default payment method',false)}</div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-config-save>Add Payment Method</button></div></div>`);
+      }
+      const n=e.target.closest('[data-notification-action]');
+      if(n) overlay('modal',`<div class="modal"><div class="modal-head"><h2>Add Custom Notification</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">${field('Notification Type <span class="req">*</span>','<input class="input" placeholder="Enter notification type">')}${field('Description','<textarea class="textarea" placeholder="Enter description"></textarea>')}${field('Recipient',sel('Branch Manager'))}${swDesc('Enabled','Enable this notification',true)}</div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-config-save>Add Notification</button></div></div>`);
+      const eye=e.target.closest('[data-toggle-password]');
+      if(eye){const inp=eye.parentElement.querySelector('input');inp.type=inp.type==='password'?'text':'password';eye.innerHTML=inp.type==='password'?'<i class="fa-regular fa-eye-slash"></i>':'<i class="fa-regular fa-eye"></i>';}
+      const master=e.target.closest('[data-notification-master]');
+      if(master){
+        const enable=master.dataset.notificationMaster==='enable';
+        document.querySelectorAll('[data-notification-row]').forEach(x=>x.checked=enable);
+        document.querySelectorAll('[data-notification-master]').forEach(x=>x.checked=(x===master));
+        toast(enable?'All notifications enabled.':'All notifications disabled.');
+      }
+    });
 
     function closeConfigActions(){
       document.querySelectorAll('.config-action-menu').forEach(m=>m.remove());
@@ -348,39 +411,78 @@
         <div class="field"><label>Financial Year <span class="req">*</span></label><select class="select"><option>2025 - 2026 (01 Apr 2025 - 31 Mar 2026)</option></select></div>
         <div class="field"><label>Start Date <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-04-01"></div>
         <div class="field"><label>End Date <span class="req">*</span></label><input type="date" class="input ui-input" value="2026-03-31"></div>
-        <div class="field"><label>Target Amount (₹) <span class="req">*</span></label><input class="input" value="${edit?'8,00,00,000':''}" placeholder="Enter target amount"></div>
+        <div class="field"><label>Sales Target (₹) <span class="req">*</span></label><input class="input" value="${edit?'80,00,00,000':''}" placeholder="Enter sales target"></div>
         ${edit?'<div class="field"><label>Profit Target (₹) <span class="req">*</span></label><input class="input" value="80,00,000"></div>':''}
-        <div class="field full"><label>Description / Notes</label><textarea class="textarea">${edit?'Annual sales target for ZMart Anna Nagar branch for FY 2025-26.':''}</textarea></div>
+        <div class="field description-field"><label>Description / Notes</label><textarea class="textarea target-notes" maxlength="250">${edit?'Annual sales target for ZMart Anna Nagar branch for FY 2025-26.':''}</textarea><span class="char-count">${edit?'57':'0'}/250</span></div>
         <div class="field"><label>Assign To (Users/Roles)</label><select class="select"><option>${edit?'Store Manager, Sales Manager, Cashier':'Select Role'}</option></select></div>
         <div class="field"><label>Notify Users</label><select class="select"><option>Select Users</option></select><small>Selected users will be notified about this target.</small></div>
       </div>
-      <div class="section-label" style="margin-top:16px">Milestone Progress (Optional)</div>
-      <div style="display:flex;justify-content:flex-end;margin-bottom:8px"><button class="btn"><i class="fa-solid fa-plus"></i> Add Milestone</button></div>
+      <div class="milestone-heading"><div><div class="section-label">Milestone Progress (Optional)</div><small>Set quarterly milestones to track progress.</small></div><button class="btn" data-add-milestone><i class="fa-solid fa-plus"></i> Add Milestone</button></div>
       <div class="table-wrap"><table class="data-table milestone-table"><thead><tr><th>#</th><th>Milestone</th><th>From Date</th><th>To Date</th><th>Target Amount (₹)</th><th>Actions</th></tr></thead><tbody>${milestoneRows(edit)}</tbody></table></div>
     </div><div class="modal-foot"><button class="btn" data-target-close>Cancel</button><button class="btn btn-primary" data-target-save>${edit?'Update Target':'Save Target'}</button></div>`,true);
+    if(edit) ov.querySelector('.target-modal')?.classList.add('edit-target-modal');
+    const notes=ov.querySelector('.target-notes'), count=ov.querySelector('.char-count'); if(notes&&count) notes.addEventListener('input',()=>count.textContent=notes.value.length+'/250');
+    ov.addEventListener('click',e=>{const del=e.target.closest('.milestone-table .icon-btn');if(del){del.closest('tr')?.remove();[...ov.querySelectorAll('.milestone-table tbody tr')].forEach((r,i)=>r.cells[0].textContent=i+1);}});
+    ov.querySelector('[data-add-milestone]')?.addEventListener('click',()=>{const tb=ov.querySelector('.milestone-table tbody');const n=tb.rows.length+1;tb.insertAdjacentHTML('beforeend',`<tr><td>${n}</td><td>New Milestone</td><td><input class="input" type="date"></td><td><input class="input" type="date"></td><td><input class="input" placeholder="Enter amount"></td><td><button class="icon-btn"><i class="fa-regular fa-trash-can"></i></button></td></tr>`);});
     ov.querySelector('[data-target-save]').addEventListener('click',()=>{toast(edit?'Target updated successfully.':'Target saved successfully.');ov.remove();});
   }
 
+  function getTargetRow(branch){
+    return [...document.querySelectorAll('[data-target-row]')].find(r=>r.dataset.branch===branch) || null;
+  }
+
+  function targetStatusBadge(status){
+    const cls=status==='At Risk'?'risk':status==='On Hold'?'hold':status==='Closed'?'closed':'active';
+    return `<span class="badge ${cls}">${status}</span>`;
+  }
+
   function openTargetDetails(branch){
-    const ov=targetModal(`${modalHead('View Target Details')}<div class="modal-body">
-      <div class="target-summary-box"><div class="target-summary-branch"><div class="branch-icon"><i class="fa-solid fa-bullseye"></i></div><div><h3>${branch}</h3><p>Target Type &nbsp;: &nbsp; Sales Target</p><p>Status &nbsp;: &nbsp; <span class="badge active">Active</span></p></div></div><div class="summary-values"><small>Financial Year</small><b>2025 - 2026</b><span>(01 Apr 2025 - 31 Mar 2026)</span></div><div class="summary-values"><small>Created By</small><b>Super Admin</b><small>Created On</small><b>01 Apr 2025 10:15 AM</b></div></div>
-      <div class="section-label">Target Summary</div><div class="target-details-grid"><div><small>Sales Target (₹)</small><strong>8,00,00,000</strong></div><div><small>Profit Target (₹)</small><strong>80,00,000</strong></div><div><small>Start Date</small><strong>01 Apr 2025</strong></div><div><small>End Date</small><strong>31 Mar 2026</strong></div></div>
-      <div class="section-label" style="margin-top:12px">Achievement Summary</div><div class="target-details-grid"><div><small>Sales Achievement (₹)</small><strong>1,80,45,000</strong></div><div><small>Profit Achievement (₹)</small><strong>18,05,000</strong></div><div><small>Achievement %</small><strong style="color:#087b31">22.45%</strong></div><div><small>Remaining (₹)</small><strong>6,19,55,000</strong></div></div>
-      <div class="section-label" style="margin-top:12px">Milestone Progress</div><div class="table-wrap"><table class="perf-list-table"><thead><tr><th>#</th><th>Milestone</th><th>From Date</th><th>To Date</th><th>Target Amount</th><th>Achievement</th><th>Achievement %</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>Q1 (Apr - Jun)</td><td>01 Apr 2025</td><td>30 Jun 2025</td><td>2,00,00,000</td><td>48,75,000</td><td>24.38%</td><td><span class="status-track">On Track</span></td></tr><tr><td>2</td><td>Q2 (Jul - Sep)</td><td>01 Jul 2025</td><td>30 Sep 2025</td><td>2,00,00,000</td><td>45,20,000</td><td>22.60%</td><td><span class="status-track">On Track</span></td></tr><tr><td>3</td><td>Q3 (Oct - Dec)</td><td>01 Oct 2025</td><td>31 Dec 2025</td><td>2,00,00,000</td><td>-</td><td>0.00%</td><td>Pending</td></tr><tr><td>4</td><td>Q4 (Jan - Mar)</td><td>01 Jan 2026</td><td>31 Mar 2026</td><td>2,00,00,000</td><td>-</td><td>0.00%</td><td>Pending</td></tr></tbody></table></div>
-      <div class="target-details-grid" style="grid-template-columns:1fr 1fr;margin-top:12px"><div><small>Description / Notes</small><strong>To achieve annual sales growth and improve profitability through better customer reach and service.</strong><small style="margin-top:10px">Assigned To</small><strong>Store Manager, Sales Manager, Cashier</strong></div><div><small>Base Year Sales (₹)</small><strong>7,20,00,000</strong><small style="margin-top:10px">Target Growth (%)</small><strong>11.11%</strong><small style="margin-top:10px">Calculation Basis</small><strong>Net Sales (Excluding Returns)</strong></div></div>
-    </div><div class="modal-foot"><button class="btn" data-target-close>Close</button><button class="btn btn-primary" data-edit-from-view>Edit Target</button></div>`,true);
+    const row=getTargetRow(branch);
+    const targetType=row?.dataset.type||'Sales Target';
+    const sales=row?.dataset.sales||'8,00,00,000';
+    const profit=row?.dataset.profit||'80,00,000';
+    const achievement=row?.dataset.achievement||'22.45';
+    const status=row?.dataset.status||'Active';
+    const ov=targetModal(`${modalHead('View Target Details')}<div class="modal-body target-details-body">
+      <div class="target-view-header">
+        <div class="target-summary-branch"><div class="branch-icon"><i class="fa-solid fa-bullseye"></i></div><div><h3>${branch}</h3><p>Target Type <span>:</span> ${targetType}</p><p>Status <span>:</span> ${targetStatusBadge(status)}</p></div></div>
+        <div class="target-view-meta"><div><small>Financial Year</small><b>2025 - 2026</b><span>(01 Apr 2025 - 31 Mar 2026)</span></div><div><small>Created By</small><b>Super Admin</b><small>Created On</small><b>01 Apr 2025 10:15 AM</b></div></div>
+      </div>
+      <section class="target-detail-section"><h4>Target Summary</h4><div class="target-details-grid"><div><small>Sales Target (₹)</small><strong>${sales}</strong></div><div><small>Profit Target (₹)</small><strong>${profit}</strong></div><div><small>Start Date</small><strong>01 Apr 2025</strong></div><div><small>End Date</small><strong>31 Mar 2026</strong></div></div></section>
+      <section class="target-detail-section"><h4>Achievement Summary</h4><div class="target-details-grid"><div><small>Sales Achievement (₹)</small><strong>1,80,45,000</strong></div><div><small>Profit Achievement (₹)</small><strong>18,05,000</strong></div><div><small>Achievement %</small><strong class="positive">${achievement}%</strong></div><div><small>Remaining (₹)</small><strong>6,19,55,000</strong></div></div></section>
+      <section class="target-detail-section"><h4>Milestone Progress</h4><div class="table-wrap"><table class="perf-list-table target-view-milestones"><thead><tr><th>#</th><th>Milestone</th><th>From Date</th><th>To Date</th><th>Target Amount (₹)</th><th>Achievement (₹)</th><th>Achievement %</th><th>Status</th></tr></thead><tbody><tr><td>1</td><td>Q1 (Apr - Jun)</td><td>01 Apr 2025</td><td>30 Jun 2025</td><td>2,00,00,000</td><td>48,75,000</td><td>24.38%</td><td><span class="status-track">On Track</span></td></tr><tr><td>2</td><td>Q2 (Jul - Sep)</td><td>01 Jul 2025</td><td>30 Sep 2025</td><td>2,00,00,000</td><td>45,20,000</td><td>22.60%</td><td><span class="status-track">On Track</span></td></tr><tr><td>3</td><td>Q3 (Oct - Dec)</td><td>01 Oct 2025</td><td>31 Dec 2025</td><td>2,00,00,000</td><td>–</td><td>0.00%</td><td><span class="status-pending">Pending</span></td></tr><tr><td>4</td><td>Q4 (Jan - Mar)</td><td>01 Jan 2026</td><td>31 Mar 2026</td><td>2,00,00,000</td><td>–</td><td>0.00%</td><td><span class="status-pending">Pending</span></td></tr></tbody></table></div></section>
+      <div class="target-view-bottom"><section><h4>Target Details</h4><label>Description / Notes</label><div class="detail-readonly">To achieve annual sales growth and improve profitability<br>through better customer reach and service.</div><label>Assigned To (Users/Roles)</label><div class="detail-readonly">Store Manager, Sales Manager, Cashier</div></section><section><h4>Additional Information</h4><div class="target-extra-grid"><div><small>Base Year Sales (₹)</small><strong>7,20,00,000</strong></div><div><small>Target Growth (%)</small><strong>11.11%</strong></div><div><small>Calculation Basis</small><strong>Net Sales (Excluding Returns)</strong></div><div><small>Last Updated On</small><strong>01 Apr 2025 10:15 AM</strong></div></div></section></div>
+    </div><div class="modal-foot target-view-foot"><button class="btn" data-target-close>Close</button><button class="btn btn-primary" data-edit-from-view>Edit Target</button></div>`,true);
     ov.querySelector('[data-edit-from-view]').addEventListener('click',()=>{ov.remove();openTargetForm('edit',branch);});
   }
 
   function openTargetStatus(branch){
-    const ov=targetModal(`${modalHead('Change Target Status')}<div class="modal-body">
-      <div class="target-summary-branch" style="margin-bottom:16px"><div class="branch-icon"><i class="fa-solid fa-bullseye"></i></div><div><h3>${branch}</h3><p>Target Type &nbsp;: &nbsp; Sales Target</p><p>Current Status &nbsp;: &nbsp; <span class="badge active">Active</span></p></div></div>
-      <div class="section-label">Change Status To <span class="req">*</span></div>
-      <div class="status-options"><label><input type="radio" name="targetStatus" checked><span><b>Active</b><small>Target is active and tracking is in progress.</small></span></label><label><input type="radio" name="targetStatus"><span><b style="color:#e08a00">At Risk</b><small>Target progress is below expectation.</small></span></label><label><input type="radio" name="targetStatus"><span><b>On Hold</b><small>Target tracking is temporarily paused.</small></span></label><label><input type="radio" name="targetStatus"><span><b>Closed</b><small>Target is completed or not applicable.</small></span></label></div>
-      <div class="field" style="margin-top:16px;width:180px"><label>Effective From <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-05-01"></div>
-      <div class="field" style="margin-top:14px"><label>Reason / Notes</label><textarea class="textarea" placeholder="Enter reason for status change (optional)"></textarea></div>
-    </div><div class="modal-foot"><button class="btn" data-target-close>Cancel</button><button class="btn btn-primary" data-target-status-save>Update Status</button></div>`);
-    ov.querySelector('[data-target-status-save]').addEventListener('click',()=>{toast('Target status updated successfully.');ov.remove();});
+    const row=getTargetRow(branch);
+    const current=row?.dataset.status||'Active';
+    const ov=targetModal(`${modalHead('Change Target Status')}<div class="modal-body target-status-body">
+      <div class="target-status-summary"><div class="branch-icon"><i class="fa-solid fa-bullseye"></i></div><div><h3>${branch}</h3><p>Target Type <span>:</span> ${row?.dataset.type||'Sales Target'}</p><p>Current Status <span>:</span> ${targetStatusBadge(current)}</p></div></div>
+      <div class="status-title">Change Status To <span class="req">*</span></div>
+      <div class="status-options">
+        <label class="status-active"><input type="radio" name="targetStatus" value="Active" ${current==='Active'?'checked':''}><span><b>Active</b><small>Target is active and tracking is in progress.</small></span></label>
+        <label class="status-risk"><input type="radio" name="targetStatus" value="At Risk" ${current==='At Risk'?'checked':''}><span><b>At Risk</b><small>Target progress is below expectation.</small></span></label>
+        <label class="status-hold"><input type="radio" name="targetStatus" value="On Hold" ${current==='On Hold'?'checked':''}><span><b>On Hold</b><small>Target tracking is temporarily paused.</small></span></label>
+        <label class="status-closed"><input type="radio" name="targetStatus" value="Closed" ${current==='Closed'?'checked':''}><span><b>Closed</b><small>Target is completed or not applicable.</small></span></label>
+      </div>
+      <div class="field target-effective"><label>Effective From <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-05-01"></div>
+      <div class="field target-status-notes"><label>Reason / Notes</label><textarea class="textarea" maxlength="250" placeholder="Enter reason for status change (optional)"></textarea><small class="char-count">0/250</small></div>
+    </div><div class="modal-foot target-status-foot"><button class="btn" data-target-close>Cancel</button><button class="btn btn-primary" data-target-status-save>Update Status</button></div>`);
+    ov.querySelector('.target-modal')?.classList.add('target-status-modal');
+    const note=ov.querySelector('.target-status-notes textarea'),count=ov.querySelector('.char-count');
+    note?.addEventListener('input',()=>{count.textContent=`${note.value.length}/250`;});
+    ov.querySelector('[data-target-status-save]').addEventListener('click',()=>{
+      const selected=ov.querySelector('input[name="targetStatus"]:checked')?.value||current;
+      if(row){
+        row.dataset.status=selected;
+        const cell=row.querySelector('td:nth-last-child(2)');
+        if(cell)cell.innerHTML=targetStatusBadge(selected);
+      }
+      toast(`Target status updated to ${selected}.`);ov.remove();
+    });
   }
 
   function openTargetPerformance(branch){
@@ -465,19 +567,116 @@
       tabs.querySelectorAll('[data-tab]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAnalyticsTab(type,btn.dataset.tab);
     }));
   });
+  const closeAnalyticsMenus=()=>document.querySelectorAll('.target-action-menu.analytics-menu').forEach(m=>m.remove());
+  const analyticsToast=(message)=>{
+    let t=document.getElementById('analyticsActionToast');
+    if(!t){t=document.createElement('div');t.id='analyticsActionToast';t.style.cssText='position:fixed;right:22px;bottom:22px;z-index:100001;background:#0b7130;color:#fff;padding:11px 15px;border-radius:3px;font:600 11px Poppins;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;transform:translateY(8px);transition:.2s';document.body.appendChild(t)}
+    t.textContent=message;t.style.opacity='1';t.style.transform='translateY(0)';clearTimeout(t._timer);t._timer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateY(8px)'},1800);
+  };
+  const getAnalyticsRowData=(row)=>{
+    if(!row) return {};
+    const headers=[...row.closest('table').querySelectorAll('thead th')].map(th=>th.innerText.trim().replace(/\s+/g,' '));
+    const cells=[...row.querySelectorAll('td')].map(td=>td.innerText.trim().replace(/\s+/g,' '));
+    return headers.reduce((obj,h,i)=>{if(h && !/^action$/i.test(h)) obj[h]=cells[i]||'—'; return obj;},{});
+  };
+  const normalizeMetric=(data,patterns,fallback='—')=>{
+    const key=Object.keys(data).find(k=>patterns.some(p=>p.test(k)));
+    return key?data[key]:fallback;
+  };
+  const openPerformanceModal=(title,details,opts={})=>{
+    document.querySelector('.performance-detail-modal')?.remove();
+    const modal=document.createElement('div');modal.className='performance-detail-modal improved';
+    const branch=opts.branch||title.split(' - ')[0]||'Branch';
+    const status=opts.status||details.find(x=>/status/i.test(x[0]))?.[1]||'Active';
+    const achievement=opts.achievement||details.find(x=>/achievement/i.test(x[0]))?.[1]||'—';
+    const target=opts.target||details.find(x=>/target/i.test(x[0]))?.[1]||'—';
+    const sales=opts.sales||details.find(x=>/total sales|sales/i.test(x[0]))?.[1]||'—';
+    const growth=opts.growth||details.find(x=>/last month|growth/i.test(x[0]))?.[1]||'—';
+    const bodyDetails=details.filter(x=>!['Branch Name','#'].includes(x[0]));
+    modal.innerHTML=`<div class="panel" role="dialog" aria-modal="true" aria-label="${title}">
+      <div class="panel-head"><div><span class="modal-eyebrow">BRANCH PERFORMANCE</span><h3>${title}</h3></div><button class="modal-x" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+      <div class="performance-hero"><div class="branch-avatar"><i class="fa-solid fa-store"></i></div><div class="branch-copy"><strong>${branch}</strong><span>Performance overview for the selected period</span></div><span class="performance-status">${status}</span></div>
+      <div class="performance-summary-strip"><div><small>Achievement</small><strong>${achievement}</strong></div><div><small>Target</small><strong>${target}</strong></div><div><small>Total Sales</small><strong>${sales}</strong></div><div><small>Growth</small><strong class="positive">${growth}</strong></div></div>
+      <div class="panel-body"><div class="section-title">Performance Metrics</div><div class="detail-grid">${bodyDetails.map(x=>`<div><small>${x[0]}</small><strong>${x[1]}</strong></div>`).join('')}</div></div>
+      <div class="panel-foot"><button class="modal-close"><i class="fa-solid fa-xmark"></i> Close</button><button class="secondary modal-dashboard"><i class="fa-solid fa-chart-line"></i> View Dashboard</button><button class="primary modal-export"><i class="fa-solid fa-file-export"></i> Export</button></div>
+    </div>`;
+    document.body.appendChild(modal);
+    const close=()=>modal.remove();modal.querySelector('.modal-x').onclick=close;modal.querySelector('.modal-close').onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});
+    modal.querySelector('.modal-export').onclick=()=>{analyticsToast('Performance details exported.');};
+    modal.querySelector('.modal-dashboard').onclick=()=>{window.location.href='branch-dashboard.html';};
+  };
+  const downloadPerformanceRow=(row)=>{
+    if(!row)return;
+    const cells=[...row.querySelectorAll('td')].slice(0,-1).map(td=>td.innerText.trim().replace(/\s+/g,' '));
+    const headers=[...row.closest('table').querySelectorAll('thead th')].slice(0,-1).map(th=>th.innerText.trim());
+    const csv=[headers,cells].map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(cells[1]||'branch-performance').replace(/[^a-z0-9]+/gi,'-').toLowerCase()+'.csv';document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();analyticsToast('Branch row exported.');
+  };
   document.addEventListener('click',e=>{
-    const b=e.target.closest('.analytics-action'); if(!b)return;
-    e.stopPropagation();document.querySelectorAll('.target-action-menu.analytics-menu').forEach(m=>m.remove());
-    const r=b.getBoundingClientRect(),m=document.createElement('div');m.className='target-action-menu analytics-menu';
-    m.style.left=Math.min(innerWidth-205,r.left-145)+'px';m.style.top=Math.min(innerHeight-210,r.bottom+4)+'px';
-    m.innerHTML='<button><i class="fa-regular fa-eye"></i> View Details</button><button><i class="fa-solid fa-chart-line"></i> View Performance</button><button><i class="fa-solid fa-file-export"></i> Export Row</button><button><i class="fa-regular fa-bell"></i> View Alerts</button>';
+    const b=e.target.closest('.analytics-action');
+    if(!b){if(!e.target.closest('.analytics-menu'))closeAnalyticsMenus();return;}
+    e.preventDefault();e.stopPropagation();closeAnalyticsMenus();
+    const row=b.closest('tr'),card=b.closest('.analytics-card'),r=b.getBoundingClientRect(),m=document.createElement('div');m.className='target-action-menu analytics-menu improved-menu';
+    const isRow=!!row;
+    m.innerHTML=isRow
+      ?'<div class="menu-caption">Branch Actions</div><button data-act="details"><i class="fa-regular fa-eye"></i><span>View Details<small>Full branch metrics</small></span></button><button data-act="performance"><i class="fa-solid fa-chart-line"></i><span>Performance Summary<small>Review KPIs and growth</small></span></button><button data-act="export"><i class="fa-solid fa-file-export"></i><span>Export Branch Data<small>Download this row as CSV</small></span></button><button data-act="alerts"><i class="fa-regular fa-bell"></i><span>View Alerts<small>Operational notifications</small></span></button>'
+      :'<div class="menu-caption">Chart Actions</div><button data-act="chart-details"><i class="fa-regular fa-eye"></i><span>View Chart Details<small>Show metric summary</small></span></button><button data-act="chart-export"><i class="fa-solid fa-download"></i><span>Export Chart Data<small>Download chart values</small></span></button><button data-act="chart-print"><i class="fa-solid fa-print"></i><span>Print Chart<small>Open print preview</small></span></button><button data-act="chart-refresh"><i class="fa-solid fa-rotate"></i><span>Refresh<small>Reload chart values</small></span></button>';
     document.body.appendChild(m);
+    const mw=m.offsetWidth||250,mh=m.offsetHeight||250;
+    let left=r.right-mw,top=r.bottom+6;if(left<8)left=8;if(left+mw>innerWidth-8)left=innerWidth-mw-8;if(top+mh>innerHeight-8)top=Math.max(8,r.top-mh-6);
+    m.style.left=left+'px';m.style.top=top+'px';
+    m.addEventListener('click',ev=>{
+      const item=ev.target.closest('[data-act]');if(!item)return;ev.stopPropagation();const act=item.dataset.act;closeAnalyticsMenus();
+      if(isRow){
+        const data=getAnalyticsRowData(row),branch=data['Branch Name']||Object.values(data)[1]||'Branch';
+        const details=Object.entries(data).filter(([k])=>k!=='#' && k!=='Branch Name');
+        const opts={branch,status:normalizeMetric(data,[/^status$/i]),achievement:normalizeMetric(data,[/achievement/i]),target:normalizeMetric(data,[/^target/i]),sales:normalizeMetric(data,[/total sales/i,/sales value/i]),growth:normalizeMetric(data,[/vs last month/i,/growth/i])};
+        if(act==='details')openPerformanceModal(branch+' - Performance Details',details,opts);
+        if(act==='performance')openPerformanceModal(branch+' - Performance',details,opts);
+        if(act==='export')downloadPerformanceRow(row);
+        if(act==='alerts')openPerformanceModal(branch+' - Alerts',[['Critical Alerts','0'],['Inventory Alerts','2 low-stock notifications'],['Operational Status','All systems operational'],['Last Checked','01 May 2025 10:15 AM']],{branch,status:'Monitored',achievement:opts.achievement,target:opts.target,sales:opts.sales,growth:opts.growth});
+      }else{
+        const title=card?.querySelector('h3')?.innerText||'Performance Chart';
+        if(act==='chart-details')openPerformanceModal(title,[['Metric','Sales by Branch'],['Period','This Month'],['Highest','ZMart Anna Nagar - ₹72.64 L'],['Lowest','ZMart Chrompet - ₹24.32 L'],['Branches','8 shown']],{branch:'All Branches',status:'Updated',achievement:'93.63%',target:'₹ 4.40 Cr',sales:'₹ 4.10 Cr',growth:'↑ 12.45%'});
+        if(act==='chart-export')analyticsToast(title+' data exported.');
+        if(act==='chart-print')window.print();
+        if(act==='chart-refresh')analyticsToast(title+' refreshed.');
+      }
+    });
   });
 
   function simpleRows(names, cols){
     return names.map((n,i)=>`<tr><td>${i+1}</td><td>${n}</td>${cols.map((c,j)=>`<td>${typeof c==='function'?c(i):c}</td>`).join('')}<td><button class="icon-btn analytics-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>`).join('');
   }
-  function chart(title='Trend',second=false){return `<section class="analytics-card"><h3>${title}</h3><div class="legend-inline"><span><i class="legend-dot"></i>This Month</span>${second?'<span><i class="legend-dot l1"></i>Last Month</span>':''}</div><div class="fake-line"><svg viewBox="0 0 900 250" preserveAspectRatio="none"><polyline class="line-a" points="0,170 70,140 130,105 200,180 260,125 330,155 390,90 460,145 520,110 590,165 650,125 720,85 790,155 850,120 900,80"/><polyline class="line-b" points="0,205 70,175 130,185 200,150 260,165 330,125 390,150 460,120 520,145 590,110 650,135 720,100 790,160 850,140 900,115"/></svg></div></section>`}
+  function chart(title='Trend',second=false){return `<section class="analytics-card analytics-trend-card" data-chart-title="${title}"><div class="analytics-chart-head"><h3>${title}</h3><div class="chart-period-toggle" role="group" aria-label="Chart period"><button type="button" class="active" data-chart-period="daily">Daily</button><button type="button" data-chart-period="weekly">Weekly</button><button type="button" data-chart-period="monthly">Monthly</button></div></div><div class="legend-inline"><span><i class="legend-dot"></i><b data-chart-current-label>This Month</b></span>${second?'<span><i class="legend-dot l1"></i><b data-chart-previous-label>Last Month</b></span>':''}</div><div class="fake-line"><svg viewBox="0 0 900 250" preserveAspectRatio="none"><polyline class="line-a" data-chart-line="a" points="0,170 70,140 130,105 200,180 260,125 330,155 390,90 460,145 520,110 590,165 650,125 720,85 790,155 850,120 900,80"/><polyline class="line-b" data-chart-line="b" points="0,205 70,175 130,185 200,150 260,165 330,125 390,150 460,120 520,145 590,110 650,135 720,100 790,160 850,140 900,115"/></svg></div><div class="chart-period-caption" data-chart-caption>Daily view · 01 May - 31 May</div></section>`}
+
+  // Daily / Weekly / Monthly chart period controls used across Branch Performance views.
+  const chartPeriodSeries={
+    daily:{a:'0,170 70,140 130,105 200,180 260,125 330,155 390,90 460,145 520,110 590,165 650,125 720,85 790,155 850,120 900,80',b:'0,205 70,175 130,185 200,150 260,165 330,125 390,150 460,120 520,145 590,110 650,135 720,100 790,160 850,140 900,115',current:'This Month',previous:'Last Month',caption:'Daily view · 01 May - 31 May'},
+    weekly:{a:'0,185 180,125 360,155 540,92 720,135 900,78',b:'0,210 180,165 360,175 540,132 720,158 900,118',current:'This Month',previous:'Last Month',caption:'Weekly view · Week 1 - Week 5'},
+    monthly:{a:'0,200 82,165 164,177 246,140 328,150 410,118 492,132 574,95 656,112 738,80 820,105 900,68',b:'0,218 82,192 164,201 246,170 328,180 410,148 492,160 574,125 656,142 738,115 820,138 900,104',current:'FY 2025-26',previous:'FY 2024-25',caption:'Monthly view · Apr 2025 - Mar 2026'}
+  };
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-chart-period]');
+    if(!btn) return;
+    const card=btn.closest('.analytics-trend-card');
+    if(!card) return;
+    const period=btn.dataset.chartPeriod;
+    const series=chartPeriodSeries[period];
+    if(!series) return;
+    card.querySelectorAll('[data-chart-period]').forEach(b=>b.classList.toggle('active',b===btn));
+    const a=card.querySelector('[data-chart-line="a"]');
+    const b=card.querySelector('[data-chart-line="b"]');
+    if(a) a.setAttribute('points',series.a);
+    if(b) b.setAttribute('points',series.b);
+    const current=card.querySelector('[data-chart-current-label]');
+    const previous=card.querySelector('[data-chart-previous-label]');
+    const caption=card.querySelector('[data-chart-caption]');
+    if(current) current.textContent=series.current;
+    if(previous) previous.textContent=series.previous;
+    if(caption) caption.textContent=series.caption;
+  });
+
   function donutHtml(title,total){return `<section class="analytics-card"><h3>${title}</h3><div class="donut-block"><div class="multi-donut"><div><small>Total</small><strong>${total}</strong></div></div><div class="donut-legend"><span><i style="background:#08743a"></i><b>Primary</b><em>45.32%</em></span><span><i style="background:#225de6"></i><b>Secondary</b><em>24.18%</em></span><span><i style="background:#ef8c19"></i><b>Others</b><em>30.50%</em></span></div></div></section>`}
   function cards(items){return `<div class="analytics-kpis">${items.map((x,i)=>`<article><span class="analytics-icon ${['green','blue','orange','violet','cyan','red'][i%6]}"><i class="${x[0]}"></i></span><div><small>${x[1]}</small><strong>${x[2]}</strong><em>${x[3]||'↑ vs Last Month'}</em></div></article>`).join('')}</div>`}
 
@@ -498,4 +697,75 @@
   function statusPerformance(){return `${cards([['fa-solid fa-trophy','Top Performing Branch','ZMart Anna Nagar'],['fa-solid fa-chart-column','Average Performance Score','68 /100'],['fa-solid fa-bullseye','Target Achieved Branches','14 /25'],['fa-solid fa-flag','Below Target Branches','8 /25'],['fa-solid fa-arrow-trend-down','Under Performing Branches','3 /25']])}<div class="analytics-grid-main"><div class="analytics-left">${chart('Performance Score Trend',true)}<section class="analytics-card"><h3>Branch Performance Overview</h3><div class="progress-list">${['ZMart Anna Nagar','ZMart T. Nagar','ZMart Velachery','ZMart Adyar','ZMart Tambaram','ZMart Porur','ZMart Ambattur','ZMart Chrompet','ZMart Coimbatore','ZMart Madurai'].map((x,i)=>`<span><b>${x}</b><i><em style="width:${89-i*6}%"></em></i><strong>${89-i*6}</strong></span>`).join('')}</div></section></div><div class="analytics-right">${donutHtml('Performance Score Distribution','25 Branches')}<section class="analytics-card"><h3>Performance by Dimension (Avg. Score)</h3><div class="progress-list"><span><b>Operational Efficiency</b><i><em style="width:72%"></em></i><strong>72</strong></span><span><b>Financial Performance</b><i><em style="width:68%"></em></i><strong>68</strong></span><span><b>Customer Satisfaction</b><i><em style="width:71%"></em></i><strong>71</strong></span></div></section></div></div>`}
   function statusAlerts(){let titles=['Sales 15% below target for this month','High operating expenses detected','Reorder level reached for 8 items','Walk-in cooler temperature high','3 staff on leave today','Daily cash collection pending','Expiry alert for 12 products','Generator maintenance due','New scheme requires activation','GST return filing due in 3 days'];return `${cards([['fa-solid fa-triangle-exclamation','Critical Alerts','12'],['fa-regular fa-circle-exclamation','High Priority','18'],['fa-regular fa-bell','Medium Priority','24'],['fa-solid fa-circle-info','Low Priority','9'],['fa-regular fa-file-lines','Total Alerts','63']])}<div class="analytics-grid-main"><div class="analytics-left"><section class="analytics-card"><h3>Alerts List</h3><div class="table-wrap"><table class="data-table analytics-table"><thead><tr><th>#</th><th>Alert Title</th><th>Branch</th><th>Alert Type</th><th>Priority</th><th>Status</th><th>Date & Time</th><th>Action</th></tr></thead><tbody>${simpleRows(titles,[i=>['ZMart Anna Nagar','ZMart T. Nagar','ZMart Velachery','ZMart Adyar'][i%4],i=>['Sales Performance','Financial','Inventory','Operations'][i%4],i=>'<span class="badge risk">'+['Critical','High','Medium','Low'][i%4]+'</span>',i=>'<span class="badge active">'+['New','New','In Progress','Acknowledged'][i%4]+'</span>',i=>'01 May 2025 10:10 AM'])}</tbody></table></div></section></div><div class="analytics-right">${donutHtml('Alerts by Priority','63 Alerts')}<section class="analytics-card"><h3>Alerts by Status</h3><div class="progress-list"><span><b>New</b><i><em class="red" style="width:70%"></em></i><strong>28</strong></span><span><b>In Progress</b><i><em class="orange" style="width:55%"></em></i><strong>16</strong></span><span><b>Acknowledged</b><i><em style="width:38%"></em></i><strong>12</strong></span></div></section></div></div>`}
 
+})();
+
+// v47 Branch Performance reference interactions
+(()=>{const toast=(m)=>{const t=document.getElementById('branchToast');if(!t)return;t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)};
+document.getElementById('performanceFilters')?.addEventListener('click',()=>toast('Performance filters applied.'));
+document.getElementById('exportPerformance')?.addEventListener('click',()=>toast('Performance report exported successfully.'));
+document.querySelectorAll('.performance-side .text-link').forEach(b=>b.addEventListener('click',()=>toast('Showing complete branch performance data.')));
+})();
+
+// v53: shared Daily / Weekly / Monthly controls for static Branch module charts.
+(()=>{
+  const periodData={
+    daily:{
+      a:'0,170 70,150 130,180 200,120 260,145 330,95 390,125 460,80 520,115 590,90 650,130 720,105 790,165 850,130 900,95',
+      b:'0,205 70,175 130,190 200,160 260,180 330,130 390,165 460,145 520,100 590,125 650,150 720,110 790,180 850,160 900,120',
+      labels:['01 May','06 May','11 May','16 May','21 May','26 May','31 May']
+    },
+    weekly:{
+      a:'0,180 180,128 360,156 540,92 720,136 900,82',
+      b:'0,210 180,170 360,183 540,132 720,160 900,120',
+      labels:['Week 1','Week 2','Week 3','Week 4','Week 5']
+    },
+    monthly:{
+      a:'0,195 82,166 164,178 246,143 328,151 410,119 492,133 574,97 656,113 738,82 820,106 900,70',
+      b:'0,220 82,194 164,202 246,173 328,181 410,151 492,161 574,128 656,144 738,117 820,140 900,106',
+      labels:['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar']
+    }
+  };
+
+  function updateStaticPeriod(btn){
+    const group=btn.parentElement;
+    if(!group) return;
+    const buttons=[...group.querySelectorAll('.chip')];
+    if(buttons.length<2) return;
+    const card=btn.closest('.analytics-card');
+    if(!card) return;
+    const key=(btn.textContent||'').trim().toLowerCase();
+    const data=periodData[key];
+    if(!data) return;
+
+    buttons.forEach(x=>x.classList.toggle('active',x===btn));
+    const lines=card.querySelectorAll('.fake-line svg polyline');
+    if(lines[0]) lines[0].setAttribute('points',data.a);
+    if(lines[1]) lines[1].setAttribute('points',data.b);
+
+    const axis=card.querySelector('.axis-labels');
+    if(axis) axis.innerHTML=data.labels.map(x=>`<span>${x}</span>`).join('');
+
+    // Keep chart title meaningful when switching period without changing the module design.
+    const title=card.querySelector('.card-head h3');
+    if(title){
+      if(!title.dataset.baseTitle) title.dataset.baseTitle=title.textContent.replace(/\s*\((Daily|Weekly|Monthly)\)\s*$/i,'').trim();
+      const base=title.dataset.baseTitle;
+      if(/Expense Trend|Sales Overview/i.test(base)) title.textContent=`${base} (${btn.textContent.trim()})`;
+    }
+
+    const toast=document.getElementById('branchToast');
+    if(toast){
+      toast.textContent=`${btn.textContent.trim()} view applied.`;
+      toast.classList.add('show');
+      clearTimeout(window.__branchPeriodToast);
+      window.__branchPeriodToast=setTimeout(()=>toast.classList.remove('show'),1200);
+    }
+  }
+
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('.card-head .chip');
+    if(!btn) return;
+    e.preventDefault();
+    updateStaticPeriod(btn);
+  });
 })();
