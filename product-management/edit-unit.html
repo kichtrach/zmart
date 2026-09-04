@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZMart | Edit Unit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+  <link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+  <link rel="stylesheet" href="../components/topbar/css/topbar.css">
+  <link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+  <link rel="stylesheet" href="../components/ui/css/ui-components.css">
+  <link rel="stylesheet" href="../assets/css/add-unit.css">
+  <link rel="stylesheet" href="../assets/css/edit-unit.css">
+</head>
+<body class="add-unit-screen edit-unit-screen">
+  <aside id="sidebarMount"></aside>
+  <div class="app-shell">
+    <header id="topbarMount"></header>
+    <main class="add-unit-page" id="mainContent">
+      <section class="au-head">
+        <div class="au-breadcrumb">
+          <button type="button" data-go="home">Home</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-go="product">Product Management</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-go="units">Units</button><i class="fa-solid fa-chevron-right"></i>
+          <b>Edit Unit</b>
+        </div>
+        <div class="au-head-actions">
+          <button class="au-btn outline" id="cancelUnit"><i class="fa-solid fa-xmark"></i> Cancel</button>
+          <button class="au-btn primary" id="updateUnit"><i class="fa-regular fa-floppy-disk"></i> Update Unit</button>
+        </div>
+      </section>
+
+      <section class="au-card">
+        <div class="au-section">
+          <h2>Unit Information</h2>
+          <div class="au-grid">
+            <div class="au-field"><label>Unit Name <span>*</span></label><input id="unitName" value="Kilogram"></div>
+            <div class="au-field"><label>Unit Code <span>*</span></label><input id="unitCode" value="KG"><small>Short code used to identify the unit (e.g., PCS, KG)</small></div>
+            <div class="au-field"><label>Unit Type <span>*</span></label><select id="unitType"><option>Weight</option><option>Volume</option><option>Quantity</option><option>Length</option><option>Reference Unit</option></select></div>
+
+            <div class="au-field"><label>Base Unit <span>*</span></label><select id="baseUnit"><option selected>Yes</option><option>No</option></select><small>Is this a base unit for conversions?</small></div>
+            <div class="au-field"><label>Unit Symbol</label><input id="unitSymbol" value="kg"><small>Symbol displayed in invoices and reports</small></div>
+            <div class="au-field"><label>Unit Description</label><textarea id="unitDescription" maxlength="200">Kilogram - Weight measurement unit</textarea><small class="counter"><span id="descCount">34</span>/200</small></div>
+          </div>
+        </div>
+
+        <div class="au-section separated">
+          <h2>Conversion Information</h2>
+          <div class="au-grid">
+            <div class="au-field"><label>Conversion Factor <span>*</span></label><input id="conversionFactor" type="number" min="0" step="0.0001" value="1"><small>How many of this unit = 1 base unit?</small></div>
+            <div class="au-field"><label>Base Unit Equivalent</label><input id="baseEquivalent" value="1.00" readonly><small>Equivalent value in base unit</small></div>
+            <div class="au-field"><label>Rounding Precision</label><input id="roundingPrecision" type="number" min="0" max="6" value="2"><small>Decimal places for conversions</small></div>
+          </div>
+        </div>
+
+        <div class="au-section separated compact-section">
+          <h2>Status &amp; Settings</h2>
+          <div class="au-grid status-grid">
+            <div class="au-field"><label>Status <span>*</span></label><div class="radio-row"><label><input type="radio" name="unitStatus" value="Active" checked><span>Active</span></label><label><input type="radio" name="unitStatus" value="Inactive"><span>Inactive</span></label></div><small>Active units are available for use in the system</small></div>
+            <div class="au-field"><label>Track Inventory</label><div class="switch-row"><input id="trackInventory" type="checkbox" checked><label for="trackInventory" class="switch-track"></label></div><small>Enable if you want to track stock in this unit</small></div>
+          </div>
+        </div>
+
+        <div class="au-section separated">
+          <h2>Additional Information</h2>
+          <div class="au-grid">
+            <div class="au-field"><label>Display Order</label><input id="displayOrder" type="number" value="2"><small>Display order in dropdown lists</small></div>
+            <div class="au-field"><label>Created By</label><input value="Super Admin" readonly></div>
+            <div class="au-field"><label>Remarks</label><textarea id="remarks" maxlength="200">Base unit for all weight measurements</textarea><small class="counter"><span id="remarksCount">37</span>/200</small></div>
+          </div>
+        </div>
+
+        <div class="au-note"><i class="fa-regular fa-circle-info"></i><div><b>Note:</b><p>After updating, this unit will be available for use in product variants, purchase, sales and inventory transactions.</p></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="au-modal edit-success-modal" id="successModal" hidden>
+    <div class="au-backdrop"></div>
+    <section class="au-modal-card" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <button class="au-modal-close" id="closeSuccess" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="success-icon edit-success-icon"><i class="fa-solid fa-check"></i></div>
+      <h2 id="successTitle">Unit Updated Successfully!</h2>
+      <p>The unit has been updated successfully.<br>All changes are saved.</p>
+      <div class="unit-details-box edit-details-box">
+        <h3><i class="fa-regular fa-clipboard"></i> Unit Details</h3>
+        <dl>
+          <dt>Unit Name</dt><dd id="savedName">Kilogram</dd>
+          <dt>Unit Code</dt><dd id="savedCode">KG</dd>
+          <dt>Unit Type</dt><dd id="savedType">Weight</dd>
+          <dt>Base Unit</dt><dd id="savedBase">Yes</dd>
+          <dt>Conversion Factor</dt><dd id="savedFactor">1</dd>
+          <dt>Rounding Precision</dt><dd id="savedPrecision">2</dd>
+          <dt>Status</dt><dd id="savedStatus">Active</dd>
+        </dl>
+      </div>
+      <div class="au-modal-actions edit-modal-actions">
+        <button class="au-btn outline" id="viewUnitDetails"><i class="fa-regular fa-eye"></i> View Unit Details</button>
+        <button class="au-btn primary" id="backToUnits"><i class="fa-regular fa-floppy-disk"></i> Back to Units</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="au-toast" id="unitToast" hidden></div>
+
+  <script src="../components/sidebar/js/sidebar.js"></script>
+  <script src="../components/topbar/js/topbar.js"></script>
+  <script src="../components/ui/js/ui-components.js"></script>
+  <script src="../assets/js/edit-unit.js"></script>
+</body>
+</html>

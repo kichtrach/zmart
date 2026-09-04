@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZMart | Add New Barcode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+  <link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+  <link rel="stylesheet" href="../components/topbar/css/topbar.css">
+  <link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+  <link rel="stylesheet" href="../components/ui/css/ui-components.css">
+  <link rel="stylesheet" href="../assets/css/add-new-barcode.css">
+</head>
+<body class="add-barcode-screen">
+  <aside id="sidebarMount"></aside>
+  <div class="app-shell">
+    <header id="topbarMount"></header>
+    <main class="add-barcode-page">
+      <section class="page-heading">
+        <nav class="page-breadcrumb" aria-label="Breadcrumb">
+          <button type="button" data-navto="home">Home</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-navto="product">Product Management</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-navto="barcode">Barcode Management</button><i class="fa-solid fa-chevron-right"></i>
+          <span>Add New Barcode</span>
+        </nav>
+        <div class="heading-actions">
+          <button class="page-btn ui-btn ui-btn-outline outline" id="topCancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button>
+          <button class="page-btn ui-btn ui-btn-primary primary" id="saveGenerateBtn" type="button"><i class="fa-solid fa-barcode"></i>Save &amp; Generate</button>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="stepper" id="stepper">
+          <div class="step active" data-step="1"><span>1</span><div><strong>Barcode Details</strong><small>Enter barcode and product info</small></div></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2"><span>2</span><div><strong>Barcode Settings</strong><small>Configure barcode type and value</small></div></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="3"><span>3</span><div><strong>Additional Information</strong><small>Add extra details (optional)</small></div></div>
+          <div class="step-line"></div>
+          <div class="step" data-step="4"><span>4</span><div><strong>Review &amp; Save</strong><small>Review details and save</small></div></div>
+        </div>
+        <div class="step-progress"><span id="stepProgress"></span></div>
+
+        <form id="barcodeForm" novalidate>
+          <section class="form-section">
+            <h2>Product Information</h2>
+            <div class="form-grid three">
+              <label class="field"><span>Product <b>*</b></span><select class="ui-select" id="product" required><option value="">Search and select product</option><option value="Aashirvaad Atta 5kg" data-sku="ATT5005" data-category="Grocery" data-unit="Kilogram" data-brand="Aashirvaad">Aashirvaad Atta 5kg</option><option value="Tata Tea Premium 1kg" data-sku="TEA1001" data-category="Beverages" data-unit="Kilogram" data-brand="Tata">Tata Tea Premium 1kg</option><option value="Surf Excel Matic 2kg" data-sku="DET2002" data-category="Household" data-unit="Kilogram" data-brand="Surf Excel">Surf Excel Matic 2kg</option></select></label>
+              <label class="field"><span>Product Category</span><select class="ui-select" id="category"><option value="">Select category</option><option>Grocery</option><option>Beverages</option><option>Household</option><option>Personal Care</option><option>Snacks</option></select></label>
+              <label class="field"><span>Product Variant (if applicable)</span><select class="ui-select" id="variant"><option value="">Select variant (optional)</option><option>Default Variant</option><option>Small Pack</option><option>Large Pack</option></select></label>
+              <label class="field"><span>SKU / Code</span><input class="ui-input" id="sku" placeholder="Auto filled" readonly></label>
+              <label class="field"><span>Unit</span><select class="ui-select" id="unit"><option value="">Select unit</option><option>Kilogram</option><option>Gram</option><option>Piece</option><option>Litre</option></select></label>
+              <label class="field"><span>Brand</span><select class="ui-select" id="brand"><option value="">Select brand</option><option>Aashirvaad</option><option>Tata</option><option>Surf Excel</option><option>Colgate</option><option>Parle</option></select></label>
+            </div>
+          </section>
+
+          <section class="form-section barcode-info">
+            <h2>Barcode Information</h2>
+            <div class="form-grid four">
+              <label class="field"><span>Barcode Number <b>*</b></span><input class="ui-input" id="barcodeNumber" inputmode="numeric" maxlength="13" placeholder="Enter barcode number" required><small>Enter unique barcode number</small></label>
+              <label class="field"><span>Barcode Type <b>*</b></span><select class="ui-select" id="barcodeType" required><option>EAN-13</option><option>UPC-A</option><option>Code 128</option></select><small>Select barcode type</small></label>
+              <label class="field"><span>Barcode Value</span><input class="ui-input" id="barcodeValue" placeholder="Enter barcode value"><small>Will be auto generated based on type</small></label>
+              <label class="field"><span>Status <b>*</b></span><select class="ui-select" id="status" required><option>Active</option><option>Inactive</option></select><small>Select status</small></label>
+            </div>
+            <div class="barcode-create-row">
+              <div class="method-group"><span class="method-label">Generate Method <b>*</b></span><div class="radio-row"><label class="ui-radio"><input type="radio" name="method" value="auto" checked><span>Auto Generate</span></label><label class="ui-radio"><input type="radio" name="method" value="manual"><span>Manual Enter</span></label></div><small>Choose how you want to create barcode</small></div>
+              <button class="page-btn ui-btn ui-btn-outline outline generate-btn" id="generateBarcodeBtn" type="button"><i class="fa-solid fa-rotate"></i>Generate Barcode</button>
+              <div class="barcode-preview"><span>Preview</span><div class="bars" id="barcodeBars" aria-label="Barcode preview"></div><strong id="previewNumber">8901234567890</strong></div>
+            </div>
+          </section>
+
+          <section class="form-section additional-section">
+            <h2>Additional Information <span>(Optional)</span></h2>
+            <div class="form-grid four">
+              <label class="field"><span>Location</span><select class="ui-select" id="location"><option value="">Select location</option><option>Main Warehouse</option><option>Head Office Store</option><option>Anna Nagar Branch</option></select></label>
+              <label class="field"><span>Rack / Bin</span><select class="ui-select" id="rack"><option value="">Select rack / bin</option><option>Rack A / Bin 01</option><option>Rack B / Bin 06</option><option>Rack C / Bin 12</option></select></label>
+              <label class="field"><span>Expiry Date</span><div class="date-wrap"><input class="ui-input" id="expiryDate" type="date"><i class="fa-regular fa-calendar"></i></div></label>
+              <label class="field notes-field"><span>Notes</span><textarea class="ui-input" id="notes" maxlength="200" placeholder="Enter notes (optional)"></textarea><small class="counter"><span id="noteCount">0</span>/200</small></label>
+            </div>
+          </section>
+
+          <div class="info-note"><i class="fa-solid fa-circle-info"></i><div><strong>Note:</strong><span>Barcode will be unique across all products. Once saved, it can be used for scanning in purchase, sales and inventory.</span></div></div>
+          <div class="form-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="bottomCancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary next-btn" id="nextBtn" type="button">Next<i class="fa-solid fa-chevron-right"></i></button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="success-modal" id="successModal" hidden><div class="success-dialog"><button class="modal-close" id="successClose" type="button"><i class="fa-solid fa-xmark"></i></button><div class="success-icon"><i class="fa-solid fa-check"></i></div><h2>Barcode Created Successfully!</h2><p>The barcode has been saved and generated successfully.</p><div class="success-details"><span>Barcode Number</span><b>:</b><strong id="savedBarcode"></strong><span>Product</span><b>:</b><strong id="savedProduct"></strong><span>Barcode Type</span><b>:</b><strong id="savedType"></strong><span>Status</span><b>:</b><strong id="savedStatus"></strong></div><div class="success-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="createAnotherBtn" type="button"><i class="fa-solid fa-plus"></i>Create Another</button><button class="page-btn ui-btn ui-btn-primary primary" id="backToBarcodesBtn" type="button"><i class="fa-solid fa-arrow-left"></i>Back to Barcodes</button></div></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="../components/sidebar/js/sidebar.js"></script>
+  <script src="../components/topbar/js/topbar.js"></script>
+  <script src="../components/ui/js/ui-components.js"></script>
+  <script src="../assets/js/add-new-barcode.js"></script>
+</body>
+</html>

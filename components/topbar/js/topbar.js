@@ -6,9 +6,12 @@
     <div class="topbar-left">
       <button class="hamburger" id="sidebarToggle" type="button" aria-label="Toggle sidebar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
       <strong class="topbar-title">${
+        location.pathname.includes("/product-management/add-new-barcode") ? "Add New Barcode" :
         location.pathname.includes("/product-management/add-category") ? "Add New Category" :
         location.pathname.includes("/product-management/category-success") ? "Add New Category" :
         location.pathname.includes("/product-management/add-product-variant") ? "Add New Variant" :
+        location.pathname.includes("/product-management/add-unit") ? "Add New Unit" :
+        location.pathname.includes("/product-management/units") ? "Units" :
         location.pathname.includes("/product-management/product-variants") ? "Product Variants" :
         location.pathname.includes("/product-management/add-product") ? "Add New Product" :
         location.pathname.includes("/product-management/products") ? "Products" :

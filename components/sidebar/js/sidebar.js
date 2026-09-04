@@ -169,7 +169,11 @@
     'products.html':'Products',
     'add-product.html':'Products',
     'product-variants.html':'Product Variants',
-    'add-product-variant.html':'Product Variants'
+    'add-product-variant.html':'Product Variants',
+    'units.html':'Units',
+    'add-unit.html':'Units',
+    'barcode-management.html':'Barcode Management',
+    'add-new-barcode.html':'Barcode Management'
   };
 
   const activeGroupKey = currentModuleKey();

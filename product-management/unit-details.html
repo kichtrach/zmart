@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZMart | Unit Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+  <link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+  <link rel="stylesheet" href="../components/topbar/css/topbar.css">
+  <link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+  <link rel="stylesheet" href="../components/ui/css/ui-components.css">
+  <link rel="stylesheet" href="../assets/css/unit-details.css">
+</head>
+<body class="unit-details-screen">
+  <aside id="sidebarMount"></aside>
+  <div class="app-shell">
+    <header id="topbarMount"></header>
+    <main class="ud-page" id="mainContent">
+      <section class="ud-head-row">
+        <nav class="ud-breadcrumb" aria-label="Breadcrumb">
+          <button type="button" data-go="home">Home</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-go="product">Product Management</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-go="units">Units</button><i class="fa-solid fa-chevron-right"></i>
+          <span>Unit Details</span>
+        </nav>
+        <div class="ud-head-actions">
+          <button class="ud-btn outline" id="backToUnits"><i class="fa-solid fa-arrow-left"></i> Back to Units</button>
+          <button class="ud-btn primary" id="editUnit"><i class="fa-regular fa-pen-to-square"></i> Edit Unit</button>
+        </div>
+      </section>
+
+      <section class="ud-summary-card">
+        <div class="ud-summary-identity">
+          <div class="ud-unit-icon"><i class="fa-solid fa-cube"></i></div>
+          <div><div class="ud-title-line"><h1>Kilogram</h1><span class="ud-status active">Active</span></div><strong>KG</strong><p>Weight measurement unit</p></div>
+        </div>
+        <div class="ud-summary-metrics">
+          <div><small>Base Unit</small><strong class="green">Yes</strong></div>
+          <div><small>Unit Type</small><strong>Weight</strong></div>
+          <div><small>Conversion Factor</small><strong>1</strong><em>1 KG = 1 Base Unit</em></div>
+          <div><small>Created On</small><strong>25 May 2025</strong></div>
+          <div><small>Created By</small><strong>Super Admin</strong></div>
+        </div>
+      </section>
+
+      <section class="ud-content-card">
+        <div class="ud-tabs" role="tablist">
+          <button class="active" role="tab" data-tab="overview">Overview</button>
+          <button role="tab" data-tab="settings">Conversion &amp; Settings</button>
+          <button role="tab" data-tab="audit">Audit Trail</button>
+        </div>
+
+        <div class="ud-tab-panel active" data-panel="overview">
+          <div class="ud-overview-grid">
+            <div class="ud-left-stack">
+              <article class="ud-box">
+                <h2>Unit Information</h2>
+                <dl class="ud-detail-list">
+                  <div><dt>Unit Name</dt><dd>Kilogram</dd></div>
+                  <div><dt>Unit Code</dt><dd>KG</dd></div>
+                  <div><dt>Unit Type</dt><dd>Weight</dd></div>
+                  <div><dt>Base Unit</dt><dd><span class="ud-chip success">Yes</span></dd></div>
+                  <div><dt>Unit Symbol</dt><dd>kg</dd></div>
+                  <div><dt>Unit Description</dt><dd>Kilogram - Weight measurement unit</dd></div>
+                </dl>
+              </article>
+              <article class="ud-box">
+                <h2>Additional Information</h2>
+                <dl class="ud-detail-list">
+                  <div><dt>Display Order</dt><dd>2</dd></div>
+                  <div><dt>Created By</dt><dd>Super Admin</dd></div>
+                  <div><dt>Created On</dt><dd>25 May 2025 10:30 AM</dd></div>
+                  <div><dt>Last Updated By</dt><dd>Super Admin</dd></div>
+                  <div><dt>Last Updated On</dt><dd>25 May 2025 10:30 AM</dd></div>
+                  <div><dt>Remarks</dt><dd>Base unit for all weight measurements</dd></div>
+                </dl>
+              </article>
+            </div>
+
+            <article class="ud-box ud-settings-box">
+              <h2>Conversion &amp; Settings</h2>
+              <dl class="ud-setting-list">
+                <div><dt>Conversion Factor</dt><dd><strong>1</strong><small>How many of this unit = 1 base unit</small></dd></div>
+                <div><dt>Base Unit Equivalent</dt><dd><strong>1</strong></dd></div>
+                <div><dt>Rounding Precision</dt><dd><strong>2</strong><small>Decimal places for conversions</small></dd></div>
+                <div><dt>Track Inventory</dt><dd><span class="ud-check"><i class="fa-solid fa-circle-check"></i> Yes</span><small>This unit is used for inventory tracking</small></dd></div>
+              </dl>
+            </article>
+
+            <article class="ud-box ud-usage-box">
+              <h2>Unit Usage</h2>
+              <div class="ud-usage-list">
+                <div><span class="usage-icon"><i class="fa-solid fa-cube"></i></span><p><strong>Total Variants</strong><b>128</b><small>This unit is used in product variants</small></p></div>
+                <div><span class="usage-icon"><i class="fa-solid fa-barcode"></i></span><p><strong>Total Products</strong><b>85</b><small>This unit is used in products</small></p></div>
+                <div><span class="usage-icon"><i class="fa-regular fa-clipboard"></i></span><p><strong>Total Purchase Items</strong><b>96</b><small>This unit is used in purchase transactions</small></p></div>
+                <div><span class="usage-icon"><i class="fa-regular fa-receipt"></i></span><p><strong>Total Sales Items</strong><b>110</b><small>This unit is used in sales transactions</small></p></div>
+              </div>
+            </article>
+
+            <article class="ud-box ud-preview-box">
+              <h2>Preview in Transactions</h2>
+              <div class="ud-preview-grid">
+                <div><h3><i class="fa-solid fa-cart-shopping"></i> Purchase Example</h3><p><strong>100</strong><span>KG</span></p><small>Displayed in purchase orders</small></div>
+                <div><h3><i class="fa-solid fa-arrow-trend-up"></i> Sales Example</h3><p><strong>50</strong><span>KG</span></p><small>Displayed in invoices</small></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="ud-tab-panel" data-panel="settings">
+          <div class="ud-two-col">
+            <article class="ud-box"><h2>Conversion Configuration</h2><dl class="ud-detail-list"><div><dt>Conversion Factor</dt><dd>1</dd></div><div><dt>Base Unit Equivalent</dt><dd>1</dd></div><div><dt>Rounding Precision</dt><dd>2 decimal places</dd></div><div><dt>Conversion Formula</dt><dd>1 KG = 1 Base Unit</dd></div></dl></article>
+            <article class="ud-box"><h2>Inventory Settings</h2><dl class="ud-detail-list"><div><dt>Track Inventory</dt><dd><span class="ud-chip success">Enabled</span></dd></div><div><dt>Available in Products</dt><dd>Yes</dd></div><div><dt>Available in Purchase</dt><dd>Yes</dd></div><div><dt>Available in Sales</dt><dd>Yes</dd></div></dl></article>
+          </div>
+        </div>
+
+        <div class="ud-tab-panel" data-panel="audit">
+          <article class="ud-box"><h2>Audit Trail</h2><div class="ud-audit-list">
+            <div><span class="audit-dot"></span><p><strong>Unit created</strong><small>25 May 2025 10:30 AM · Super Admin</small></p></div>
+            <div><span class="audit-dot"></span><p><strong>Inventory tracking enabled</strong><small>25 May 2025 10:31 AM · Super Admin</small></p></div>
+            <div><span class="audit-dot"></span><p><strong>Unit assigned to 128 variants</strong><small>31 May 2025 09:15 AM · System</small></p></div>
+          </div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../components/sidebar/js/sidebar.js"></script>
+  <script src="../components/topbar/js/topbar.js"></script>
+  <script src="../components/ui/js/ui-components.js"></script>
+  <script src="../assets/js/unit-details.js"></script>
+</body>
+</html>

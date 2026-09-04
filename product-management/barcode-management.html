@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZMart | Barcode Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+  <link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+  <link rel="stylesheet" href="../components/topbar/css/topbar.css">
+  <link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+  <link rel="stylesheet" href="../components/ui/css/ui-components.css">
+  <link rel="stylesheet" href="../assets/css/barcode-management.css">
+</head>
+<body class="barcode-screen">
+  <aside id="sidebarMount"></aside>
+  <div class="app-shell">
+    <header id="topbarMount"></header>
+    <main class="barcode-page">
+      <section class="barcode-heading">
+        <nav class="barcode-breadcrumb" aria-label="Breadcrumb">
+          <button type="button" data-navto="home">Home</button><i class="fa-solid fa-chevron-right"></i>
+          <button type="button" data-navto="product">Product Management</button><i class="fa-solid fa-chevron-right"></i>
+          <span>Barcode Management</span>
+        </nav>
+        <button class="barcode-btn primary" id="addBarcodeBtn" type="button"><i class="fa-solid fa-plus"></i>Add New Barcode</button>
+      </section>
+
+      <section class="barcode-kpis">
+        <article class="barcode-kpi"><span class="kpi-icon total"><i class="fa-solid fa-barcode"></i></span><div><small>Total Barcodes</small><strong>2,458</strong><em>All barcodes</em></div></article>
+        <article class="barcode-kpi"><span class="kpi-icon active"><i class="fa-solid fa-circle-check"></i></span><div><small>Active Barcodes</small><strong>2,312</strong><em class="success">94.06%</em></div></article>
+        <article class="barcode-kpi"><span class="kpi-icon inactive"><i class="fa-solid fa-circle-pause"></i></span><div><small>Inactive Barcodes</small><strong>120</strong><em class="warning">4.88%</em></div></article>
+        <article class="barcode-kpi"><span class="kpi-icon duplicate"><i class="fa-solid fa-circle-xmark"></i></span><div><small>Duplicate Barcodes</small><strong>26</strong><em class="danger">1.06%</em></div></article>
+      </section>
+
+      <section class="barcode-card">
+        <div class="barcode-filters">
+          <label class="field span-search"><span>Search</span><div class="input-icon"><i class="fa-solid fa-magnifying-glass"></i><input id="barcodeSearch" placeholder="Search barcode / product name / SKU"></div></label>
+          <label class="field"><span>Product Category</span><select id="categoryFilter"><option>All Categories</option><option>Grocery</option><option>Beverages</option><option>Household</option><option>Personal Care</option><option>Snacks</option></select></label>
+          <label class="field"><span>Barcode Type</span><select id="typeFilter"><option>All Types</option><option>EAN-13</option><option>UPC-A</option><option>Code 128</option></select></label>
+          <label class="field"><span>Status</span><select id="statusFilter"><option>All Statuses</option><option>Active</option><option>Inactive</option><option>Duplicate</option></select></label>
+          <div class="filter-actions"><button class="barcode-btn primary" id="searchBtnLocal" type="button"><i class="fa-solid fa-magnifying-glass"></i>Search</button><button class="barcode-btn outline" id="resetBtn" type="button"><i class="fa-solid fa-rotate-right"></i>Reset</button></div>
+          <label class="field date-field"><span>Date Range</span><div class="date-input"><i class="fa-regular fa-calendar"></i><input id="dateRange" readonly placeholder="Select date range"><button type="button" id="datePickerBtn" aria-label="Choose date"><i class="fa-regular fa-calendar-days"></i></button></div></label>
+          <label class="field created-field"><span>Created By</span><select id="createdByFilter"><option>All Users</option><option>Super Admin</option><option>Store Manager</option></select></label>
+        </div>
+
+        <div class="barcode-tools"><button class="barcode-btn outline" id="importBtn"><i class="fa-solid fa-upload"></i>Import</button><button class="barcode-btn outline" id="exportBtn"><i class="fa-solid fa-download"></i>Export</button><button class="barcode-btn outline" id="columnsBtn"><i class="fa-solid fa-gear"></i>Column Settings</button></div>
+
+        <div class="barcode-table-wrap">
+          <table class="barcode-table">
+            <thead><tr><th>#</th><th>Barcode <i class="fa-solid fa-arrows-up-down"></i></th><th>Product Name <i class="fa-solid fa-arrows-up-down"></i></th><th>SKU / Code <i class="fa-solid fa-arrows-up-down"></i></th><th>Category <i class="fa-solid fa-arrows-up-down"></i></th><th>Barcode Type <i class="fa-solid fa-arrows-up-down"></i></th><th>Status <i class="fa-solid fa-arrows-up-down"></i></th><th>Created On <i class="fa-solid fa-arrows-up-down"></i></th><th>Created By <i class="fa-solid fa-arrows-up-down"></i></th><th>Action</th></tr></thead>
+            <tbody id="barcodeTableBody"></tbody>
+          </table>
+        </div>
+
+        <footer class="barcode-footer"><span id="entriesText">Showing 1 to 10 of 2,458 entries</span><div class="pagination-area"><div class="barcode-pagination" id="pagination"></div><label class="page-size"><select id="pageSize"><option>10 / page</option><option>20 / page</option><option>50 / page</option></select><i class="fa-solid fa-chevron-down"></i></label></div></footer>
+      </section>
+    </main>
+  </div>
+
+  <div class="barcode-action-menu" id="actionMenu" hidden>
+    <button data-action="view"><i class="fa-regular fa-eye"></i>View Details</button>
+    <button data-action="edit"><i class="fa-regular fa-pen-to-square"></i>Edit Barcode</button>
+    <button data-action="print"><i class="fa-solid fa-print"></i>Print Label</button>
+    <button data-action="status"><i class="fa-solid fa-arrows-rotate"></i>Change Status</button>
+    <button class="danger" data-action="delete"><i class="fa-regular fa-trash-can"></i>Delete Barcode</button>
+  </div>
+
+  <div class="barcode-modal" id="genericModal" hidden><div class="barcode-dialog"><button class="dialog-close" data-close-modal><i class="fa-solid fa-xmark"></i></button><div class="dialog-icon" id="dialogIcon"><i class="fa-solid fa-barcode"></i></div><h2 id="dialogTitle">Barcode Details</h2><div id="dialogContent"></div><button class="barcode-btn primary dialog-ok" data-close-modal>OK, Got It</button></div></div>
+  <div class="barcode-toast" id="toast"></div>
+
+  <script src="../components/sidebar/js/sidebar.js"></script>
+  <script src="../components/topbar/js/topbar.js"></script>
+  <script src="../components/ui/js/ui-components.js"></script>
+  <script src="../assets/js/barcode-management.js"></script>
+</body>
+</html>
