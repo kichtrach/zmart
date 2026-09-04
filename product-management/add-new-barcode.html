@@ -46,53 +46,178 @@
         <div class="step-progress"><span id="stepProgress"></span></div>
 
         <form id="barcodeForm" novalidate>
-          <section class="form-section">
-            <h2>Product Information</h2>
-            <div class="form-grid three">
-              <label class="field"><span>Product <b>*</b></span><select class="ui-select" id="product" required><option value="">Search and select product</option><option value="Aashirvaad Atta 5kg" data-sku="ATT5005" data-category="Grocery" data-unit="Kilogram" data-brand="Aashirvaad">Aashirvaad Atta 5kg</option><option value="Tata Tea Premium 1kg" data-sku="TEA1001" data-category="Beverages" data-unit="Kilogram" data-brand="Tata">Tata Tea Premium 1kg</option><option value="Surf Excel Matic 2kg" data-sku="DET2002" data-category="Household" data-unit="Kilogram" data-brand="Surf Excel">Surf Excel Matic 2kg</option></select></label>
-              <label class="field"><span>Product Category</span><select class="ui-select" id="category"><option value="">Select category</option><option>Grocery</option><option>Beverages</option><option>Household</option><option>Personal Care</option><option>Snacks</option></select></label>
-              <label class="field"><span>Product Variant (if applicable)</span><select class="ui-select" id="variant"><option value="">Select variant (optional)</option><option>Default Variant</option><option>Small Pack</option><option>Large Pack</option></select></label>
-              <label class="field"><span>SKU / Code</span><input class="ui-input" id="sku" placeholder="Auto filled" readonly></label>
-              <label class="field"><span>Unit</span><select class="ui-select" id="unit"><option value="">Select unit</option><option>Kilogram</option><option>Gram</option><option>Piece</option><option>Litre</option></select></label>
-              <label class="field"><span>Brand</span><select class="ui-select" id="brand"><option value="">Select brand</option><option>Aashirvaad</option><option>Tata</option><option>Surf Excel</option><option>Colgate</option><option>Parle</option></select></label>
-            </div>
-          </section>
+          <div class="step-panel active" data-panel="1">
+            <section class="form-section">
+              <h2>Product Information</h2>
+              <div class="form-grid three">
+                <label class="field"><span>Product <b>*</b></span><select class="ui-select" id="product" required><option value="">Search and select product</option><option value="Aashirvaad Atta 5kg" data-sku="ATT5005" data-category="Grocery" data-unit="Kilogram" data-brand="Aashirvaad">Aashirvaad Atta 5kg</option><option value="Tata Tea Premium 1kg" data-sku="TEA1001" data-category="Beverages" data-unit="Kilogram" data-brand="Tata">Tata Tea Premium 1kg</option><option value="Surf Excel Matic 2kg" data-sku="DET2002" data-category="Household" data-unit="Kilogram" data-brand="Surf Excel">Surf Excel Matic 2kg</option></select></label>
+                <label class="field"><span>Product Category</span><select class="ui-select" id="category"><option value="">Select category</option><option>Grocery</option><option>Beverages</option><option>Household</option><option>Personal Care</option><option>Snacks</option></select></label>
+                <label class="field"><span>Product Variant (if applicable)</span><select class="ui-select" id="variant"><option value="">Select variant (optional)</option><option>Default Variant</option><option>Small Pack</option><option>Large Pack</option></select></label>
+                <label class="field"><span>SKU / Code</span><input class="ui-input" id="sku" placeholder="Auto filled" readonly></label>
+                <label class="field"><span>Unit</span><select class="ui-select" id="unit"><option value="">Select unit</option><option>Kilogram</option><option>Gram</option><option>Piece</option><option>Litre</option></select></label>
+                <label class="field"><span>Brand</span><select class="ui-select" id="brand"><option value="">Select brand</option><option>Aashirvaad</option><option>Tata</option><option>Surf Excel</option><option>Colgate</option><option>Parle</option></select></label>
+              </div>
+            </section>
 
-          <section class="form-section barcode-info">
-            <h2>Barcode Information</h2>
-            <div class="form-grid four">
-              <label class="field"><span>Barcode Number <b>*</b></span><input class="ui-input" id="barcodeNumber" inputmode="numeric" maxlength="13" placeholder="Enter barcode number" required><small>Enter unique barcode number</small></label>
-              <label class="field"><span>Barcode Type <b>*</b></span><select class="ui-select" id="barcodeType" required><option>EAN-13</option><option>UPC-A</option><option>Code 128</option></select><small>Select barcode type</small></label>
-              <label class="field"><span>Barcode Value</span><input class="ui-input" id="barcodeValue" placeholder="Enter barcode value"><small>Will be auto generated based on type</small></label>
-              <label class="field"><span>Status <b>*</b></span><select class="ui-select" id="status" required><option>Active</option><option>Inactive</option></select><small>Select status</small></label>
-            </div>
-            <div class="barcode-create-row">
-              <div class="method-group"><span class="method-label">Generate Method <b>*</b></span><div class="radio-row"><label class="ui-radio"><input type="radio" name="method" value="auto" checked><span>Auto Generate</span></label><label class="ui-radio"><input type="radio" name="method" value="manual"><span>Manual Enter</span></label></div><small>Choose how you want to create barcode</small></div>
-              <button class="page-btn ui-btn ui-btn-outline outline generate-btn" id="generateBarcodeBtn" type="button"><i class="fa-solid fa-rotate"></i>Generate Barcode</button>
-              <div class="barcode-preview"><span>Preview</span><div class="bars" id="barcodeBars" aria-label="Barcode preview"></div><strong id="previewNumber">8901234567890</strong></div>
-            </div>
-          </section>
+            <section class="form-section barcode-info">
+              <h2>Barcode Information</h2>
+              <div class="form-grid four">
+                <label class="field"><span>Barcode Number <b>*</b></span><input class="ui-input" id="barcodeNumber" inputmode="numeric" maxlength="13" placeholder="Enter barcode number" required><small>Enter unique barcode number</small></label>
+                <label class="field"><span>Barcode Type <b>*</b></span><select class="ui-select" id="barcodeType" required><option>EAN-13</option><option>UPC-A</option><option>Code 128</option></select><small>Select barcode type</small></label>
+                <label class="field"><span>Barcode Value</span><input class="ui-input" id="barcodeValue" placeholder="Enter barcode value"><small>Will be auto generated based on type</small></label>
+                <label class="field"><span>Status <b>*</b></span><select class="ui-select" id="status" required><option>Active</option><option>Inactive</option></select><small>Select status</small></label>
+              </div>
+              <div class="barcode-create-row">
+                <div class="method-group"><span class="method-label">Generate Method <b>*</b></span><div class="radio-row"><label class="ui-radio"><input type="radio" name="method" value="auto" checked><span>Auto Generate</span></label><label class="ui-radio"><input type="radio" name="method" value="manual"><span>Manual Enter</span></label></div><small>Choose how you want to create barcode</small></div>
+                <button class="page-btn ui-btn ui-btn-outline outline generate-btn" id="generateBarcodeBtn" type="button"><i class="fa-solid fa-rotate"></i>Generate Barcode</button>
+                <div class="barcode-preview"><span>Preview</span><div class="bars" id="barcodeBars" aria-label="Barcode preview"></div><strong id="previewNumber">8901234567890</strong></div>
+              </div>
+            </section>
 
-          <section class="form-section additional-section">
-            <h2>Additional Information <span>(Optional)</span></h2>
-            <div class="form-grid four">
-              <label class="field"><span>Location</span><select class="ui-select" id="location"><option value="">Select location</option><option>Main Warehouse</option><option>Head Office Store</option><option>Anna Nagar Branch</option></select></label>
-              <label class="field"><span>Rack / Bin</span><select class="ui-select" id="rack"><option value="">Select rack / bin</option><option>Rack A / Bin 01</option><option>Rack B / Bin 06</option><option>Rack C / Bin 12</option></select></label>
-              <label class="field"><span>Expiry Date</span><div class="date-wrap"><input class="ui-input" id="expiryDate" type="date"><i class="fa-regular fa-calendar"></i></div></label>
-              <label class="field notes-field"><span>Notes</span><textarea class="ui-input" id="notes" maxlength="200" placeholder="Enter notes (optional)"></textarea><small class="counter"><span id="noteCount">0</span>/200</small></label>
-            </div>
-          </section>
+            <section class="form-section additional-section">
+              <h2>Additional Information <span>(Optional)</span></h2>
+              <div class="form-grid four">
+                <label class="field"><span>Location</span><select class="ui-select" id="location"><option value="">Select location</option><option>Main Warehouse</option><option>Head Office Store</option><option>Anna Nagar Branch</option></select></label>
+                <label class="field"><span>Rack / Bin</span><select class="ui-select" id="rack"><option value="">Select rack / bin</option><option>Rack A / Bin 01</option><option>Rack B / Bin 06</option><option>Rack C / Bin 12</option></select></label>
+                <label class="field"><span>Expiry Date</span><div class="date-wrap"><input class="ui-input" id="expiryDate" type="date"><i class="fa-regular fa-calendar"></i></div></label>
+                <label class="field notes-field"><span>Notes</span><textarea class="ui-input" id="notes" maxlength="200" placeholder="Enter notes (optional)"></textarea><small class="counter"><span id="noteCount">0</span>/200</small></label>
+              </div>
+            </section>
 
-          <div class="form-footer-row">
-            <div class="info-note"><i class="fa-solid fa-circle-info"></i><div><strong>Note:</strong><span>Barcode will be unique across all products. Once saved, it can be used for scanning in purchase, sales and inventory.</span></div></div>
-            <div class="form-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="bottomCancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary next-btn" id="nextBtn" type="button">Next<i class="fa-solid fa-chevron-right"></i></button></div>
+            <div class="form-footer-row">
+              <div class="info-note"><i class="fa-solid fa-circle-info"></i><div><strong>Note:</strong><span>Barcode will be unique across all products. Once saved, it can be used for scanning in purchase, sales and inventory.</span></div></div>
+              <div class="form-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="bottomCancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary next-btn" id="nextBtn" type="button">Next<i class="fa-solid fa-chevron-right"></i></button></div>
+            </div>
+          </div>
+
+          <div class="step-panel barcode-settings-panel" data-panel="2">
+            <section class="settings-section first-section">
+              <h2>Barcode Settings</h2>
+              <div class="form-grid four">
+                <label class="field"><span>Barcode Type <b>*</b></span><select class="ui-select" id="settingsBarcodeType"><option>EAN-13</option><option>UPC-A</option><option>Code 128</option></select><small>Select barcode standard</small></label>
+                <label class="field"><span>Barcode Value Type <b>*</b></span><select class="ui-select" id="barcodeValueType"><option>Auto Generate</option><option>Manual Entry</option></select><small>Choose how the barcode value will be set</small></label>
+                <label class="field"><span>Prefix <em>(Optional)</em></span><input class="ui-input" id="prefix" inputmode="numeric" maxlength="6" value="890"><small>Enter prefix if required</small></label>
+                <label class="field"><span>Start Number <b>*</b></span><input class="ui-input" id="startNumber" inputmode="numeric" value="100001"><small>Starting number for auto generation</small></label>
+              </div>
+            </section>
+
+            <section class="settings-section">
+              <h2>Length &amp; Format</h2>
+              <div class="form-grid four length-grid">
+                <label class="field"><span>Total Length</span><input class="ui-input" id="totalLength" value="13" readonly><small>Total characters in barcode</small></label>
+                <label class="field"><span>Prefix Length</span><input class="ui-input" id="prefixLength" value="3" readonly><small>Length of prefix</small></label>
+                <label class="field"><span>Number Length</span><input class="ui-input" id="numberLength" value="9" readonly><small>Length of running number</small></label>
+                <div class="field switch-field"><span>Include Check Digit</span><label class="toggle-switch"><input type="checkbox" id="includeCheckDigit" checked><span class="toggle-track"></span></label><small>Automatically add check digit</small></div>
+              </div>
+            </section>
+
+            <section class="settings-preview-card">
+              <div class="preview-details">
+                <h3>Preview</h3>
+                <dl><dt>Barcode Type</dt><dd>:</dd><dd id="previewTypeText">EAN-13</dd><dt>Prefix</dt><dd>:</dd><dd id="previewPrefixText">890</dd><dt>Start Number</dt><dd>:</dd><dd id="previewStartText">100001</dd><dt>Total Length</dt><dd>:</dd><dd id="previewLengthText">13</dd><dt>Sample Barcode</dt><dd>:</dd><dd></dd></dl>
+              </div>
+              <div class="sample-barcode"><div class="sample-bars"></div><div class="sample-digits" id="sampleDigits">8 9 0 1 0 0 0 0 1 0 0 0 1</div></div>
+              <div class="settings-info-box"><i class="fa-solid fa-circle-info"></i><div><strong>Information</strong><p id="rangeInfo">System will auto generate barcode from<br>8901000010001 to 8901000019999<br>(Total 9,999 barcodes)</p></div></div>
+            </section>
+
+            <section class="settings-section batch-section">
+              <h2>Batch Generation</h2>
+              <div class="batch-layout">
+                <div class="batch-fields">
+                  <label class="field"><span>Generate Quantity <b>*</b></span><input class="ui-input" id="generateQuantity" type="number" min="1" max="9999" value="100"><small>Number of barcodes to generate</small></label>
+                  <label class="field"><span>Increment By <b>*</b></span><input class="ui-input" id="incrementBy" type="number" min="1" value="1"><small>Number increment step</small></label>
+                </div>
+                <div class="settings-note"><i class="fa-solid fa-circle-info"></i><div><strong>Note:</strong><span>Ensure the quantity does not exceed the available range for the selected start number and length.</span></div></div>
+              </div>
+            </section>
+
+            <div class="settings-footer">
+              <button class="page-btn ui-btn ui-btn-outline outline" id="previousBtn" type="button"><i class="fa-solid fa-arrow-left"></i>Previous</button>
+              <div class="settings-footer-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="settingsCancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary" id="settingsNextBtn" type="button">Next<i class="fa-solid fa-chevron-right"></i></button></div>
+            </div>
+          </div>
+
+          <div class="step-panel additional-info-panel" data-panel="3">
+            <section class="settings-section first-section">
+              <h2>Additional Information</h2>
+              <div class="form-grid four">
+                <label class="field"><span>Location</span><select class="ui-select" id="extraLocation"><option value="">Select location</option><option>Main Warehouse</option><option>Head Office Store</option><option>Anna Nagar Branch</option></select></label>
+                <label class="field"><span>Rack / Bin</span><select class="ui-select" id="extraRack"><option value="">Select rack / bin</option><option>A1-R1-B2</option><option>A2-R3-B1</option><option>B1-R2-B5</option></select></label>
+                <label class="field"><span>Batch Number <em>(Optional)</em></span><input class="ui-input" id="batchNumber" placeholder="Enter batch number"></label>
+                <label class="field"><span>Expiry Date <em>(Optional)</em></span><input class="ui-input" id="extraExpiryDate" type="date"></label>
+                <label class="field"><span>Manufacturing Date <em>(Optional)</em></span><input class="ui-input" id="manufacturingDate" type="date"></label>
+                <label class="field"><span>Supplier <em>(Optional)</em></span><select class="ui-select" id="supplier"><option value="">Select supplier</option><option>ITC Limited</option><option>Hindustan Unilever</option><option>Tata Consumer Products</option></select></label>
+                <label class="field"><span>Cost Price <em>(Optional)</em></span><div class="money-input"><span>₹</span><input class="ui-input" id="costPrice" type="number" min="0" step="0.01" placeholder="Enter cost price"></div></label>
+                <label class="field"><span>MRP <em>(Optional)</em></span><div class="money-input"><span>₹</span><input class="ui-input" id="mrp" type="number" min="0" step="0.01" placeholder="Enter MRP"></div></label>
+                <label class="field"><span>Tax Rate <em>(Optional)</em></span><select class="ui-select" id="taxRate"><option value="">Select tax rate</option><option>5% (GST)</option><option>12% (GST)</option><option>18% (GST)</option></select></label>
+                <label class="field"><span>UOM <em>(Optional)</em></span><select class="ui-select" id="uom"><option value="">Select UOM</option><option>PCS</option><option>KG</option><option>BOX</option><option>LTR</option></select></label>
+                <label class="field notes-field wide-notes"><span>Notes <em>(Optional)</em></span><textarea class="ui-input" id="extraNotes" maxlength="200" placeholder="Enter notes"></textarea><small class="counter"><span id="extraNoteCount">0</span>/200</small></label>
+              </div>
+            </section>
+
+            <section class="settings-section upload-section">
+              <h2>Upload / Attachments <span>(Optional)</span></h2>
+              <div class="upload-layout">
+                <div class="upload-column"><strong>Upload Label Template</strong><small>Recommended format: PNG, JPG, PDF (Max 2MB)</small><label class="upload-box"><input type="file" id="labelTemplate" accept=".png,.jpg,.jpeg,.pdf"><i class="fa-solid fa-arrow-up-from-bracket"></i><span><b>Click to upload</b> or drag and drop</span><em id="labelTemplateName">No file chosen</em></label></div>
+                <div class="upload-column"><strong>Upload Product Image <span>(Optional)</span></strong><small>Recommended format: PNG, JPG (Max 2MB)</small><label class="upload-box"><input type="file" id="productImage" accept=".png,.jpg,.jpeg"><i class="fa-solid fa-arrow-up-from-bracket"></i><span><b>Click to upload</b> or drag and drop</span><em id="productImageName">No file chosen</em></label></div>
+                <div class="settings-info-box additional-info-note"><i class="fa-solid fa-circle-info"></i><div><strong>Information</strong><p>Additional information helps in better tracking and report generation. All fields are optional.</p></div></div>
+              </div>
+            </section>
+            <div class="settings-footer"><button class="page-btn ui-btn ui-btn-outline outline" id="step3PreviousBtn" type="button"><i class="fa-solid fa-arrow-left"></i>Previous</button><div class="settings-footer-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="step3CancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary" id="step3NextBtn" type="button">Next<i class="fa-solid fa-chevron-right"></i></button></div></div>
+          </div>
+
+          <div class="step-panel review-panel" data-panel="4">
+            <div class="review-heading"><h2>Review Barcode Details</h2><p>Please review all information before saving.</p></div>
+            <div class="review-layout">
+              <div class="review-main">
+                <section class="review-section"><div class="review-title"><h3>1. Barcode Details</h3><button type="button" class="review-edit" data-edit-step="1"><i class="fa-solid fa-pencil"></i>Edit</button></div><div class="review-grid" id="reviewBarcodeDetails"></div></section>
+                <section class="review-section"><div class="review-title"><h3>2. Barcode Settings</h3><button type="button" class="review-edit" data-edit-step="2"><i class="fa-solid fa-pencil"></i>Edit</button></div><div class="review-grid" id="reviewBarcodeSettings"></div></section>
+                <section class="review-section"><div class="review-title"><h3>3. Additional Information</h3><button type="button" class="review-edit" data-edit-step="3"><i class="fa-solid fa-pencil"></i>Edit</button></div><div class="review-grid" id="reviewAdditionalInfo"></div></section>
+                <section class="review-section"><div class="review-title"><h3>4. Uploads</h3><button type="button" class="review-edit" data-edit-step="3"><i class="fa-solid fa-pencil"></i>Edit</button></div><div class="review-grid single" id="reviewUploads"></div></section>
+              </div>
+              <aside class="review-side">
+                <div class="review-card"><h3>Barcode Preview</h3><div class="review-barcode"><div class="large-bars"></div><strong id="reviewBarcodeNumber">8901000100001</strong><span><i class="fa-regular fa-circle-check"></i><b id="reviewBarcodeType">EAN-13</b></span></div><hr><h3 class="summary-title">Generation Summary</h3><dl class="generation-summary" id="generationSummary"></dl><div class="review-info"><i class="fa-solid fa-circle-info"></i><p>Once saved, the barcodes will be generated and added to the system. You can download or print them from the barcode list.</p></div></div>
+              </aside>
+            </div>
+            <div class="settings-footer review-footer"><button class="page-btn ui-btn ui-btn-outline outline" id="step4PreviousBtn" type="button"><i class="fa-solid fa-arrow-left"></i>Previous</button><div class="settings-footer-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="step4CancelBtn" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><button class="page-btn ui-btn ui-btn-primary primary" id="step4SaveBtn" type="button"><i class="fa-solid fa-barcode"></i>Save &amp; Generate</button></div></div>
           </div>
         </form>
       </section>
     </main>
   </div>
 
-  <div class="success-modal" id="successModal" hidden><div class="success-dialog"><button class="modal-close" id="successClose" type="button"><i class="fa-solid fa-xmark"></i></button><div class="success-icon"><i class="fa-solid fa-check"></i></div><h2>Barcode Created Successfully!</h2><p>The barcode has been saved and generated successfully.</p><div class="success-details"><span>Barcode Number</span><b>:</b><strong id="savedBarcode"></strong><span>Product</span><b>:</b><strong id="savedProduct"></strong><span>Barcode Type</span><b>:</b><strong id="savedType"></strong><span>Status</span><b>:</b><strong id="savedStatus"></strong></div><div class="success-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="createAnotherBtn" type="button"><i class="fa-solid fa-plus"></i>Create Another</button><button class="page-btn ui-btn ui-btn-primary primary" id="backToBarcodesBtn" type="button"><i class="fa-solid fa-arrow-left"></i>Back to Barcodes</button></div></div></div>
+  <div class="success-modal" id="successModal" hidden>
+    <div class="success-dialog barcode-success-dialog">
+      <button class="modal-close" id="successClose" type="button"><i class="fa-solid fa-xmark"></i></button>
+      <div class="success-confetti"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="success-icon solid"><i class="fa-solid fa-check"></i></div>
+      <h2>Barcode Saved Successfully!</h2><p>The barcode has been saved and generated successfully.</p>
+      <div class="success-details batch-success-details"><span>Product</span><b>:</b><strong id="savedProduct"></strong><span>Barcode Type</span><b>:</b><strong id="savedType"></strong><span>Total Barcodes Generated</span><b>:</b><strong id="savedQuantity">100</strong><span>From</span><b>:</b><strong id="savedFrom"></strong><span>To</span><b>:</b><strong id="savedTo"></strong></div>
+      <div class="success-help"><i class="fa-solid fa-circle-info"></i><span>You can view, download or print the generated barcodes from the Barcode Management list.</span></div>
+      <div class="success-actions two"><button class="page-btn ui-btn ui-btn-outline outline" id="viewBarcodeListBtn" type="button"><i class="fa-regular fa-rectangle-list"></i>View Barcode List</button><button class="page-btn ui-btn ui-btn-primary primary" id="printBarcodesBtn" type="button"><i class="fa-solid fa-print"></i>Print Barcodes</button></div>
+      <button class="page-btn ui-btn ui-btn-primary primary done-btn" id="doneBtn" type="button">Done</button>
+    </div>
+  </div>
+
+  <div class="success-modal print-modal" id="printModal" hidden>
+    <div class="print-dialog">
+      <button class="modal-close" id="printClose" type="button"><i class="fa-solid fa-xmark"></i></button>
+      <h2>Print Barcodes</h2><p>You can print the generated barcodes using the options below.</p>
+      <div class="print-layout">
+        <section class="print-settings"><h3>Print Settings</h3>
+          <label>Printer<select class="ui-select" id="printer"><option>HP LaserJet Pro M404dw</option><option>Default Printer</option></select></label>
+          <label>Paper Size<select class="ui-select" id="paperSize"><option>A4 (210 × 297 mm)</option><option>Letter</option></select></label>
+          <label>Label Template<select class="ui-select" id="labelSize"><option>Standard (60mm × 40mm)</option><option>Compact (40mm × 25mm)</option></select></label>
+          <span class="print-label">Orientation</span><div class="orientation-row"><label><input type="radio" name="orientation" value="portrait" checked>Portrait</label><label><input type="radio" name="orientation" value="landscape">Landscape</label></div>
+          <span class="print-label">Margins (mm)</span><div class="margins-row"><label>Top<input class="ui-input" value="10"></label><label>Bottom<input class="ui-input" value="10"></label><label>Left<input class="ui-input" value="10"></label><label>Right<input class="ui-input" value="10"></label></div>
+          <span class="print-label">Copies</span><div class="copies-control"><button type="button" id="copyMinus">−</button><input id="copies" value="1" readonly><button type="button" id="copyPlus">+</button></div>
+          <span class="print-label">Print Range</span><label class="range-radio"><input type="radio" name="printRange" value="all" checked>All Barcodes (<b id="allCount">100</b>)</label><label class="range-radio"><input type="radio" name="printRange" value="custom">Custom Range</label><div class="custom-range"><label>From<input class="ui-input" id="printFrom"></label><label>To<input class="ui-input" id="printTo"></label></div>
+        </section>
+        <section class="print-preview"><h3>Preview</h3><p>Total: <b id="previewCount">100</b> Barcodes</p><div class="label-grid" id="labelGrid"></div><div class="more-labels">… …<br>and more</div><div class="preview-pager"><button type="button"><i class="fa-solid fa-angles-left"></i></button><button type="button"><i class="fa-solid fa-chevron-left"></i></button><span>Page</span><input value="1" readonly><span>of 5</span><button type="button"><i class="fa-solid fa-chevron-right"></i></button><button type="button"><i class="fa-solid fa-angles-right"></i></button></div></section>
+      </div>
+      <div class="print-actions"><button class="page-btn ui-btn ui-btn-outline outline" id="printCancel" type="button"><i class="fa-solid fa-xmark"></i>Cancel</button><div><button class="page-btn ui-btn ui-btn-primary primary" id="confirmPrint" type="button"><i class="fa-solid fa-print"></i>Print</button><button class="page-btn ui-btn ui-btn-outline outline" id="downloadPdf" type="button"><i class="fa-solid fa-download"></i>Download PDF</button></div></div>
+    </div>
+  </div>
   <div class="toast" id="toast"></div>
 
   <script src="../components/sidebar/js/sidebar.js"></script>
