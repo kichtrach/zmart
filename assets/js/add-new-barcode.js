@@ -146,15 +146,45 @@
   $('doneBtn').onclick=goBarcodeList;
   $('printBarcodesBtn').onclick=()=>{ $('successModal').hidden=true; $('printModal').hidden=false; };
 
-  function buildPrintPreview(r=barcodeRange()){
-    $('allCount').textContent=r.qty; $('previewCount').textContent=r.qty; $('printFrom').value=r.first; $('printTo').value=r.last;
-    const grid=$('labelGrid'); if(!grid) return; grid.innerHTML='';
+  let printPreviewState={page:1,perPage:20,expanded:false,range:null};
+  function makeBarcodeDigits(r,index){
     const base=Number(r.start)||0;
-    for(let i=0;i<8;i++){
-      const n=base+i*r.inc; const digits=(r.prefix+String(n).padStart(r.numLen,'0')+(r.check?String((i%9)+1):'')).slice(0,r.total).padEnd(r.total,'0');
+    const n=base+index*r.inc;
+    return (r.prefix+String(n).padStart(r.numLen,'0')+(r.check?String((index%9)+1):'')).slice(0,r.total).padEnd(r.total,'0');
+  }
+  function renderPrintPreviewPage(){
+    const r=printPreviewState.range||barcodeRange();
+    const totalPages=Math.max(1,Math.ceil(r.qty/printPreviewState.perPage));
+    printPreviewState.page=Math.min(Math.max(1,printPreviewState.page),totalPages);
+    const start=(printPreviewState.page-1)*printPreviewState.perPage;
+    const count=Math.min(printPreviewState.perPage,r.qty-start);
+    const visibleCount=printPreviewState.expanded?count:Math.min(8,count);
+    const grid=$('labelGrid'); if(!grid) return; grid.innerHTML='';
+    for(let i=0;i<visibleCount;i++){
+      const digits=makeBarcodeDigits(r,start+i);
       const div=document.createElement('div'); div.className='barcode-label'; div.innerHTML=`<div class="mini-bars"></div><strong>${digits}</strong>`; grid.appendChild(div);
     }
+    $('previewPage').value=printPreviewState.page;
+    $('previewTotalPages').textContent=totalPages;
+    const more=$('moreLabelsBtn'), text=$('moreLabelsText');
+    if(count>8){
+      more.hidden=false;
+      more.setAttribute('aria-expanded',String(printPreviewState.expanded));
+      text.innerHTML=printPreviewState.expanded?'Show less':`… …<br>and ${count-8} more`;
+    }else more.hidden=true;
+    $('previewFirst').disabled=$('previewPrev').disabled=printPreviewState.page===1;
+    $('previewLast').disabled=$('previewNext').disabled=printPreviewState.page===totalPages;
   }
+  function buildPrintPreview(r=barcodeRange()){
+    $('allCount').textContent=r.qty; $('previewCount').textContent=r.qty; $('printFrom').value=r.first; $('printTo').value=r.last;
+    printPreviewState={page:1,perPage:20,expanded:false,range:r};
+    renderPrintPreviewPage();
+  }
+  $('moreLabelsBtn').onclick=()=>{ printPreviewState.expanded=!printPreviewState.expanded; renderPrintPreviewPage(); };
+  $('previewFirst').onclick=()=>{printPreviewState.page=1;printPreviewState.expanded=false;renderPrintPreviewPage();};
+  $('previewPrev').onclick=()=>{printPreviewState.page--;printPreviewState.expanded=false;renderPrintPreviewPage();};
+  $('previewNext').onclick=()=>{printPreviewState.page++;printPreviewState.expanded=false;renderPrintPreviewPage();};
+  $('previewLast').onclick=()=>{const r=printPreviewState.range||barcodeRange();printPreviewState.page=Math.max(1,Math.ceil(r.qty/printPreviewState.perPage));printPreviewState.expanded=false;renderPrintPreviewPage();};
   $('printClose').onclick=()=>$('printModal').hidden=true;
   $('printCancel').onclick=()=>$('printModal').hidden=true;
   $('printModal').addEventListener('click',e=>{ if(e.target===$('printModal')) $('printModal').hidden=true; });
