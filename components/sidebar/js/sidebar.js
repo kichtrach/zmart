@@ -2,6 +2,75 @@
   const mount = document.getElementById('sidebarMount');
   if (!mount) return;
 
+  // Centralized route registry. Keep every reusable sidebar link in one place so
+  // inner pages can reuse the same component without hard-coded relative paths.
+  const MODULE_ROUTES = {
+    dashboard: 'index.html',
+    company: {
+      'Company Profile':'company-profile.html',
+      'Financial Year':'financial-year.html',
+      'Business Settings':'business-settings.html',
+      'GST Settings':'gst-settings.html',
+      'Invoice Settings':'invoice-settings.html',
+      'Tax Configuration':'tax-configuration.html',
+      'Currency Settings':'currency-settings.html',
+      'Backup Settings':'backup-settings.html'
+    },
+    branch: {
+      'Branch Master':'branch-master.html',
+      'Branch Configuration':'branch-configuration.html',
+      'Branch Targets':'branch-targets.html',
+      'Branch Performance':'branch-performance.html',
+      'Branch Expenses':'branch-expenses.html',
+      'Branch Status':'branch-status.html',
+      'Branch Dashboard':'branch-dashboard.html'
+    },
+    warehouse: {
+      'Warehouse Overview':'warehouse-overview.html',
+      'Warehouse Master':'warehouse-master.html',
+      'Stock by Warehouse':'stock-by-warehouse.html',
+      'Stock Transfers':'stock-transfers.html',
+      'Rack & Bin Management':'rack-bin-management.html'
+    },
+    product: {
+      'Categories':'categories.html',
+      'Sub Categories':'sub-categories.html',
+      'Brands':'brands.html',
+      'Products':'products.html',
+      'Product Variants':'product-variants.html',
+      'Units':'units.html',
+      'Barcode Management':'barcode-management.html',
+      'Batch Management':'batch-management.html'
+    }
+  };
+
+  const moduleFolder = {
+    company: 'company-management',
+    branch: 'branch-management',
+    warehouse: 'warehouse-management',
+    product: 'product-management'
+  };
+
+  const currentModuleKey = () => {
+    const p = location.pathname;
+    if (p.includes('/company-management/')) return 'company';
+    if (p.includes('/branch-management/')) return 'branch';
+    if (p.includes('/warehouse-management/')) return 'warehouse';
+    if (p.includes('/product-management/')) return 'product';
+    return 'dashboard';
+  };
+
+  const navigateToModuleFile = (moduleKey, fileName) => {
+    const current = currentModuleKey();
+    if (moduleKey === 'dashboard') {
+      location.href = current === 'dashboard' ? 'index.html' : '../index.html';
+      return;
+    }
+    const folder = moduleFolder[moduleKey];
+    if (!folder || !fileName) return;
+    location.href = current === moduleKey ? fileName : `${current === 'dashboard' ? '' : '../'}${folder}/${fileName}`;
+  };
+
   const groups = [
     ['dashboard','fa-house','Dashboard',false],
     ['company','fa-building','Company Management',true],
@@ -38,7 +107,7 @@
   mount.className = 'app-sidebar';
   mount.innerHTML = `
     <div class="sidebar-brand">
-      <img src="${(location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/')) ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
+      <img src="${(location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/') || location.pathname.includes('/product-management/')) ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
     </div>
     <nav class="sidebar-nav">
       ${groups.map(([key,icon,label,expandable]) => `
@@ -63,6 +132,9 @@
   const routeToSubnav = {
     'company-profile.html':'Company Profile',
     'financial-year.html':'Financial Year',
+    'financial-year-details.html':'Financial Year',
+    'financial-year-edit.html':'Financial Year',
+    'financial-year-report.html':'Financial Year',
     'business-settings.html':'Business Settings',
     'gst-settings.html':'GST Settings',
     'invoice-settings.html':'Invoice Settings',
@@ -79,18 +151,28 @@
     'branch-status.html':'Branch Status',
     'branch-dashboard.html':'Branch Dashboard',
     'warehouse-overview.html':'Warehouse Overview',
+    'overview-list.html':'Warehouse Overview',
     'warehouse-master.html':'Warehouse Master',
     'add-warehouse.html':'Warehouse Master',
     'stock-by-warehouse.html':'Stock by Warehouse',
     'stock-transfers.html':'Stock Transfers',
     'new-stock-transfer.html':'Stock Transfers',
-    'rack-bin-management.html':'Rack & Bin Management'
+    'rack-bin-management.html':'Rack & Bin Management',
+    'add-rack-bin.html':'Rack & Bin Management',
+    'categories.html':'Categories',
+    'add-category.html':'Categories',
+    'category-success.html':'Categories',
+    'sub-categories.html':'Sub Categories',
+    'add-sub-category.html':'Sub Categories',
+    'brands.html':'Brands',
+    'add-brand.html':'Brands',
+    'products.html':'Products',
+    'add-product.html':'Products',
+    'product-variants.html':'Product Variants',
+    'add-product-variant.html':'Product Variants'
   };
 
-  const isCompanyPage = location.pathname.includes('/company-management/');
-  const isBranchPage = location.pathname.includes('/branch-management/');
-  const isWarehousePage = location.pathname.includes('/warehouse-management/');
-  const activeGroupKey = isCompanyPage ? 'company' : isBranchPage ? 'branch' : isWarehousePage ? 'warehouse' : 'dashboard';
+  const activeGroupKey = currentModuleKey();
   const activeGroup = sidebar.querySelector(`[data-group="${activeGroupKey}"]`);
   activeGroup?.classList.add('active');
   if (activeGroupKey !== 'dashboard') {
@@ -130,43 +212,14 @@
     const sub = e.target.closest('[data-subnav]');
     if (sub) {
       const label = sub.dataset.subnav;
-      const inCompany = location.pathname.includes('/company-management/');
-      const inBranch = location.pathname.includes('/branch-management/');
-      const inWarehouse = location.pathname.includes('/warehouse-management/');
-      const companyRoutes = {
-        'Company Profile':'company-profile.html',
-        'Financial Year':'financial-year.html',
-        'Business Settings':'business-settings.html',
-        'GST Settings':'gst-settings.html',
-        'Invoice Settings':'invoice-settings.html',
-        'Tax Configuration':'tax-configuration.html',
-        'Currency Settings':'currency-settings.html',
-        'Backup Settings':'backup-settings.html'
-      };
-      const warehouseRoutes = {
-        'Warehouse Overview':'warehouse-overview.html',
-        'Warehouse Master':'warehouse-master.html',
-        'Stock by Warehouse':'stock-by-warehouse.html',
-        'Stock Transfers':'stock-transfers.html',
-        'Rack & Bin Management':'rack-bin-management.html'
-      };
-      const branchRoutes = {
-        'Branch Master':'branch-master.html',
-        'Branch Configuration':'branch-configuration.html',
-        'Branch Targets':'branch-targets.html',
-        'Branch Performance':'branch-performance.html',
-        'Branch Expenses':'branch-expenses.html',
-        'Branch Status':'branch-status.html',
-        'Branch Dashboard':'branch-dashboard.html'
-      };
-      if (companyRoutes[label]) {
-        location.href = inCompany ? companyRoutes[label] : `company-management/${companyRoutes[label]}`;
-      } else if (branchRoutes[label]) {
-        location.href = inBranch ? branchRoutes[label] : `branch-management/${branchRoutes[label]}`;
-      } else if (warehouseRoutes[label]) {
-        location.href = inWarehouse ? warehouseRoutes[label] : `warehouse-management/${warehouseRoutes[label]}`;
+      const groupKey = sub.closest('.nav-group')?.dataset.group;
+      const route = MODULE_ROUTES[groupKey]?.[label];
+      if (route) {
+        navigateToModuleFile(groupKey, route);
       } else {
-        window.dispatchEvent(new CustomEvent('zmart:navigate', {detail:{label}}));
+        // Modules that are not yet implemented still emit a reusable navigation
+        // event instead of sending the browser to a broken URL.
+        window.dispatchEvent(new CustomEvent('zmart:navigate', {detail:{label, module:groupKey}}));
       }
       if (window.innerWidth <= 900) closeMobileSidebar();
       return;
@@ -174,8 +227,8 @@
     if (!nav) return;
     const key = nav.dataset.nav;
     if (key === 'dashboard') {
-      if (location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/')) {
-        location.href = '../index.html';
+      if (currentModuleKey() !== 'dashboard') {
+        navigateToModuleFile('dashboard', MODULE_ROUTES.dashboard);
       } else {
         document.querySelectorAll('.nav-group').forEach(g => g.classList.remove('active'));
         nav.closest('.nav-group')?.classList.add('active');

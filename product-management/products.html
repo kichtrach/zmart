@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/product-management.css">
+</head>
+<body class="products-screen">
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="product-page" id="mainContent">
+  <section class="product-head">
+    <div class="product-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><b>Products</b></div>
+    <a class="product-btn primary" id="addProductTop" href="add-product.html"><i class="fa-solid fa-plus"></i> Add New Product</a>
+  </section>
+
+  <div class="product-layout">
+    <div class="product-main">
+      <section class="product-card filter-card">
+        <div class="filter-grid">
+          <label>Search Product<div class="product-search"><input id="productSearch" placeholder="Search by product name, SKU, barcode..."><i class="fa-solid fa-magnifying-glass"></i></div></label>
+          <label>Category<select id="productCategory"><option>All Categories</option><option>Grocery</option><option>Home Care</option><option>Personal Care</option><option>Oral Care</option><option>Dairy</option><option>Biscuits</option></select></label>
+          <label>Brand<select id="productBrand"><option>All Brands</option><option>Aachi</option><option>Tata</option><option>Dabur</option><option>P&amp;G</option><option>Colgate</option><option>Parle</option><option>Amul</option><option>Britannia</option><option>Himalaya</option><option>Tide</option></select></label>
+          <label>Status<select id="productStatus"><option>All Status</option><option>Active</option><option>Low Stock</option><option>Inactive</option></select></label>
+          <div class="filter-actions"><button class="product-btn primary" id="productFilter"><i class="fa-solid fa-filter"></i> Filter</button><button class="product-btn" id="productReset"><i class="fa-solid fa-rotate"></i> Reset</button></div>
+        </div>
+      </section>
+
+      <section class="product-kpis">
+        <article><span class="kico violet"><i class="fa-solid fa-bag-shopping"></i></span><div><small>Total Products</small><strong>2,846</strong><em>All Products</em></div></article>
+        <article><span class="kico green"><i class="fa-regular fa-circle-check"></i></span><div><small>Active Products</small><strong>2,356</strong><em class="green-txt">82.87%</em></div></article>
+        <article><span class="kico orange"><i class="fa-regular fa-circle-pause"></i></span><div><small>Inactive Products</small><strong>490</strong><em class="orange-txt">17.13%</em></div></article>
+        <article><span class="kico red"><i class="fa-solid fa-triangle-exclamation"></i></span><div><small>Low Stock Products</small><strong>156</strong><em class="link-txt" id="lowStockDetails">View Details</em></div></article>
+      </section>
+
+      <section class="product-card table-card">
+        <div class="list-head"><h3>Products List</h3><div><button class="product-btn" id="exportProducts"><i class="fa-solid fa-download"></i> Export</button><button class="product-btn" id="columnsProducts"><i class="fa-regular fa-rectangle-list"></i> Columns <i class="fa-solid fa-chevron-down"></i></button></div></div>
+        <div class="table-wrap"><table class="product-table" id="productTable"><thead><tr><th>#</th><th>Product Name</th><th>SKU</th><th>Barcode</th><th>Category</th><th>Brand</th><th>Selling Price</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead><tbody>
+          <tr data-status="Active" data-category="Grocery" data-brand="Aachi"><td>1</td><td><span class="product-thumb rice">A</span><b>Aachi Basmati Rice 1kg</b></td><td>RICE-001</td><td>8901234567890</td><td>Grocery</td><td>Aachi</td><td>₹ 120.00</td><td>235</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Aachi Basmati Rice 1kg"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Grocery" data-brand="Tata"><td>2</td><td><span class="product-thumb salt">T</span><b>Tata Salt 1kg</b></td><td>SALT-001</td><td>8901030425112</td><td>Grocery</td><td>Tata</td><td>₹ 38.00</td><td>420</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Tata Salt 1kg"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Grocery" data-brand="Dabur"><td>3</td><td><span class="product-thumb honey">D</span><b>Dabur Honey 500g</b></td><td>HONEY-001</td><td>8901207006294</td><td>Grocery</td><td>Dabur</td><td>₹ 155.00</td><td>85</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Dabur Honey 500g"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Low Stock" data-category="Home Care" data-brand="P&G"><td>4</td><td><span class="product-thumb ariel">P</span><b>P&amp;G Ariel Matic 1kg</b></td><td>DETER-001</td><td>4902430650231</td><td>Home Care</td><td>P&amp;G</td><td>₹ 210.00</td><td>38</td><td><span class="product-status low">Low Stock</span></td><td><button class="product-more" data-name="P&G Ariel Matic 1kg"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Oral Care" data-brand="Colgate"><td>5</td><td><span class="product-thumb colgate">C</span><b>Colgate Strong Teeth 200g</b></td><td>ORAL-001</td><td>8901023011236</td><td>Oral Care</td><td>Colgate</td><td>₹ 85.00</td><td>96</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Colgate Strong Teeth 200g"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Biscuits" data-brand="Parle"><td>6</td><td><span class="product-thumb parle">P</span><b>Parle-G Original 250g</b></td><td>BIS-001</td><td>8901719000010</td><td>Biscuits</td><td>Parle</td><td>₹ 20.00</td><td>320</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Parle-G Original 250g"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Dairy" data-brand="Amul"><td>7</td><td><span class="product-thumb amul">A</span><b>Amul Taaza Toned Milk 1L</b></td><td>MILK-001</td><td>8901262100018</td><td>Dairy</td><td>Amul</td><td>₹ 56.00</td><td>150</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Amul Taaza Toned Milk 1L"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Biscuits" data-brand="Britannia"><td>8</td><td><span class="product-thumb brit">B</span><b>Britannia Good Day 200g</b></td><td>BIS-002</td><td>8901063310291</td><td>Biscuits</td><td>Britannia</td><td>₹ 32.00</td><td>68</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Britannia Good Day 200g"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Personal Care" data-brand="Himalaya"><td>9</td><td><span class="product-thumb himalaya">H</span><b>Himalaya Neem Face Wash 150ml</b></td><td>PC-001</td><td>8901138506234</td><td>Personal Care</td><td>Himalaya</td><td>₹ 165.00</td><td>44</td><td><span class="product-status active">Active</span></td><td><button class="product-more" data-name="Himalaya Neem Face Wash 150ml"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Low Stock" data-category="Home Care" data-brand="Tide"><td>10</td><td><span class="product-thumb tide">T</span><b>Tide Plus 1kg</b></td><td>DETER-002</td><td>8901365067893</td><td>Home Care</td><td>Tide</td><td>₹ 145.00</td><td>22</td><td><span class="product-status low">Low Stock</span></td><td><button class="product-more" data-name="Tide Plus 1kg"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+        </tbody></table></div>
+        <div class="table-foot"><span id="productCount">Showing 1 to 10 of 2,846 entries</span><div class="pages"><button>«</button><button class="active">1</button><button>2</button><button>3</button><button>…</button><button>285</button><button>»</button></div></div>
+      </section>
+    </div>
+
+    <aside class="product-side">
+      <section class="product-card side-card"><div class="side-title"><h3>Products by Category</h3><button id="categoryViewAll">View All</button></div><div class="category-overview"><div class="product-donut"><span><strong>2,846</strong><small>Total</small></span></div><div class="legend"><p><i class="green-dot"></i><span>Grocery<b>1,256 (44.16%)</b></span></p><p><i class="purple-dot"></i><span>Home Care<b>586 (20.59%)</b></span></p><p><i class="orange-dot"></i><span>Personal Care<b>412 (14.48%)</b></span></p><p><i class="blue-dot"></i><span>Dairy<b>298 (10.47%)</b></span></p><p><i class="gray-dot"></i><span>Others<b>294 (10.30%)</b></span></p></div></div></section>
+      <section class="product-card side-card"><h3>Quick Actions</h3><div class="quick-actions"><a id="qaAddProduct" href="add-product.html"><i class="fa-solid fa-plus"></i>Add New Product</a><button id="qaImportProducts"><i class="fa-solid fa-download"></i>Import Products</button><button id="qaBulkUpload"><i class="fa-solid fa-upload"></i>Bulk Upload</button><button id="qaProductReport"><i class="fa-regular fa-file-lines"></i>Product Report</button><button id="qaLowStockReport"><i class="fa-solid fa-triangle-exclamation"></i>Low Stock Report</button></div></section>
+      <section class="product-card side-card"><div class="side-title"><h3>Recent Activities</h3><button id="recentProductsViewAll">View All</button></div><div class="activities"><p><i class="fa-solid fa-circle-check green-icon"></i><span>New product “Aachi Basmati Rice 1kg” added successfully<small>31 May 2025 10:30 AM</small></span></p><p><i class="fa-solid fa-pen blue-icon"></i><span>Product “Tata Salt 1kg” updated<small>31 May 2025 09:45 AM</small></span></p><p><i class="fa-solid fa-circle-exclamation orange-icon"></i><span>Stock updated for “P&amp;G Ariel Matic 1kg”<small>31 May 2025 09:20 AM</small></span></p></div></section>
+    </aside>
+  </div>
+</main></div>
+
+<div class="product-menu" id="productMenu" hidden><button data-act="view"><i class="fa-regular fa-eye"></i>View Details</button><button data-act="edit"><i class="fa-regular fa-pen-to-square"></i>Edit Product</button><button data-act="stock"><i class="fa-solid fa-clock-rotate-left"></i>Stock History</button><button data-act="status"><i class="fa-solid fa-power-off"></i>Change Status</button><button data-act="barcode"><i class="fa-solid fa-barcode"></i>Barcode / Print Label</button></div>
+<div class="product-modal" id="productModal" hidden><div class="product-modal-card"><button class="modal-close" data-close-modal>&times;</button><h3 id="productModalTitle">Add New Product</h3><div id="productModalBody"></div><div class="modal-actions"><button class="product-btn" data-close-modal>Cancel</button><button class="product-btn primary" id="productModalSave">Save</button></div></div></div>
+<div class="product-toast" id="productToast" hidden></div>
+
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/product-management.js"></script>
+</body></html>

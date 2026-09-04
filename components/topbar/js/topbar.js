@@ -6,11 +6,23 @@
     <div class="topbar-left">
       <button class="hamburger" id="sidebarToggle" type="button" aria-label="Toggle sidebar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
       <strong class="topbar-title">${
+        location.pathname.includes("/product-management/add-category") ? "Add New Category" :
+        location.pathname.includes("/product-management/category-success") ? "Add New Category" :
+        location.pathname.includes("/product-management/add-product-variant") ? "Add New Variant" :
+        location.pathname.includes("/product-management/product-variants") ? "Product Variants" :
+        location.pathname.includes("/product-management/add-product") ? "Add New Product" :
+        location.pathname.includes("/product-management/products") ? "Products" :
+        location.pathname.includes("/product-management/add-brand") ? "Add New Brand" :
+        location.pathname.includes("/product-management/brands") ? "Brands" :
+        location.pathname.includes("/product-management/add-sub-category") ? "Add New Sub Category" :
+        location.pathname.includes("/product-management/sub-categories") ? "Sub Categories" :
+        location.pathname.includes("/product-management/categories") ? "Categories" :
         location.pathname.includes("/warehouse-management/add-warehouse") ? "Add Warehouse" :
         location.pathname.includes("/warehouse-management/warehouse-master") ? "Warehouse Master" :
         location.pathname.includes("/warehouse-management/stock-by-warehouse") ? "Stock by Warehouse" :
         location.pathname.includes("/warehouse-management/new-stock-transfer") ? "New Stock Transfer" :
         location.pathname.includes("/warehouse-management/stock-transfers") ? "Stock Transfers" :
+        location.pathname.includes("/warehouse-management/add-rack-bin") ? "Add New Rack / Bin" :
         location.pathname.includes("/warehouse-management/rack-bin-management") ? "Rack & Bin Management" :
         location.pathname.includes("/warehouse-management/") ? "Warehouse Management" :
         location.pathname.includes("/branch-management/branch-dashboard") ? "Branch Dashboard - ZMART Anna Nagar" :

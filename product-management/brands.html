@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Brands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/brand-management.css">
+</head>
+<body class="brands-screen">
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="brand-page" id="mainContent">
+  <section class="brand-head">
+    <div class="brand-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><b>Brands</b></div>
+    <button class="brand-btn primary" id="addBrandTop"><i class="fa-solid fa-plus"></i> Add New Brand</button>
+  </section>
+
+  <div class="brand-layout">
+    <div class="brand-main">
+      <section class="brand-card filter-card">
+        <div class="filter-grid">
+          <label>Search Brand<div class="brand-search"><input id="brandSearch" placeholder="Search by brand name..."><i class="fa-solid fa-magnifying-glass"></i></div></label>
+          <label>Status<select id="brandStatus"><option>All Status</option><option>Active</option><option>Inactive</option></select></label>
+          <label>Category<select id="brandCategory"><option>All Categories</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option><option>Oral Care</option><option>Dairy</option><option>Beverages</option></select></label>
+          <div class="filter-actions"><button class="brand-btn primary" id="brandFilter"><i class="fa-solid fa-filter"></i> Filter</button><button class="brand-btn" id="brandReset"><i class="fa-solid fa-rotate"></i> Reset</button></div>
+        </div>
+      </section>
+
+      <section class="brand-kpis">
+        <article><span class="kico violet"><i class="fa-solid fa-tags"></i></span><div><small>Total Brands</small><strong>128</strong><em>All Brands</em></div></article>
+        <article><span class="kico green"><i class="fa-regular fa-circle-check"></i></span><div><small>Active Brands</small><strong>102</strong><em class="green-txt">79.69%</em></div></article>
+        <article><span class="kico orange"><i class="fa-regular fa-circle-pause"></i></span><div><small>Inactive Brands</small><strong>26</strong><em class="orange-txt">20.31%</em></div></article>
+        <article><span class="kico blue"><i class="fa-solid fa-tag"></i></span><div><small>Products Mapped</small><strong>2,846</strong><em>Across Brands</em></div></article>
+      </section>
+
+      <section class="brand-card table-card">
+        <div class="list-head"><h3>Brands List</h3><div><button class="brand-btn" id="exportBrands"><i class="fa-solid fa-download"></i> Export</button><button class="brand-btn" id="columnsBrands"><i class="fa-solid fa-table-columns"></i> Columns <i class="fa-solid fa-chevron-down"></i></button></div></div>
+        <div class="table-wrap"><table class="brand-table" id="brandTable"><thead><tr><th>#</th><th>Brand Name</th><th>Category</th><th>Products</th><th>Status</th><th>Created On</th><th>Action</th></tr></thead><tbody>
+<tr data-status="Active" data-category="Grocery"><td>1</td><td><span class="logo aachi">Aachi</span><b>Aachi</b></td><td>Grocery</td><td><span class="count">86</span></td><td><span class="brand-status active">Active</span></td><td>31 May 2025 10:30 AM</td><td><button class="brand-more" data-name="Aachi"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Grocery"><td>2</td><td><span class="logo britannia">BRITANNIA</span><b>Britannia</b></td><td>Grocery</td><td><span class="count">124</span></td><td><span class="brand-status active">Active</span></td><td>30 May 2025 09:15 AM</td><td><button class="brand-more" data-name="Britannia"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Grocery"><td>3</td><td><span class="logo parle">Parle</span><b>Parle</b></td><td>Grocery</td><td><span class="count">58</span></td><td><span class="brand-status active">Active</span></td><td>29 May 2025 04:45 PM</td><td><button class="brand-more" data-name="Parle"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Personal Care"><td>4</td><td><span class="logo dabur">Dabur</span><b>Dabur</b></td><td>Personal Care</td><td><span class="count">112</span></td><td><span class="brand-status active">Active</span></td><td>28 May 2025 11:20 AM</td><td><button class="brand-more" data-name="Dabur"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Home Care"><td>5</td><td><span class="logo pg">P&amp;G</span><b>Procter &amp; Gamble</b></td><td>Home Care</td><td><span class="count">98</span></td><td><span class="brand-status active">Active</span></td><td>27 May 2025 02:10 PM</td><td><button class="brand-more" data-name="Procter & Gamble"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Personal Care"><td>6</td><td><span class="logo himalaya">Himalaya</span><b>Himalaya</b></td><td>Personal Care</td><td><span class="count">64</span></td><td><span class="brand-status active">Active</span></td><td>27 May 2025 01:05 PM</td><td><button class="brand-more" data-name="Himalaya"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Oral Care"><td>7</td><td><span class="logo colgate">Colgate</span><b>Colgate</b></td><td>Oral Care</td><td><span class="count">48</span></td><td><span class="brand-status active">Active</span></td><td>26 May 2025 03:30 PM</td><td><button class="brand-more" data-name="Colgate"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Dairy"><td>8</td><td><span class="logo amul">Amul</span><b>Amul</b></td><td>Dairy</td><td><span class="count">42</span></td><td><span class="brand-status active">Active</span></td><td>25 May 2025 05:00 PM</td><td><button class="brand-more" data-name="Amul"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Inactive" data-category="Beverages"><td>9</td><td><span class="logo nestle">Nestlé</span><b>Nestle</b></td><td>Beverages</td><td><span class="count">76</span></td><td><span class="brand-status inactive">Inactive</span></td><td>25 May 2025 12:45 PM</td><td><button class="brand-more" data-name="Nestle"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+<tr data-status="Active" data-category="Home Care"><td>10</td><td><span class="logo tide">Tide</span><b>Tide</b></td><td>Home Care</td><td><span class="count">66</span></td><td><span class="brand-status active">Active</span></td><td>24 May 2025 11:30 AM</td><td><button class="brand-more" data-name="Tide"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+        </tbody></table></div>
+        <div class="table-foot"><span id="brandCount">Showing 1 to 10 of 128 entries</span><div class="pages"><button>«</button><button class="active">1</button><button>2</button><button>3</button><button>…</button><button>13</button><button>»</button></div></div>
+      </section>
+    </div>
+
+    <aside class="brand-side">
+      <section class="brand-card side-card"><h3>Brand Status Overview</h3><div class="status-overview"><div class="brand-donut"><span><strong>128</strong><small>Total Brands</small></span></div><div class="legend"><p><i class="green-dot"></i><span>Active<b>102 (79.69%)</b></span></p><p><i class="red-dot"></i><span>Inactive<b>26 (20.31%)</b></span></p></div></div></section>
+      <section class="brand-card side-card"><div class="side-title"><h3>Top Brands (By Products)</h3><button id="topBrandsViewAll">View All</button></div><div class="top-brands"><p><span class="mini-logo britannia">BRITANNIA</span><b>Britannia</b><em>124</em></p><p><span class="mini-logo dabur">Dabur</span><b>Dabur</b><em>112</em></p><p><span class="mini-logo pg">P&amp;G</span><b>P&amp;G</b><em>98</em></p><p><span class="mini-logo aachi">Aachi</span><b>Aachi</b><em>86</em></p><p><span class="mini-logo nestle">Nestlé</span><b>Nestle</b><em>76</em></p></div></section>
+      <section class="brand-card side-card"><h3>Quick Actions</h3><div class="quick-actions"><button id="qaAddBrand"><i class="fa-solid fa-plus"></i>Add New Brand</button><button id="qaImportBrands"><i class="fa-solid fa-download"></i>Import Brands</button><button id="qaBrandReport"><i class="fa-regular fa-file-lines"></i>Brand Report</button></div></section>
+      <section class="brand-card side-card"><div class="side-title"><h3>Recent Activities</h3><button id="recentViewAll">View All</button></div><p class="activity"><i class="fa-regular fa-circle-check"></i><span>New Brand “Aachi” added successfully<small>31 May 2025 10:30 AM</small></span></p></section>
+    </aside>
+  </div>
+</main></div>
+
+<div class="brand-menu" id="brandMenu" hidden><button data-act="view"><i class="fa-regular fa-eye"></i>View Details</button><button data-act="edit"><i class="fa-regular fa-pen-to-square"></i>Edit Brand</button><button data-act="products"><i class="fa-solid fa-boxes-stacked"></i>View Products</button><button data-act="status"><i class="fa-solid fa-power-off"></i>Change Status</button><button class="danger" data-act="delete"><i class="fa-regular fa-trash-can"></i>Delete Brand</button></div>
+<div class="brand-modal" id="brandModal" hidden><div class="modal-card"><button class="modal-close" id="closeBrandModal">×</button><h2>Add New Brand</h2><p>Create a new product brand.</p><label>Brand Name <b>*</b><input id="newBrandName" placeholder="Enter brand name"></label><label>Category <b>*</b><select id="newBrandCategory"><option>Grocery</option><option>Personal Care</option><option>Home Care</option><option>Beverages</option><option>Dairy</option></select></label><label>Status<select id="newBrandStatus"><option>Active</option><option>Inactive</option></select></label><div class="modal-actions"><button class="brand-btn" id="cancelBrand">Cancel</button><button class="brand-btn primary" id="saveBrand">Save Brand</button></div></div></div>
+<div class="brand-toast" id="brandToast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/brand-management.js"></script>
+</body></html>

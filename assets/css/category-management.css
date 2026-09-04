@@ -1,0 +1,55 @@
+:root{
+  --cat-primary:#008A4B;
+  --cat-primary-dark:#006f3d;
+  --cat-primary-soft:#eaf7f0;
+  --cat-text:#10163d;
+  --cat-muted:#6d7698;
+  --cat-border:#dfe5f3;
+  --cat-surface:#fff;
+  --cat-radius:4px;
+  --topbar-height:72px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--cat-text);font-family:'Poppins',sans-serif}
+.categories-screen .topbar-search{display:none!important}
+.categories-screen .app-topbar{grid-template-columns:minmax(360px,1fr) auto!important}
+.categories-screen .topbar-right{grid-column:2}
+.cat-page{padding:calc(var(--topbar-height) + 12px) 26px 28px;min-width:0}
+.cat-head{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:46px;margin-bottom:18px}
+.cat-breadcrumb{display:flex;align-items:center;gap:16px;color:var(--cat-primary);font-size:13px;font-weight:600;flex-wrap:wrap}
+.cat-breadcrumb i{font-size:10px}.cat-breadcrumb b{font-weight:700}
+.cat-btn{height:40px;padding:0 17px;border:1px solid #cfd8ef;background:#fff;color:var(--cat-primary-dark);border-radius:4px;font:600 12.5px 'Poppins';display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;white-space:nowrap;transition:.15s}
+.cat-btn:hover{border-color:var(--cat-primary);background:var(--cat-primary-soft)}
+.cat-btn.primary{background:var(--cat-primary);color:#fff;border-color:var(--cat-primary);box-shadow:0 5px 12px rgba(0,138,75,.13)}
+.cat-btn.primary:hover{background:var(--cat-primary-dark)}
+.cat-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}
+.cat-main{min-width:0}.cat-card{background:#fff;border:1px solid var(--cat-border);border-radius:var(--cat-radius)}
+.cat-filter-card{padding:20px 22px}
+.cat-filter-grid{display:grid;grid-template-columns:185px 185px minmax(280px,1fr) auto;gap:28px;align-items:end}
+.cat-filter-grid label{display:grid;gap:8px;font-size:12.5px;font-weight:600;color:#111a45}
+.cat-filter-grid select,.cat-search input{height:42px;border:1px solid #cbd5ed;border-radius:4px;background:#fff;padding:0 13px;font:500 12.5px 'Poppins';color:#17224d;outline:none}
+.cat-filter-grid select:focus,.cat-search input:focus{border-color:var(--cat-primary);box-shadow:0 0 0 3px rgba(0,138,75,.09)}
+.cat-search{position:relative}.cat-search input{width:100%;padding-right:40px}.cat-search i{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--cat-primary);font-size:14px}
+.cat-filter-actions{display:flex;gap:10px}
+.cat-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:20px 0 22px}
+.cat-kpis article{min-height:108px;border:1px solid var(--cat-border);border-radius:4px;padding:16px 18px;display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,#fbfbff,#f7f7ff)}
+.cat-kpis article:nth-child(2){background:linear-gradient(90deg,#fbfffc,#f2fbf6)}
+.cat-kpis article:nth-child(3){background:linear-gradient(90deg,#fffdfa,#fff8ef)}
+.cat-kpis article:nth-child(4){background:linear-gradient(90deg,#fbfdff,#f5f8ff)}
+.kico{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:23px;flex:0 0 52px}
+.kico.violet{background:#eeeaff;color:var(--cat-primary)}.kico.green{background:#e6f6ec;color:#159254}.kico.orange{background:#fff0df;color:#f3901b}.kico.blue{background:#e9f1ff;color:#2358ed}
+.cat-kpis small{display:block;font-size:11.5px;font-weight:500}.cat-kpis strong{display:block;font-size:22px;line-height:1.15;margin:5px 0 4px}.cat-kpis em{font-size:10.5px;font-style:normal;color:#161e55}.green-txt{color:#14964f!important}.violet-txt{color:var(--cat-primary)!important}
+.table-card{overflow:hidden}.cat-list-head{display:flex;align-items:center;justify-content:space-between;padding:17px 18px 13px}.cat-list-head h3,.side-card h3{margin:0;font-size:14px;font-weight:700}.cat-list-head>div{display:flex;gap:10px}
+.cat-table-wrap{overflow:auto}.cat-table{width:100%;min-width:900px;border-collapse:collapse;table-layout:auto}.cat-table th,.cat-table td{border-top:1px solid #e6eaf4;border-bottom:1px solid #e6eaf4;padding:11px 13px;font-size:11.5px;text-align:left;vertical-align:middle;white-space:nowrap}.cat-table th{background:#f8f9fd;font-size:11px;font-weight:700}.cat-table tr:hover td{background:#fbfdfc}
+.cat-table th:first-child,.cat-table td:first-child{text-align:center;width:42px}.cat-table th:nth-child(4),.cat-table td:nth-child(4),.cat-table th:nth-child(5),.cat-table td:nth-child(5),.cat-table th:last-child,.cat-table td:last-child{text-align:center}
+.folder{color:var(--cat-primary);margin-right:16px;font-size:15px}.count{display:inline-block;min-width:34px;padding:2px 7px;border-radius:4px;background:#f1f4f9;border:1px solid #dfe5f0;text-align:center}.cat-status{padding:4px 8px;border-radius:4px;font-size:10px;font-weight:600}.cat-status.active{background:#e4f5e9;color:#0d8541}.cat-status.inactive{background:#fff0e4;color:#f27018}
+.cat-more{width:32px;height:29px;border:1px solid #d4dced;border-radius:4px;background:#fff;color:var(--cat-primary);cursor:pointer}.cat-more:hover{border-color:var(--cat-primary);background:var(--cat-primary-soft)}
+.cat-table-foot{display:flex;align-items:center;justify-content:space-between;padding:17px 18px;font-size:11.5px;font-weight:500}.cat-pages{display:flex;gap:8px}.cat-pages button{min-width:35px;height:35px;border:1px solid #d5ddef;background:#fff;border-radius:4px;color:#182365;font:600 11.5px 'Poppins';cursor:pointer}.cat-pages button.active{background:var(--cat-primary);border-color:var(--cat-primary);color:#fff}
+.cat-side{display:grid;gap:14px;align-content:start}.side-card{padding:17px}.breakdown{display:grid;grid-template-columns:126px 1fr;gap:12px;align-items:center;margin-top:14px}.category-donut{width:122px;height:122px;border-radius:50%;background:conic-gradient(#36a66f 0 45.8%,#3d80d8 45.8% 64.4%,#d3b62b 64.4% 79.6%,#ef4b37 79.6% 89.7%,#5646cf 89.7% 100%);display:grid;place-items:center}.category-donut:before{content:"";width:74px;height:74px;background:#fff;border-radius:50%;grid-area:1/1}.category-donut span{grid-area:1/1;z-index:1;text-align:center}.category-donut strong{display:block;font-size:19px}.category-donut small{font-size:8.5px}.legend{display:grid;gap:8px}.legend p{display:grid;grid-template-columns:8px 1fr;gap:7px;margin:0;font-size:9.5px}.legend i{width:7px;height:7px;border-radius:50%;background:var(--c);margin-top:3px}.legend b{display:block;font-size:9px;margin-top:2px}
+.side-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.side-title button{border:0;background:none;color:var(--cat-primary);font:600 10.5px 'Poppins';cursor:pointer}.top-categories{display:grid;gap:15px}.top-categories p{display:flex;align-items:center;gap:11px;margin:0;font-size:11px}.top-categories b{font-weight:500}.top-categories small{display:block;margin-top:2px;font-size:9.5px}.round{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:0 0 32px}.round.green{background:#e2f4e8;color:#0f8d49}.round.blue{background:#eaf1ff;color:#3776e5}.round.yellow{background:#fff2d9;color:#df9d16}.round.red{background:#ffe6e2;color:#e64d37}.round.orange{background:#fff0df;color:#e57618}
+.quick-actions{display:grid;gap:8px;margin-top:12px}.quick-actions button{height:39px;border:1px solid #c9d1ec;background:#fff;color:var(--cat-primary-dark);border-radius:4px;text-align:left;padding:0 12px;font:600 11px 'Poppins';cursor:pointer}.quick-actions button:hover{border-color:var(--cat-primary);background:var(--cat-primary-soft)}.quick-actions i{width:22px}
+.cat-action-menu{position:fixed;z-index:1500;width:205px;background:#fff;border:1px solid #dfe4ef;border-radius:6px;box-shadow:0 12px 28px rgba(20,31,61,.18);padding:6px;display:none}.cat-action-menu.show{display:grid}.cat-action-menu button{height:38px;border:0;background:#fff;text-align:left;padding:0 10px;border-radius:4px;font:500 11.5px 'Poppins';color:#16203e;cursor:pointer}.cat-action-menu button:hover{background:#f2faf5}.cat-action-menu button i{width:23px;color:var(--cat-primary)}.cat-action-menu button.danger,.cat-action-menu button.danger i{color:#d92d2d}
+.cat-modal{position:fixed;inset:0;background:rgba(6,15,35,.58);z-index:1700;display:none;align-items:center;justify-content:center;padding:20px}.cat-modal.show{display:flex}.cat-dialog{width:min(640px,95vw);background:#fff;border-radius:7px;padding:22px}.dialog-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e7eaf2;padding-bottom:12px;margin-bottom:16px}.dialog-head h3{margin:0;font-size:18px}.dialog-head button{border:0;background:none;font-size:20px;cursor:pointer}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form-grid label{display:grid;gap:7px;font-size:12px;font-weight:600}.form-grid label.full{grid-column:1/-1}.form-grid input,.form-grid select,.form-grid textarea{border:1px solid #cbd5e9;border-radius:4px;padding:10px 12px;font:500 12px 'Poppins'}.form-grid textarea{min-height:80px;resize:vertical}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.cat-toast{position:fixed;right:24px;bottom:24px;z-index:1900;background:#08743a;color:#fff;padding:12px 16px;border-radius:5px;font-size:11.5px;opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.cat-toast.show{opacity:1;transform:none}
+.columns-menu{position:fixed;z-index:1600;width:190px;background:#fff;border:1px solid #dfe5ef;border-radius:5px;box-shadow:0 12px 28px rgba(20,31,61,.17);padding:8px;display:none}.columns-menu.show{display:grid}.columns-menu label{display:flex;align-items:center;gap:9px;padding:7px 8px;font-size:11px;cursor:pointer}.columns-menu input{accent-color:var(--cat-primary)}
+@media(max-width:1250px){.cat-layout{grid-template-columns:1fr}.cat-side{grid-template-columns:repeat(3,minmax(0,1fr))}.cat-filter-grid{grid-template-columns:1fr 1fr 1.3fr}.cat-filter-actions{grid-column:1/-1;justify-content:flex-end}.cat-kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.categories-screen .app-topbar{grid-template-columns:1fr auto!important}.cat-page{padding:calc(var(--topbar-height) + 14px) 12px 24px}.cat-head{align-items:stretch;flex-direction:column}.cat-head>.cat-btn{width:100%}.cat-filter-grid,.cat-kpis,.cat-side,.form-grid{grid-template-columns:1fr}.form-grid label.full{grid-column:auto}.cat-table-foot{flex-direction:column;align-items:flex-start;gap:12px}}

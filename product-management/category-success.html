@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Category Saved</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/add-category.css">
+</head>
+<body>
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="addcat-page">
+  <div class="addcat-head">
+    <div class="crumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><a href="categories.html">Categories</a><i class="fa-solid fa-chevron-right"></i><b>Add New Category</b></div>
+    <div class="head-actions"><button class="btn outline" id="cancelTop"><i class="fa-solid fa-xmark"></i> Cancel</button><button class="btn primary" id="saveTop"><i class="fa-regular fa-floppy-disk"></i> Save Category</button></div>
+  </div>
+
+  <div class="addcat-layout">
+    <section class="main-card" id="categoryMainCard">
+      <h2>Category Information</h2>
+      <div class="grid two">
+        <label>Category Name <em>*</em><input id="categoryName" placeholder="Enter category name"></label>
+        <label>Parent Category<select id="parentCategory"><option>-- Select Parent Category --</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option></select></label>
+      </div>
+      <label class="block">Description<textarea id="description" maxlength="255" placeholder="Enter category description (optional)"></textarea><span class="counter" id="descCount">0/255</span></label>
+
+      <div class="grid three category-settings">
+        <label>Status <em>*</em><select id="status"><option>Active</option><option>Inactive</option></select></label>
+        <label>Display Order <em>*</em><input id="displayOrder" type="number" min="1" placeholder="Enter display order"><small>Lower order will be shown first</small></label>
+        <label>Category Icon<div class="upload-box compact" id="iconDrop"><input type="file" id="iconFile" accept=".png,.jpg,.jpeg,.svg"><i class="fa-solid fa-arrow-up-from-bracket"></i><b>Upload Icon</b><small>PNG, JPG, SVG (Max 2MB)</small></div></label>
+      </div>
+
+      <div class="image-grid">
+        <label>Category Image <span>(Optional)</span><div class="upload-box" id="imageDrop"><input type="file" id="imageFile" accept=".png,.jpg,.jpeg"><i class="fa-solid fa-cloud-arrow-up"></i><b>Drag & drop image here or <u>click to browse</u></b><small>PNG, JPG, JPEG (Recommended size: 600 × 400px)</small></div></label>
+        <label>Preview<div class="image-preview" id="imagePreview"><i class="fa-regular fa-image"></i><img id="previewImg" alt=""></div></label>
+      </div>
+
+      <div class="seo-section">
+        <h2>SEO Information <span>(Optional)</span></h2>
+        <div class="grid three">
+          <label>Meta Title<textarea id="metaTitle" maxlength="60" placeholder="Enter meta title"></textarea><span class="counter" id="metaTitleCount">0/60</span></label>
+          <label>Meta Description<textarea id="metaDescription" maxlength="160" placeholder="Enter meta description"></textarea><span class="counter" id="metaDescriptionCount">0/160</span></label>
+          <label>Meta Keywords<textarea id="metaKeywords" maxlength="160" placeholder="Enter keywords separated by comma"></textarea><span class="counter" id="metaKeywordsCount">0/160</span></label>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side-stack" id="categorySideStack">
+      <section class="side-card preview-card"><h3>Category Preview</h3><div class="folder-preview"><i class="fa-regular fa-folder"></i></div><h4 id="previewName">Category Name</h4><span class="status-pill" id="previewStatus">Active</span><dl><dt>Parent Category</dt><dd id="previewParent">--</dd><dt>Display Order</dt><dd id="previewOrder">--</dd></dl></section>
+      <section class="side-card tips"><h3><i class="fa-regular fa-lightbulb"></i> Quick Tips</h3><ul><li>Choose a clear and descriptive category name.</li><li>Set parent category to create category hierarchy.</li><li>Upload icon and image to make it visually appealing.</li><li>Display order helps to arrange categories in the frontend.</li><li>You can edit these details later from the category list.</li></ul></section>
+    </aside>
+  </div>
+</main></div>
+<div class="toast" id="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../assets/js/add-category.js"></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const n=document.getElementById("categoryName"),p=document.getElementById("parentCategory"),o=document.getElementById("displayOrder"),s=document.getElementById("status");if(n)n.value="Snacks & Branded Foods";if(p)p.value="Grocery";if(o)o.value="7";if(s)s.value="Active";setTimeout(()=>document.getElementById("saveTop")?.click(),50);});</script></body></html>

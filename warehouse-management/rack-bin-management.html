@@ -1,1 +1,105 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZMart | Rack & Bin Management</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"><link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css"><link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css"><link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/warehouse-management.css"><link rel="stylesheet" href="../assets/css/calendar-theme.css"></head><body><aside id="sidebarMount"></aside><div class="app-shell"><header id="topbarMount"></header><main class="warehouse-main" id="mainContent"><div class="wh-head"><div class="wh-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Warehouse Management</span><i class="fa-solid fa-chevron-right"></i><span>Rack & Bin Management</span></div></div><div class="wh-card"><div class="wh-card-head"><h3>Rack & Bin Management</h3><button class="wh-btn primary"><i class="fa-solid fa-plus"></i> Add New</button></div><p>This page is connected to the Warehouse Management sidebar and uses the shared warehouse layout/components.</p><div class="wh-table-wrap"><table class="wh-table"><thead><tr><th>#</th><th>Reference</th><th>Warehouse</th><th>Date</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td>1</td><td>BIN-5401</td><td>ZMart Anna Nagar Warehouse</td><td>01 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>2</td><td>BIN-5402</td><td>ZMart Anna Nagar Warehouse</td><td>02 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>3</td><td>BIN-5403</td><td>ZMart Anna Nagar Warehouse</td><td>03 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>4</td><td>BIN-5404</td><td>ZMart Anna Nagar Warehouse</td><td>04 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>5</td><td>BIN-5405</td><td>ZMart Anna Nagar Warehouse</td><td>05 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>6</td><td>BIN-5406</td><td>ZMart Anna Nagar Warehouse</td><td>06 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>7</td><td>BIN-5407</td><td>ZMart Anna Nagar Warehouse</td><td>07 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr><tr><td>8</td><td>BIN-5408</td><td>ZMart Anna Nagar Warehouse</td><td>08 May 2025</td><td><span class="status active">Active</span></td><td><button class="wh-more" data-menu="warehouse"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr></tbody></table></div></div></main></div><script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/warehouse-management.js"></script><script src="../assets/js/calendar-theme.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Rack & Bin Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+<link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css">
+<link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/warehouse-management.css">
+<link rel="stylesheet" href="../assets/css/rack-bin-management.css">
+</head>
+<body>
+<aside id="sidebarMount"></aside>
+<div class="app-shell">
+<header id="topbarMount"></header>
+<main class="rb-page" id="mainContent">
+  <div class="rb-main-col">
+    <section class="rb-title-row">
+      <div>
+        <h1>Rack &amp; Bin Management</h1>
+        <div class="rb-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Warehouse Management</span><i class="fa-solid fa-chevron-right"></i><b>Rack &amp; Bin Management</b></div>
+      </div>
+      <button class="rb-btn rb-primary" id="addRackBinTop"><i class="fa-solid fa-plus"></i> Add New Rack / Bin</button>
+    </section>
+
+    <section class="rb-card rb-filter-card">
+      <div class="rb-filter-grid">
+        <label>Warehouse<select id="filterWarehouse"><option>All Warehouses</option><option>ZMart Anna Nagar (WH-001)</option><option>ZMart T. Nagar (WH-003)</option><option>ZMart Porur (WH-002)</option><option>ZMart Velachery (WH-005)</option></select></label>
+        <label>Area / Zone<select id="filterArea"><option>All Areas</option><option>Aisle 01</option><option>Aisle 02</option><option>Cold Storage</option><option>Bulk Area</option><option>Returns Area</option><option>Hazardous Area</option></select></label>
+        <label>Rack Type<select id="filterType"><option>All Types</option><option>Heavy Duty</option><option>Medium Duty</option><option>Light Duty</option></select></label>
+        <label>Status<select id="filterStatus"><option>All Status</option><option>Active</option><option>Full</option><option>Maintenance</option></select></label>
+        <label class="rb-search-label">Search<div class="rb-search"><input id="rbSearch" placeholder="Search by Rack / Bin Code or Name..."><i class="fa-solid fa-magnifying-glass"></i></div></label>
+      </div>
+      <div class="rb-filter-actions"><button class="rb-btn rb-primary" id="applyRbFilter"><i class="fa-solid fa-filter"></i> Filter</button><button class="rb-btn" id="resetRbFilter">Reset</button></div>
+    </section>
+
+    <section class="rb-kpis">
+      <article><span class="ico blue"><i class="fa-solid fa-table-cells-large"></i></span><div><small>Total Racks</small><strong>120</strong><em>All Warehouses</em></div></article>
+      <article><span class="ico green"><i class="fa-regular fa-square-plus"></i></span><div><small>Total Bins</small><strong>342</strong><em>All Warehouses</em></div></article>
+      <article><span class="ico orange"><i class="fa-solid fa-boxes-stacked"></i></span><div><small>Occupied Bins</small><strong>256</strong><em>74.85%</em></div></article>
+      <article><span class="ico purple"><i class="fa-solid fa-box-open"></i></span><div><small>Available Bins</small><strong>86</strong><em>25.15%</em></div></article>
+      <article><span class="ico red"><i class="fa-solid fa-screwdriver-wrench"></i></span><div><small>Maintenance Racks</small><strong>5</strong><em>4.17%</em></div></article>
+    </section>
+
+    <section class="rb-card rb-table-card">
+      <div class="rb-tabs"><button class="active" data-rb-tab="racks">Racks</button><button data-rb-tab="bins">Bins</button></div>
+      <div class="rb-tab-pane active" id="racksPane">
+        <div class="rb-list-head"><h3>Rack List</h3><button class="rb-btn" id="exportRacks"><i class="fa-solid fa-download"></i> Export</button></div>
+        <div class="rb-table-wrap"><table class="rb-table" id="rackTable">
+          <thead><tr><th>#</th><th>Rack Code</th><th>Rack Name</th><th>Warehouse</th><th>Area / Zone</th><th>Rack Type</th><th>Levels</th><th>Total Bins</th><th>Occupied Bins</th><th>Available Bins</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr data-status="Active" data-type="Heavy Duty" data-area="Aisle 01" data-wh="ZMart Anna Nagar (WH-001)"><td>1</td><td>RACK-001</td><td>Aisle 01 Rack 01</td><td>ZMart Anna Nagar<br><span>(WH-001)</span></td><td>Aisle 01</td><td>Heavy Duty</td><td>4</td><td>16</td><td>12</td><td>4</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-001"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Heavy Duty" data-area="Aisle 01" data-wh="ZMart Anna Nagar (WH-001)"><td>2</td><td>RACK-002</td><td>Aisle 01 Rack 02</td><td>ZMart Anna Nagar<br><span>(WH-001)</span></td><td>Aisle 01</td><td>Heavy Duty</td><td>4</td><td>16</td><td>11</td><td>5</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-002"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Medium Duty" data-area="Aisle 02" data-wh="ZMart T. Nagar (WH-003)"><td>3</td><td>RACK-003</td><td>Aisle 02 Rack 01</td><td>ZMart T. Nagar<br><span>(WH-003)</span></td><td>Aisle 02</td><td>Medium Duty</td><td>3</td><td>12</td><td>9</td><td>3</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-003"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Full" data-type="Heavy Duty" data-area="Cold Storage" data-wh="ZMart Velachery (WH-005)"><td>4</td><td>RACK-004</td><td>Cold Storage Rack 01</td><td>ZMart Velachery<br><span>(WH-005)</span></td><td>Cold Storage</td><td>Heavy Duty</td><td>5</td><td>20</td><td>20</td><td>0</td><td><span class="rb-status full">Full</span></td><td><button class="rb-more" data-code="RACK-004"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Light Duty" data-area="Aisle 03" data-wh="ZMart Porur (WH-002)"><td>5</td><td>RACK-005</td><td>Aisle 03 Rack 01</td><td>ZMart Porur<br><span>(WH-002)</span></td><td>Aisle 03</td><td>Light Duty</td><td>3</td><td>9</td><td>5</td><td>4</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-005"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Medium Duty" data-area="Aisle 03" data-wh="ZMart T. Nagar (WH-003)"><td>6</td><td>RACK-006</td><td>Aisle 03 Rack 02</td><td>ZMart T. Nagar<br><span>(WH-003)</span></td><td>Aisle 03</td><td>Medium Duty</td><td>4</td><td>16</td><td>13</td><td>3</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-006"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Heavy Duty" data-area="Bulk Area" data-wh="ZMart Anna Nagar (WH-001)"><td>7</td><td>RACK-007</td><td>Bulk Storage Rack</td><td>ZMart Anna Nagar<br><span>(WH-001)</span></td><td>Bulk Area</td><td>Heavy Duty</td><td>2</td><td>8</td><td>6</td><td>2</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-007"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Light Duty" data-area="Returns Area" data-wh="ZMart Velachery (WH-005)"><td>8</td><td>RACK-008</td><td>Returns Rack</td><td>ZMart Velachery<br><span>(WH-005)</span></td><td>Returns Area</td><td>Light Duty</td><td>2</td><td>6</td><td>2</td><td>4</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-008"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Maintenance" data-type="Heavy Duty" data-area="Hazardous Area" data-wh="ZMart Porur (WH-002)"><td>9</td><td>RACK-009</td><td>Chemicals Rack</td><td>ZMart Porur<br><span>(WH-002)</span></td><td>Hazardous Area</td><td>Heavy Duty</td><td>3</td><td>9</td><td>7</td><td>2</td><td><span class="rb-status maintenance">Maintenance</span></td><td><button class="rb-more" data-code="RACK-009"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+            <tr data-status="Active" data-type="Medium Duty" data-area="Overflow Area" data-wh="ZMart Anna Nagar (WH-001)"><td>10</td><td>RACK-010</td><td>Overflow Rack</td><td>ZMart Anna Nagar<br><span>(WH-001)</span></td><td>Overflow Area</td><td>Medium Duty</td><td>3</td><td>12</td><td>4</td><td>8</td><td><span class="rb-status active">Active</span></td><td><button class="rb-more" data-code="RACK-010"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+          </tbody>
+        </table></div>
+        <div class="rb-table-foot"><span>Showing 1 to 10 of 120 entries</span><div class="rb-pagination"><button><i class="fa-solid fa-chevron-left"></i></button><button class="active">1</button><button>2</button><button>3</button><span>...</span><button>12</button><button><i class="fa-solid fa-chevron-right"></i></button></div></div>
+      </div>
+      <div class="rb-tab-pane" id="binsPane">
+        <div class="rb-list-head"><h3>Bin List</h3><button class="rb-btn" id="exportBins"><i class="fa-solid fa-download"></i> Export</button></div>
+        <div class="rb-table-wrap"><table class="rb-table"><thead><tr><th>#</th><th>Bin Code</th><th>Rack Code</th><th>Warehouse</th><th>Level</th><th>Capacity</th><th>Current Qty</th><th>Utilization</th><th>Status</th><th>Action</th></tr></thead><tbody>
+          <tr><td>1</td><td>BIN-01-01</td><td>RACK-001</td><td>ZMart Anna Nagar</td><td>1</td><td>120</td><td>92</td><td>76.7%</td><td><span class="rb-status active">Occupied</span></td><td><button class="rb-more" data-code="BIN-01-01"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+          <tr><td>2</td><td>BIN-01-02</td><td>RACK-001</td><td>ZMart Anna Nagar</td><td>1</td><td>120</td><td>0</td><td>0%</td><td><span class="rb-status available">Available</span></td><td><button class="rb-more" data-code="BIN-01-02"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+          <tr><td>3</td><td>BIN-02-01</td><td>RACK-003</td><td>ZMart T. Nagar</td><td>2</td><td>100</td><td>80</td><td>80%</td><td><span class="rb-status active">Occupied</span></td><td><button class="rb-more" data-code="BIN-02-01"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+          <tr><td>4</td><td>BIN-CS-01</td><td>RACK-004</td><td>ZMart Velachery</td><td>1</td><td>60</td><td>60</td><td>100%</td><td><span class="rb-status full">Full</span></td><td><button class="rb-more" data-code="BIN-CS-01"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+          <tr><td>5</td><td>BIN-RT-01</td><td>RACK-008</td><td>ZMart Velachery</td><td>1</td><td>75</td><td>18</td><td>24%</td><td><span class="rb-status active">Occupied</span></td><td><button class="rb-more" data-code="BIN-RT-01"><i class="fa-solid fa-ellipsis-vertical"></i></button></td></tr>
+        </tbody></table></div>
+        <div class="rb-table-foot"><span>Showing 1 to 5 of 342 entries</span><div class="rb-pagination"><button class="active">1</button><button>2</button><button>3</button><span>...</span><button>35</button></div></div>
+      </div>
+    </section>
+  </div>
+
+  <aside class="rb-side-col">
+    <section class="rb-side-card"><h3>Warehouse Summary</h3><div class="rb-summary-row"><b>ZMart Anna Nagar (WH-001)</b><span>Racks: <strong>45</strong> &nbsp;&nbsp;&nbsp; Bins: <strong>145</strong></span></div><div class="rb-summary-row"><b>ZMart T. Nagar (WH-003)</b><span>Racks: <strong>30</strong> &nbsp;&nbsp;&nbsp; Bins: <strong>86</strong></span></div><div class="rb-summary-row"><b>ZMart Porur (WH-002)</b><span>Racks: <strong>20</strong> &nbsp;&nbsp;&nbsp; Bins: <strong>57</strong></span></div><div class="rb-summary-row"><b>ZMart Velachery (WH-005)</b><span>Racks: <strong>25</strong> &nbsp;&nbsp;&nbsp; Bins: <strong>54</strong></span></div><div class="rb-summary-total"><b>Total</b><span>Racks: <strong>120</strong> &nbsp;&nbsp;&nbsp; Bins: <strong>342</strong></span></div></section>
+    <section class="rb-side-card"><h3>Bin Status Overview</h3><div class="rb-donut-wrap"><div class="rb-donut"><span><strong>342</strong><small>Total Bins</small></span></div><div class="rb-legend"><p><i class="dot occ"></i><span>Occupied (256)<b>74.85%</b></span></p><p><i class="dot av"></i><span>Available (86)<b>25.15%</b></span></p><p><i class="dot bl"></i><span>Blocked (0)<b>0.00%</b></span></p></div></div></section>
+    <section class="rb-side-card"><h3>Quick Actions</h3><div class="rb-quick"><button data-quick="rack"><i class="fa-solid fa-plus"></i> Add New Rack</button><button data-quick="bin"><i class="fa-solid fa-plus"></i> Add New Bin</button><button data-quick="import"><i class="fa-solid fa-upload"></i> Import Racks / Bins</button><button data-quick="report"><i class="fa-regular fa-file-lines"></i> Rack / Bin Report</button></div></section>
+    <section class="rb-side-card"><div class="rb-side-title"><h3>Recent Activities</h3><button id="viewAllActivities">View All</button></div><div class="rb-activity"><p><i class="fa-regular fa-square-check"></i><span>New Rack RACK-010 added<small>31 May 2025 10:30 AM</small></span></p><p><i class="fa-regular fa-square-check"></i><span>Bin BIN-010-03 updated<small>31 May 2025 09:45 AM</small></span></p><p><i class="fa-regular fa-square-check"></i><span>Rack RACK-009 set to Maintenance<small>30 May 2025 04:15 PM</small></span></p></div></section>
+  </aside>
+</main>
+</div>
+
+<div class="rb-action-menu" id="rbActionMenu" aria-hidden="true"></div>
+<div class="rb-modal" id="rbModal" aria-hidden="true"><div class="rb-dialog"><div class="rb-dialog-head"><h3 id="rbModalTitle">Add Rack</h3><button id="rbModalClose"><i class="fa-solid fa-xmark"></i></button></div><div id="rbModalBody"></div><div class="rb-dialog-actions"><button class="rb-btn" id="rbModalCancel">Cancel</button><button class="rb-btn rb-primary" id="rbModalSave">Save</button></div></div></div>
+<div class="rb-toast" id="rbToast"></div>
+
+<script src="../components/sidebar/js/sidebar.js"></script>
+<script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script>
+<script src="../assets/js/rack-bin-management.js"></script>
+</body>
+</html>

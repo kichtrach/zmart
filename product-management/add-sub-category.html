@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Add New Sub Category</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/add-sub-category.css">
+</head>
+<body>
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="addsub-page">
+  <div class="addsub-head">
+    <div class="crumb"><a href="../index.html">Home</a><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><a href="sub-categories.html">Sub Categories</a><i class="fa-solid fa-chevron-right"></i><b>Add New Sub Category</b></div>
+    <div class="head-actions" id="formHeadActions"><button class="btn outline" id="cancelTop"><i class="fa-solid fa-xmark"></i> Cancel</button><button class="btn primary" id="saveTop"><i class="fa-regular fa-floppy-disk"></i> Save Sub Category</button></div>
+  </div>
+
+  <div class="addsub-layout">
+    <section class="main-card" id="subCategoryMainCard">
+      <div id="subCategoryFormState">
+        <h2>Sub Category Information</h2>
+        <div class="grid two top-row">
+          <label><span class="field-title">Sub Category Name <em>*</em></span><input id="subCategoryName" placeholder="Enter sub category name"></label>
+          <label><span class="field-title">Category <em>*</em></span><select id="category"><option value="">-- Select Category --</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option><option>Beverages</option></select></label>
+        </div>
+
+        <label class="block"><span class="field-title">Description <span class="optional">(Optional)</span></span><textarea id="description" maxlength="255" placeholder="Enter sub category description"></textarea><span class="counter" id="descCount">0/255</span></label>
+
+        <div class="grid three settings-row">
+          <label><span class="field-title">Status <em>*</em></span><select id="status"><option>Active</option><option>Inactive</option></select></label>
+          <label><span class="field-title">Display Order <em>*</em></span><input id="displayOrder" type="number" min="1" placeholder="Enter display order"><small>Lower order will be shown first</small></label>
+          <label><span class="field-title">Sub Category Icon <span class="optional">(Optional)</span></span><div class="upload-box compact"><input type="file" id="iconFile" accept=".png,.jpg,.jpeg,.svg"><i class="fa-solid fa-arrow-up-from-bracket"></i><b>Upload Icon</b><small>PNG, JPG, SVG (Max 2MB)</small></div></label>
+        </div>
+
+        <div class="image-grid">
+          <label><span class="field-title">Sub Category Image <span class="optional">(Optional)</span></span><div class="upload-box image-drop"><input type="file" id="imageFile" accept=".png,.jpg,.jpeg"><i class="fa-solid fa-cloud-arrow-up"></i><b>Drag &amp; drop image here or <u>click to browse</u></b><small>PNG, JPG, JPEG (Recommended size: 600 × 400px)</small></div></label>
+          <label><span class="field-title">Image Preview</span><div class="image-preview" id="imagePreview"><i class="fa-regular fa-image"></i><img id="previewImg" alt=""></div></label>
+        </div>
+
+        <div class="seo-section">
+          <h2>SEO Information <span>(Optional)</span></h2>
+          <div class="grid three">
+            <label><span class="field-title">Meta Title</span><textarea id="metaTitle" maxlength="60" placeholder="Enter meta title"></textarea><span class="counter" id="metaTitleCount">0/60</span></label>
+            <label><span class="field-title">Meta Description</span><textarea id="metaDescription" maxlength="160" placeholder="Enter meta description"></textarea><span class="counter" id="metaDescriptionCount">0/160</span></label>
+            <label><span class="field-title">Meta Keywords</span><textarea id="metaKeywords" maxlength="160" placeholder="Enter keywords separated by comma"></textarea><span class="counter" id="metaKeywordsCount">0/160</span></label>
+          </div>
+        </div>
+      </div>
+      <div id="subCategorySuccessState" hidden></div>
+    </section>
+
+    <aside class="side-stack" id="subCategorySideStack">
+      <section class="side-card preview-card"><h3>Sub Category Preview</h3><div class="folder-preview"><i class="fa-regular fa-folder"></i></div><h4 id="previewName">Sub Category Name</h4><span class="status-pill" id="previewStatus">Active</span><dl><dt>Category</dt><dd id="previewCategory">--</dd><dt>Display Order</dt><dd id="previewOrder">--</dd></dl></section>
+      <section class="side-card tips" id="tipsCard"><h3><i class="fa-regular fa-lightbulb"></i> Quick Tips</h3><ul><li>Choose a clear and descriptive sub category name.</li><li>Select the correct parent category.</li><li>Set display order to arrange sub categories.</li><li>Upload an icon and image to make it visually appealing.</li><li>You can edit these details later from the sub category list.</li></ul></section>
+      <section class="side-card quick-card" id="quickCard" hidden><h3>Quick Actions</h3><div class="quick-actions"><button id="quickAdd"><i class="fa-solid fa-plus"></i>Add New Sub Category</button><button id="quickImport"><i class="fa-solid fa-download"></i>Import Sub Categories</button><button id="quickReport"><i class="fa-regular fa-file-lines"></i>Sub Category Report</button><button id="quickPrint"><i class="fa-solid fa-print"></i>Print Label</button></div></section>
+      <section class="side-card recent-card" id="recentCard" hidden><div class="side-title"><h3>Recent Activities</h3><button type="button">View All</button></div><p><i class="fa-regular fa-circle-check"></i><span>New Sub Category “<b id="recentName">Basmati Rice</b>” added successfully<small>31 May 2025 11:45 AM</small></span></p></section>
+    </aside>
+  </div>
+</main></div>
+<div class="toast" id="toast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../assets/js/add-sub-category.js"></script>
+</body></html>

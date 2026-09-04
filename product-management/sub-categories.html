@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Sub Categories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/sub-category-management.css">
+</head>
+<body class="subcat-screen">
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="subcat-page" id="mainContent">
+  <section class="subcat-head">
+    <div class="subcat-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><b>Sub Categories</b></div>
+    <button class="subcat-btn primary" id="addSubCategoryTop"><i class="fa-solid fa-plus"></i> Add New Sub Category</button>
+  </section>
+
+  <div class="subcat-layout">
+    <div class="subcat-main">
+      <section class="subcat-card subcat-filter-card">
+        <div class="subcat-filter-grid">
+          <label>Category<select id="filterCategory"><option>All Categories</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option><option>Beverages</option></select></label>
+          <label>Status<select id="filterStatus"><option>All Status</option><option>Active</option><option>Inactive</option></select></label>
+          <label class="search-label">Search<div class="subcat-search"><input id="subCategorySearch" placeholder="Search by Sub Category Name..."><i class="fa-solid fa-magnifying-glass"></i></div></label>
+          <div class="subcat-filter-actions"><button class="subcat-btn primary" id="applySubCategoryFilter"><i class="fa-solid fa-filter"></i> Filter</button><button class="subcat-btn" id="resetSubCategoryFilter"><i class="fa-solid fa-rotate"></i> Reset</button></div>
+        </div>
+      </section>
+
+      <section class="subcat-kpis">
+        <article><span class="kico violet"><i class="fa-solid fa-border-all"></i></span><div><small>Total Sub Categories</small><strong>142</strong><em>All Sub Categories</em></div></article>
+        <article><span class="kico green"><i class="fa-regular fa-circle-check"></i></span><div><small>Active Sub Categories</small><strong>118</strong><em class="green-txt">83.10%</em></div></article>
+        <article><span class="kico orange"><i class="fa-regular fa-circle-pause"></i></span><div><small>Inactive Sub Categories</small><strong>24</strong><em>16.90%</em></div></article>
+        <article><span class="kico blue"><i class="fa-solid fa-tag"></i></span><div><small>Products Mapped</small><strong>1,248</strong><em class="green-txt">Across Sub Categories</em></div></article>
+      </section>
+
+      <section class="subcat-card table-card">
+        <div class="subcat-list-head"><h3>Sub Categories List</h3><div><button class="subcat-btn" id="exportSubCategories"><i class="fa-solid fa-download"></i> Export</button><button class="subcat-btn" id="columnsBtn"><i class="fa-solid fa-table-columns"></i> Columns <i class="fa-solid fa-chevron-down"></i></button></div></div>
+        <div class="subcat-table-wrap"><table class="subcat-table" id="subCategoryTable"><thead><tr><th>#</th><th>Sub Category Name</th><th>Category</th><th>Products</th><th>Status</th><th>Created On</th><th>Action</th></tr></thead><tbody>
+          <tr data-status="Active" data-category="Grocery"><td>1</td><td>Basmati Rice</td><td>Grocery <i class="fa-solid fa-chevron-right path-sep"></i> Rice &amp; Grains</td><td><span class="count">48</span></td><td><span class="subcat-status active">Active</span></td><td>31 May 2025 10:30 AM</td><td><button class="subcat-more" data-name="Basmati Rice"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Grocery"><td>2</td><td>Wheat Flour</td><td>Grocery <i class="fa-solid fa-chevron-right path-sep"></i> Atta, Flours &amp; Sooji</td><td><span class="count">36</span></td><td><span class="subcat-status active">Active</span></td><td>30 May 2025 09:15 AM</td><td><button class="subcat-more" data-name="Wheat Flour"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Grocery"><td>3</td><td>Toor Dal</td><td>Grocery <i class="fa-solid fa-chevron-right path-sep"></i> Pulses &amp; Dal</td><td><span class="count">42</span></td><td><span class="subcat-status active">Active</span></td><td>29 May 2025 04:45 PM</td><td><button class="subcat-more" data-name="Toor Dal"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Grocery"><td>4</td><td>Sunflower Oil</td><td>Grocery <i class="fa-solid fa-chevron-right path-sep"></i> Edible Oils</td><td><span class="count">26</span></td><td><span class="subcat-status active">Active</span></td><td>28 May 2025 11:20 AM</td><td><button class="subcat-more" data-name="Sunflower Oil"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Personal Care"><td>5</td><td>Shampoo</td><td>Personal Care <i class="fa-solid fa-chevron-right path-sep"></i> Hair Care</td><td><span class="count">68</span></td><td><span class="subcat-status active">Active</span></td><td>27 May 2025 02:10 PM</td><td><button class="subcat-more" data-name="Shampoo"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Personal Care"><td>6</td><td>Bath Soap</td><td>Personal Care <i class="fa-solid fa-chevron-right path-sep"></i> Bath &amp; Body</td><td><span class="count">54</span></td><td><span class="subcat-status active">Active</span></td><td>27 May 2025 01:05 PM</td><td><button class="subcat-more" data-name="Bath Soap"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Personal Care"><td>7</td><td>Toothpaste</td><td>Personal Care <i class="fa-solid fa-chevron-right path-sep"></i> Oral Care</td><td><span class="count">62</span></td><td><span class="subcat-status active">Active</span></td><td>26 May 2025 03:30 PM</td><td><button class="subcat-more" data-name="Toothpaste"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Inactive" data-category="Home Care"><td>8</td><td>Powder Detergent</td><td>Home Care <i class="fa-solid fa-chevron-right path-sep"></i> Laundry</td><td><span class="count">41</span></td><td><span class="subcat-status inactive">Inactive</span></td><td>25 May 2025 05:00 PM</td><td><button class="subcat-more" data-name="Powder Detergent"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Home Care"><td>9</td><td>Dish Wash Liquid</td><td>Home Care <i class="fa-solid fa-chevron-right path-sep"></i> Kitchen Care</td><td><span class="count">33</span></td><td><span class="subcat-status active">Active</span></td><td>25 May 2025 12:45 PM</td><td><button class="subcat-more" data-name="Dish Wash Liquid"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-category="Home Care"><td>10</td><td>Air Freshener</td><td>Home Care <i class="fa-solid fa-chevron-right path-sep"></i> Home Air Care</td><td><span class="count">22</span></td><td><span class="subcat-status active">Active</span></td><td>24 May 2025 11:30 AM</td><td><button class="subcat-more" data-name="Air Freshener"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+        </tbody></table></div>
+        <div class="subcat-table-foot"><span id="subCategoryCount">Showing 1 to 10 of 142 entries</span><div class="subcat-pages"><button>«</button><button class="active">1</button><button>2</button><button>3</button><button>…</button><button>15</button><button>»</button></div></div>
+      </section>
+    </div>
+
+    <aside class="subcat-side">
+      <section class="subcat-card side-card"><h3>Sub Category Breakdown</h3><div class="breakdown"><div class="subcategory-donut"><span><strong>142</strong><small>Total Sub Categories</small></span></div><div class="legend"><p><i style="--c:#39a46d"></i><span>Grocery<b>42.3% (60)</b></span></p><p><i style="--c:#3d2de6"></i><span>Personal Care<b>23.2% (33)</b></span></p><p><i style="--c:#368dbe"></i><span>Home Care<b>18.3% (26)</b></span></p><p><i style="--c:#f4a629"></i><span>Beverages<b>9.9% (14)</b></span></p><p><i style="--c:#9aa4b8"></i><span>Others<b>6.3% (9)</b></span></p></div></div></section>
+      <section class="subcat-card side-card"><div class="side-title"><h3>Top Sub Categories</h3><button id="viewAllTop">View All</button></div><div class="top-subcats">
+        <p><span class="thumb beige"><i class="fa-solid fa-bowl-rice"></i></span><b>Basmati Rice<small>Rice &amp; Grains</small></b><span class="mini-count">48</span></p>
+        <p><span class="thumb blue"><i class="fa-solid fa-bottle-droplet"></i></span><b>Shampoo<small>Hair Care</small></b><span class="mini-count">68</span></p>
+        <p><span class="thumb beige"><i class="fa-solid fa-jar"></i></span><b>Toor Dal<small>Pulses &amp; Dal</small></b><span class="mini-count">42</span></p>
+        <p><span class="thumb yellow"><i class="fa-solid fa-bottle-water"></i></span><b>Sunflower Oil<small>Edible Oils</small></b><span class="mini-count">26</span></p>
+        <p><span class="thumb cyan"><i class="fa-solid fa-pump-soap"></i></span><b>Bath Soap<small>Bath &amp; Body</small></b><span class="mini-count">54</span></p>
+      </div></section>
+      <section class="subcat-card side-card"><h3>Quick Actions</h3><div class="quick-actions"><button id="addSubCategoryQuick"><i class="fa-solid fa-plus"></i>Add New Sub Category</button><button id="importSubCategories"><i class="fa-solid fa-download"></i>Import Sub Categories</button><button id="subCategoryReport"><i class="fa-regular fa-file-lines"></i>Sub Category Report</button></div></section>
+    </aside>
+  </div>
+</main></div>
+
+<div class="subcat-action-menu" id="subCategoryActionMenu">
+  <button data-act="view"><i class="fa-regular fa-eye"></i>View Details</button>
+  <button data-act="edit"><i class="fa-regular fa-pen-to-square"></i>Edit Sub Category</button>
+  <button data-act="products"><i class="fa-solid fa-boxes-stacked"></i>View Products</button>
+  <button data-act="status"><i class="fa-solid fa-arrows-rotate"></i>Change Status</button>
+  <button class="danger" data-act="delete"><i class="fa-regular fa-trash-can"></i>Delete</button>
+</div>
+
+<div class="subcat-modal" id="subCategoryModal"><div class="subcat-dialog">
+  <div class="dialog-head"><h3 id="subCategoryModalTitle">Add New Sub Category</h3><button id="closeSubCategoryModal" aria-label="Close">×</button></div>
+  <form id="subCategoryForm"><div class="form-grid">
+    <label>Sub Category Name <span>*</span><input id="modalSubCategoryName" required placeholder="Enter sub category name"></label>
+    <label>Category <span>*</span><select id="modalCategory" required><option>Grocery</option><option>Personal Care</option><option>Home Care</option><option>Beverages</option></select></label>
+    <label class="full">Description<textarea id="modalDescription" placeholder="Enter description (optional)"></textarea></label>
+    <label>Status<select id="modalStatus"><option>Active</option><option>Inactive</option></select></label>
+    <label>Display Order<input id="modalDisplayOrder" type="number" min="1" value="1"></label>
+  </div><div class="dialog-actions"><button type="button" class="subcat-btn" id="cancelSubCategoryModal">Cancel</button><button class="subcat-btn primary" type="submit"><i class="fa-regular fa-floppy-disk"></i>Save Sub Category</button></div></form>
+</div></div>
+<div class="subcat-toast" id="subCategoryToast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/sub-category-management.js"></script>
+</body></html>

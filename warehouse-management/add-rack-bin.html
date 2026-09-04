@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Add New Rack / Bin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css">
+<link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css">
+<link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css">
+<link rel="stylesheet" href="../assets/css/warehouse-management.css">
+<link rel="stylesheet" href="../assets/css/add-rack-bin.css">
+</head>
+<body>
+<aside id="sidebarMount"></aside>
+<div class="app-shell">
+  <header id="topbarMount"></header>
+  <main class="arb-page" id="mainContent">
+    <section class="arb-main">
+      <div class="arb-heading-row">
+        <div class="arb-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Warehouse Management</span><i class="fa-solid fa-chevron-right"></i><span>Rack &amp; Bin Management</span><i class="fa-solid fa-chevron-right"></i><b>Add New Rack / Bin</b></div>
+        <div class="arb-head-actions"><button class="arb-btn" id="cancelTop"><i class="fa-solid fa-xmark"></i> Cancel</button><button class="arb-btn primary" id="saveTop"><i class="fa-regular fa-floppy-disk"></i> Save Rack / Bin</button></div>
+      </div>
+
+      <form id="rackBinForm">
+        <section class="arb-card">
+          <h2>Rack / Bin Information</h2>
+          <div class="arb-grid four">
+            <label class="arb-field">Rack / Bin Type <span>*</span><div class="arb-segment"><label><input type="radio" name="createType" value="rack" checked><span>Rack</span></label><label><input type="radio" name="createType" value="bin"><span>Bin</span></label></div></label>
+            <label class="arb-field">Parent <span>*</span><select id="parentSelect"><option>Select Parent</option><option>Warehouse Root</option><option>RACK-001 - Aisle 01 Rack 01</option></select></label>
+            <label class="arb-field">Warehouse <span>*</span><select id="warehouseSelect"><option>ZMart Anna Nagar (WH-001)</option><option>ZMart T. Nagar (WH-003)</option><option>ZMart Porur (WH-002)</option></select></label>
+            <label class="arb-field">Area / Zone <span>*</span><select id="areaSelect"><option>Aisle 01</option><option>Aisle 02</option><option>Cold Storage</option></select></label>
+          </div>
+          <div class="arb-grid four second-row">
+            <label class="arb-field">Rack Code <span>*</span><input id="rackCode" value="RACK-011"></label>
+            <label class="arb-field">Rack Name <span>*</span><input id="rackName" value="Aisle 01 Rack 03"></label>
+            <label class="arb-field">Rack Type <span>*</span><select id="rackType"><option>Heavy Duty</option><option>Medium Duty</option><option>Light Duty</option></select></label>
+            <label class="arb-field">Floor / Level <span>*</span><select id="floorLevel"><option>Level 1</option><option>Level 2</option><option>Ground Floor</option></select></label>
+          </div>
+          <div class="arb-grid four third-row">
+            <label class="arb-field">No. of Levels / Tiers <span>*</span><input id="levels" type="number" value="4" min="1"></label>
+            <label class="arb-field">Max Load Capacity (kg)<input id="capacity" type="number" value="1000" min="0"></label>
+            <div class="arb-field dimensions"><span class="field-title">Dimensions (cm)</span><div class="dimension-grid"><label>Length<input id="length" type="number" value="120"></label><label>Width<input id="width" type="number" value="60"></label><label>Height<input id="height" type="number" value="200"></label></div></div>
+          </div>
+        </section>
+
+        <section class="arb-card section-block">
+          <h2>Location Details</h2>
+          <div class="arb-grid four">
+            <label class="arb-field">Aisle<input id="aisle" value="Aisle 01"></label>
+            <label class="arb-field">Bay<input id="bay" value="Bay 03"></label>
+            <label class="arb-field">Column<input id="column" value="Column 02"></label>
+            <label class="arb-field">Position<input id="position" value="Pos 01"></label>
+          </div>
+          <label class="arb-field barcode-field">Location Barcode<div class="barcode-input"><input id="barcode" value="RACK-011-A01-B03-C02-P01"><button type="button" id="barcodeBtn" aria-label="Generate barcode"><i class="fa-solid fa-barcode"></i></button></div></label>
+        </section>
+
+        <section class="arb-card section-block">
+          <h2>Additional Information</h2>
+          <div class="arb-grid add-info-grid">
+            <label class="arb-field">Status <span>*</span><select id="status"><option>Active</option><option>Inactive</option><option>Maintenance</option></select></label>
+            <label class="arb-field">Color Code<div class="color-box"><input id="colorCode" value="#5B3F8D"><input id="colorPicker" type="color" value="#5B3F8D"></div></label>
+            <label class="arb-field description">Description<textarea id="description">Heavy duty rack in Aisle 01 for general items.</textarea></label>
+          </div>
+        </section>
+
+        <section class="arb-card section-block attachments-card">
+          <h2>Attachments <small>(Optional)</small></h2>
+          <div class="attach-grid">
+            <div><div class="attach-label">Upload Layout / Image</div><label class="dropzone"><input id="attachmentInput" type="file" multiple accept=".pdf,.jpg,.jpeg,.png" hidden><i class="fa-solid fa-cloud-arrow-up"></i><strong>Drag &amp; drop file here or <span>click to browse</span></strong><small>PDF, JPG, PNG up to 5MB</small></label></div>
+            <div><div class="attach-label">Uploaded Files</div><div class="uploaded-list" id="uploadedList"><div class="file-row"><i class="fa-regular fa-file-image red"></i><span>rack_layout.png</span><b>245 KB</b><i class="fa-regular fa-circle-check ok"></i><button type="button" class="delete-file"><i class="fa-regular fa-trash-can"></i></button></div><div class="file-row"><i class="fa-regular fa-file-pdf red"></i><span>rack_specification.pdf</span><b>512 KB</b><i class="fa-regular fa-circle-check ok"></i><button type="button" class="delete-file"><i class="fa-regular fa-trash-can"></i></button></div></div></div>
+          </div>
+        </section>
+
+        <div class="arb-footer-actions"><button class="arb-btn" type="button" id="cancelBottom"><i class="fa-solid fa-xmark"></i> Cancel</button><button class="arb-btn primary" type="submit"><i class="fa-regular fa-floppy-disk"></i> Save Rack / Bin</button></div>
+      </form>
+    </section>
+
+    <aside class="arb-side">
+      <section class="arb-side-card preview-card"><h3>Rack / Bin Preview</h3><div class="rack-visual" aria-label="Rack preview"><span></span><span></span><span></span><span></span></div><dl><div><dt>Type</dt><dd id="pvType">Rack</dd></div><div><dt>Code</dt><dd id="pvCode">RACK-011</dd></div><div><dt>Warehouse</dt><dd id="pvWarehouse">ZMart Anna Nagar<br>(WH-001)</dd></div><div><dt>Area / Zone</dt><dd id="pvArea">Aisle 01</dd></div><div><dt>Levels</dt><dd id="pvLevels">4</dd></div><div><dt>Dimensions (cm)</dt><dd id="pvDimensions">120 (L) × 60 (W) × 200 (H)</dd></div><div><dt>Max Load Capacity</dt><dd id="pvCapacity">1000 kg</dd></div><div><dt>Status</dt><dd><span class="status-pill" id="pvStatus">Active</span></dd></div></dl></section>
+      <section class="arb-side-card quick-card"><h3><i class="fa-regular fa-clipboard"></i> Quick Info</h3><ul><li>Rack will be created in Level 1.</li><li>You can add multiple bins under this rack after creation.</li><li>Barcode will be used for quick identification.</li></ul></section>
+    </aside>
+  </main>
+</div>
+<div class="arb-toast" id="arbToast"></div>
+<div class="arb-success" id="successModal" aria-hidden="true"><div class="success-box"><button class="success-close" type="button">×</button><div class="success-icon"><i class="fa-solid fa-check"></i></div><h3>Rack / Bin Saved Successfully!</h3><p><b id="savedCode">RACK-011</b> has been created successfully.</p><div class="success-actions"><button class="arb-btn" id="createAnother">Create Another</button><button class="arb-btn primary" id="backToList">Go to Rack &amp; Bin Management</button></div></div></div>
+<script src="../components/sidebar/js/sidebar.js"></script>
+<script src="../components/topbar/js/topbar.js"></script>
+<script src="../components/ui/js/ui-components.js"></script>
+<script src="../assets/js/add-rack-bin.js"></script>
+</body>
+</html>

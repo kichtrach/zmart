@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZMart | Categories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="../components/sidebar/css/sidebar.css"><link rel="stylesheet" href="../components/sidebar/icons/sidebar-icons.css">
+<link rel="stylesheet" href="../components/topbar/css/topbar.css"><link rel="stylesheet" href="../components/topbar/icons/topbar-icons.css">
+<link rel="stylesheet" href="../components/ui/css/ui-components.css"><link rel="stylesheet" href="../assets/css/category-management.css">
+</head>
+<body class="categories-screen">
+<aside id="sidebarMount"></aside>
+<div class="app-shell"><header id="topbarMount"></header>
+<main class="cat-page" id="mainContent">
+  <section class="cat-head">
+    <div class="cat-breadcrumb"><span>Home</span><i class="fa-solid fa-chevron-right"></i><span>Product Management</span><i class="fa-solid fa-chevron-right"></i><b>Categories</b></div>
+    <button class="cat-btn primary" id="addCategoryTop"><i class="fa-solid fa-plus"></i> Add New Category</button>
+  </section>
+
+  <div class="cat-layout">
+    <div class="cat-main">
+      <section class="cat-card cat-filter-card">
+        <div class="cat-filter-grid">
+          <label>Status<select id="filterStatus"><option>All Status</option><option>Active</option><option>Inactive</option></select></label>
+          <label>Parent Category<select id="filterParent"><option>All</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option></select></label>
+          <label class="search-label">Search<div class="cat-search"><input id="categorySearch" placeholder="Search by Category Name..."><i class="fa-solid fa-magnifying-glass"></i></div></label>
+          <div class="cat-filter-actions"><button class="cat-btn primary" id="applyCategoryFilter"><i class="fa-solid fa-filter"></i> Filter</button><button class="cat-btn" id="resetCategoryFilter"><i class="fa-solid fa-rotate"></i> Reset</button></div>
+        </div>
+      </section>
+
+      <section class="cat-kpis">
+        <article><span class="kico violet"><i class="fa-solid fa-border-all"></i></span><div><small>Total Categories</small><strong>38</strong><em>All Categories</em></div></article>
+        <article><span class="kico green"><i class="fa-regular fa-circle-check"></i></span><div><small>Active Categories</small><strong>32</strong><em class="green-txt">84.21%</em></div></article>
+        <article><span class="kico orange"><i class="fa-regular fa-circle-pause"></i></span><div><small>Inactive Categories</small><strong>6</strong><em>15.79%</em></div></article>
+        <article><span class="kico blue"><i class="fa-solid fa-tag"></i></span><div><small>Products Mapped</small><strong>1,248</strong><em class="violet-txt">Across Categories</em></div></article>
+      </section>
+
+      <section class="cat-card table-card">
+        <div class="cat-list-head"><h3>Category List</h3><div><button class="cat-btn" id="exportCategories"><i class="fa-solid fa-download"></i> Export</button><button class="cat-btn" id="columnsBtn"><i class="fa-solid fa-gear"></i> Columns <i class="fa-solid fa-chevron-down"></i></button></div></div>
+        <div class="cat-table-wrap"><table class="cat-table" id="categoryTable"><thead><tr><th>#</th><th>Category Name</th><th>Parent Category</th><th>Products</th><th>Status</th><th>Created On</th><th>Action</th></tr></thead><tbody>
+          <tr data-status="Active" data-parent="All"><td>1</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Grocery</td><td>—</td><td><span class="count">572</span></td><td><span class="cat-status active">Active</span></td><td>31 May 2025 10:30 AM</td><td><button class="cat-more" data-name="Grocery"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="All"><td>2</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Personal Care</td><td>—</td><td><span class="count">222</span></td><td><span class="cat-status active">Active</span></td><td>30 May 2025 09:15 AM</td><td><button class="cat-more" data-name="Personal Care"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="All"><td>3</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Home Care</td><td>—</td><td><span class="count">190</span></td><td><span class="cat-status active">Active</span></td><td>29 May 2025 04:45 PM</td><td><button class="cat-more" data-name="Home Care"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Grocery"><td>4</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Dairy</td><td>Grocery</td><td><span class="count">126</span></td><td><span class="cat-status active">Active</span></td><td>28 May 2025 11:20 AM</td><td><button class="cat-more" data-name="Dairy"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Grocery"><td>5</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Beverages</td><td>Grocery</td><td><span class="count">98</span></td><td><span class="cat-status active">Active</span></td><td>27 May 2025 02:10 PM</td><td><button class="cat-more" data-name="Beverages"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Grocery"><td>6</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Snacks &amp; Branded Foods</td><td>Grocery</td><td><span class="count">154</span></td><td><span class="cat-status active">Active</span></td><td>27 May 2025 01:05 PM</td><td><button class="cat-more" data-name="Snacks & Branded Foods"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Personal Care"><td>7</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Beauty &amp; Hygiene</td><td>Personal Care</td><td><span class="count">112</span></td><td><span class="cat-status active">Active</span></td><td>26 May 2025 03:30 PM</td><td><button class="cat-more" data-name="Beauty & Hygiene"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Inactive" data-parent="Personal Care"><td>8</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Baby Care</td><td>Personal Care</td><td><span class="count">65</span></td><td><span class="cat-status inactive">Inactive</span></td><td>25 May 2025 05:00 PM</td><td><button class="cat-more" data-name="Baby Care"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Home Care"><td>9</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Cleaning Essentials</td><td>Home Care</td><td><span class="count">98</span></td><td><span class="cat-status active">Active</span></td><td>25 May 2025 12:45 PM</td><td><button class="cat-more" data-name="Cleaning Essentials"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+          <tr data-status="Active" data-parent="Home Care"><td>10</td><td><span class="folder"><i class="fa-regular fa-folder"></i></span>Kitchen &amp; Dining</td><td>Home Care</td><td><span class="count">49</span></td><td><span class="cat-status active">Active</span></td><td>24 May 2025 11:30 AM</td><td><button class="cat-more" data-name="Kitchen & Dining"><i class="fa-solid fa-ellipsis"></i></button></td></tr>
+        </tbody></table></div>
+        <div class="cat-table-foot"><span id="categoryCount">Showing 1 to 10 of 38 entries</span><div class="cat-pages"><button>«</button><button class="active">1</button><button>2</button><button>3</button><button>4</button><button>»</button></div></div>
+      </section>
+    </div>
+
+    <aside class="cat-side">
+      <section class="cat-card side-card"><h3>Category Breakdown</h3><div class="breakdown"><div class="category-donut"><span><strong>1,248</strong><small>Total Products</small></span></div><div class="legend"><p><i style="--c:#36a66f"></i><span>Grocery<b>45.8% (572)</b></span></p><p><i style="--c:#3d80d8"></i><span>Personal Care<b>18.6% (222)</b></span></p><p><i style="--c:#d3b62b"></i><span>Home Care<b>15.2% (190)</b></span></p><p><i style="--c:#ef4b37"></i><span>Dairy<b>10.1% (126)</b></span></p><p><i style="--c:#5646cf"></i><span>Others<b>10.3% (128)</b></span></p></div></div></section>
+      <section class="cat-card side-card"><div class="side-title"><h3>Top Categories</h3><button id="viewAllTop">View All</button></div><div class="top-categories"><p><span class="round green"><i class="fa-solid fa-basket-shopping"></i></span><b>Grocery<small>572 Products</small></b></p><p><span class="round blue"><i class="fa-solid fa-bottle-droplet"></i></span><b>Personal Care<small>222 Products</small></b></p><p><span class="round yellow"><i class="fa-solid fa-box"></i></span><b>Home Care<small>190 Products</small></b></p><p><span class="round red"><i class="fa-solid fa-cheese"></i></span><b>Dairy<small>126 Products</small></b></p><p><span class="round orange"><i class="fa-solid fa-cookie-bite"></i></span><b>Snacks &amp; Branded Foods<small>154 Products</small></b></p></div></section>
+      <section class="cat-card side-card"><h3>Quick Actions</h3><div class="quick-actions"><button id="addCategoryQuick"><i class="fa-solid fa-plus"></i>Add New Category</button><button id="categoryHierarchy"><i class="fa-solid fa-download"></i>Category Hierarchy</button><button id="categoryReport"><i class="fa-regular fa-file-lines"></i>Category Report</button></div></section>
+    </aside>
+  </div>
+</main></div>
+
+<div class="cat-action-menu" id="categoryActionMenu"><button data-act="view"><i class="fa-regular fa-eye"></i>View Details</button><button data-act="edit"><i class="fa-regular fa-pen-to-square"></i>Edit Category</button><button data-act="sub"><i class="fa-solid fa-plus"></i>Add Sub Category</button><button data-act="status"><i class="fa-solid fa-arrows-rotate"></i>Change Status</button><button data-act="delete" class="danger"><i class="fa-regular fa-trash-can"></i>Delete Category</button></div>
+<div class="cat-modal" id="categoryModal"><div class="cat-dialog"><div class="dialog-head"><h3 id="categoryModalTitle">Add New Category</h3><button id="closeCategoryModal">×</button></div><form id="categoryForm"><div class="form-grid"><label>Category Name *<input id="modalCategoryName" required placeholder="Enter category name"></label><label>Parent Category<select id="modalParent"><option>None</option><option>Grocery</option><option>Personal Care</option><option>Home Care</option></select></label><label>Status<select id="modalStatus"><option>Active</option><option>Inactive</option></select></label><label>Display Order<input type="number" value="1" min="1"></label><label class="full">Description<textarea placeholder="Enter category description"></textarea></label></div><div class="dialog-actions"><button type="button" class="cat-btn" id="cancelCategoryModal">Cancel</button><button class="cat-btn primary" type="submit">Save Category</button></div></form></div></div>
+<div class="cat-toast" id="categoryToast"></div>
+<script src="../components/sidebar/js/sidebar.js"></script><script src="../components/topbar/js/topbar.js"></script><script src="../components/ui/js/ui-components.js"></script><script src="../assets/js/category-management.js"></script>
+</body></html>
