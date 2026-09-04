@@ -1,4 +1,6 @@
 (() => {
+  // Match the desktop reference: Barcode Management opens with the shared sidebar expanded.
+  if (window.innerWidth > 900) document.body.classList.remove('sidebar-collapsed');
   const data = [
     ['8901234567890','Aashirvaad Atta 5kg','ATT5005','Grocery','EAN-13','Active','25 May 2025','Super Admin'],
     ['8901234567891','Tata Tea Premium 1kg','TEA1001','Beverages','EAN-13','Active','25 May 2025','Super Admin'],
