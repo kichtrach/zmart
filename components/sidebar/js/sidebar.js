@@ -41,6 +41,12 @@
       'Units':'units.html',
       'Barcode Management':'barcode-management.html',
       'Batch Management':'batch-management.html'
+    },
+    supplier: {
+      'Supplier List':'supplier-management.html',
+      'Add New Supplier':'add-new-supplier.html',
+      'Supplier Categories':'supplier-categories.html',
+      'Supplier Contacts':'supplier-contacts.html'
     }
   };
 
@@ -48,7 +54,8 @@
     company: 'company-management',
     branch: 'branch-management',
     warehouse: 'warehouse-management',
-    product: 'product-management'
+    product: 'product-management',
+    supplier: 'supplier-management'
   };
 
   const currentModuleKey = () => {
@@ -57,6 +64,7 @@
     if (p.includes('/branch-management/')) return 'branch';
     if (p.includes('/warehouse-management/')) return 'warehouse';
     if (p.includes('/product-management/')) return 'product';
+    if (p.includes('/supplier-management/')) return 'supplier';
     return 'dashboard';
   };
 
@@ -93,7 +101,7 @@
     branch:['Branch Master','Branch Configuration','Branch Targets','Branch Performance','Branch Expenses','Branch Status','Branch Dashboard'],
     warehouse:['Warehouse Overview','Warehouse Master','Stock by Warehouse','Stock Transfers','Rack & Bin Management'],
     product:['Categories','Sub Categories','Brands','Products','Product Variants','Units','Barcode Management','Batch Management'],
-    supplier:['Supplier Master','Supplier Ledger','Supplier Performance'],
+    supplier:['Supplier List','Add New Supplier','Supplier Categories','Supplier Contacts'],
     purchase:['Purchase Orders','GRN','Purchase Returns','Supplier Payments'],
     inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Management','Batch Tracking','Damage / Wastage'],
     sales:['POS Billing','Sales Orders','Sales Returns','Credit Sales','Pending Bills','Day Close','Counterwise Sales','Payment Collection'],
@@ -107,7 +115,7 @@
   mount.className = 'app-sidebar';
   mount.innerHTML = `
     <div class="sidebar-brand">
-      <img src="${(location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/') || location.pathname.includes('/product-management/')) ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
+      <img src="${(location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/') || location.pathname.includes('/product-management/') || location.pathname.includes('/supplier-management/')) ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
     </div>
     <nav class="sidebar-nav">
       ${groups.map(([key,icon,label,expandable]) => `
@@ -173,7 +181,13 @@
     'units.html':'Units',
     'add-unit.html':'Units',
     'barcode-management.html':'Barcode Management',
-    'add-new-barcode.html':'Barcode Management'
+    'add-new-barcode.html':'Barcode Management',
+    'batch-management.html':'Batch Management',
+    'add-new-batch.html':'Batch Management',
+    'supplier-management.html':'Supplier List',
+    'add-new-supplier.html':'Add New Supplier',
+    'supplier-categories.html':'Supplier Categories',
+    'supplier-contacts.html':'Supplier Contacts'
   };
 
   const activeGroupKey = currentModuleKey();
