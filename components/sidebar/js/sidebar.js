@@ -47,7 +47,11 @@
       'Add New Supplier':'add-new-supplier.html',
       'Supplier Categories':'supplier-categories.html',
       'Supplier Contacts':'supplier-contacts.html'
-    }
+    },
+    purchase: {
+      'Purchase Orders':'purchase-orders.html'
+    },
+    inventory: {}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
   };
 
   const moduleFolder = {
@@ -55,8 +59,12 @@
     branch: 'branch-management',
     warehouse: 'warehouse-management',
     product: 'product-management',
-    supplier: 'supplier-management'
+    supplier: 'supplier-management',
+    purchase: 'purchase-management',
+    inventory:'inventory-management', sales:'sales-billing', customer:'customer-management', employee:'employee-management', finance:'accounting-finance', reports:'reports-analytics', settings:'system-settings'
   };
+
+  const MODULE_HOME = {company:'company-management.html',branch:'branch-management.html',warehouse:'warehouse-management.html',product:'product-management.html',supplier:'supplier-overview.html',purchase:'purchase-management.html',inventory:'inventory-management.html',sales:'sales-billing.html',customer:'customer-management.html',employee:'employee-management.html',finance:'accounting-finance.html',reports:'reports-analytics.html',settings:'system-settings.html'};
 
   const currentModuleKey = () => {
     const p = location.pathname;
@@ -65,6 +73,14 @@
     if (p.includes('/warehouse-management/')) return 'warehouse';
     if (p.includes('/product-management/')) return 'product';
     if (p.includes('/supplier-management/')) return 'supplier';
+    if (p.includes('/purchase-management/')) return 'purchase';
+    if (p.includes('/inventory-management/')) return 'inventory';
+    if (p.includes('/sales-billing/')) return 'sales';
+    if (p.includes('/customer-management/')) return 'customer';
+    if (p.includes('/employee-management/')) return 'employee';
+    if (p.includes('/accounting-finance/')) return 'finance';
+    if (p.includes('/reports-analytics/')) return 'reports';
+    if (p.includes('/system-settings/')) return 'settings';
     return 'dashboard';
   };
 
@@ -102,7 +118,7 @@
     warehouse:['Warehouse Overview','Warehouse Master','Stock by Warehouse','Stock Transfers','Rack & Bin Management'],
     product:['Categories','Sub Categories','Brands','Products','Product Variants','Units','Barcode Management','Batch Management'],
     supplier:['Supplier List','Add New Supplier','Supplier Categories','Supplier Contacts'],
-    purchase:['Purchase Orders','GRN','Purchase Returns','Supplier Payments'],
+    purchase:['Purchase Orders','Goods Receipt (GRN)','Purchase Returns','Purchase Invoices','Supplier Payments','Purchase Reports'],
     inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Management','Batch Tracking','Damage / Wastage'],
     sales:['POS Billing','Sales Orders','Sales Returns','Credit Sales','Pending Bills','Day Close','Counterwise Sales','Payment Collection'],
     customer:['Customer Master','Loyalty Program','Customer Groups','Customer Feedback','Customer Offers'],
@@ -115,7 +131,7 @@
   mount.className = 'app-sidebar';
   mount.innerHTML = `
     <div class="sidebar-brand">
-      <img src="${(location.pathname.includes('/company-management/') || location.pathname.includes('/branch-management/') || location.pathname.includes('/warehouse-management/') || location.pathname.includes('/product-management/') || location.pathname.includes('/supplier-management/')) ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
+      <img src="${currentModuleKey() !== 'dashboard' ? '../assets/images/logo-zmart.png' : 'assets/images/logo-zmart.png'}" alt="ZMart" />
     </div>
     <nav class="sidebar-nav">
       ${groups.map(([key,icon,label,expandable]) => `
@@ -187,7 +203,12 @@
     'supplier-management.html':'Supplier List',
     'add-new-supplier.html':'Add New Supplier',
     'supplier-categories.html':'Supplier Categories',
-    'supplier-contacts.html':'Supplier Contacts'
+    'supplier-contacts.html':'Supplier Contacts',
+    'purchase-orders.html':'Purchase Orders',
+    'new-purchase-order.html':'Purchase Orders',
+    'purchase-order-items.html':'Purchase Orders',
+    'review-purchase-order.html':'Purchase Orders',
+    'purchase-order-complete.html':'Purchase Orders'
   };
 
   const activeGroupKey = currentModuleKey();
@@ -262,6 +283,10 @@
     }
     const group = nav.closest('.nav-group');
     if (!group) return;
+    if (MODULE_HOME[key] && currentModuleKey() !== key) {
+      navigateToModuleFile(key, MODULE_HOME[key]);
+      return;
+    }
     const isOpen = group.classList.contains('open');
     document.querySelectorAll('.nav-group.open').forEach(g => {
       if (g !== group) {

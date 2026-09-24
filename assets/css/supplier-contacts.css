@@ -148,3 +148,69 @@ html,body{max-width:100%;overflow-x:hidden}
  .details-tabs button{padding:0 8px;font-size:10px}
  .details-footer{grid-template-columns:1fr;position:static!important;margin:0!important;padding:10px 0!important}
 }
+
+/* V34 — Supplier Contacts toolbar/table alignment + typography */
+.contacts-page{font-size:14px}
+.contacts-card{width:100%;overflow:hidden}
+.contacts-tools{
+ display:grid!important;
+ grid-template-columns:minmax(360px,2.25fr) minmax(180px,1fr) minmax(200px,1.05fr) minmax(160px,.9fr) max-content 44px max-content!important;
+ gap:12px!important;
+ padding:16px!important;
+ align-items:center;
+ width:100%;
+ box-sizing:border-box;
+}
+.contacts-tools>*{min-width:0!important;max-width:100%;box-sizing:border-box}
+.searchbox{width:100%;overflow:visible}
+.contacts-tools select,.searchbox input{height:46px!important;font-size:13.5px!important;padding-left:14px!important;padding-right:38px!important}
+.searchbox i{right:15px;top:15px;font-size:15px}
+.sc-btn,.date-btn,.icon-btn{height:46px!important;font-size:13.5px!important}
+.icon-btn{width:46px!important}
+.contact-table-wrap{width:100%;overflow-x:auto;overflow-y:hidden}
+.contact-table-wrap table{width:100%;min-width:1240px;table-layout:auto}
+.contact-table-wrap th{height:50px;font-size:12.5px!important;padding:0 14px!important}
+.contact-table-wrap td{height:58px;font-size:13px!important;padding:0 14px!important}
+.person{font-size:13px;gap:12px}
+.person b{width:31px;height:31px;font-size:11.5px;flex:0 0 31px}
+.status{font-size:12px}
+.contact-footer{font-size:12.5px}
+.pagination select{font-size:12px}
+
+@media (max-width:1450px){
+ .contacts-tools{grid-template-columns:minmax(330px,2fr) minmax(165px,.95fr) minmax(180px,1fr) minmax(145px,.82fr) max-content 44px max-content!important;gap:10px!important}
+}
+@media (max-width:1250px){
+ .contacts-tools{grid-template-columns:minmax(300px,1.7fr) repeat(3,minmax(155px,1fr))!important}
+ .contacts-tools .date-btn,.contacts-tools .icon-btn,.contacts-tools>.sc-btn{grid-column:auto!important}
+}
+@media (max-width:1050px){
+ .contacts-tools{grid-template-columns:minmax(280px,1.5fr) repeat(2,minmax(170px,1fr))!important}
+ .contacts-tools #statusFilter{grid-column:auto!important}
+}
+@media (max-width:760px){
+ .contacts-tools{grid-template-columns:1fr!important}
+ .contacts-tools>*{grid-column:auto!important;width:100%!important}
+ .contacts-tools .icon-btn{width:46px!important}
+}
+
+/* V35 — definitive toolbar overlap fix */
+.contacts-tools .searchbox{display:block!important;position:relative!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;}
+.contacts-tools .searchbox input{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+}
+.contacts-tools select{
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+}
+@media (min-width:1251px){
+ .contacts-tools{grid-template-columns:minmax(0,2.15fr) minmax(0,.9fr) minmax(0,1fr) minmax(0,.86fr) max-content 46px max-content!important;}
+}

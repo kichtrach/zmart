@@ -6,6 +6,18 @@
     <div class="topbar-left">
       <button class="hamburger" id="sidebarToggle" type="button" aria-label="Toggle sidebar" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
       <strong class="topbar-title">${
+        location.pathname.includes("/system-settings/") ? "System Settings" :
+        location.pathname.includes("/reports-analytics/") ? "Reports & Analytics" :
+        location.pathname.includes("/accounting-finance/") ? "Accounting & Finance" :
+        location.pathname.includes("/employee-management/") ? "Employee Management" :
+        location.pathname.includes("/customer-management/") ? "Customer Management" :
+        location.pathname.includes("/sales-billing/") ? "Sales & Billing" :
+        location.pathname.includes("/inventory-management/") ? "Inventory Management" :
+        location.pathname.includes("/purchase-management/purchase-management") ? "Purchase Management" :
+        location.pathname.includes("/supplier-management/supplier-overview") ? "Supplier Management" :
+        location.pathname.includes("/product-management/product-management") ? "Product Management" :
+        location.pathname.includes("/purchase-management/new-purchase-order") || location.pathname.includes("/purchase-management/purchase-order-items") || location.pathname.includes("/purchase-management/review-purchase-order") || location.pathname.includes("/purchase-management/purchase-order-complete") ? "New Purchase Order" :
+        location.pathname.includes("/purchase-management/purchase-orders") ? "Purchase Management" :
         location.pathname.includes("/supplier-management/add-new-supplier") ? "Add New Supplier" :
         location.pathname.includes("/supplier-management/supplier-categories") ? "Supplier Categories" :
         location.pathname.includes("/supplier-management/supplier-contacts") ? "Supplier Contacts" :

@@ -61,3 +61,9 @@ The Warehouse Management module includes the reference-driven screens and intera
 - `product-management/add-product.html` – Add New Product form and full-page success state.
 - `assets/css/add-product.css` / `assets/js/add-product.js` – dedicated Product inner-page styles and behavior.
 - Products sidebar and topbar routes remain reusable components; Add New Product keeps Product Management → Products active.
+
+## Supplier Management – Supplier Contacts
+- `supplier-management/supplier-contacts.html`
+- `assets/css/supplier-contacts.css`
+- `assets/js/supplier-contacts.js`
+- Reference-matched contacts list, functional Registered Date filter, Add New Contact form/success state, Contact Details five-tab drawer, actions, filters, reset/export and responsive layouts.
