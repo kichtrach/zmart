@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
+    inventory: {'Stock Register':'inventory-management.html','Stock Transfers':'inventory-management.html','Stock Adjustments':'inventory-management.html','Stock Count':'inventory-management.html','Expiry Management':'inventory-management.html','Reorder Management':'inventory-management.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
   };
 
   const moduleFolder = {
