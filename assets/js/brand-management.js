@@ -1,0 +1,14 @@
+(() => {
+  const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+  const toast=(m)=>{const t=$('#brandToast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
+  const applyFilter=()=>{const q=$('#brandSearch').value.trim().toLowerCase(), st=$('#brandStatus').value, cat=$('#brandCategory').value;let visible=0;$$('#brandTable tbody tr').forEach(row=>{const okQ=!q||row.cells[1].innerText.toLowerCase().includes(q), okS=st==='All Status'||row.dataset.status===st, okC=cat==='All Categories'||row.dataset.category===cat;const ok=okQ&&okS&&okC;row.hidden=!ok;if(ok)visible++});$('#brandCount').textContent=`Showing ${visible?1:0} to ${visible} of ${visible} filtered entries`;};
+  $('#brandFilter')?.addEventListener('click',applyFilter);$('#brandSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter')applyFilter()});
+  $('#brandReset')?.addEventListener('click',()=>{$('#brandSearch').value='';$('#brandStatus').value='All Status';$('#brandCategory').value='All Categories';$$('#brandTable tbody tr').forEach(r=>r.hidden=false);$('#brandCount').textContent='Showing 1 to 10 of 128 entries';});
+  ['#addBrandTop','#qaAddBrand'].forEach(s=>$(s)?.addEventListener('click',()=>{ location.href='add-brand.html'; }));
+  $('#exportBrands')?.addEventListener('click',()=>toast('Brand export prepared.')); $('#columnsBrands')?.addEventListener('click',()=>toast('Column selector opened.')); $('#qaImportBrands')?.addEventListener('click',()=>toast('Import Brands action opened.')); $('#qaBrandReport')?.addEventListener('click',()=>toast('Brand Report opened.')); $('#topBrandsViewAll')?.addEventListener('click',()=>toast('Showing all top brands.')); $('#recentViewAll')?.addEventListener('click',()=>toast('Showing all brand activities.'));
+  const menu=$('#brandMenu'); let selected='';
+  $$('.brand-more').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();selected=btn.dataset.name;const r=btn.getBoundingClientRect();menu.hidden=false;const mw=190;let left=r.right-mw;left=Math.max(10,Math.min(left,window.innerWidth-mw-10));let top=r.bottom+6;if(top+210>window.innerHeight)top=r.top-210;menu.style.left=left+'px';menu.style.top=top+'px';}));
+  menu?.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const labels={view:'View Details',edit:'Edit Brand',products:'View Products',status:'Change Status',delete:'Delete Brand'};toast(`${labels[b.dataset.act]}: ${selected}`);menu.hidden=true;});
+  document.addEventListener('click',e=>{if(!e.target.closest('#brandMenu')&&!e.target.closest('.brand-more'))menu.hidden=true});
+  $$('.pages button').forEach(b=>b.addEventListener('click',()=>{if(/^\d+$/.test(b.textContent)){ $$('.pages button').forEach(x=>x.classList.remove('active'));b.classList.add('active');toast(`Page ${b.textContent} selected.`)}}));
+})();
