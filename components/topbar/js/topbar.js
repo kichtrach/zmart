@@ -13,6 +13,11 @@
         location.pathname.includes("/customer-management/") ? "Customer Management" :
         location.pathname.includes("/sales-billing/") ? "Sales & Billing" :
         location.pathname.includes("/inventory-management/") ? "Inventory Management" :
+        location.pathname.includes("/purchase-management/edit-grn") ? "Edit Goods Receipt (GRN)" :
+        location.pathname.includes("/purchase-management/new-grn") || location.pathname.includes("/purchase-management/grn-items") || location.pathname.includes("/purchase-management/grn-review") || location.pathname.includes("/purchase-management/grn-complete") ? "New Goods Receipt (GRN)" :
+        location.pathname.includes("/purchase-management/purchase-return-complete") || location.pathname.includes("/purchase-management/purchase-return-review") || location.pathname.includes("/purchase-management/purchase-return-items") || location.pathname.includes("/purchase-management/new-purchase-return") ? "Create Purchase Return" :
+        location.pathname.includes("/purchase-management/purchase-returns") ? "Purchase Returns" :
+        location.pathname.includes("/purchase-management/goods-receipt") ? "Goods Receipt (GRN)" :
         location.pathname.includes("/purchase-management/purchase-management") ? "Purchase Management" :
         location.pathname.includes("/supplier-management/supplier-overview") ? "Supplier Management" :
         location.pathname.includes("/product-management/product-management") ? "Product Management" :

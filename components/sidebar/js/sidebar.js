@@ -49,7 +49,12 @@
       'Supplier Contacts':'supplier-contacts.html'
     },
     purchase: {
-      'Purchase Orders':'purchase-orders.html'
+      'Purchase Orders':'purchase-orders.html',
+      'Goods Receipt (GRN)':'goods-receipt.html',
+      'Purchase Returns':'purchase-returns.html',
+      'Purchase Invoices':'purchase-invoices.html',
+      'Supplier Payments':'supplier-payments.html',
+      'Purchase Reports':'purchase-reports.html'
     },
     inventory: {}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
   };
@@ -208,7 +213,24 @@
     'new-purchase-order.html':'Purchase Orders',
     'purchase-order-items.html':'Purchase Orders',
     'review-purchase-order.html':'Purchase Orders',
-    'purchase-order-complete.html':'Purchase Orders'
+    'purchase-order-complete.html':'Purchase Orders',
+    'goods-receipt.html':'Goods Receipt (GRN)',
+    'new-grn.html':'Goods Receipt (GRN)',
+    'grn-items.html':'Goods Receipt (GRN)',
+    'grn-review.html':'Goods Receipt (GRN)',
+    'grn-complete.html':'Goods Receipt (GRN)',
+    'edit-grn.html':'Goods Receipt (GRN)',
+    'edit-grn-items.html':'Goods Receipt (GRN)',
+    'edit-grn-review.html':'Goods Receipt (GRN)',
+    'edit-grn-complete.html':'Goods Receipt (GRN)',
+    'purchase-returns.html':'Purchase Returns',
+    'new-purchase-return.html':'Purchase Returns',
+    'purchase-return-items.html':'Purchase Returns',
+    'purchase-return-review.html':'Purchase Returns',
+    'purchase-return-complete.html':'Purchase Returns',
+    'purchase-invoices.html':'Purchase Invoices',
+    'supplier-payments.html':'Supplier Payments',
+    'purchase-reports.html':'Purchase Reports'
   };
 
   const activeGroupKey = currentModuleKey();
