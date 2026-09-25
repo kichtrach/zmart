@@ -20,7 +20,7 @@
     },
     styleDynamicControls(scope = document) {
       scope.querySelectorAll('select:not(.ui-select)').forEach(el => el.classList.add('ui-select'));
-      scope.querySelectorAll('input[type="text"],input[type="email"],input[type="number"],input[type="tel"],input[type="password"]').forEach(el => {
+      scope.querySelectorAll('input[type="text"],input[type="email"],input[type="number"],input[type="tel"],input[type="password"],input[type="date"]').forEach(el => {
         if (!el.closest('.topbar-search')) el.classList.add('ui-input');
       });
     }
