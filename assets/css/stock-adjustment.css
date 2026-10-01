@@ -311,3 +311,24 @@
 /* V99 single popup layer */
 .sa-adjustment-overlay[aria-hidden="true"]{display:none!important}
 #saActionContent.show{display:flex!important}
+
+
+/* V119 — Stock Adjustment reference + generic-theme lock */
+.sa-page{font-family:Poppins,sans-serif;color:#07162c}
+.sa-page .card,.wizard,.wizard .box,.action-modal{border-radius:2px!important}
+.sa-page .sa-btn,.wizard button,.wizard input,.wizard select,.wizard textarea{border-radius:2px!important}
+.sa-page table{font-size:13px!important}
+.sa-page table th{font-size:12px!important;font-weight:600!important}
+.sa-page table td{font-size:13px!important}
+#wizardOverlay .wizard{width:min(1320px,calc(100vw - 40px));max-height:calc(100vh - 36px)}
+#wizardOverlay .wizard-body{overflow:auto;min-height:0}
+#wizardOverlay .box h3{font-size:16px!important}
+#wizardOverlay .box>p{font-size:13px!important}
+#wizardOverlay label{font-size:13px!important}
+#wizardOverlay input,#wizardOverlay select,#wizardOverlay textarea,#wizardOverlay .zm-select__button{font-size:13px!important}
+#wizardOverlay .steps .step{font-size:13px!important}
+#wizardOverlay .detail-grid>div{border-radius:2px!important}
+#wizardOverlay .upload{border-radius:2px!important}
+#wizardOverlay .summary .net{border-radius:2px!important}
+#successOverlay .success-modal{border-radius:2px!important}
+@media(max-width:1024px){#wizardOverlay .wizard{width:calc(100vw - 20px)}.select-layout{grid-template-columns:1fr!important}.form-grid.four{grid-template-columns:repeat(2,minmax(0,1fr))!important}}

@@ -390,3 +390,12 @@
 .sc-page .location-table th:first-child input[type="checkbox"],.sc-page .location-table td:first-child input[type="checkbox"]{display:inline-grid!important;margin:0 auto!important}
 .sc-page .location-table tbody td{height:54px!important;padding-top:9px!important;padding-bottom:9px!important}
 .sc-page .location-table tbody tr:has(input[type="checkbox"]:checked) td{background:#f7fbf8!important}
+
+/* V109: custom checkbox component prevents native/legacy blue checkbox leakage */
+.sc-page .locations .sc-checkbox{appearance:none!important;-webkit-appearance:none!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;padding:0!important;margin:0!important;border:1px solid #9aa8b7!important;border-radius:2px!important;background:#fff!important;display:inline-grid!important;place-items:center!important;position:relative!important;cursor:pointer!important;box-shadow:none!important;vertical-align:middle!important}
+.sc-page .locations .sc-checkbox.is-checked{background:#138a3d!important;border-color:#138a3d!important}
+.sc-page .locations .sc-checkbox.is-checked:after{content:""!important;width:7px!important;height:4px!important;border-left:2px solid #fff!important;border-bottom:2px solid #fff!important;transform:rotate(-45deg) translate(1px,-1px)!important}
+.sc-page .locations .sc-checkbox-head{cursor:default!important}
+.sc-page .locations th:first-child,.sc-page .locations td:first-child{width:40px!important;min-width:40px!important;max-width:40px!important;text-align:center!important;padding-left:10px!important;padding-right:10px!important}
+.sc-page .locations tbody tr.is-selected td{background:#f7fbf8!important}
+.sc-page .locations tbody td{height:54px!important;padding-top:9px!important;padding-bottom:9px!important}
