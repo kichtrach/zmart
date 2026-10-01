@@ -1,0 +1,59 @@
+/* ZMart Inventory Management — unified generic component/layout pass v166 */
+:root{--inv-green:#078447;--inv-green-dark:#056b3a;--inv-navy:#0b1b3b;--inv-text:#17233d;--inv-muted:#667085;--inv-border:#d7e0ea;--inv-soft:#f7f9fc;--inv-white:#fff;--inv-danger:#e53935;--inv-radius:4px;--inv-control:40px}
+.inventory-page,.sa-page,.st-page,.sc-page,.expiry-page,.rl-page{font-family:Poppins,sans-serif;color:var(--inv-text)}
+/* Controls: one border, one height, neutral background */
+.inventory-page input:not([type=checkbox]):not([type=radio]),.inventory-page select,.inventory-page textarea,
+.sa-page input:not([type=checkbox]):not([type=radio]),.sa-page select,.sa-page textarea,
+.st-page input:not([type=checkbox]):not([type=radio]),.st-page select,.st-page textarea,
+.sc-page input:not([type=checkbox]):not([type=radio]),.sc-page select,.sc-page textarea,
+.expiry-page input:not([type=checkbox]):not([type=radio]),.expiry-page select,.expiry-page textarea,
+.rl-page input:not([type=checkbox]):not([type=radio]),.rl-page select,.rl-page textarea,
+.em-modal input:not([type=checkbox]):not([type=radio]),.em-modal select,.em-modal textarea,
+.rl-modal input:not([type=checkbox]):not([type=radio]),.rl-modal select,.rl-modal textarea,
+.st-modal input:not([type=checkbox]):not([type=radio]),.st-modal select,.st-modal textarea{
+ box-sizing:border-box!important;width:100%;min-height:var(--inv-control)!important;height:var(--inv-control);padding:0 12px!important;border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;background-color:#fff!important;color:var(--inv-text)!important;font:500 13px/1.35 Poppins,sans-serif!important;box-shadow:none!important;outline:none!important}
+.inventory-page textarea,.sa-page textarea,.st-page textarea,.sc-page textarea,.expiry-page textarea,.rl-page textarea,.em-modal textarea,.rl-modal textarea,.st-modal textarea{height:auto!important;min-height:92px!important;padding:10px 12px!important;resize:vertical}
+.inventory-page select,.sa-page select,.st-page select,.sc-page select,.expiry-page select,.rl-page select,.em-modal select,.rl-modal select,.st-modal select{
+ appearance:none!important;-webkit-appearance:none!important;background-image:linear-gradient(45deg,transparent 50%,#526176 50%),linear-gradient(135deg,#526176 50%,transparent 50%)!important;background-position:calc(100% - 16px) 17px,calc(100% - 11px) 17px!important;background-size:5px 5px,5px 5px!important;background-repeat:no-repeat!important;padding-right:34px!important}
+.inventory-page input:focus,.inventory-page select:focus,.sa-page input:focus,.sa-page select:focus,.st-page input:focus,.st-page select:focus,.sc-page input:focus,.sc-page select:focus,.expiry-page input:focus,.expiry-page select:focus,.rl-page input:focus,.rl-page select:focus,.em-modal input:focus,.em-modal select:focus,.rl-modal input:focus,.rl-modal select:focus,.st-modal input:focus,.st-modal select:focus{border-color:var(--inv-green)!important;box-shadow:0 0 0 2px rgba(7,132,71,.10)!important}
+/* Labels and field grids */
+.inventory-page label,.sa-page label,.st-page label,.sc-page label,.expiry-page label,.rl-page label,.em-modal label,.rl-modal label,.st-modal label{font-size:12.5px;font-weight:600;color:var(--inv-navy)}
+.form-grid,.modal-grid,.field-grid,.details-grid,.config-grid,.st-form-grid,.sc-form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px!important;align-items:start}
+.form-group,.field,.form-field,.control-group{min-width:0;margin:0!important}
+.required,.req{color:var(--inv-danger)!important}
+/* Search controls: prevent nested/double borders */
+.search-box,.search-input,.search-wrap,.table-search,.product-search,.sc-search,.st-search{position:relative;display:flex!important;align-items:center!important;min-height:var(--inv-control);border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;background:#fff!important;overflow:hidden;box-shadow:none!important}
+.search-box input,.search-input input,.search-wrap input,.table-search input,.product-search input,.sc-search input,.st-search input{border:0!important;box-shadow:none!important;border-radius:0!important;height:38px!important;min-height:38px!important;background:#fff!important;flex:1;min-width:0}
+.search-box i,.search-input i,.search-wrap i,.table-search i,.product-search i,.sc-search i,.st-search i{width:38px;min-width:38px;text-align:center;color:#64748b;border:0!important;background:#fff!important}
+/* Buttons */
+.inventory-page button,.sa-page button,.st-page button,.sc-page button,.expiry-page button,.rl-page button,.em-modal button,.rl-modal button,.st-modal button,.success-box button,.success button{font-family:Poppins,sans-serif}
+.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn,.btn,.action-btn,.modal-foot button,.st-modal button{min-height:40px;padding:0 16px;border:1px solid var(--inv-border);border-radius:var(--inv-radius)!important;background:#fff;color:var(--inv-navy);font-size:13px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:none!important}
+.em-btn.primary,.rl-btn.primary,.st-btn.primary,.sa-btn.primary,.sc-btn.primary,.btn-primary,.primary.action-btn,.modal-foot .primary{background:var(--inv-green)!important;border-color:var(--inv-green)!important;color:#fff!important}
+.em-btn.primary:hover,.rl-btn.primary:hover,.st-btn.primary:hover,.sa-btn.primary:hover,.sc-btn.primary:hover,.btn-primary:hover{background:var(--inv-green-dark)!important;border-color:var(--inv-green-dark)!important}
+/* Filter bars */
+.em-filter,.filters,.filter-bar,.filter-panel,.st-filters,.sc-filters{display:flex!important;flex-wrap:wrap!important;gap:12px!important;align-items:flex-end!important;padding:14px 16px!important;background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;box-shadow:none!important}
+.em-filter>label,.filters>label,.filter-bar>label,.filter-panel>label,.st-filters>label,.sc-filters>label{flex:1 1 150px;min-width:145px;margin:0!important}
+.em-filter>label:first-child,.filters>label:first-child,.filter-bar>label:first-child{flex:1.6 1 240px}
+.filter-actions{display:flex!important;gap:8px!important;align-items:center!important;margin-left:auto!important;flex:0 0 auto!important}
+/* Cards, tab content and modal sections */
+.em-card,.rl-card,.st-card,.sa-card,.sc-card,.panel,.section-card,.form-card,.tab-content,.modal-section,.success-info,.success-product,.notice{background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;box-shadow:none!important}
+.tab-content,.modal-section,.form-card,.section-card{padding:16px!important}
+.tabs,.wizard,.steps,.stepper{border-bottom:1px solid var(--inv-border)!important;background:#fff!important}
+.tabs button,.tab-btn{min-height:42px!important;background:transparent!important;border:0!important;border-bottom:2px solid transparent!important;border-radius:0!important;color:#667085!important}
+.tabs button.active,.tab-btn.active{color:var(--inv-green)!important;border-bottom-color:var(--inv-green)!important;font-weight:600!important}
+/* Modal shells */
+.em-overlay,.rl-overlay,.st-modal-backdrop,.modal-overlay{background:rgba(11,27,59,.48)!important;backdrop-filter:blur(1px)}
+.em-modal,.rl-modal,.st-modal,.generic-modal{width:min(1120px,calc(100vw - 40px))!important;max-height:calc(100vh - 40px)!important;background:#fff!important;border:1px solid #d8e0e8!important;border-radius:6px!important;box-shadow:0 20px 60px rgba(15,23,42,.18)!important;overflow:hidden!important}
+.em-modal>header,.rl-modal>header,.st-modal>header,.modal-header{padding:16px 20px!important;border-bottom:1px solid var(--inv-border)!important;background:#fff!important}
+.modal-body,.st-popup-body{padding:18px 20px!important;overflow:auto!important;background:#fff!important}
+.modal-foot,.em-modal>footer,.rl-modal>footer{padding:14px 20px!important;border-top:1px solid var(--inv-border)!important;background:#fff!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+/* Quantity steppers */
+.qty-control,.qty-stepper,.quantity-control,.counter,.quantity-stepper{display:inline-grid!important;grid-template-columns:38px minmax(50px,1fr) 38px!important;align-items:stretch!important;border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;overflow:hidden!important;background:#fff!important;min-height:40px}
+.qty-control button,.qty-stepper button,.quantity-control button,.counter button,.quantity-stepper button{width:38px!important;min-width:38px!important;height:38px!important;min-height:38px!important;padding:0!important;border:0!important;border-radius:0!important;background:#fff!important;color:var(--inv-navy)!important}
+.qty-control input,.qty-stepper input,.quantity-control input,.counter input,.quantity-stepper input{height:38px!important;min-height:38px!important;border:0!important;border-left:1px solid var(--inv-border)!important;border-right:1px solid var(--inv-border)!important;border-radius:0!important;text-align:center!important;padding:0 6px!important;box-shadow:none!important}
+/* Tables/actions */
+.table-wrap{border:1px solid var(--inv-border);border-radius:var(--inv-radius);overflow:auto;background:#fff}
+table{border-collapse:collapse;width:100%} th{background:#f8fafc!important;color:#344054!important;font-size:12px!important;font-weight:600!important} th,td{border-bottom:1px solid #e8edf3!important;padding:11px 12px!important;vertical-align:middle} .action-menu,.dropdown-menu,.popover-menu{background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:var(--inv-radius)!important;box-shadow:0 8px 24px rgba(15,23,42,.12)!important;padding:5px!important;z-index:9999!important}.action-menu button,.dropdown-menu button,.popover-menu button{width:100%;justify-content:flex-start!important;min-height:36px!important;border:0!important;background:#fff!important;border-radius:3px!important}.action-menu button:hover,.dropdown-menu button:hover,.popover-menu button:hover{background:#f3f8f5!important;color:var(--inv-green)!important}
+/* Responsive */
+@media(max-width:900px){.form-grid,.modal-grid,.field-grid,.details-grid,.config-grid,.st-form-grid,.sc-form-grid{grid-template-columns:1fr!important}.em-modal,.rl-modal,.st-modal,.generic-modal{width:calc(100vw - 20px)!important;max-height:calc(100vh - 20px)!important}.em-filter>label,.filters>label,.filter-bar>label,.filter-panel>label{flex:1 1 calc(50% - 12px)}.filter-actions{width:100%;justify-content:flex-end}}
+@media(max-width:600px){.em-filter>label,.filters>label,.filter-bar>label,.filter-panel>label{flex:1 1 100%}.filter-actions{justify-content:stretch}.filter-actions button{flex:1}.modal-body,.st-popup-body{padding:14px!important}.modal-foot,.em-modal>footer,.rl-modal>footer{padding:12px 14px!important}}

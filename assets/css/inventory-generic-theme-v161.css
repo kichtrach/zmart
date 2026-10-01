@@ -1,0 +1,206 @@
+/* V161 Inventory Management hardening: one generic theme for every inner page/workflow. */
+:root{--inv-green:#0b8f55;--inv-green-dark:#087346;--inv-green-soft:#eaf7f0;--inv-border:#dfe6e2;--inv-text:#17251f;--inv-muted:#68766f;--inv-bg:#f7f9f8}
+.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.dashboard-main{color:var(--inv-text)}
+.inventory-page *, .stock-page *, .stock-adjustment-page *, .stock-count-page *, .expiry-page *, .reorder-page *, .st-page *{box-sizing:border-box}
+/* form controls */
+.inventory-page :is(input,select,textarea),.stock-page :is(input,select,textarea),.stock-adjustment-page :is(input,select,textarea),.stock-count-page :is(input,select,textarea),.expiry-page :is(input,select,textarea),.reorder-page :is(input,select,textarea),.st-page :is(input,select,textarea),
+.inv-overlay :is(input,select,textarea),.em-overlay :is(input,select,textarea),.sa-overlay :is(input,select,textarea),.sc-overlay :is(input,select,textarea),.rl-overlay :is(input,select,textarea){font:500 13px Poppins,sans-serif;color:var(--inv-text);background-color:#fff;border:1px solid #d6dfda;border-radius:2px;min-height:40px;outline:none;box-shadow:none;transition:.15s}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) :is(input,select,textarea):focus{border-color:var(--inv-green)!important;box-shadow:0 0 0 2px rgba(11,143,85,.10)!important}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) select{appearance:none;-webkit-appearance:none;padding-right:34px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%230b8f55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important;background-size:12px 8px!important}
+textarea{resize:vertical;min-height:84px!important}
+label{font-size:13px;font-weight:500}.req,.required,.required-star,label .text-danger{display:inline!important;color:#e13c3c!important;margin-left:2px!important;white-space:nowrap!important}
+/* buttons */
+:is(.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn,.btn,button.primary,.btn-primary){font:500 13px Poppins,sans-serif;border-radius:2px!important;min-height:38px;border:1px solid #d6dfda;background:#fff;color:#27352f;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;box-shadow:none}
+:is(.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn,.btn):hover{border-color:#a9beb3;background:#f8fbf9}
+:is(.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn,.btn).primary,:is(button,.btn).primary,.btn-primary{background:var(--inv-green)!important;border-color:var(--inv-green)!important;color:#fff!important}
+:is(.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn,.btn).primary:hover,.btn-primary:hover{background:var(--inv-green-dark)!important;border-color:var(--inv-green-dark)!important}
+button.icon-only,.more,.dots,.row-delete{min-width:34px!important;width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;border-radius:2px!important}
+/* cards/tables */
+:is(.form-box,.panel,.em-card,.st-panel,.st-side-card,.review-card,.form-card,.preview,.card){border:1px solid var(--inv-border)!important;border-radius:2px!important;box-shadow:0 1px 3px rgba(23,37,31,.04)!important;background:#fff}
+:is(.table-wrap,.inv-table-wrap,.st-table-wrap){max-width:100%;overflow:auto;border-radius:2px}
+table{border-collapse:separate;border-spacing:0;width:100%}th{background:#f5f8f6!important;color:#34433c!important;font-size:12px!important;font-weight:600!important}td{font-size:13px!important}th,td{border-color:#e7ece9!important;vertical-align:middle}
+/* stepper/tabs */
+:is(.step.active,.wizard .active,.tab.active,.preview-tabs b){color:var(--inv-green)!important;border-color:var(--inv-green)!important}.step.active .num,.step.done .num{background:var(--inv-green)!important;border-color:var(--inv-green)!important;color:#fff!important}
+/* dropdown/action menus + tooltips */
+:is(.action-menu,.st-popover,.zg-portal-menu,.dropdown-menu,.context-menu){background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:2px!important;box-shadow:0 10px 28px rgba(18,38,29,.14)!important;padding:5px!important;z-index:10050!important}
+:is(.action-menu,.st-popover,.zg-portal-menu,.dropdown-menu,.context-menu) :is(button,a){font:500 13px Poppins,sans-serif!important;color:#27352f!important;background:#fff!important;border:0!important;border-radius:2px!important;min-height:36px!important;display:flex!important;align-items:center!important;gap:9px!important;width:100%;padding:8px 10px!important;text-decoration:none!important}
+:is(.action-menu,.st-popover,.zg-portal-menu,.dropdown-menu,.context-menu) :is(button,a):hover{background:var(--inv-green-soft)!important;color:var(--inv-green-dark)!important}
+:is(.action-menu,.st-popover,.zg-portal-menu,.dropdown-menu,.context-menu) i{color:var(--inv-green)!important;width:16px;text-align:center}
+[role=tooltip],.tooltip,.ui-tooltip{background:#23332b!important;color:#fff!important;border-radius:2px!important;font:500 12px Poppins,sans-serif!important;padding:6px 9px!important}
+/* overlays/modals */
+:is(.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.zg-modal-overlay){background:rgba(16,31,24,.48)!important;backdrop-filter:blur(1px)}
+:is(.inv-modal,.em-modal,.action-modal,.success-modal,.success-box,.zg-modal,.modal){border-radius:4px!important;border:1px solid var(--inv-border)!important;box-shadow:0 18px 55px rgba(10,25,18,.20)!important}
+/* status */
+:is(.pill.valid,.pill.good,.active-pill,.st-status.completed){background:#e8f7ef!important;color:#087346!important}.st-status.transit{background:#eaf3ff!important;color:#2d67a9!important}.st-status.pending,.pill.soon{background:#fff5df!important;color:#9a6700!important}.st-status.cancelled,.pill.expired,.pill.bad{background:#fff0ef!important;color:#b63a32!important}
+/* contain layouts */
+:is(.grid2,.form-grid,.fieldgrid,.st-grid,.notification-layout,.review-grid)>*{min-width:0}.filter-actions,.st-actions,.section-actions,.success-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+@media(max-width:900px){:is(.grid2,.notification-layout,.review-grid){grid-template-columns:1fr!important}.filter-actions,.st-actions{width:100%}}
+
+/* V162 — Inventory popup CONTENT generic-theme normalization */
+:is(.overlay,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop,.zg-modal-overlay){font-family:Poppins,sans-serif;color:var(--inv-text)}
+:is(.overlay,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop,.zg-modal-overlay) :is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.success-box,.zg-modal,.modal){background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:4px!important;color:var(--inv-text)!important;box-shadow:0 18px 55px rgba(10,25,18,.20)!important;overflow:hidden}
+/* popup headers */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.zg-modal,.modal)>header,
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.zg-modal,.modal) :is(.modal-head,.popup-head,.wizard-head){background:#fff!important;border-bottom:1px solid var(--inv-border)!important;padding:18px 22px!important;color:var(--inv-text)!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.zg-modal,.modal) h2{font-size:18px!important;line-height:1.35!important;font-weight:600!important;color:#17251f!important;margin-top:0}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.zg-modal,.modal) h3{color:#23352c!important;font-weight:600!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.action-modal,.success-modal,.zg-modal,.modal) p{color:var(--inv-muted)}
+:is(.title-icon,.modal-icon,.head-icon){background:var(--inv-green-soft)!important;color:var(--inv-green)!important;border:1px solid #ccebdc!important;border-radius:2px!important}
+:is(.close,.x,.modal-x,.st-modal-close,[data-close],[data-close-wizard],[data-close-action]){color:#66766e!important;background:transparent!important;border:0!important;border-radius:2px!important;min-width:34px!important;width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-size:20px!important;line-height:1!important}
+:is(.close,.x,.modal-x,.st-modal-close,[data-close],[data-close-wizard],[data-close-action]):hover{background:#eef5f1!important;color:var(--inv-green-dark)!important}
+/* popup bodies + cards */
+:is(.wizard-body,.modal-body,.st-popup-body,.popup-body,.zg-modal-body){background:#fbfcfb!important;padding:20px 22px!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.box,.form-box,.form-card,.card,.panel,.st-panel,.review-card,.preview,.summary-card,.section-card,.selected-card,.product-card){background:#fff!important;border:1px solid var(--inv-border)!important;border-radius:2px!important;box-shadow:none!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.box,.form-box,.form-card,.card,.panel,.st-panel,.review-card,.preview,.summary-card,.section-card){padding:16px!important}
+/* labels + required marker */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) label{font:500 13px Poppins,sans-serif!important;color:#34433c!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) label :is(.req,.required,.required-star,.text-danger),
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.req,.required,.required-star){display:inline!important;position:static!important;color:#dc3f3f!important;margin-left:3px!important;white-space:nowrap!important}
+/* controls */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(input:not([type=checkbox]):not([type=radio]),select,textarea){width:100%;max-width:100%;font:500 13px Poppins,sans-serif!important;color:#26372f!important;background-color:#fff!important;border:1px solid #d6dfda!important;border-radius:2px!important;min-height:40px!important;padding:9px 12px!important;outline:0!important;box-shadow:none!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) select{appearance:none!important;-webkit-appearance:none!important;padding-right:36px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5l5-5' fill='none' stroke='%230b8f55' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:right 12px center!important;background-size:12px 8px!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(input,select,textarea):focus{border-color:var(--inv-green)!important;box-shadow:0 0 0 2px rgba(11,143,85,.10)!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) textarea{min-height:88px!important;resize:vertical}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(input,select,textarea):disabled{background:#f3f6f4!important;color:#87948e!important;cursor:not-allowed}
+/* checkbox/radio */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) input[type=checkbox],
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) input[type=radio]{accent-color:var(--inv-green);width:16px;height:16px}
+/* popup steppers */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) :is(.steps,.stepper){background:#fff!important;border-bottom:1px solid var(--inv-border)!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) .step{color:#718078!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) .step.active{color:var(--inv-green-dark)!important;border-color:var(--inv-green)!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) .step :is(span,.num){border-color:#cdd9d3!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) .step.active :is(span,.num),
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) .step.done :is(span,.num){background:var(--inv-green)!important;border-color:var(--inv-green)!important;color:#fff!important}
+/* tables inside popups */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.table-wrap,.st-table-wrap,.inv-table-wrap){border:1px solid var(--inv-border)!important;border-radius:2px!important;overflow:auto!important;max-width:100%}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) table{width:100%;border-collapse:separate;border-spacing:0}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) th{background:#f5f8f6!important;color:#34433c!important;font-weight:600!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) td{background:#fff;color:#33443c}
+/* upload/drop zones */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.upload,.dropzone,.upload-box){border:1px dashed #b9cec3!important;background:#f8fbf9!important;border-radius:2px!important;color:#63736b!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.upload,.dropzone,.upload-box) i{color:var(--inv-green)!important}
+/* footer actions */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal)>footer,
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.modal-foot,.footer-actions,.st-footer-actions){background:#fff!important;border-top:1px solid var(--inv-border)!important;padding:14px 22px!important;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(button,.btn,.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn){font:500 13px Poppins,sans-serif;border-radius:2px!important;min-height:38px;border:1px solid #d6dfda;background:#fff;color:#27352f;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;box-shadow:none}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(button,.btn,.inv-btn,.em-btn,.rl-btn,.st-btn,.sa-btn,.sc-btn):hover{border-color:#a9beb3;background:#f6faf8}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.primary,.btn-primary,#next,#submitTransfer){background:var(--inv-green)!important;border-color:var(--inv-green)!important;color:#fff!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.primary,.btn-primary,#next,#submitTransfer):hover{background:var(--inv-green-dark)!important;border-color:var(--inv-green-dark)!important}
+/* quantity/counter controls */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) :is(.qty,.counter,.qty-control,.quantity-control){display:inline-flex!important;align-items:center!important;flex-wrap:nowrap!important;white-space:nowrap!important;border:1px solid #d6dfda!important;border-radius:2px!important;overflow:hidden!important;background:#fff!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) :is(.qty,.counter,.qty-control,.quantity-control) button{width:32px!important;min-width:32px!important;height:34px!important;min-height:34px!important;padding:0!important;border:0!important;border-radius:0!important;background:#f7faf8!important;color:var(--inv-green-dark)!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) :is(.qty,.counter,.qty-control,.quantity-control) input{width:46px!important;min-width:46px!important;height:34px!important;min-height:34px!important;padding:0 4px!important;text-align:center!important;border-width:0 1px!important;border-color:#d6dfda!important;border-radius:0!important;box-shadow:none!important}
+/* alerts / success / notices */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.notice,.info-box,.alert,.hint){border-radius:2px!important;border:1px solid #ccebdc!important;background:#f0faf5!important;color:#315c47!important}
+:is(.success-check,.check){background:#e8f7ef!important;color:var(--inv-green)!important}
+/* old purple/blue icons inside inventory popup actions become generic green */
+:is(.overlay,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) :is(.action-list,.actions,.menu-list) i{color:var(--inv-green)!important}
+:is(.overlay,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) :is(.action-list,.actions,.menu-list) button:hover{background:var(--inv-green-soft)!important;color:var(--inv-green-dark)!important}
+/* containment */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) :is(.form-grid,.grid2,.grid3,.grid4,.fieldgrid,.st-grid,.review-grid,.notification-layout)>*{min-width:0}
+@media(max-width:760px){
+  :is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal){width:calc(100vw - 20px)!important;max-width:calc(100vw - 20px)!important}
+  :is(.wizard-body,.modal-body,.st-popup-body,.popup-body,.zg-modal-body){padding:14px!important}
+  :is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal) :is(.form-grid,.grid2,.grid3,.grid4,.fieldgrid,.st-grid,.review-grid,.notification-layout){grid-template-columns:1fr!important}
+}
+
+/* V164 — Inventory form-control repair: remove nested/broken borders and false select/counter decoration */
+/* Native select arrow is used deliberately: the previous data-URI chevron rendered as a green flag in some browsers. */
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) select,
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) select{
+  -webkit-appearance:auto!important;appearance:auto!important;
+  background-image:none!important;background-repeat:initial!important;background-position:initial!important;background-size:initial!important;
+  padding:0 12px!important;height:40px!important;min-height:40px!important;
+  border:1px solid #cfd9d4!important;border-radius:2px!important;background-color:#fff!important;
+}
+/* Search is one control, not an input inside a second bordered input. */
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) :is(.search,.searchbox){
+  height:40px!important;min-height:40px!important;display:flex!important;align-items:center!important;
+  gap:0!important;padding:0!important;background:#fff!important;border:1px solid #cfd9d4!important;border-radius:2px!important;overflow:hidden!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) :is(.search,.searchbox)>i{
+  width:40px!important;min-width:40px!important;height:38px!important;display:grid!important;place-items:center!important;
+  margin:0!important;color:var(--inv-green)!important;border-right:1px solid #dbe3df!important;background:#fff!important;position:static!important;transform:none!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) :is(.search,.searchbox)>input{
+  flex:1 1 auto!important;width:auto!important;min-width:0!important;height:38px!important;min-height:38px!important;
+  margin:0!important;padding:0 12px!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.expiry-page,.reorder-page,.st-page,.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay) :is(.search,.searchbox):focus-within{
+  border-color:var(--inv-green)!important;box-shadow:0 0 0 2px rgba(11,143,85,.10)!important;
+}
+/* Correct counter styling. Scope .qty to container DIVs only so input.qty in Stock Transfer stays a normal input. */
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.sa-overlay,.inv-overlay) :is(div.qty,.counter,.qty-control,.quantity-control){
+  width:max-content!important;min-width:116px!important;height:40px!important;min-height:40px!important;
+  display:inline-grid!important;grid-template-columns:34px 48px 34px!important;align-items:stretch!important;
+  border:1px solid #cfd9d4!important;border-radius:2px!important;overflow:hidden!important;background:#fff!important;
+}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.sa-overlay,.inv-overlay) :is(div.qty,.counter,.qty-control,.quantity-control)>button{
+  width:34px!important;min-width:34px!important;height:38px!important;min-height:38px!important;margin:0!important;padding:0!important;
+  border:0!important;border-radius:0!important;background:#fff!important;color:#173f2d!important;font-weight:600!important;box-shadow:none!important;
+}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.sa-overlay,.inv-overlay) :is(div.qty,.counter,.qty-control,.quantity-control)>button:first-child{border-right:1px solid #dbe3df!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.sa-overlay,.inv-overlay) :is(div.qty,.counter,.qty-control,.quantity-control)>button:last-child{border-left:1px solid #dbe3df!important}
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.sa-overlay,.inv-overlay) :is(div.qty,.counter,.qty-control,.quantity-control)>input{
+  width:48px!important;min-width:48px!important;height:38px!important;min-height:38px!important;margin:0!important;padding:0 4px!important;
+  text-align:center!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important;font-weight:600!important;
+}
+/* Stock Transfer uses input.qty for a plain quantity field; never turn it into a counter container. */
+.st-page input.qty,.st-modal input.qty,.st-popup-body input.qty{display:block!important;width:100%!important;min-width:70px!important;height:40px!important;min-height:40px!important;padding:0 10px!important;border:1px solid #cfd9d4!important;border-radius:2px!important;overflow:visible!important;background:#fff!important;text-align:left!important}
+
+/* V165 — final Inventory native-control normalization.
+   High-specificity rules intentionally beat legacy module CSS without changing markup. */
+:root{--inv-control-h:40px;--inv-control-border:#cfd9d4;--inv-control-focus:#0b8f55}
+/* Search wrappers: exactly one outer border; child input contributes no second border. */
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.sc-page,.expiry-page,.reorder-page,.st-page) :is(.search,.searchbox),
+:is(.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) :is(.search,.searchbox){
+  box-sizing:border-box!important;width:100%!important;height:var(--inv-control-h)!important;min-height:var(--inv-control-h)!important;
+  display:flex!important;align-items:center!important;gap:0!important;padding:0!important;overflow:hidden!important;
+  background:#fff!important;border:1px solid var(--inv-control-border)!important;border-radius:2px!important;box-shadow:none!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.sc-page,.expiry-page,.reorder-page,.st-page) :is(.search,.searchbox)>i,
+:is(.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) :is(.search,.searchbox)>i{
+  box-sizing:border-box!important;position:static!important;transform:none!important;flex:0 0 40px!important;width:40px!important;height:38px!important;
+  display:grid!important;place-items:center!important;margin:0!important;padding:0!important;background:#fff!important;color:var(--inv-green)!important;
+  border:0!important;border-right:1px solid #dbe3df!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.sc-page,.expiry-page,.reorder-page,.st-page) :is(.search,.searchbox)>input,
+:is(.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) :is(.search,.searchbox)>input{
+  box-sizing:border-box!important;flex:1 1 0!important;width:0!important;min-width:0!important;max-width:none!important;height:38px!important;min-height:38px!important;
+  margin:0!important;padding:0 12px!important;background:#fff!important;border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;
+}
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.sc-page,.expiry-page,.reorder-page,.st-page) :is(.search,.searchbox):focus-within{border-color:var(--inv-control-focus)!important;box-shadow:0 0 0 2px rgba(11,143,85,.10)!important}
+
+/* Native selects: white surface + native caret. This removes legacy CSS triangles/green flag blocks. */
+.st-page .st-field select,.st-page .st-items-table select,.st-page select,
+.sc-page select,.expiry-page .em-filter select,.expiry-page select,.reorder-page select,
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page) select,
+:is(.inv-overlay,.em-overlay,.sa-overlay,.sc-overlay,.rl-overlay,.st-modal-backdrop) select,
+:is(.wizard,.sc-wizard,.inv-modal,.em-modal,.rl-modal,.st-modal,.stock-modal,.zg-modal,.modal) select{
+  box-sizing:border-box!important;width:100%!important;min-width:0!important;height:var(--inv-control-h)!important;min-height:var(--inv-control-h)!important;
+  margin:0!important;padding:0 12px!important;color:#17251f!important;background:#fff!important;background-color:#fff!important;background-image:none!important;
+  background-repeat:no-repeat!important;border:1px solid var(--inv-control-border)!important;border-radius:2px!important;box-shadow:none!important;
+  appearance:auto!important;-webkit-appearance:menulist!important;
+}
+.st-page .st-field select:focus,.st-page .st-items-table select:focus,.sc-page select:focus,.expiry-page select:focus,.reorder-page select:focus{border-color:var(--inv-control-focus)!important;outline:0!important;box-shadow:0 0 0 2px rgba(11,143,85,.10)!important}
+
+/* Plain text/date controls use the same box model. */
+.st-page .st-field input,.expiry-page .em-filter input,.sc-page input:not([type=checkbox]):not([type=radio]),
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.reorder-page) input:not([type=checkbox]):not([type=radio]){
+  box-sizing:border-box!important;min-width:0!important;height:var(--inv-control-h)!important;min-height:var(--inv-control-h)!important;border:1px solid var(--inv-control-border)!important;border-radius:2px!important;background:#fff!important;box-shadow:none!important;
+}
+/* Do not re-border inputs that live inside the normalized search shell. */
+:is(.inventory-page,.stock-page,.stock-adjustment-page,.stock-count-page,.sc-page,.expiry-page,.reorder-page,.st-page) :is(.search,.searchbox)>input{border:0!important}
+
+/* Expiry filters: keep every control readable and aligned; date range gets extra room. */
+.expiry-page .em-filter{display:grid!important;grid-template-columns:minmax(250px,1.7fr) repeat(4,minmax(145px,1fr)) minmax(190px,1.25fr) minmax(145px,1fr) auto!important;gap:12px!important;align-items:end!important}
+.expiry-page .em-filter>label{min-width:0!important}.expiry-page .em-filter .filter-actions{grid-column:auto!important;display:flex!important;align-items:end!important;justify-content:flex-end!important;gap:10px!important;white-space:nowrap!important}
+.expiry-page .em-filter .filter-actions .em-btn{height:40px!important;min-height:40px!important;margin:0!important}
+
+/* Stock Transfer filter: controls stay white and actions share the row when space allows. */
+.st-page .st-filter{align-items:end!important}.st-page .st-field{min-width:0!important}.st-page .st-actions{margin-top:0!important}
+
+@media(max-width:1500px){.expiry-page .em-filter{grid-template-columns:repeat(4,minmax(160px,1fr))!important}.expiry-page .em-filter .filter-actions{grid-column:auto!important}}
+@media(max-width:900px){.expiry-page .em-filter{grid-template-columns:repeat(2,minmax(0,1fr))!important}.expiry-page .em-filter .filter-actions{grid-column:1/-1!important}.st-page .st-filter{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){.expiry-page .em-filter,.st-page .st-filter{grid-template-columns:1fr!important}.expiry-page .em-filter .filter-actions{grid-column:auto!important;justify-content:stretch!important}.expiry-page .em-filter .filter-actions>*{flex:1}}
