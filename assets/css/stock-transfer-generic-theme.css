@@ -1,0 +1,86 @@
+/* V152 — Inventory Stock Transfers generic ZMart theme sync */
+.st-page{
+  --st-green:#2e9f34;--st-green-dark:#197923;--st-green-soft:#eef8ef;
+  --st-navy:#111827;--st-muted:#667085;--st-border:#dfe5eb;--st-blue:#2e9f34;
+  --st-blue-soft:#eef8ef;--st-bg:#f7f9fb;
+  padding:20px 22px 32px!important;background:#f7f9fb!important;color:#111827!important;
+  font-family:'Poppins',sans-serif!important;font-size:13px!important;
+}
+.st-page .st-toolbar{margin-bottom:16px!important;min-height:42px!important}
+.st-page .st-breadcrumb{gap:9px!important;color:#667085!important;font-size:12px!important;font-weight:500!important}
+.st-page .st-breadcrumb span:last-child{color:#111827!important;font-weight:600!important}
+.st-page .st-breadcrumb i{font-size:9px!important;color:#98a2b3!important}
+.st-page .st-btn{min-height:40px!important;border:1px solid #cfd7df!important;background:#fff!important;color:#344054!important;border-radius:2px!important;padding:0 14px!important;font:500 12px 'Poppins',sans-serif!important;box-shadow:none!important}
+.st-page .st-btn:hover{border-color:#2e9f34!important;background:#f5fbf5!important;color:#197923!important}
+.st-page .st-btn.primary,.st-page .st-page-btn.active{background:#2e9f34!important;color:#fff!important;border-color:#2e9f34!important;box-shadow:none!important}
+.st-page .st-btn.primary:hover{background:#278d2d!important;border-color:#278d2d!important;color:#fff!important}
+.st-page .st-panel,.st-page .st-side-card{background:#fff!important;border:1px solid #dfe5eb!important;border-radius:2px!important;box-shadow:none!important}
+.st-page .st-layout{grid-template-columns:minmax(0,1fr) 270px!important;gap:16px!important}
+.st-page .st-filter{padding:16px!important;grid-template-columns:1.12fr 1fr 1fr .9fr 1.35fr!important;gap:12px!important}
+.st-page .st-field label{font-size:12px!important;font-weight:500!important;color:#344054!important;margin-bottom:6px!important}
+.st-page .st-field input,.st-page .st-field select,.st-page .st-field textarea{height:42px!important;border:1px solid #cfd7df!important;border-radius:2px!important;padding:0 12px!important;font:500 12px 'Poppins',sans-serif!important;color:#111827!important;background-color:#fff!important;box-shadow:none!important}
+.st-page .st-field input:focus,.st-page .st-field select:focus,.st-page .st-field textarea:focus{border-color:#2e9f34!important;box-shadow:0 0 0 2px rgba(46,159,52,.12)!important}
+.st-page .st-field select{padding-right:36px!important;background-image:linear-gradient(45deg,transparent 50%,#2e9f34 50%),linear-gradient(135deg,#2e9f34 50%,transparent 50%)!important}
+.st-page .st-actions{gap:8px!important;margin-top:0!important}
+.st-page .st-kpis{gap:12px!important;margin:14px 0!important}
+.st-page .st-kpi{min-height:88px!important;padding:14px!important;border:1px solid #e3e8ee!important;border-radius:2px!important;background:#fff!important}
+.st-page .st-kpi .ico{width:42px!important;height:42px!important;flex-basis:42px!important;border-radius:2px!important;background:#eef8ef!important;color:#2e9f34!important;font-size:18px!important}
+.st-page .st-kpi:nth-child(n) .ico{background:#eef8ef!important;color:#2e9f34!important}
+.st-page .st-kpi small{font-size:11px!important;color:#667085!important;font-weight:500!important}.st-page .st-kpi strong{font-size:20px!important;color:#111827!important;font-weight:600!important}
+.st-page .st-table-wrap{border-radius:2px 2px 0 0!important;overflow:auto!important}
+.st-page .st-table{font-size:12px!important;min-width:1180px!important}
+.st-page .st-table th,.st-page .st-table td{border:0!important;border-bottom:1px solid #e7ebef!important;padding:12px 10px!important;text-align:left!important;vertical-align:middle!important}
+.st-page .st-table th{height:44px!important;background:#f5f7f8!important;color:#344054!important;font-size:11.5px!important;font-weight:600!important;white-space:nowrap!important}
+.st-page .st-table td{color:#344054!important;line-height:1.5!important}.st-page .st-table td b{color:#111827!important;font-weight:600!important}
+.st-page .st-table tbody tr:hover{background:#f8fcf8!important}
+.st-page .st-status{min-width:76px!important;padding:5px 9px!important;border-radius:2px!important;font-size:10.5px!important;font-weight:600!important}
+.st-page .st-status.completed{background:#e9f7ec!important;color:#197923!important}.st-page .st-status.transit{background:#fff6df!important;color:#9a6700!important}.st-page .st-status.pending{background:#eef2ff!important;color:#4456a6!important}.st-page .st-status.cancelled{background:#fff0f0!important;color:#c83232!important}
+.st-page .st-summarybar{padding:12px 14px!important;color:#667085!important;font-size:11.5px!important}.st-page .st-pagination{gap:5px!important}.st-page .st-page-btn{width:32px!important;height:32px!important;border:1px solid #d8dee5!important;border-radius:2px!important;color:#344054!important;background:#fff!important;font:500 11px Poppins!important}
+.st-page .st-side{gap:12px!important;top:84px!important}.st-page .st-side-card{padding:14px!important}.st-page .st-side-card h4{font-size:13px!important;font-weight:600!important;color:#111827!important;margin-bottom:12px!important}.st-page .st-side-row{font-size:11px!important;color:#475467!important;padding:8px 0!important}.st-page .st-side-row b{color:#111827!important}.st-page .st-last .st-side-row{border-top:1px solid #eaecf0!important}.st-page .st-link{color:#2e9f34!important;font-size:11px!important}.st-page .st-quick button{margin:4px 0!important}
+.st-page .st-btn.icon-only{width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;border-color:#e1e6eb!important;color:#667085!important}
+.st-popover,.st-modal{font-family:'Poppins',sans-serif!important;border-radius:2px!important}.st-modal-backdrop{background:rgba(17,24,39,.42)!important}.st-modal{border:1px solid #dfe5eb!important;box-shadow:0 18px 45px rgba(16,24,40,.16)!important}.st-modal .check{background:#2e9f34!important}.st-modal h2{color:#111827!important}.st-modal p{color:#667085!important}
+@media(max-width:1280px){.st-page .st-layout{grid-template-columns:1fr!important}.st-page .st-side{position:static!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}.st-page .st-filter{grid-template-columns:repeat(3,minmax(0,1fr))!important}.st-page .st-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:800px){.st-page{padding:14px!important}.st-page .st-toolbar{align-items:flex-start!important;flex-direction:column!important}.st-page .st-filter{grid-template-columns:1fr 1fr!important}.st-page .st-kpis{grid-template-columns:1fr 1fr!important}.st-page .st-side{grid-template-columns:1fr!important}.st-page .st-actions{grid-column:1/-1!important}}
+@media(max-width:520px){.st-page .st-filter,.st-page .st-kpis{grid-template-columns:1fr!important}.st-page .st-actions{flex-direction:column!important}.st-page .st-actions .st-btn{width:100%!important}}
+
+
+/* V153 — generic theme for every Stock Transfer inner step / details state */
+.st-page .st-steps{padding:16px 18px!important;margin-bottom:14px!important;border-color:#e5e9ed!important;gap:18px!important;background:#fff!important}
+.st-page .st-step b{width:32px!important;height:32px!important;flex-basis:32px!important;border:1px solid #cfd7df!important;border-radius:50%!important;color:#475467!important;background:#fff!important}
+.st-page .st-step.active b{background:#2e9f34!important;border-color:#2e9f34!important;color:#fff!important}
+.st-page .st-step.done b{background:#eaf7ec!important;border-color:#9bd2a0!important;color:#197923!important}
+.st-page .st-step:not(:last-child):after{background:#dfe5eb!important}
+.st-page .st-step-copy{background:#fff!important;padding-right:10px!important}.st-page .st-step-copy strong{font-size:12px!important;color:#111827!important;font-weight:600!important}.st-page .st-step-copy small{font-size:10.5px!important;color:#667085!important}
+.st-page .st-form-card{padding:18px!important;margin-bottom:14px!important;border-radius:2px!important}.st-page .st-form-card h3{font-size:15px!important;color:#111827!important;font-weight:600!important;margin-bottom:16px!important}
+.st-page .st-form-grid{gap:14px!important}.st-page .st-transfer-grid{gap:14px!important;margin-top:16px!important}.st-page .st-address{border-color:#dfe5eb!important;border-radius:2px!important;color:#475467!important;background:#fff!important;font-size:11.5px!important}.st-page .st-address b{color:#111827!important}
+.st-page .st-arrow span{background:#eef8ef!important;color:#2e9f34!important;border-radius:50%!important}.st-page .st-search-line input,.st-page .st-items-toolbar input,.st-page .st-step2-toolbar input{height:42px!important;border:1px solid #cfd7df!important;border-radius:2px!important;color:#111827!important;font:500 12px Poppins!important}.st-page .st-search i,.st-page .st-items-toolbar i,.st-page .st-step2-toolbar i{color:#2e9f34!important}
+.st-page .st-items-table input,.st-page .st-items-table select{border:1px solid #cfd7df!important;border-radius:2px!important;color:#111827!important;font:500 11px Poppins!important;min-height:36px!important}.st-page .st-items-table input:focus,.st-page .st-items-table select:focus{border-color:#2e9f34!important;outline:none!important;box-shadow:0 0 0 2px rgba(46,159,52,.10)!important}
+.st-page .st-note textarea{border:1px solid #cfd7df!important;border-radius:2px!important;color:#111827!important;font:500 12px Poppins!important}.st-page .st-upload{border-color:#b8c4ce!important;border-radius:2px!important;color:#667085!important}.st-page .st-upload b{color:#2e9f34!important}.st-page .st-file-chip{border-color:#dfe5eb!important;border-radius:2px!important}
+.st-page .st-review-meta{border-color:#dfe5eb!important;border-radius:2px!important}.st-page .st-review-meta>div{border-color:#e7ebef!important}.st-page .st-review-meta small{color:#667085!important}.st-page .st-review-meta b{color:#111827!important}
+.st-page .st-review-grid{gap:14px!important}.st-page .st-warehouse-box{border-radius:2px!important}.st-page .st-warehouse-icon{border-radius:2px!important;background:#eef8ef!important;color:#2e9f34!important}.st-page .st-warehouse-box small{color:#667085!important}.st-page .st-warehouse-box h4{color:#111827!important}.st-page .st-warehouse-box span{color:#475467!important}
+.st-page .st-total-card{border-color:#dfe5eb!important;border-radius:2px!important;background:#fff!important}.st-page .st-total-card i{border-radius:2px!important;background:#eef8ef!important;color:#2e9f34!important}.st-page .st-total-card small{color:#667085!important}.st-page .st-total-card strong{color:#111827!important}
+.st-page .st-confirm{color:#344054!important}.st-page .st-confirm input{accent-color:#2e9f34!important}.st-page .st-footer-actions{gap:10px!important;margin-top:16px!important}.st-page .st-footer-actions .st-btn{min-width:116px!important}
+.st-page .st-side-card i[style*="var(--st-blue)"]{color:#2e9f34!important}.st-page .st-side-card hr{border-color:#e7ebef!important}.st-page .st-side-card p{color:#667085!important}
+.st-page .st-status.draft{background:#f2f4f7!important;color:#475467!important}.st-page .st-status.pending{background:#fff6df!important;color:#9a6700!important}
+.st-page #successModal .st-panel{background:#eef8ef!important}.st-page .st-modal-actions .st-btn.primary{background:#2e9f34!important;border-color:#2e9f34!important;color:#fff!important}
+.st-page .st-popover button i{color:#2e9f34!important}.st-page .st-popover button:hover{background:#f5fbf5!important}.st-page .st-link{color:#2e9f34!important}
+@media(max-width:900px){.st-page .st-form-grid{grid-template-columns:1fr 1fr!important}.st-page .st-transfer-grid,.st-page .st-review-grid,.st-page .st-two-col{grid-template-columns:1fr!important}.st-page .st-review-meta{grid-template-columns:1fr 1fr!important}.st-page .st-footer-actions{flex-wrap:wrap!important}}
+@media(max-width:560px){.st-page .st-form-grid,.st-page .st-review-meta{grid-template-columns:1fr!important}.st-page .st-footer-actions .st-btn{width:100%!important}.st-page .st-totals{flex-direction:column!important}}
+
+/* V154 — final action-menu + select indicator generic-theme fix */
+.st-popover{width:220px!important;padding:6px!important;border:1px solid #dfe5eb!important;border-radius:2px!important;background:#fff!important;box-shadow:0 10px 24px rgba(16,24,40,.12)!important;overflow:hidden!important}
+.st-popover button{height:40px!important;padding:0 12px!important;border:0!important;border-radius:2px!important;background:#fff!important;color:#344054!important;font:500 12px 'Poppins',sans-serif!important;gap:10px!important}
+.st-popover button:hover{background:#f1f8f2!important;color:#197923!important}
+.st-popover button i{width:18px!important;min-width:18px!important;color:#2e9f34!important;font-size:13px!important;text-align:center!important}
+.st-popover button:hover i{color:#197923!important}
+.st-page select,.st-modal select{
+  -webkit-appearance:none!important;appearance:none!important;
+  background-color:#fff!important;
+  background-image:linear-gradient(45deg,transparent 50%,#2e9f34 50%),linear-gradient(135deg,#2e9f34 50%,transparent 50%)!important;
+  background-position:calc(100% - 17px) 50%,calc(100% - 12px) 50%!important;
+  background-size:5px 5px,5px 5px!important;background-repeat:no-repeat!important;
+  padding-right:34px!important;
+}
+.st-page select::-ms-expand,.st-modal select::-ms-expand{display:none!important}
+.st-page .st-field select,.st-page .st-items-table select{border:1px solid #cfd7df!important;border-radius:2px!important;box-shadow:none!important;color:#111827!important}
+.st-page .st-field select:focus,.st-page .st-items-table select:focus{border-color:#2e9f34!important;box-shadow:0 0 0 2px rgba(46,159,52,.12)!important;outline:none!important}

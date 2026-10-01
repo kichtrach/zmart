@@ -43,6 +43,11 @@
       });
     });
   }
-  function run(){document.querySelectorAll('table').forEach(t=>{expandTable(t,15);diversify(t);});}
+  function run(){document.querySelectorAll('table').forEach(t=>{
+    // Dashboard Branch Sales Performance is intentionally compact so the card
+    // stays aligned with Sales Overview and Alerts & Notifications.
+    if(t.matches('.branch-table')){ diversify(t); return; }
+    expandTable(t,15);diversify(t);
+  });}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(run,40)); else setTimeout(run,40);
 })();

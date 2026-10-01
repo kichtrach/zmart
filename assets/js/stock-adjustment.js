@@ -71,3 +71,31 @@ document.addEventListener('click',function(e){
     saCloseWorkflowBeforeAction();
   }
 },true);
+
+/* V147: complete New Stock Adjustment inner-page interactions */
+(()=>{
+  const productRows=document.querySelector('#productRows'), selectedRows=document.querySelector('#selectedRows');
+  if(!productRows||!selectedRows)return;
+  const selected=new Map();
+  const parseProductRow=(tr)=>{const c=tr.children;return {name:c[2]?.innerText.trim()||'Product',sku:c[3]?.innerText.trim()||'',stock:parseInt(c[7]?.innerText)||0};};
+  [...selectedRows.querySelectorAll('.selected-row')].forEach(row=>{
+    const name=row.querySelector('b')?.childNodes[0]?.textContent.trim()||'Product';
+    const sku=(row.querySelector('small')?.textContent||'').replace('SKU:','').trim();
+    const stock=parseInt(row.children[1]?.textContent)||0; const qty=parseInt(row.querySelector('.qty input')?.value)||0;
+    selected.set(sku,{name,sku,stock,qty});
+  });
+  const render=()=>{
+    selectedRows.innerHTML=[...selected.values()].map(p=>`<div class="selected-row" data-sku="${p.sku}"><b>${p.name}<small>SKU: ${p.sku}</small></b><span>${p.stock}</span><div class="qty"><button type="button" data-qty="minus">−</button><input type="number" value="${p.qty}" aria-label="Adjustment quantity"><button type="button" data-qty="plus">+</button></div><b class="${p.stock+p.qty>=0?'pos':'neg'}">${p.stock+p.qty}</b><button type="button" class="sa-remove-item danger-text" aria-label="Remove item"><i class="fa-regular fa-trash-can"></i></button></div>`).join('')||'<div class="sa-empty-selected">No items selected yet.</div>';
+    const vals=[...selected.values()]; const dec=vals.filter(p=>p.qty<0).reduce((a,p)=>a+p.qty,0), inc=vals.filter(p=>p.qty>0).reduce((a,p)=>a+p.qty,0);
+    const box=selectedRows.closest('.selected')?.nextElementSibling;
+    const head=selectedRows.closest('.selected')?.querySelector('.list-head h3'); if(head)head.textContent=`Selected Items (${vals.length})`;
+    if(box){const b=box.querySelectorAll('p b'); if(b[0])b[0].textContent=vals.length;if(b[1])b[1].textContent=dec;if(b[2])b[2].textContent=inc;if(b[3])b[3].textContent=inc+dec;}
+    productRows.querySelectorAll('tr').forEach(tr=>{const p=parseProductRow(tr),btn=tr.querySelector('.sa-btn');if(btn){const on=selected.has(p.sku);btn.textContent=on?'Added':'Add';btn.classList.toggle('primary',!on);btn.disabled=on;}});
+  };
+  productRows.addEventListener('click',e=>{const btn=e.target.closest('.sa-btn');if(!btn)return;const p=parseProductRow(btn.closest('tr'));if(!selected.has(p.sku)){p.qty=-1;selected.set(p.sku,p);render();}});
+  selectedRows.addEventListener('click',e=>{const row=e.target.closest('.selected-row');if(!row)return;const p=selected.get(row.dataset.sku);if(!p)return;if(e.target.closest('[data-qty="minus"]'))p.qty--;else if(e.target.closest('[data-qty="plus"]'))p.qty++;else if(e.target.closest('.sa-remove-item'))selected.delete(p.sku);else return;render();});
+  selectedRows.addEventListener('change',e=>{if(!e.target.matches('.qty input'))return;const row=e.target.closest('.selected-row'),p=selected.get(row.dataset.sku);if(p){p.qty=parseInt(e.target.value)||0;render();}});
+  const removeAll=selectedRows.closest('.selected')?.querySelector('.danger-text');if(removeAll)removeAll.addEventListener('click',()=>{selected.clear();render();});
+  document.querySelectorAll('#wizardOverlay .step').forEach((s,i)=>{s.style.cursor='pointer';s.addEventListener('click',()=>{const panes=[...document.querySelectorAll('#wizardOverlay .pane')];panes.forEach((p,j)=>p.classList.toggle('active',j===i));document.querySelectorAll('#wizardOverlay .step').forEach((x,j)=>{x.classList.toggle('active',j===i);x.classList.toggle('done',j<i);x.querySelector('span').textContent=j<i?'✓':j+1});const back=document.querySelector('#backBtn'),next=document.querySelector('#nextBtn');if(back)back.style.visibility=i===0?'hidden':'visible';if(next)next.innerHTML=i===2?'✓ Submit Adjustment':'Next →';});});
+  render();
+})();

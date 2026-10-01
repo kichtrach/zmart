@@ -206,3 +206,18 @@
   // Before moving forward, mirror products added through the picker to later steps.
   const next=document.getElementById('nextBtn'); if(next)next.addEventListener('click',()=>syncAddedProducts(),true);
 })();
+
+/* V142 — Add Stock > Item Details > Add More Products */
+(()=>{
+  const overlay=document.getElementById('stockOverlay');
+  if(!overlay)return;
+  const primaryAdd=overlay.querySelector('.add-product-btn');
+  const moreBtn=[...overlay.querySelectorAll('.step-pane[data-pane="2"] button')].find(b=>b.textContent.replace(/\s+/g,' ').trim().includes('Add More Products'));
+  if(!primaryAdd||!moreBtn)return;
+  moreBtn.type='button';
+  moreBtn.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    primaryAdd.click();
+  });
+})();

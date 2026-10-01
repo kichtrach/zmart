@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {'Stock Register':'inventory-management.html','Stock Transfers':'inventory-management.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'inventory-management.html','Reorder Management':'inventory-management.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
+    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Management':'inventory-management.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
   };
 
   const moduleFolder = {
@@ -231,6 +231,7 @@
     'purchase-invoices.html':'Purchase Invoices',
     'supplier-payments.html':'Supplier Payments',
     'purchase-reports.html':'Purchase Reports',
+    'stock-register.html':'Stock Register',
     'stock-adjustment.html':'Stock Adjustments'
   };
 
