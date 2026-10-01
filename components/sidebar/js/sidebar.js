@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Management':'inventory-management.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {}, customer: {}, employee: {}, finance: {}, reports: {}, settings: {}
+    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {'POS Billing':'sales-billing.html','Sales Orders':'sales-billing.html','Sales Returns':'sales-billing.html','Credit Sales':'sales-billing.html','Pending Bills':'sales-billing.html','Day Close':'sales-billing.html','Counterwise Sales':'sales-billing.html','Payment Collection':'sales-billing.html'}, customer: {'Customer Master':'customer-management.html','Loyalty Program':'customer-management.html','Customer Groups':'customer-management.html','Customer Feedback':'customer-management.html','Customer Offers':'customer-management.html'}, employee: {'Employee Master':'employee-management.html','Roles & Permissions':'employee-management.html','Attendance':'employee-management.html','Shift Management':'employee-management.html','Payroll Integration':'employee-management.html'}, finance: {'Income':'accounting-finance.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
   };
 
   const moduleFolder = {
@@ -124,7 +124,7 @@
     product:['Categories','Sub Categories','Brands','Products','Product Variants','Units','Barcode Management','Batch Management'],
     supplier:['Supplier List','Add New Supplier','Supplier Categories','Supplier Contacts'],
     purchase:['Purchase Orders','Goods Receipt (GRN)','Purchase Returns','Purchase Invoices','Supplier Payments','Purchase Reports'],
-    inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Management','Batch Tracking','Damage / Wastage'],
+    inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Levels','Batch Tracking','Damage / Wastage'],
     sales:['POS Billing','Sales Orders','Sales Returns','Credit Sales','Pending Bills','Day Close','Counterwise Sales','Payment Collection'],
     customer:['Customer Master','Loyalty Program','Customer Groups','Customer Feedback','Customer Offers'],
     employee:['Employee Master','Roles & Permissions','Attendance','Shift Management','Payroll Integration'],
@@ -232,7 +232,11 @@
     'supplier-payments.html':'Supplier Payments',
     'purchase-reports.html':'Purchase Reports',
     'stock-register.html':'Stock Register',
-    'stock-adjustment.html':'Stock Adjustments'
+    'stock-adjustment.html':'Stock Adjustments',
+    'stock-count.html':'Stock Count',
+    'expiry-management.html':'Expiry Management',
+    'reorder-levels.html':'Reorder Levels',
+    'inventory-management.html':'Stock Register'
   };
 
   const activeGroupKey = currentModuleKey();
