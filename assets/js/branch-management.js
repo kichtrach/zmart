@@ -79,7 +79,7 @@
     overlay('modal',`<div class="modal"><div class="modal-head"><h2>Change Branch Status</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">
       <div class="branch-hero"><div class="branch-icon"><i class="fa-regular fa-building"></i></div><div><h3>${code} - ${name}</h3><p>Branch Code : ${code} &nbsp; | &nbsp; City : Chennai</p></div></div>
       <p><b>Current Status</b> &nbsp; <span class="badge active">Active</span></p>
-      <div class="field"><label>Change Status To <span class="req">*</span></label><label class="check"><input type="radio" name="st" checked> Active</label><label class="check"><input type="radio" name="st"> Inactive</label></div>
+      <div class="field"><label><span class="field-label-inline">Change Status To <span class="req">*</span></span></label><label class="check"><input type="radio" name="st" checked> Active</label><label class="check"><input type="radio" name="st"> Inactive</label></div>
       <div class="field" style="margin-top:14px"><label>Reason (Optional)</label><textarea class="textarea" placeholder="Enter reason for status change..."></textarea></div>
     </div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-modal-save="status">Update Status</button></div></div>`);
   }
@@ -87,8 +87,8 @@
     overlay('modal',`<div class="modal"><div class="modal-head"><h2>Assign Manager</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">
       <div class="branch-hero"><div class="branch-icon"><i class="fa-regular fa-building"></i></div><div><h3>${code} - ${name}</h3><p>Branch Code : ${code} &nbsp; | &nbsp; City : Chennai</p></div></div>
       <div class="field"><label>Current Manager</label><input class="input" value="Ramesh Kumar (Chief Operating Officer)" readonly></div>
-      <div class="field" style="margin-top:14px"><label>Assign New Manager <span class="req">*</span></label><select class="select"><option>Select Manager</option><option>Karthik Raj</option><option>Priya Sharma</option></select></div>
-      <div class="field" style="margin-top:14px"><label>Effective From <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-05-16"></div>
+      <div class="field" style="margin-top:14px"><label><span class="field-label-inline">Assign New Manager <span class="req">*</span></span></label><select class="select"><option>Select Manager</option><option>Karthik Raj</option><option>Priya Sharma</option></select></div>
+      <div class="field" style="margin-top:14px"><label><span class="field-label-inline">Effective From <span class="req">*</span></span></label><input type="date" class="input ui-input" value="2025-05-16"></div>
       <div class="field" style="margin-top:14px"><label>Notes (Optional)</label><textarea class="textarea" placeholder="Enter notes..."></textarea></div>
     </div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-modal-save="manager">Assign Manager</button></div></div>`);
   }
@@ -306,7 +306,7 @@
       overlay('modal',`<div class="modal"><div class="modal-head"><h2>Edit ${info.section}</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="config-modal-section"><h4><i class="fa-regular fa-pen-to-square"></i> Edit Information</h4><div class="config-edit-grid">${fields.map(([k,v])=>`<div class="field"><label>${k}</label><input class="input" value="${String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;')}"></div>`).join('')}</div></div><div class="field"><label>Status</label><select class="select"><option>Active</option><option>Inactive</option></select></div></div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-config-save>Edit & Save</button></div></div>`);
     }
     function openConfigStatus(info){
-      overlay('modal',`<div class="modal"><div class="modal-head"><h2>Change ${info.section} Status</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">${detailsHTML(info)}<div class="field"><label>Change Status To <span class="req">*</span></label><select class="select"><option>Active</option><option>Inactive</option></select></div><div class="field" style="margin-top:14px"><label>Reason (Optional)</label><textarea class="textarea" placeholder="Enter reason for status change..."></textarea></div></div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-config-save>Update Status</button></div></div>`);
+      overlay('modal',`<div class="modal"><div class="modal-head"><h2>Change ${info.section} Status</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body">${detailsHTML(info)}<div class="field"><label><span class="field-label-inline">Change Status To <span class="req">*</span></span></label><select class="select"><option>Active</option><option>Inactive</option></select></div><div class="field" style="margin-top:14px"><label>Reason (Optional)</label><textarea class="textarea" placeholder="Enter reason for status change..."></textarea></div></div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-primary" data-config-save>Update Status</button></div></div>`);
     }
     function openConfigDelete(info){
       overlay('modal',`<div class="modal"><div class="modal-head"><h2>Delete ${info.section}</h2><button class="icon-btn" data-close><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="config-modal-section" style="border-color:#fecaca;background:#fff7f7"><h4 style="color:#dc2626"><i class="fa-solid fa-triangle-exclamation"></i> Confirm Delete</h4><p>Are you sure you want to delete <b>${info.primary}</b>?</p><p style="color:#667085">This action cannot be undone.</p></div>${detailsHTML(info)}</div><div class="modal-foot"><button class="btn" data-close>Cancel</button><button class="btn btn-danger" data-config-delete-confirm>Delete</button></div></div>`);
@@ -406,13 +406,13 @@
     const ov=targetModal(`${modalHead(title)}<div class="modal-body">
       ${edit?`<div class="target-summary-box"><div class="target-summary-branch"><div class="branch-icon"><i class="fa-solid fa-bullseye"></i></div><div><h3>${branch}</h3><p>Target Type &nbsp;: &nbsp; Sales Target</p><p>Status &nbsp;: &nbsp; <span class="badge active">Active</span></p></div></div><div class="summary-values"><small>Financial Year</small><b>2025 - 2026</b><span>(01 Apr 2025 - 31 Mar 2026)</span></div></div>`:''}
       <div class="target-form-grid">
-        <div class="field"><label>Target Type <span class="req">*</span></label><select class="select"><option>${edit||dup?'Sales Target':'Select Target Type'}</option><option>Sales Target</option><option>Profit Target</option></select></div>
-        <div class="field"><label>Branch <span class="req">*</span></label><select class="select"><option>${edit||dup?branch:'Select Branch'}</option><option>ZMart Anna Nagar</option></select></div>
-        <div class="field"><label>Financial Year <span class="req">*</span></label><select class="select"><option>2025 - 2026 (01 Apr 2025 - 31 Mar 2026)</option></select></div>
-        <div class="field"><label>Start Date <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-04-01"></div>
-        <div class="field"><label>End Date <span class="req">*</span></label><input type="date" class="input ui-input" value="2026-03-31"></div>
-        <div class="field"><label>Sales Target (₹) <span class="req">*</span></label><input class="input" value="${edit?'80,00,00,000':''}" placeholder="Enter sales target"></div>
-        ${edit?'<div class="field"><label>Profit Target (₹) <span class="req">*</span></label><input class="input" value="80,00,000"></div>':''}
+        <div class="field"><label><span class="field-label-inline">Target Type <span class="req">*</span></span></label><select class="select"><option>${edit||dup?'Sales Target':'Select Target Type'}</option><option>Sales Target</option><option>Profit Target</option></select></div>
+        <div class="field"><label><span class="field-label-inline">Branch <span class="req">*</span></span></label><select class="select"><option>${edit||dup?branch:'Select Branch'}</option><option>ZMart Anna Nagar</option></select></div>
+        <div class="field"><label><span class="field-label-inline">Financial Year <span class="req">*</span></span></label><select class="select"><option>2025 - 2026 (01 Apr 2025 - 31 Mar 2026)</option></select></div>
+        <div class="field"><label><span class="field-label-inline">Start Date <span class="req">*</span></span></label><input type="date" class="input ui-input" value="2025-04-01"></div>
+        <div class="field"><label><span class="field-label-inline">End Date <span class="req">*</span></span></label><input type="date" class="input ui-input" value="2026-03-31"></div>
+        <div class="field"><label><span class="field-label-inline">Sales Target (₹) <span class="req">*</span></span></label><input class="input" value="${edit?'80,00,00,000':''}" placeholder="Enter sales target"></div>
+        ${edit?'<div class="field"><label><span class="field-label-inline">Profit Target (₹) <span class="req">*</span></span></label><input class="input" value="80,00,000"></div>':''}
         <div class="field description-field"><label>Description / Notes</label><textarea class="textarea target-notes" maxlength="250">${edit?'Annual sales target for ZMart Anna Nagar branch for FY 2025-26.':''}</textarea><span class="char-count">${edit?'57':'0'}/250</span></div>
         <div class="field"><label>Assign To (Users/Roles)</label><select class="select"><option>${edit?'Store Manager, Sales Manager, Cashier':'Select Role'}</option></select></div>
         <div class="field"><label>Notify Users</label><select class="select"><option>Select Users</option></select><small>Selected users will be notified about this target.</small></div>
@@ -468,7 +468,7 @@
         <label class="status-hold"><input type="radio" name="targetStatus" value="On Hold" ${current==='On Hold'?'checked':''}><span><b>On Hold</b><small>Target tracking is temporarily paused.</small></span></label>
         <label class="status-closed"><input type="radio" name="targetStatus" value="Closed" ${current==='Closed'?'checked':''}><span><b>Closed</b><small>Target is completed or not applicable.</small></span></label>
       </div>
-      <div class="field target-effective"><label>Effective From <span class="req">*</span></label><input type="date" class="input ui-input" value="2025-05-01"></div>
+      <div class="field target-effective"><label><span class="field-label-inline">Effective From <span class="req">*</span></span></label><input type="date" class="input ui-input" value="2025-05-01"></div>
       <div class="field target-status-notes"><label>Reason / Notes</label><textarea class="textarea" maxlength="250" placeholder="Enter reason for status change (optional)"></textarea><small class="char-count">0/250</small></div>
     </div><div class="modal-foot target-status-foot"><button class="btn" data-target-close>Cancel</button><button class="btn btn-primary" data-target-status-save>Update Status</button></div>`);
     ov.querySelector('.target-modal')?.classList.add('target-status-modal');

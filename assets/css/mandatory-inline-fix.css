@@ -1,0 +1,5 @@
+/* Global mandatory-field alignment fix */
+.field-label-inline{display:inline-flex!important;align-items:center!important;gap:3px!important;width:auto!important;max-width:100%;line-height:1.35!important;white-space:nowrap!important;}
+.field-label-inline>span,.field-label-inline>b,.field-label-inline>em{display:inline!important;position:static!important;float:none!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;line-height:inherit!important;color:#e11d48!important;font-style:normal!important;}
+/* Required markers generated directly inside common labels */
+label .required,label .req,label .mandatory{display:inline!important;position:static!important;float:none!important;width:auto!important;min-width:0!important;margin-left:3px!important;line-height:inherit!important;vertical-align:baseline!important;color:#e11d48!important;}

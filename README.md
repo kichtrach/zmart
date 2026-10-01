@@ -67,3 +67,7 @@ The Warehouse Management module includes the reference-driven screens and intera
 - `assets/css/supplier-contacts.css`
 - `assets/js/supplier-contacts.js`
 - Reference-matched contacts list, functional Registered Date filter, Add New Contact form/success state, Contact Details five-tab drawer, actions, filters, reset/export and responsive layouts.
+
+
+## V131 Dummy Data Expansion
+Added additional dummy records across listing tables in Company, Branch, Warehouse, Product, Supplier, Purchase and Inventory-related screens. Stock Overview also includes 10 additional product records. Existing layout/theme and interactions are retained.

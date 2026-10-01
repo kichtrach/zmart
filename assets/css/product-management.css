@@ -6,3 +6,14 @@
 .product-modal[hidden], .product-menu[hidden], .product-toast[hidden]{display:none !important;}
 
 .product-btn{text-decoration:none}.quick-actions a{height:39px;border:1px solid #bccbf7;background:#fff;color:var(--prod-green);border-radius:4px;font:600 11.5px Poppins;text-align:left;padding:0 14px;cursor:pointer;display:flex;align-items:center;text-decoration:none}.quick-actions a i{width:20px}
+
+/* V136 - functional Add Product popup */
+.product-modal.add-product-mode .product-modal-card{width:min(980px,96vw);max-height:92vh;overflow:auto;padding:0 0 22px}
+.product-modal.add-product-mode .product-modal-card>h3{padding:20px 24px 15px;margin:0;border-bottom:1px solid #e3e9f7;font-size:19px}
+.product-modal.add-product-mode .modal-close{top:14px;right:20px;z-index:2}
+.product-modal.add-product-mode #productModalBody{display:block;padding:0 24px}
+.add-product-popup{padding-top:0}.ap-popup-tabs{height:58px;display:grid;grid-template-columns:repeat(3,1fr);align-items:stretch;border-bottom:1px solid #e1e7f5;margin:0 -24px 20px;padding:0 24px}
+.ap-popup-tabs button{border:0;border-bottom:3px solid transparent;background:#fff;color:#6671a0;font:600 12px Poppins;cursor:default}.ap-popup-tabs button.active{color:#07864a;border-bottom-color:#07864a}
+.add-product-grid{grid-template-columns:repeat(3,1fr);gap:15px 18px}.add-product-grid label{color:#11194f}.add-product-grid input,.add-product-grid select,.add-product-grid textarea{font-size:12px}.add-product-grid textarea{width:100%;min-height:72px;margin-top:7px;border:1px solid #ccd7f3;border-radius:4px;padding:10px 12px;font-family:Poppins;resize:vertical}.add-product-grid .wide{grid-column:1/-1}.field-label-inline{display:inline-flex!important;align-items:center!important;gap:3px!important;white-space:nowrap}.field-label-inline em{color:#e32636;font-style:normal}.field-error{border-color:#e32636!important;box-shadow:0 0 0 2px #e3263615!important}
+.product-modal.add-product-mode .modal-actions{padding:16px 24px 0;border-top:1px solid #edf0f7;margin-top:20px}
+@media(max-width:800px){.add-product-grid{grid-template-columns:1fr 1fr}}@media(max-width:560px){.add-product-grid{grid-template-columns:1fr}.add-product-grid .wide{grid-column:auto}}

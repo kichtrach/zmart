@@ -4,13 +4,56 @@
   let activeProduct='';
   const notify=(msg)=>{toast.textContent=msg;toast.hidden=false;clearTimeout(window.__prodToast);window.__prodToast=setTimeout(()=>toast.hidden=true,2400)};
   const openModal=(title,html,saveLabel='Save')=>{modalTitle.textContent=title;modalBody.innerHTML=html;$('#productModalSave').textContent=saveLabel;modal.hidden=false};
-  const closeModal=()=>modal.hidden=true;
+  const closeModal=()=>{modal.hidden=true;modal.classList.remove('add-product-mode')};
   $$('[data-close-modal]').forEach(b=>b.addEventListener('click',closeModal));
   modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 
-  const addForm=()=>{ location.href='add-product.html'; };
-  $('#addProductTop')?.addEventListener('click',addForm); $('#qaAddProduct')?.addEventListener('click',addForm);
-  $('#productModalSave')?.addEventListener('click',()=>{closeModal();notify(`${modalTitle.textContent.replace('Add New ','')} saved successfully.`)});
+  const addProductHtml=()=>`<div class="add-product-popup">
+    <div class="ap-popup-tabs"><button class="active" type="button">Basic Information</button><button type="button">Pricing & Tax</button><button type="button">Inventory</button></div>
+    <div class="modal-form add-product-grid">
+      <label class="wide"><span class="field-label-inline">Product Name <em>*</em></span><input id="newProductName" placeholder="Enter product name" value="India Gate Basmati Rice 5kg"></label>
+      <label><span class="field-label-inline">SKU <em>*</em></span><input id="newProductSku" placeholder="Enter SKU" value="RICE-005"></label>
+      <label>Barcode<input id="newProductBarcode" placeholder="Enter / scan barcode" value="8901234500051"></label>
+      <label><span class="field-label-inline">Category <em>*</em></span><select id="newProductCategory"><option>Grocery</option><option>Fruits & Vegetables</option><option>Dairy & Bakery</option><option>Beverages</option><option>Snacks</option><option>Household</option><option>Personal Care</option><option>Baby Care</option></select></label>
+      <label><span class="field-label-inline">Sub Category <em>*</em></span><select id="newProductSub"><option>Rice & Grains</option><option>Cooking Oil</option><option>Flour & Atta</option><option>Spices</option><option>Pulses</option></select></label>
+      <label><span class="field-label-inline">Brand <em>*</em></span><select id="newProductBrand"><option>India Gate</option><option>Aachi</option><option>Tata</option><option>Fortune</option><option>Britannia</option><option>Amul</option><option>HUL</option></select></label>
+      <label><span class="field-label-inline">Unit <em>*</em></span><select id="newProductUnit"><option>Pack</option><option>Kg</option><option>Piece</option><option>Box</option><option>Bottle</option></select></label>
+      <label><span class="field-label-inline">Purchase Price (₹) <em>*</em></span><input id="newProductPurchase" type="number" value="420"></label>
+      <label><span class="field-label-inline">Selling Price (₹) <em>*</em></span><input id="newProductPrice" type="number" value="495"></label>
+      <label><span class="field-label-inline">Tax / GST <em>*</em></span><select id="newProductTax"><option>5%</option><option>0%</option><option>12%</option><option>18%</option><option>28%</option></select></label>
+      <label>HSN Code<input id="newProductHsn" value="1006"></label>
+      <label><span class="field-label-inline">Opening Stock <em>*</em></span><input id="newProductStock" type="number" value="120"></label>
+      <label><span class="field-label-inline">Reorder Level <em>*</em></span><input id="newProductReorder" type="number" value="25"></label>
+      <label><span class="field-label-inline">Status <em>*</em></span><select id="newProductStatus"><option>Active</option><option>Inactive</option><option>Draft</option></select></label>
+      <label class="wide">Description<textarea id="newProductDescription" placeholder="Enter product description">Premium long-grain basmati rice.</textarea></label>
+    </div></div>`;
+  const addForm=(e)=>{
+    e?.preventDefault();
+    e?.stopPropagation();
+    if(!modal || !modalTitle || !modalBody) return;
+    openModal('Add New Product',addProductHtml(),'Save Product');
+    modal.classList.add('add-product-mode');
+    // Popup tabs are interactive; each tab scrolls/focuses the related fields while preserving one form.
+    const tabs=$$('.ap-popup-tabs button',modal);
+    tabs.forEach((tab,i)=>tab.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('active')); tab.classList.add('active');
+      const target=i===0?$('#newProductName',modal):i===1?$('#newProductPurchase',modal):$('#newProductStock',modal);
+      target?.focus(); target?.scrollIntoView({block:'center',behavior:'smooth'});
+    }));
+  };
+  window.zmOpenAddProduct=addForm;
+  $('#addProductTop')?.addEventListener('click',addForm);
+  $('#qaAddProduct')?.addEventListener('click',addForm);
+  $('#productModalSave')?.addEventListener('click',()=>{
+    if(modalTitle.textContent==='Add New Product'){
+      const name=$('#newProductName')?.value.trim(),sku=$('#newProductSku')?.value.trim(),category=$('#newProductCategory')?.value,brand=$('#newProductBrand')?.value,price=Number($('#newProductPrice')?.value||0),stock=Number($('#newProductStock')?.value||0),barcode=$('#newProductBarcode')?.value.trim();
+      const required=[['#newProductName','Product Name'],['#newProductSku','SKU'],['#newProductCategory','Category'],['#newProductBrand','Brand'],['#newProductPrice','Selling Price'],['#newProductStock','Opening Stock']];
+      for(const [sel] of required){const el=$(sel);if(!el?.value || (el.type==='number'&&Number(el.value)<0)){el?.focus();el?.classList.add('field-error');setTimeout(()=>el?.classList.remove('field-error'),1400);return;}}
+      const tbody=table?.querySelector('tbody'); if(tbody){const n=tbody.rows.length+1;const tr=document.createElement('tr');tr.dataset.brand=brand;tr.dataset.category=category;tr.dataset.status=$('#newProductStatus').value;tr.innerHTML=`<td>${n}</td><td><span class="product-thumb rice">${name.charAt(0).toUpperCase()}</span><b>${name}</b></td><td>${sku}</td><td>${barcode||'--'}</td><td>${category}</td><td>${brand}</td><td>₹ ${price.toFixed(2)}</td><td>${stock}</td><td><span class="product-status active">${$('#newProductStatus').value}</span></td><td><button class="product-more" data-name="${name}"><i class="fa-solid fa-ellipsis"></i></button></td>`;tbody.prepend(tr);}
+      closeModal();modal.classList.remove('add-product-mode');notify('Product added successfully.');return;
+    }
+    closeModal();notify(`${modalTitle.textContent.replace('Add New ','')} saved successfully.`)
+  });
 
   function filterRows(){
     const q=$('#productSearch').value.trim().toLowerCase(),cat=$('#productCategory').value,brand=$('#productBrand').value,status=$('#productStatus').value;
