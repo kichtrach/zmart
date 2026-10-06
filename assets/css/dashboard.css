@@ -181,3 +181,60 @@
     width:min(330px,calc(100vw - 32px))!important;
   }
 }
+
+
+/* V190 — restore Super Admin Dashboard to the established pre-inner-page layout */
+.dashboard-main{
+  padding:calc(var(--topbar-height) + 16px) 18px 18px!important;
+  background:#fff!important;
+}
+.page-heading{
+  padding:0 0 12px!important;
+  align-items:flex-start!important;
+}
+.page-heading h1{font-size:20px!important;margin-bottom:8px!important}
+.page-heading p{font-size:13px!important}
+.heading-tools{gap:10px!important;max-width:none!important}
+.heading-tools .control,.heading-tools .btn{
+  height:40px!important;
+  min-height:40px!important;
+}
+.heading-tools .select-control{width:140px!important;flex-basis:140px!important}
+.heading-tools .date-control{width:240px!important;min-width:240px!important}
+.metrics{gap:10px!important;margin-bottom:10px!important}
+.metrics-primary{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.metrics-secondary{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+.metric-card{min-height:100px!important;padding:14px 16px!important}
+.metric-card.compact{min-height:96px!important}
+.grid-main{grid-template-columns:1.25fr 1.1fr .94fr!important}
+.grid-bottom{grid-template-columns:1.13fr .9fr .9fr 1.18fr!important}
+.branch-table tbody tr:nth-child(n+6){display:none}
+.quick-actions{grid-template-columns:repeat(8,minmax(120px,1fr))!important}
+@media(max-width:1350px){
+  .metrics-primary{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .metrics-secondary{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .grid-main{grid-template-columns:1.2fr 1fr!important}
+  .alerts-panel{grid-column:1/-1!important}
+  .grid-bottom{grid-template-columns:repeat(2,1fr)!important}
+}
+@media(max-width:980px){
+  .metrics-primary,.metrics-secondary{grid-template-columns:repeat(2,1fr)!important}
+  .grid-main,.grid-bottom{grid-template-columns:1fr!important}
+}
+
+/* V191 — dashboard generic theme, preserving the old dashboard layout */
+.dashboard-main{--zg:#16a34a;--zgd:#087a3e;--zn:#0b1f4d;--zb:#d7e0ea;--zm:#667085;color:#17223b}
+.dashboard-main .panel,.dashboard-main .metric-card,.dashboard-main .bottom-panel{background:#fff;border:1px solid var(--zb)!important;border-radius:2px!important;box-shadow:none!important}
+.dashboard-main input,.dashboard-main select,.dashboard-main .control,.dashboard-main .select-control,.dashboard-main .date-control{height:40px!important;min-height:40px!important;border:1px solid #cfd9e6!important;border-radius:2px!important;background:#fff!important;color:#17223b!important;font-size:13px!important;box-shadow:none!important}
+.dashboard-main input:focus,.dashboard-main select:focus,.dashboard-main .control:focus{border-color:var(--zg)!important;outline:0!important;box-shadow:0 0 0 2px rgba(22,163,74,.08)!important}
+.dashboard-main .btn{height:40px!important;min-height:40px!important;border-radius:2px!important;font-size:13px!important;font-weight:600!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;box-shadow:none!important}
+.dashboard-main .btn-refresh,.dashboard-main .ui-btn-primary{background:var(--zg)!important;border:1px solid var(--zg)!important;color:#fff!important}
+.dashboard-main .btn-refresh:hover,.dashboard-main .ui-btn-primary:hover{background:var(--zgd)!important;border-color:var(--zgd)!important}
+.dashboard-main .btn-export{background:#fff!important;border:1px solid #b9c8d8!important;color:var(--zn)!important}
+.dashboard-main .page-heading h1,.dashboard-main .panel-title,.dashboard-main .metric-value,.dashboard-main h2,.dashboard-main h3{color:var(--zn)!important}
+.dashboard-main .metric-label,.dashboard-main .page-heading p{color:var(--zm)!important}
+.dashboard-main table{font-size:13px!important}
+.dashboard-main table th{background:#f5f8fb!important;color:#344054!important;font-weight:600!important;border-color:var(--zb)!important}
+.dashboard-main table td{color:#17223b!important;border-color:#e7edf3!important}
+.dashboard-main .heading-tools{align-items:center!important}
+.dashboard-main .date-control i,.dashboard-main .select-control i{color:var(--zg)!important}

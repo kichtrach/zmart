@@ -230,3 +230,14 @@
     showToast(actionMessages[el.dataset.action] || 'Action selected.');
   });
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const exportBtn = document.getElementById('exportDashboardBtn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('zmart:action', {
+        detail: { message: 'Dashboard export prepared.' }
+      }));
+    });
+  }
+});

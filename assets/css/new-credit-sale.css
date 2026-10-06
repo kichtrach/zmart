@@ -1,0 +1,38 @@
+
+.credit-policy{display:flex;justify-content:space-between;gap:18px;align-items:center;background:#f4fbf7;border:1px solid #bfe5cd;border-left:3px solid #159447;padding:12px 14px;margin:0 0 14px;border-radius:2px;color:#062b22}.credit-policy>div:first-child{display:flex;align-items:center;gap:10px}.credit-policy i{font-size:20px;color:#159447}.credit-policy span{display:flex;flex-direction:column;gap:2px}.credit-policy small{font-size:12px;color:#63746e}.credit-metrics{display:grid;grid-template-columns:repeat(4,minmax(105px,1fr));gap:8px}.credit-metrics span{padding:7px 12px;border-left:1px solid #cfe0d7;font-size:11px;color:#687771}.credit-metrics b{font-size:13px;color:#087a39}.nso .nso-card,.nso .nso-section{border-radius:2px!important}.nso input,.nso select,.nso textarea,.nso button{border-radius:2px!important}.nso .nso-steps button.active span,.nso .nso-steps button.done span{background:#159447!important;border-color:#159447!important}.nso .nso-next,.nso .primary{background:#159447!important;border-color:#159447!important}@media(max-width:1000px){.credit-policy{align-items:flex-start;flex-direction:column}.credit-metrics{width:100%;grid-template-columns:repeat(2,1fr)}}
+
+/* V231: Credit Sale payment selector generic-theme correction */
+.nso .payment-types{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;margin:0 0 16px!important}
+.nso .payment-types label{position:relative!important;height:58px!important;min-height:58px!important;padding:0 14px!important;margin:0!important;border:1px solid #cfdbea!important;border-radius:2px!important;background:#fff!important;display:flex!important;align-items:center!important;gap:10px!important;color:#172b4d!important;font-weight:600!important;box-shadow:none!important;overflow:hidden!important;cursor:pointer!important}
+.nso .payment-types label:hover{border-color:#159447!important;background:#f7fcf9!important}
+.nso .payment-types label:has(input[type="radio"]:checked){border-color:#159447!important;background:#f0faf4!important;color:#087536!important;box-shadow:inset 3px 0 0 #159447!important}
+.nso .payment-types input[type="radio"]{all:unset!important;box-sizing:border-box!important;width:16px!important;height:16px!important;min-width:16px!important;min-height:16px!important;border:1.5px solid #98a2b3!important;border-radius:50%!important;background:#fff!important;display:grid!important;place-items:center!important;flex:0 0 16px!important;cursor:pointer!important}
+.nso .payment-types input[type="radio"]::before{content:""!important;width:8px!important;height:8px!important;border-radius:50%!important;background:#159447!important;transform:scale(0)!important;transition:transform .12s ease!important}
+.nso .payment-types input[type="radio"]:checked{border-color:#159447!important}
+.nso .payment-types input[type="radio"]:checked::before{transform:scale(1)!important}
+.nso .payment-types label i{width:18px!important;text-align:center!important;color:#087536!important;flex:0 0 18px!important}
+.nso .payment-types label b{font-size:13px!important;line-height:1.2!important}
+@media(max-width:760px){.nso .payment-types{grid-template-columns:1fr!important}}
+
+
+/* V232 robust Full Credit selector - independent of browser/native radio styling */
+.nso .payment-types{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin:0 0 18px!important;width:100%!important}
+.nso .payment-types>label{position:relative!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;width:100%!important;height:56px!important;min-height:56px!important;margin:0!important;padding:0 16px!important;box-sizing:border-box!important;border:1px solid #cfdbea!important;border-left:1px solid #cfdbea!important;background:#fff!important;color:#172b4d!important;border-radius:2px!important;overflow:hidden!important;cursor:pointer!important;box-shadow:none!important}
+.nso .payment-types>label:hover{border-color:#159447!important;background:#f8fcf9!important}
+.nso .payment-types>label.selected,.nso .payment-types>label:has(input:checked){border-color:#159447!important;border-left:3px solid #159447!important;background:#eef9f2!important;color:#087536!important;padding-left:14px!important}
+.nso .payment-types>label>input[type=radio]{position:absolute!important;opacity:0!important;pointer-events:none!important;width:1px!important;height:1px!important;margin:0!important;padding:0!important}
+.nso .payment-types .ncs-radio-dot{display:grid!important;place-items:center!important;width:16px!important;height:16px!important;min-width:16px!important;box-sizing:border-box!important;border:1.5px solid #98a2b3!important;border-radius:50%!important;background:#fff!important}
+.nso .payment-types .ncs-radio-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:#159447;transform:scale(0);transition:transform .12s ease}
+.nso .payment-types>label:has(input:checked) .ncs-radio-dot{border-color:#159447!important}
+.nso .payment-types>label:has(input:checked) .ncs-radio-dot::after{transform:scale(1)}
+.nso .payment-types>label>i{width:18px!important;min-width:18px!important;text-align:center!important;color:#087536!important;margin:0!important}
+.nso .payment-types>label>b{font:600 13px/1.2 Poppins,sans-serif!important;margin:0!important;white-space:nowrap!important}
+@media(max-width:760px){.nso .payment-types{grid-template-columns:1fr!important}}
+
+/* V233: isolated payment-term cards - prevent inherited grid/label sizing collisions */
+.nso .ncs-payment-types{display:flex!important;align-items:stretch!important;gap:12px!important;width:100%!important;margin:0 0 18px!important;padding:0!important;overflow:visible!important}
+.nso .ncs-payment-types>label{flex:1 1 0!important;width:auto!important;min-width:0!important;max-width:none!important;height:58px!important;min-height:58px!important;margin:0!important;padding:0 16px!important;border:1px solid #cfdbea!important;border-radius:2px!important;background:#fff!important;box-shadow:none!important;display:flex!important;align-items:center!important;gap:10px!important;color:#172b4d!important}
+.nso .ncs-payment-types>label.selected,.nso .ncs-payment-types>label:has(input:checked){border:1px solid #159447!important;background:#f0faf4!important;color:#087536!important;box-shadow:inset 3px 0 0 #159447!important;padding-left:16px!important}
+.nso .ncs-payment-types>label+label{margin-left:0!important}
+.nso .ncs-payment-types .ncs-radio-dot{flex:0 0 16px!important}
+@media(max-width:760px){.nso .ncs-payment-types{flex-direction:column!important}.nso .ncs-payment-types>label{flex:0 0 58px!important;width:100%!important}}

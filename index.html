@@ -19,9 +19,10 @@
 <link href="components/ui/icons/ui-icons.css" rel="stylesheet">
 <link href="components/ui/css/ui-components.css" rel="stylesheet"/>
 <!-- Dashboard module styles -->
+<link href="assets/css/zmart-global-generic-theme.css" rel="stylesheet"/>
 <link href="assets/css/dashboard.css" rel="stylesheet"/>
-<link href="assets/css/calendar-theme.css" rel="stylesheet"/> <link href="assets/css/common-page-layout.css" rel="stylesheet"/>
-</link></link></link><link href="assets/css/mandatory-inline-fix.css" rel="stylesheet"/><link href="assets/css/zmart-global-generic-theme.css" rel="stylesheet"/></head>
+<link href="assets/css/calendar-theme.css" rel="stylesheet"/>
+</link></link></link><link href="assets/css/mandatory-inline-fix.css" rel="stylesheet"/></head>
 <body>
 <aside aria-label="Main navigation" id="sidebarMount"></aside>
 <div class="app-shell">
@@ -77,6 +78,9 @@
 <button class="btn btn-refresh ui-btn ui-btn-primary" id="refreshBtn" type="button">
 <i class="fa-solid fa-rotate"></i> Refresh
           </button>
+<button class="btn btn-export ui-btn" id="exportDashboardBtn" type="button">
+<i class="fa-solid fa-download"></i> Export Dashboard
+</button>
 </div>
 </section>
 <section aria-label="Business summary" class="metrics metrics-primary">
@@ -140,7 +144,7 @@
 <tr><td>ZMart - Madurai</td><td>₹1,50,80,300</td><td>₹1,40,00,000</td><td><span>108%</span><b><i style="width:86%"></i></b></td></tr>
 <tr><td>ZMart - Trichy</td><td>₹1,25,60,250</td><td>₹1,20,00,000</td><td><span>105%</span><b><i style="width:84%"></i></b></td></tr>
 <tr><td>ZMart - Salem</td><td>₹1,15,30,400</td><td>₹1,10,00,000</td><td><span>105%</span><b><i style="width:84%"></i></b></td></tr>
-<tr><td>ZMart - Chennai</td><td>₹2,45,30,200</td><td>₹2,00,00,200</td><td><span>122%</span><b><i style="width:92%"></i></b></td></tr><tr><td>ZMart - Coimbatore</td><td>₹1,85,40,500</td><td>₹1,80,00,000</td><td><span>103%</span><b><i style="width:80%"></i></b></td></tr><tr><td>ZMart - Madurai</td><td>₹1,50,80,300</td><td>₹1,40,00,000</td><td><span>108%</span><b><i style="width:86%"></i></b></td></tr></tbody>
+</tbody>
 </table>
 </div>
 <button class="panel-link" data-action="branch-performance">View All Branch Performance <i class="fa-solid fa-arrow-right-long"></i></button>
@@ -228,7 +232,7 @@
 <script src="components/ui/js/ui-components.js"></script>
 <!-- Dashboard module script -->
 <script src="assets/js/dashboard.js"></script>
-<script src="assets/js/calendar-theme.js"></script><script src="assets/js/common-breadcrumb.js"></script><script src="assets/js/more-dummy-data.js"></script><script src="assets/js/zmart-global-actions.js"></script>
+<script src="assets/js/calendar-theme.js"></script><script src="assets/js/zmart-global-actions.js"></script>
 <script src="assets/js/zmart-global-actions-v2.js"></script>
 </body>
 </html>

@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'inventory-management.html','Damage / Wastage':'inventory-management.html'}, sales: {'POS Billing':'sales-billing.html','Sales Orders':'sales-billing.html','Sales Returns':'sales-billing.html','Credit Sales':'sales-billing.html','Pending Bills':'sales-billing.html','Day Close':'sales-billing.html','Counterwise Sales':'sales-billing.html','Payment Collection':'sales-billing.html'}, customer: {'Customer Master':'customer-management.html','Loyalty Program':'customer-management.html','Customer Groups':'customer-management.html','Customer Feedback':'customer-management.html','Customer Offers':'customer-management.html'}, employee: {'Employee Master':'employee-management.html','Roles & Permissions':'employee-management.html','Attendance':'employee-management.html','Shift Management':'employee-management.html','Payroll Integration':'employee-management.html'}, finance: {'Income':'accounting-finance.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
+    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'batch-tracking.html','Damage / Wastage':'damage-wastage.html'}, sales: {'POS Billing':'pos-billing.html','Sales Orders':'sales-orders.html','Sales Returns':'sales-returns.html','Credit Sales':'credit-sales.html','Pending Bills':'pending-bills.html','Day Close':'day-close.html','Counterwise Sales':'counterwise-sales.html','Payment Collection':'payment-collection.html'}, customer: {'Customer Master':'customer-management.html','Loyalty Program':'customer-management.html','Customer Groups':'customer-management.html','Customer Feedback':'customer-management.html','Customer Offers':'customer-management.html'}, employee: {'Employee Master':'employee-management.html','Roles & Permissions':'employee-management.html','Attendance':'employee-management.html','Shift Management':'employee-management.html','Payroll Integration':'employee-management.html'}, finance: {'Income':'accounting-finance.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
   };
 
   const moduleFolder = {
@@ -100,6 +100,24 @@
     location.href = current === moduleKey ? fileName : `${current === 'dashboard' ? '' : '../'}${folder}/${fileName}`;
   };
 
+  const sidebarSvg = {
+    dashboard: `<path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>`,
+    company: `<path d="M4 21V5h10v16"/><path d="M14 9h6v12"/><path d="M8 9h2M8 13h2M8 17h2M17 13h1M17 17h1"/>`,
+    branch: `<path d="M3 10h18"/><path d="M5 10V7l2-3h10l2 3v3"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>`,
+    warehouse: `<path d="m3 9 9-6 9 6v12H3Z"/><path d="M7 21v-8h10v8M7 13h10"/>`,
+    product: `<path d="m21 8-9 5-9-5"/><path d="m3 8 9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/>`,
+    supplier: `<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2"/><path d="M16 7h5M18.5 4.5 21 7l-2.5 2.5"/>`,
+    purchase: `<circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M3 4h2l2.4 10.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 2-1.6L21 8H7"/>`,
+    inventory: `<path d="M5 5h14v16H5Z"/><path d="M8 3h8v4H8Z"/><path d="M9 11h6M9 15h6"/>`,
+    sales: `<path d="M5 3h14v18H5Z"/><path d="M8 7h8v4H8Z"/><path d="M8 15h2M14 15h2M8 18h2M14 18h2"/>`,
+    customer: `<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>`,
+    employee: `<circle cx="12" cy="7" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="m10 12 2 3 2-3"/>`,
+    finance: `<path d="M6 2h9l4 4v16H6Z"/><path d="M14 2v5h5"/><path d="M9 12h6M9 16h6"/>`,
+    reports: `<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>`,
+    settings: `<circle cx="12" cy="12" r="3"/><path d="M19 15.5a7.5 7.5 0 1 0-14 0"/><path d="M12 9v6M9 12h6"/>`
+  };
+  const sidebarIcon = key => `<svg class="sidebar-svg-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${sidebarSvg[key]||sidebarSvg.dashboard}</svg>`;
+
   const groups = [
     ['dashboard','fa-house','Dashboard',false],
     ['company','fa-building','Company Management',true],
@@ -142,9 +160,9 @@
       ${groups.map(([key,icon,label,expandable]) => `
         <div class="nav-group" data-group="${key}">
           <button class="nav-item" type="button" data-nav="${key}" aria-expanded="false">
-            <span class="nav-icon"><i class="fa-solid ${icon}"></i></span>
+            <span class="nav-icon">${sidebarIcon(key)}</span>
             <span class="nav-label">${label}</span>
-            ${expandable ? '<i class="fa-solid fa-chevron-down nav-chevron"></i>' : ''}
+            ${expandable ? '<span class="nav-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="m6 8 4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' : ''}
           </button>
           ${expandable ? `<div class="submenu">${(submenuMap[key]||[]).map(item=>`<button type="button" data-subnav="${item}">${item}</button>`).join('')}</div>` : ''}
         </div>`).join('')}
@@ -236,7 +254,23 @@
     'stock-count.html':'Stock Count',
     'expiry-management.html':'Expiry Management',
     'reorder-levels.html':'Reorder Levels',
-    'inventory-management.html':'Stock Register'
+    'batch-tracking.html':'Batch Tracking',
+    'damage-wastage.html':'Damage / Wastage',
+    'inventory-management.html':'Stock Register',
+    'sales-returns.html':'Sales Returns',
+    'sales-billing.html':'POS Billing',
+    'pos-billing.html':'POS Billing',
+    'sales-orders.html':'Sales Orders',
+    'new-sales-order.html':'Sales Orders',
+    'credit-sales.html':'Credit Sales',
+    'new-credit-sale.html':'Credit Sales',
+    'pending-bills.html':'Pending Bills',
+    'resume-pending-bill.html':'Pending Bills',
+    'day-close.html':'Day Close',
+    'close-business-day.html':'Day Close',
+    'counterwise-sales.html':'Counterwise Sales',
+    'payment-collection.html':'Payment Collection',
+    'new-sales-invoice.html':'POS Billing'
   };
 
   const activeGroupKey = currentModuleKey();
@@ -251,6 +285,43 @@
         btn.classList.toggle('active', btn.dataset.subnav === activeLabel);
       });
     }
+  }
+
+  // Keep the current Sales & Billing submenu visibly selected on list and inner pages.
+  const syncActiveSubnav = () => {
+    const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const label = routeToSubnav[file];
+    const groupKey = currentModuleKey();
+    const group = sidebar.querySelector(`[data-group="${groupKey}"]`);
+    if (!group || !label) return;
+    group.classList.add('active','open');
+    group.querySelector('.nav-item')?.setAttribute('aria-expanded','true');
+    group.querySelectorAll('[data-subnav]').forEach(btn => {
+      const selected = (btn.dataset.subnav || '').trim() === label;
+      btn.classList.toggle('active', selected);
+      if (selected) btn.setAttribute('aria-current','page');
+      else btn.removeAttribute('aria-current');
+    });
+  };
+  syncActiveSubnav();
+  requestAnimationFrame(syncActiveSubnav);
+  // Inner workflow pages can mount after the page shell; re-apply once the DOM is fully ready.
+  document.addEventListener('DOMContentLoaded', syncActiveSubnav);
+  window.addEventListener('load', syncActiveSubnav);
+  if (currentFile === 'new-credit-sale.html') {
+    const forceCreditSalesActive = () => {
+      const salesGroup = sidebar.querySelector('[data-group="sales"]');
+      if (!salesGroup) return;
+      salesGroup.classList.add('active','open');
+      salesGroup.querySelector('.nav-item')?.setAttribute('aria-expanded','true');
+      salesGroup.querySelectorAll('[data-subnav]').forEach(btn => {
+        const selected = (btn.dataset.subnav || '').trim() === 'Credit Sales';
+        btn.classList.toggle('active', selected);
+        if (selected) btn.setAttribute('aria-current','page'); else btn.removeAttribute('aria-current');
+      });
+    };
+    forceCreditSalesActive();
+    setTimeout(forceCreditSalesActive, 0);
   }
 
   // Reusable responsive sidebar overlay.
