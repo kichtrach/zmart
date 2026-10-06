@@ -1,2 +1,31 @@
 /* V241 Item Code */
 .item-code-field{position:relative}.item-code-wrap{display:flex;gap:8px;align-items:center}.item-code-wrap input{flex:1;min-width:0}.item-code-generate{height:40px;border:1px solid #159447;background:#fff;color:#087a37;padding:0 12px;border-radius:2px;font:600 12px Poppins,sans-serif;white-space:nowrap;cursor:pointer}.item-code-generate:hover{background:#edf9f1}.item-code-hint{display:block;margin-top:5px;color:#68758c;font-size:10px}.item-code-badge{display:inline-flex;align-items:center;padding:3px 7px;border:1px solid #cfe8d7;background:#f1faf4;color:#087a37;border-radius:2px;font-weight:600;font-size:11px;white-space:nowrap}.item-code-input{height:34px!important;min-width:105px!important;font-weight:600;color:#087a37!important}.product-table th,.product-table td,.inv-table th,.inv-table td{white-space:nowrap}
+
+/* V242 — layout-safe Item Code integration */
+:root{--item-code-green:#159447;--item-code-border:#d7e0ea;--item-code-muted:#68758c}
+.item-code-wrap{width:100%;max-width:100%;flex-wrap:nowrap}
+.item-code-wrap input{width:100%;max-width:100%}
+.item-code-generate{flex:0 0 auto;min-width:112px}
+.item-code-badge{max-width:118px;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}
+.item-code-input{width:100%!important;max-width:130px!important;min-width:96px!important;box-sizing:border-box}
+.table-wrap,.wh-table-wrap,.inv-table-wrap,.table-responsive{max-width:100%;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
+.product-table,.inv-table,.wh-table{width:100%;min-width:max-content;table-layout:auto}
+.product-table th,.product-table td,.inv-table th,.inv-table td,.wh-table th,.wh-table td{vertical-align:middle}
+.product-table th:nth-child(2),.product-table td:nth-child(2){min-width:210px;white-space:normal}
+.product-table th:nth-child(3),.product-table td:nth-child(3){width:126px;min-width:126px}
+.product-table th:last-child,.product-table td:last-child{width:76px;min-width:76px;text-align:center}
+/* Inventory rows: let product names breathe while keeping codes compact */
+.inv-table td .item-code-badge,.wh-table td .item-code-badge{max-width:112px}
+/* Do not let Item Code additions force cards outside the main content */
+.product-card,.wh-card,.inventory-card,.content-card,.form-card{min-width:0;max-width:100%;box-sizing:border-box}
+.form-grid,.product-form-grid,.inventory-form-grid{min-width:0}
+.form-grid>* ,.product-form-grid>* ,.inventory-form-grid>*{min-width:0}
+@media(max-width:1100px){
+ .item-code-generate{min-width:98px;padding:0 9px}
+ .product-table th:nth-child(2),.product-table td:nth-child(2){min-width:180px}
+}
+@media(max-width:767px){
+ .item-code-wrap{flex-wrap:wrap}
+ .item-code-generate{width:100%;min-width:0}
+ .item-code-input{max-width:112px!important}
+}
