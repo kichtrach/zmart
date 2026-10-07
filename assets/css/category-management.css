@@ -53,3 +53,16 @@ body{margin:0;background:#fff;color:var(--cat-text);font-family:'Poppins',sans-s
 .columns-menu{position:fixed;z-index:1600;width:190px;background:#fff;border:1px solid #dfe5ef;border-radius:5px;box-shadow:0 12px 28px rgba(20,31,61,.17);padding:8px;display:none}.columns-menu.show{display:grid}.columns-menu label{display:flex;align-items:center;gap:9px;padding:7px 8px;font-size:11px;cursor:pointer}.columns-menu input{accent-color:var(--cat-primary)}
 @media(max-width:1250px){.cat-layout{grid-template-columns:1fr}.cat-side{grid-template-columns:repeat(3,minmax(0,1fr))}.cat-filter-grid{grid-template-columns:1fr 1fr 1.3fr}.cat-filter-actions{grid-column:1/-1;justify-content:flex-end}.cat-kpis{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){.categories-screen .app-topbar{grid-template-columns:1fr auto!important}.cat-page{padding:calc(var(--topbar-height) + 14px) 12px 24px}.cat-head{align-items:stretch;flex-direction:column}.cat-head>.cat-btn{width:100%}.cat-filter-grid,.cat-kpis,.cat-side,.form-grid{grid-template-columns:1fr}.form-grid label.full{grid-column:auto}.cat-table-foot{flex-direction:column;align-items:flex-start;gap:12px}}
+
+/* V248 — compact generic Category filter bar */
+.cat-filter-card{padding:16px 20px}
+.cat-filter-grid{display:grid;grid-template-columns:185px minmax(260px,360px) auto;gap:16px;align-items:end;justify-content:start}
+.cat-filter-grid label{min-width:0;gap:7px}
+.cat-filter-grid select,.cat-search input{height:40px;border-radius:2px;font-size:12.5px}
+.cat-search{width:100%;min-width:0}
+.cat-search input{box-sizing:border-box;width:100%;padding:0 38px 0 12px}
+.cat-search i{right:13px;pointer-events:none;z-index:2}
+.cat-filter-actions{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.cat-filter-actions .cat-btn{height:40px;min-width:88px;padding:0 16px;justify-content:center}
+@media(max-width:1050px){.cat-filter-grid{grid-template-columns:180px minmax(240px,1fr) auto;width:100%}}
+@media(max-width:760px){.cat-filter-card{padding:14px}.cat-filter-grid{grid-template-columns:1fr;gap:12px}.cat-filter-actions{grid-column:auto;justify-content:flex-start}.cat-filter-actions .cat-btn{flex:1}}

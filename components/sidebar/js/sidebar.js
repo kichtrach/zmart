@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'batch-tracking.html','Damage / Wastage':'damage-wastage.html'}, sales: {'POS Billing':'pos-billing.html','Sales Orders':'sales-orders.html','Sales Returns':'sales-returns.html','Credit Sales':'credit-sales.html','Pending Bills':'pending-bills.html','Day Close':'day-close.html','Counterwise Sales':'counterwise-sales.html','Payment Collection':'payment-collection.html'}, customer: {'Customer Master':'customer-management.html','Loyalty Program':'customer-management.html','Customer Groups':'customer-management.html','Customer Feedback':'customer-management.html','Customer Offers':'customer-management.html'}, employee: {'Employee Master':'employee-management.html','Roles & Permissions':'employee-management.html','Attendance':'employee-management.html','Shift Management':'employee-management.html','Payroll Integration':'employee-management.html'}, finance: {'Income':'accounting-finance.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
+    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'batch-tracking.html','Damage / Wastage':'damage-wastage.html'}, sales: {'POS Billing':'pos-billing.html','Sales Orders':'sales-orders.html','Sales Returns':'sales-returns.html','Credit Sales':'credit-sales.html','Pending Bills':'pending-bills.html','Day Close':'day-close.html','Counterwise Sales':'counterwise-sales.html','Payment Collection':'payment-collection.html'}, customer: {'Customer Master':'customer-master.html','Customer Feedback':'customer-feedback.html','Customer Offers':'customer-offers.html'}, employee: {'Employee Master':'employee-management.html','Departments':'departments.html','Designations':'designations.html','Roles & Permissions':'roles-permissions.html','Attendance':'employee-management.html','Shift Management':'employee-management.html','Payroll Integration':'employee-management.html'}, finance: {'Income':'accounting-finance.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
   };
 
   const moduleFolder = {
@@ -144,8 +144,8 @@
     purchase:['Purchase Orders','Goods Receipt (GRN)','Purchase Returns','Purchase Invoices','Supplier Payments','Purchase Reports'],
     inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Levels','Batch Tracking','Damage / Wastage'],
     sales:['POS Billing','Sales Orders','Sales Returns','Credit Sales','Pending Bills','Day Close','Counterwise Sales','Payment Collection'],
-    customer:['Customer Master','Loyalty Program','Customer Groups','Customer Feedback','Customer Offers'],
-    employee:['Employee Master','Roles & Permissions','Attendance','Shift Management','Payroll Integration'],
+    customer:['Customer Master','Customer Feedback','Customer Offers'],
+    employee:['Employee Master','Departments','Designations','Roles & Permissions','Attendance','Shift Management','Payroll Integration'],
     finance:['Income','Expenses','Bank Accounts','Journals','Contra Entries','Tax','Reports'],
     reports:['Sales Reports','Purchase Reports','Inventory Reports','Profit & Loss','GST Reports','Branch Performance','Product Performance','Customer Reports','Employee Reports'],
     settings:['General Settings','Notification Settings','User Management','Audit Logs','Backup & Restore']
@@ -177,6 +177,13 @@
   // Set the correct active sidebar group/subnav from the current page URL.
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const routeToSubnav = {
+    'customer-master.html':'Customer Master',
+    'customer-feedback.html':'Customer Feedback',
+    'customer-offers.html':'Customer Offers',
+    'employee-management.html':'Employee Master',
+    'departments.html':'Departments',
+    'designations.html':'Designations',
+    'roles-permissions.html':'Roles & Permissions',
     'company-profile.html':'Company Profile',
     'financial-year.html':'Financial Year',
     'financial-year-details.html':'Financial Year',

@@ -204,3 +204,41 @@ table{border-collapse:separate;border-spacing:0;width:100%}th{background:#f5f8f6
 @media(max-width:1500px){.expiry-page .em-filter{grid-template-columns:repeat(4,minmax(160px,1fr))!important}.expiry-page .em-filter .filter-actions{grid-column:auto!important}}
 @media(max-width:900px){.expiry-page .em-filter{grid-template-columns:repeat(2,minmax(0,1fr))!important}.expiry-page .em-filter .filter-actions{grid-column:1/-1!important}.st-page .st-filter{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:600px){.expiry-page .em-filter,.st-page .st-filter{grid-template-columns:1fr!important}.expiry-page .em-filter .filter-actions{grid-column:auto!important;justify-content:stretch!important}.expiry-page .em-filter .filter-actions>*{flex:1}}
+
+/* V247 — Add Stock quantity segmented control */
+.inv-overlay #detailRows .qty,
+.inv-overlay #addRows .qty,
+.inv-overlay #priceRows .qty{
+  display:grid!important;
+  grid-template-columns:34px 74px 34px!important;
+  width:142px!important;
+  min-width:142px!important;
+  height:40px!important;
+  min-height:40px!important;
+  margin:0 auto!important;
+  padding:0!important;
+  border:1px solid #cbd9eb!important;
+  border-radius:2px!important;
+  overflow:hidden!important;
+  background:#fff!important;
+  box-sizing:border-box!important;
+}
+.inv-overlay #detailRows .qty>button,
+.inv-overlay #addRows .qty>button,
+.inv-overlay #priceRows .qty>button{
+  width:34px!important;min-width:34px!important;height:38px!important;min-height:38px!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#fff!important;
+  color:#001c70!important;font-size:18px!important;font-weight:600!important;line-height:38px!important;text-align:center!important;
+  box-shadow:none!important;cursor:pointer!important;
+}
+.inv-overlay #detailRows .qty>button:first-child,.inv-overlay #addRows .qty>button:first-child,.inv-overlay #priceRows .qty>button:first-child{border-right:1px solid #cbd9eb!important}
+.inv-overlay #detailRows .qty>button:last-child,.inv-overlay #addRows .qty>button:last-child,.inv-overlay #priceRows .qty>button:last-child{border-left:1px solid #cbd9eb!important}
+.inv-overlay #detailRows .qty>input,
+.inv-overlay #addRows .qty>input,
+.inv-overlay #priceRows .qty>input{
+  width:74px!important;min-width:74px!important;height:38px!important;min-height:38px!important;margin:0!important;padding:0 6px!important;
+  border:0!important;border-radius:0!important;background:#fff!important;color:#001c70!important;font-size:12px!important;font-weight:600!important;
+  text-align:center!important;line-height:38px!important;box-shadow:none!important;outline:0!important;box-sizing:border-box!important;
+}
+.inv-overlay .stock-items th:nth-child(7),.inv-overlay .stock-items td:nth-child(7){min-width:160px!important;text-align:center!important}
+@media(max-width:900px){.inv-overlay #detailRows .qty,.inv-overlay #addRows .qty,.inv-overlay #priceRows .qty{grid-template-columns:32px 64px 32px!important;width:128px!important;min-width:128px!important}.inv-overlay #detailRows .qty>input,.inv-overlay #addRows .qty>input,.inv-overlay #priceRows .qty>input{width:64px!important;min-width:64px!important}.inv-overlay #detailRows .qty>button,.inv-overlay #addRows .qty>button,.inv-overlay #priceRows .qty>button{width:32px!important;min-width:32px!important}}

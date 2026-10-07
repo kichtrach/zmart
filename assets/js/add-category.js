@@ -7,11 +7,10 @@
   const sync=()=>{
     if(!$('#previewName')) return;
     $('#previewName').textContent=$('#categoryName').value.trim()||'Category Name';
-    $('#previewParent').textContent=$('#parentCategory').value.startsWith('--')?'--':$('#parentCategory').value;
     $('#previewOrder').textContent=$('#displayOrder').value||'--';
     $('#previewStatus').textContent=$('#status').value;
   };
-  ['#categoryName','#parentCategory','#displayOrder','#status'].forEach(id=>{const el=$(id);if(el){el.addEventListener('input',sync);el.addEventListener('change',sync)}});
+  ['#categoryName','#displayOrder','#status'].forEach(id=>{const el=$(id);if(el){el.addEventListener('input',sync);el.addEventListener('change',sync)}});
   const count=(id,out,max)=>{const el=$(id),target=$(out);if(el&&target)el.addEventListener('input',()=>target.textContent=`${el.value.length}/${max}`)};
   count('#description','#descCount',255);count('#metaTitle','#metaTitleCount',60);count('#metaDescription','#metaDescriptionCount',160);count('#metaKeywords','#metaKeywordsCount',160);
 
@@ -28,7 +27,6 @@
     </div>
     <div class="success-summary">
       <div><span class="success-icon"><i class="fa-regular fa-folder"></i></span><small>Category Name</small><strong>${safe(data.name)}</strong></div>
-      <div><span class="success-icon"><i class="fa-solid fa-sitemap"></i></span><small>Parent Category</small><strong>${safe(data.parent)}</strong></div>
       <div><span class="success-icon"><i class="fa-solid fa-arrow-down-up-across-line"></i></span><small>Display Order</small><strong>${safe(data.order)}</strong></div>
       <div><span class="success-icon"><i class="fa-solid fa-shield-halved"></i></span><small>Status</small><strong><span class="status-pill">${safe(data.status)}</span></strong></div>
     </div>
@@ -41,7 +39,7 @@
     <button class="go-categories" id="goCategories">Go to Categories</button>
   </div>`;
 
-  const successSide=data=>`<section class="side-card preview-card"><h3>Category Preview</h3><div class="folder-preview"><i class="fa-regular fa-folder"></i></div><h4>${safe(data.name)}</h4><span class="status-pill">${safe(data.status)}</span><dl><dt>Parent Category</dt><dd>${safe(data.parent)}</dd><dt>Display Order</dt><dd>${safe(data.order)}</dd></dl></section>
+  const successSide=data=>`<section class="side-card preview-card"><h3>Category Preview</h3><div class="folder-preview"><i class="fa-regular fa-folder"></i></div><h4>${safe(data.name)}</h4><span class="status-pill">${safe(data.status)}</span><dl><dt>Display Order</dt><dd>${safe(data.order)}</dd></dl></section>
   <section class="side-card"><h3>Quick Actions</h3><div class="success-quick-actions">
     <button id="quickAddCategory"><i class="fa-solid fa-plus"></i>Add New Category</button><button id="quickAddSub"><i class="fa-solid fa-diagram-project"></i>Add Sub Category</button><button id="quickImport"><i class="fa-solid fa-download"></i>Import Categories</button><button id="quickReport"><i class="fa-regular fa-file-lines"></i>Category Report</button><button id="quickPrint"><i class="fa-solid fa-print"></i>Print Label</button>
   </div></section>
@@ -72,9 +70,8 @@
     const order=$('#displayOrder')?.value.trim()||'';
     if(!name){notify('Enter category name.');$('#categoryName')?.focus();return}
     if(!order){notify('Enter display order.');$('#displayOrder')?.focus();return}
-    const parent=$('#parentCategory').value.startsWith('--')?'None':$('#parentCategory').value;
     const status=$('#status').value;
-    showSuccess({name,parent,order,status});
+    showSuccess({name,order,status});
   };
   $('#saveTop')?.addEventListener('click',save);
   $('#cancelTop')?.addEventListener('click',()=>location.href='categories.html');
