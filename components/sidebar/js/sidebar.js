@@ -56,7 +56,7 @@
       'Supplier Payments':'supplier-payments.html',
       'Purchase Reports':'purchase-reports.html'
     },
-    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'batch-tracking.html','Damage / Wastage':'damage-wastage.html'}, sales: {'POS Billing':'pos-billing.html','Sales Orders':'sales-orders.html','Sales Returns':'sales-returns.html','Credit Sales':'credit-sales.html','Pending Bills':'pending-bills.html','Day Close':'day-close.html','Counterwise Sales':'counterwise-sales.html','Payment Collection':'payment-collection.html'}, customer: {'Customer Master':'customer-master.html','Customer Feedback':'customer-feedback.html','Customer Offers':'customer-offers.html'}, employee: {'Employee Master':'employee-management.html','Departments':'departments.html','Designations':'designations.html','Roles & Permissions':'roles-permissions.html','Attendance':'attendance.html','Shift Management':'shift-management.html','Payroll Integration':'payroll-integration.html','Accounting & Finance':'employee-finance.html'}, finance: {'Income':'income.html','Expenses':'accounting-finance.html','Bank Accounts':'accounting-finance.html','Journals':'accounting-finance.html','Contra Entries':'accounting-finance.html','Tax':'accounting-finance.html','Reports':'accounting-finance.html'}, reports: {'Sales Reports':'reports-analytics.html','Purchase Reports':'reports-analytics.html','Inventory Reports':'reports-analytics.html','Profit & Loss':'reports-analytics.html','GST Reports':'reports-analytics.html','Branch Performance':'reports-analytics.html','Product Performance':'reports-analytics.html','Customer Reports':'reports-analytics.html','Employee Reports':'reports-analytics.html'}, settings: {'General Settings':'system-settings.html','Notification Settings':'system-settings.html','User Management':'system-settings.html','Audit Logs':'system-settings.html','Backup & Restore':'system-settings.html'}
+    inventory: {'Stock Register':'stock-register.html','Stock Transfers':'stock-transfers.html','Stock Adjustments':'stock-adjustment.html','Stock Count':'stock-count.html','Expiry Management':'expiry-management.html','Reorder Levels':'reorder-levels.html','Batch Tracking':'batch-tracking.html','Damage / Wastage':'damage-wastage.html'}, sales: {'POS Billing':'pos-billing.html','Sales Orders':'sales-orders.html','Sales Returns':'sales-returns.html','Credit Sales':'credit-sales.html','Pending Bills':'pending-bills.html','Day Close':'day-close.html','Counterwise Sales':'counterwise-sales.html','Payment Collection':'payment-collection.html'}, customer: {'Customer Master':'customer-master.html','Customer Feedback':'customer-feedback.html','Customer Offers':'customer-offers.html'}, employee: {'Employee Master':'employee-management.html','Departments':'departments.html','Designations':'designations.html','Roles & Permissions':'roles-permissions.html','Attendance':'attendance.html','Shift Management':'shift-management.html','Payroll Integration':'payroll-integration.html','Accounting & Finance':'employee-finance.html'}, finance: {'Income':'income.html','Expenses':'expenses.html','Bank Accounts':'bank-accounts.html','Journals':'journals.html','Contra Entries':'contra-entries.html','Tax':'tax.html','Reports':'reports.html'}, reports: {'Sales Reports':'sales-reports.html','Purchase Reports':'purchase-reports.html','Inventory Reports':'inventory-reports.html','Profit & Loss':'profit-loss.html','GST Reports':'gst-reports.html','Branch Performance':'branch-performance.html','Product Performance':'product-performance.html','Customer Reports':'customer-reports.html','Employee Reports':'employee-reports.html'}, settings: {'General Settings':'general-settings.html','Notification Settings':'notification-settings.html','User Management':'user-management.html','Audit Logs':'audit-logs.html','Backup & Restore':'backup-restore.html'}
   };
 
   const moduleFolder = {
@@ -66,7 +66,7 @@
     product: 'product-management',
     supplier: 'supplier-management',
     purchase: 'purchase-management',
-    inventory:'inventory-management', sales:'sales-billing', customer:'customer-management', employee:'employee-management', finance:'accounting-finance', reports:'reports-analytics', settings:'system-settings'
+    inventory:'inventory-management', sales:'sales-billing', customer:'customer-management', employee:'employee-management', finance:'accounting-finance', reports:'reports-analytics', settings:'system-settings', support:'support'
   };
 
   const MODULE_HOME = {company:'company-management.html',branch:'branch-management.html',warehouse:'warehouse-management.html',product:'product-management.html',supplier:'supplier-overview.html',purchase:'purchase-management.html',inventory:'inventory-management.html',sales:'sales-billing.html',customer:'customer-management.html',employee:'employee-management.html',finance:'accounting-finance.html',reports:'reports-analytics.html',settings:'system-settings.html'};
@@ -85,6 +85,7 @@
     if (p.includes('/employee-management/')) return 'employee';
     if (p.includes('/accounting-finance/')) return 'finance';
     if (p.includes('/reports-analytics/')) return 'reports';
+    if (p.includes('/support/')) return 'support';
     if (p.includes('/system-settings/')) return 'settings';
     return 'dashboard';
   };
@@ -189,6 +190,25 @@
     'payroll-integration.html':'Payroll Integration',
     'employee-finance.html':'Accounting & Finance',
     'income.html':'Income',
+    'expenses.html':'Expenses',
+    'bank-accounts.html':'Bank Accounts',
+    'journals.html':'Journals',
+    'contra-entries.html':'Contra Entries',
+    'tax.html':'Tax',
+    'reports.html':'Reports',
+    'sales-reports.html':'Sales Reports',
+    'inventory-reports.html':'Inventory Reports',
+    'backup-restore.html':'Backup & Restore',
+    'audit-logs.html':'Audit Logs',
+    'user-management.html':'User Management',
+    'notification-settings.html':'Notification Settings',
+    'general-settings.html':'General Settings',
+    'profit-loss.html':'Profit & Loss',
+    'employee-reports.html':'Employee Reports',
+    'customer-reports.html':'Customer Reports',
+    'product-performance.html':'Product Performance',
+    'branch-performance.html':'Branch Performance',
+    'gst-reports.html':'GST Reports',
     'company-profile.html':'Company Profile',
     'financial-year.html':'Financial Year',
     'financial-year-details.html':'Financial Year',
@@ -288,6 +308,13 @@
   const activeGroupKey = currentModuleKey();
   const activeGroup = sidebar.querySelector(`[data-group="${activeGroupKey}"]`);
   activeGroup?.classList.add('active');
+  // Support is a dedicated footer action rather than an expandable nav group.
+  // Keep it visibly selected on the Support Center page just like module links.
+  if (activeGroupKey === 'support') {
+    const supportLink = sidebar.querySelector('.sidebar-support');
+    supportLink?.classList.add('active');
+    supportLink?.setAttribute('aria-current', 'page');
+  }
   if (activeGroupKey !== 'dashboard') {
     activeGroup?.classList.add('open');
     activeGroup?.querySelector('.nav-item')?.setAttribute('aria-expanded','true');
@@ -388,7 +415,7 @@
       return;
     }
     if (key === 'support') {
-      window.dispatchEvent(new CustomEvent('zmart:action', {detail:{message:'Support action selected.'}}));
+      navigateToModuleFile('support', 'support.html');
       if (window.innerWidth <= 900) closeMobileSidebar();
       return;
     }
