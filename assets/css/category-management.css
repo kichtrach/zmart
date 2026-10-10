@@ -91,3 +91,86 @@ body{margin:0;background:#fff;color:var(--cat-text);font-family:'Poppins',sans-s
 .cat-table th,.cat-table td{font-size:14px!important;line-height:1.5!important;}
 .cat-table .cat-status,.cat-table .count,.cat-action-menu button{font-size:13px!important;}
 .cat-table td{height:54px!important;}
+
+/* Category hierarchy reuses existing ZMart buttons and generic controls */
+.category-view-switch{display:flex;gap:8px;margin-right:auto;margin-left:16px}.category-tree-panel[hidden]{display:none!important}.category-tree-panel{padding:12px 14px;min-height:280px}.category-tree-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.category-tree-toolbar strong{margin-right:auto}.category-tree-row{display:flex;align-items:center;gap:10px;min-height:44px;border-bottom:1px solid #e8e9f1;font-size:13px}.category-tree-row:hover{background:#f8f7ff}.category-tree-toggle{border:0;background:transparent;cursor:pointer;width:23px;font-size:18px}.category-tree-name{font-weight:500;flex:1}.category-tree-meta{color:#687080;font-size:12px}.category-tree-row .cat-btn{padding:5px 9px}.category-tree-empty{padding:20px;color:#687080}@media(max-width:800px){.category-tree-meta{display:none}.category-tree-row{gap:5px}.category-view-switch{margin-left:0}}
+
+/* Unified category tree: scoped to category management only */
+.category-tree-row{display:flex;align-items:center;gap:10px;min-height:46px;border-bottom:1px solid #e9eaf0;padding-right:12px;flex-wrap:wrap}.category-tree-row.selected{background:#f2efff}.category-node-name{display:inline-flex;align-items:center;gap:9px;flex:1;min-width:150px;border:0;background:none;text-align:left;cursor:pointer;font:inherit;color:#292a36}.category-node-name i{color:#7762d4}.category-tree-meta{color:#707587;font-size:12px}.category-tree-toggle{border:0;background:none;cursor:pointer;width:24px;min-width:24px;font-size:18px}.category-tree-toggle:disabled{opacity:.3;cursor:default}.category-tree-details{display:flex;flex-wrap:wrap;gap:12px;padding:15px;background:#f8f8fc;border-top:1px solid #e9eaf0;font-size:13px}.category-tree-details span{color:#646a7a}.category-path{display:block;color:#7b8190;font-size:11px;margin-top:4px}.category-tree-panel[hidden],.cat-table-wrap[hidden],.cat-table-foot[hidden]{display:none!important}@media(max-width:900px){.category-tree-row{gap:6px}.category-tree-meta{display:none}.category-tree-row .cat-btn{padding:5px 7px}}
+
+/* V315: context-sensitive category dialog, shared form controls */
+.cat-modal .form-grid label[hidden]{display:none!important}
+.cat-modal .form-grid input[readonly]{background:#f5f7fa;color:#64748b;cursor:default}
+.cat-modal .cat-dialog{box-shadow:0 18px 48px rgba(14,27,51,.17)!important}
+.cat-modal .dialog-head{padding-bottom:16px;margin-bottom:20px}
+.cat-modal .dialog-actions{margin-top:20px}
+
+/* V317 — category toolbar and expanded responsive filter controls */
+.categories-screen .cat-head{width:100%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.categories-screen .cat-head #addCategoryTop{margin-left:auto;flex-shrink:0;min-width:156px;justify-content:center}
+.categories-screen .cat-filter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 18px;align-items:end;width:100%}
+.categories-screen .cat-filter-grid .search-label{grid-column:span 2}
+.categories-screen .cat-filter-grid label{font-size:13px;min-width:0}
+.categories-screen .cat-filter-grid select,.categories-screen .cat-filter-grid input{width:100%;box-sizing:border-box;font-size:13px}
+.categories-screen .cat-filter-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px}
+@media(max-width:1100px){.categories-screen .cat-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.categories-screen .cat-filter-grid{grid-template-columns:1fr}.categories-screen .cat-filter-grid .search-label{grid-column:auto}.categories-screen .cat-head #addCategoryTop{width:auto;margin-left:auto}.categories-screen .cat-filter-actions{flex-wrap:wrap}}
+
+/* V319: compact Category Management filters — shared existing controls */
+.categories-screen .cat-head{min-height:42px;margin-bottom:10px!important}
+.categories-screen .cat-filter-card{padding:14px 16px!important}
+.categories-screen .cat-filter-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:10px 14px!important;align-items:end!important}
+.categories-screen .cat-filter-grid .search-label{grid-column:span 2!important}
+.categories-screen .cat-filter-grid label{gap:5px!important;font-size:12.5px!important}
+.categories-screen .cat-filter-grid select,.categories-screen .cat-filter-grid .cat-search input{height:38px!important;font-size:13px!important}
+.categories-screen .cat-filter-actions{grid-column:auto!important;display:flex!important;justify-content:flex-end!important;align-items:end!important;gap:8px!important;min-width:0}
+.categories-screen .cat-filter-actions .cat-btn{height:38px!important;min-width:0!important;padding:0 10px!important;white-space:nowrap;font-size:12px!important}
+.categories-screen .cat-kpis{margin:12px 0 14px!important;gap:12px!important}
+.categories-screen .cat-kpis article{min-height:90px!important;padding:12px!important;gap:10px!important}
+.categories-screen .cat-layout{gap:14px!important}
+.categories-screen .cat-side{gap:12px!important}
+@media(max-width:1200px){.categories-screen .cat-filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.categories-screen .cat-filter-actions{grid-column:span 2!important;justify-content:flex-start!important}}
+@media(max-width:750px){.categories-screen .cat-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.categories-screen .cat-filter-grid .search-label{grid-column:span 2!important}.categories-screen .cat-filter-actions{grid-column:span 2!important}}
+@media(max-width:480px){.categories-screen .cat-filter-grid{grid-template-columns:1fr!important}.categories-screen .cat-filter-grid .search-label,.categories-screen .cat-filter-actions{grid-column:1!important}}
+
+/* V320: eliminate empty breadcrumb-to-action gap, scoped to Categories */
+.categories-screen .cat-page > .zmart-breadcrumb-row{margin-bottom:4px!important;min-height:24px!important}
+.categories-screen .cat-head{min-height:38px!important;margin:0 0 8px!important;padding:0!important;gap:8px!important}
+.categories-screen .cat-head #addCategoryTop{height:36px!important;min-width:142px!important;margin:0 0 0 auto!important}
+.categories-screen .cat-head .cat-breadcrumb{display:none!important}
+.categories-screen .cat-filter-card{margin-top:0!important}
+@media(min-width:760px){.categories-screen .cat-head{margin-top:-3px!important}}
+@media(max-width:600px){.categories-screen .cat-page > .zmart-breadcrumb-row{margin-bottom:5px!important}.categories-screen .cat-head{min-height:36px!important}}
+
+/* V321 — compact unified breadcrumb/action row and consolidated hierarchy toolbar */
+.categories-screen .cat-head{display:flex!important;align-items:center!important;justify-content:space-between!important;flex-direction:row!important;flex-wrap:wrap!important;min-height:42px!important;gap:10px!important;margin:0 0 12px!important;padding:0!important}
+.categories-screen .cat-head>.zmart-breadcrumb-row{display:flex!important;align-items:center!important;flex:1 1 auto!important;width:auto!important;max-width:none!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important}
+.categories-screen .cat-head .zmart-breadcrumb{margin:0!important;flex-wrap:wrap}
+.categories-screen .cat-head #addCategoryTop{flex:0 0 auto!important;margin:0 0 0 auto!important;height:36px!important}
+.categories-screen .cat-list-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:14px 16px}
+.categories-screen .cat-list-head h3{flex:0 0 auto}
+.categories-screen .category-actions-toolbar{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-left:auto}
+.categories-screen .category-view-switch{margin:0!important;gap:6px!important;align-items:center}
+.categories-screen .category-tree-actions{display:flex;align-items:center;gap:6px}
+.categories-screen .category-toolbar-separator{height:26px;width:1px;flex:0 0 1px;background:#d6deea}
+.categories-screen .category-actions-toolbar .cat-btn{height:36px;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:0 11px;font-size:12.5px}
+.categories-screen .category-tree-panel{padding-top:10px}
+@media(max-width:900px){.categories-screen .cat-list-head{align-items:flex-start}.categories-screen .category-actions-toolbar{justify-content:flex-start;margin-left:0;width:100%}}
+@media(max-width:600px){.categories-screen .cat-head{align-items:center!important}.categories-screen .cat-head>.zmart-breadcrumb-row{flex-basis:100%!important}.categories-screen .category-actions-toolbar{gap:8px}.categories-screen .category-toolbar-separator{display:none}.categories-screen .category-tree-actions{flex-wrap:wrap}}
+
+/* Shared compact category dialog: add/edit major category, category, subcategory */
+.cat-modal .cat-dialog{box-sizing:border-box;width:min(620px,calc(100vw - 32px));max-height:calc(100dvh - 36px);overflow-y:auto;padding:0;border:1px solid #d9e1ed;border-radius:4px;box-shadow:0 20px 60px rgba(15,28,48,.2);font-family:Poppins,sans-serif}
+.cat-modal .dialog-head{min-height:54px;box-sizing:border-box;margin:0;padding:12px 20px;border-bottom:1px solid #dce4ef;gap:12px}
+.cat-modal .dialog-head h3{font-size:17px;font-weight:600;line-height:1.35}
+.cat-modal .dialog-head button{width:30px;height:30px;display:grid;place-items:center;border-radius:3px;font-size:21px;color:#293955}
+.cat-modal .dialog-head button:hover{background:#f0f3f8}
+.cat-modal #categoryForm{padding:18px 20px 0}
+.cat-modal .form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;align-items:start}
+.cat-modal .form-grid label{min-width:0;gap:6px;font-size:13px;line-height:1.4;font-weight:600;color:#1c2d48}
+.cat-modal .form-grid input,.cat-modal .form-grid select,.cat-modal .form-grid textarea{box-sizing:border-box;width:100%;min-width:0;min-height:42px;border:1px solid #ced8e7;border-radius:2px;padding:10px 12px;font:400 13px Poppins,sans-serif;color:#172a45;background:#fff}
+.cat-modal .form-grid input[readonly]{background:#f7f9fc;color:#42546d}
+.cat-modal .form-grid textarea{min-height:78px;resize:vertical}
+.cat-modal .category-field-help{font-size:11px;font-weight:400;color:#748198}
+.cat-modal .dialog-actions{margin:18px -20px 0;padding:12px 20px;border-top:1px solid #dce4ef;display:flex;justify-content:flex-end;gap:10px}
+.cat-modal .dialog-actions .cat-btn{min-height:38px;padding:8px 17px;border-radius:2px;font-size:13px}
+@media(max-width:600px){.cat-modal .cat-dialog{width:calc(100vw - 20px)}.cat-modal #categoryForm{padding:14px 14px 0}.cat-modal .dialog-head{padding:12px 14px}.cat-modal .form-grid{grid-template-columns:minmax(0,1fr);gap:12px}.cat-modal .dialog-actions{margin-left:-14px;margin-right:-14px;padding:12px 14px}}

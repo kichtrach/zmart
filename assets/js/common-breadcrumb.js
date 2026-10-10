@@ -38,7 +38,35 @@
     main.querySelectorAll('.zmart-breadcrumb-row').forEach(e=>e.remove());
     const row=document.createElement('div');row.className='zmart-breadcrumb-row';
     const nav=document.createElement('nav');render(nav,p);row.appendChild(nav);
-    main.insertBefore(row,main.firstChild);
+    // Shared compact header: move the existing action node, never clone it,
+    // so event listeners, form behavior and navigation stay intact.
+    const special=main.querySelector(':scope > .cat-head');
+    if(special){
+      special.insertBefore(row,special.firstChild);
+      special.classList.add('zmart-compact-page-header');
+      row.classList.add('zmart-compact-breadcrumb-row');
+      const action=special.querySelector(':scope > #addCategoryTop');
+      if(action){row.appendChild(action);row.classList.add('zmart-has-header-action');}
+    }else{
+      main.insertBefore(row,main.firstChild);
+      // Only move a clear, single primary action from a nearby header.
+      // Leave complex toolbars and filter sections exactly as they were.
+      const candidates=[...main.children].slice(1,4).filter(el=>el.matches('header,section,div'));
+      for(const host of candidates){
+        if(host.querySelector('input,select,textarea,table'))continue;
+        const actions=[...host.querySelectorAll('a,button')].filter(el=>
+          /^(add|create|new|manage|register)\b/i.test(el.textContent.trim()) &&
+          !el.closest('nav,[class*="breadcrumb"],[class*="modal"],[class*="popup"]'));
+        if(actions.length!==1)continue;
+        const action=actions[0];
+        // Do not take actions from cards, grids or nested content.
+        if(action.closest('article,[class*="card"],[class*="tile"],[class*="grid"],form'))continue;
+        if(action.closest('main')!==main)continue;
+        row.appendChild(action);
+        row.classList.add('zmart-has-header-action');
+        break;
+      }
+    }
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

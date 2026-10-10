@@ -71,3 +71,28 @@ html,body{margin:0!important;width:100%;min-width:0;overflow-x:hidden}
   .branch-main.analytics-page > .analytics-header {grid-template-columns:1fr !important;}
   .branch-main.analytics-page > .analytics-header > .analytics-filters {grid-column:1 !important;}
 }
+
+/* V323: shared compact breadcrumb + primary page action */
+.app-shell > main > .zmart-breadcrumb-row,
+.app-shell > main > .cat-head > .zmart-breadcrumb-row {
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  flex-wrap:wrap!important;column-gap:16px!important;row-gap:8px!important;
+  min-height:42px!important;margin:0 0 12px!important;padding:0!important;
+  width:100%!important;box-sizing:border-box!important;
+}
+.zmart-breadcrumb-row .zmart-breadcrumb {width:auto!important;max-width:100%!important;flex:1 1 auto!important;min-width:0!important;}
+.zmart-breadcrumb-row.zmart-has-header-action > a,
+.zmart-breadcrumb-row.zmart-has-header-action > button {
+  flex:0 0 auto!important;position:static!important;inset:auto!important;
+  transform:none!important;margin:0!important;align-self:center!important;
+}
+.app-shell > main > .cat-head.zmart-compact-page-header {
+  display:block!important;min-height:0!important;height:auto!important;
+  padding:0!important;margin:0!important;background:transparent!important;
+  border:0!important;box-shadow:none!important;
+}
+.app-shell > main > .cat-head.zmart-compact-page-header > .zmart-breadcrumb-row {margin-bottom:12px!important;}
+@media(max-width:640px){
+  .zmart-breadcrumb-row.zmart-has-header-action{align-items:flex-start!important;}
+  .zmart-breadcrumb-row.zmart-has-header-action .zmart-breadcrumb{flex:1 1 180px!important;}
+}

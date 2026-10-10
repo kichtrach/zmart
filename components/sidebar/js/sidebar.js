@@ -34,14 +34,13 @@
     },
     product: {
       'Categories':'categories.html',
-      'Sub Categories':'sub-categories.html',
       'Brands':'brands.html',
       'Products':'products.html',
       'Product Variants':'product-variants.html',
-      'Units':'units.html',
-      'Barcode Management':'barcode-management.html',
-      'Batch Management':'batch-management.html'
+      'Units':'units.html'
     },
+    itemmaster: {'Item Master':'item-master.html'},
+    admin: {'Product Master Configuration':'product-master-configuration.html', 'Barcode Management':'../product-management/barcode-management.html', 'Batch Management':'../product-management/batch-management.html'},
     supplier: {
       'Supplier List':'supplier-management.html',
       'Add New Supplier':'add-new-supplier.html',
@@ -64,19 +63,24 @@
     branch: 'branch-management',
     warehouse: 'warehouse-management',
     product: 'product-management',
+    itemmaster: 'item-master-management',
+    admin: 'admin',
     supplier: 'supplier-management',
     purchase: 'purchase-management',
     inventory:'inventory-management', sales:'sales-billing', customer:'customer-management', employee:'employee-management', finance:'accounting-finance', reports:'reports-analytics', settings:'system-settings', support:'support'
   };
 
-  const MODULE_HOME = {company:'company-management.html',branch:'branch-management.html',warehouse:'warehouse-management.html',product:'product-management.html',supplier:'supplier-overview.html',purchase:'purchase-management.html',inventory:'inventory-management.html',sales:'sales-billing.html',customer:'customer-management.html',employee:'employee-management.html',finance:'accounting-finance.html',reports:'reports-analytics.html',settings:'system-settings.html'};
+  const MODULE_HOME = {company:'company-management.html',branch:'branch-management.html',warehouse:'warehouse-management.html',product:'product-management.html',itemmaster:'item-master.html',admin:'product-master-configuration.html',supplier:'supplier-overview.html',purchase:'purchase-management.html',inventory:'inventory-management.html',sales:'sales-billing.html',customer:'customer-management.html',employee:'employee-management.html',finance:'accounting-finance.html',reports:'reports-analytics.html',settings:'system-settings.html'};
 
   const currentModuleKey = () => {
     const p = location.pathname;
     if (p.includes('/company-management/')) return 'company';
     if (p.includes('/branch-management/')) return 'branch';
     if (p.includes('/warehouse-management/')) return 'warehouse';
+    if (p.includes('/product-management/') && /\/(barcode-management|add-new-barcode|batch-management|add-new-batch)\.html(?:$|[?#])/.test(p)) return 'admin';
     if (p.includes('/product-management/')) return 'product';
+    if (p.includes('/item-master-management/')) return 'itemmaster';
+    if (p.includes('/admin/')) return 'admin';
     if (p.includes('/supplier-management/')) return 'supplier';
     if (p.includes('/purchase-management/')) return 'purchase';
     if (p.includes('/inventory-management/')) return 'inventory';
@@ -98,6 +102,10 @@
     }
     const folder = moduleFolder[moduleKey];
     if (!folder || !fileName) return;
+    if (moduleKey === 'admin' && fileName.startsWith('../product-management/')) {
+      location.href = `${current === 'dashboard' ? '' : '../'}product-management/${fileName.split('/').pop()}`;
+      return;
+    }
     location.href = current === moduleKey ? fileName : `${current === 'dashboard' ? '' : '../'}${folder}/${fileName}`;
   };
 
@@ -107,6 +115,8 @@
     branch: `<path d="M3 10h18"/><path d="M5 10V7l2-3h10l2 3v3"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>`,
     warehouse: `<path d="m3 9 9-6 9 6v12H3Z"/><path d="M7 21v-8h10v8M7 13h10"/>`,
     product: `<path d="m21 8-9 5-9-5"/><path d="m3 8 9-5 9 5v8l-9 5-9-5Z"/><path d="M12 13v8"/>`,
+    admin: `<path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
+    itemmaster: `<path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/>`,
     supplier: `<circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2"/><path d="M16 7h5M18.5 4.5 21 7l-2.5 2.5"/>`,
     purchase: `<circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M3 4h2l2.4 10.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 2-1.6L21 8H7"/>`,
     inventory: `<path d="M5 5h14v16H5Z"/><path d="M8 3h8v4H8Z"/><path d="M9 11h6M9 15h6"/>`,
@@ -125,6 +135,8 @@
     ['branch','fa-shop','Branch Management',true],
     ['warehouse','fa-warehouse','Warehouse Management',true],
     ['product','fa-boxes-stacked','Product Management',true],
+    ['itemmaster','fa-list-check','Item Master Management',true],
+    ['admin','fa-user-shield','Admin',true],
     ['supplier','fa-cubes-stacked','Supplier Management',true],
     ['purchase','fa-cart-shopping','Purchase Management',true],
     ['inventory','fa-box-archive','Inventory Management',true],
@@ -140,7 +152,9 @@
     company:['Company Profile','Financial Year','Business Settings','GST Settings','Invoice Settings','Tax Configuration','Currency Settings','Backup Settings'],
     branch:['Branch Master','Branch Configuration','Branch Targets','Branch Performance','Branch Expenses','Branch Status','Branch Dashboard'],
     warehouse:['Warehouse Overview','Warehouse Master','Stock by Warehouse','Stock Transfers','Rack & Bin Management'],
-    product:['Categories','Sub Categories','Brands','Products','Product Variants','Units','Barcode Management','Batch Management'],
+    product:['Categories'],
+    itemmaster:['Item Master'],
+    admin:['Product Master Configuration','Barcode Management','Batch Management'],
     supplier:['Supplier List','Add New Supplier','Supplier Categories','Supplier Contacts'],
     purchase:['Purchase Orders','Goods Receipt (GRN)','Purchase Returns','Purchase Invoices','Supplier Payments','Purchase Reports'],
     inventory:['Stock Register','Stock Transfers','Stock Adjustments','Stock Count','Expiry Management','Reorder Levels','Batch Tracking','Damage / Wastage'],
@@ -178,6 +192,7 @@
   // Set the correct active sidebar group/subnav from the current page URL.
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const routeToSubnav = {
+    'item-master.html':'Item Master',
     'customer-master.html':'Customer Master',
     'customer-feedback.html':'Customer Feedback',
     'customer-offers.html':'Customer Offers',

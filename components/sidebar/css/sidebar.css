@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-:root{--sidebar-width:260px;--sidebar-collapsed:74px;--topbar-height:64px;--sidebar-bg:#082536;--sidebar-bg2:#061f30;--brand-green:#56bd42;--active-green:#46b63c}
+:root{--sidebar-width:280px;--sidebar-collapsed:74px;--topbar-height:64px;--sidebar-bg:#082536;--sidebar-bg2:#061f30;--brand-green:#56bd42;--active-green:#46b63c}
 .app-sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-width);height:100vh;background:linear-gradient(180deg,var(--sidebar-bg),var(--sidebar-bg2));color:#fff;display:flex;flex-direction:column;z-index:70;transition:width .22s ease,transform .22s ease;box-shadow:5px 0 22px rgba(2,20,31,.08)}
 .sidebar-brand{height:76px;display:grid;place-items:center;border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden}
 .sidebar-brand img{width:150px;height:64px;object-fit:contain;filter:brightness(1.07)}
@@ -89,3 +89,9 @@
 }
 .app-sidebar .nav-chevron svg{width:15px!important;height:15px!important;display:block!important}
 .app-sidebar .nav-group.open .nav-chevron{transform:rotate(180deg)!important}
+
+/* Wider sidebar: keep labels and arrows aligned without wrapping */
+.app-sidebar .nav-item{min-width:0;box-sizing:border-box}
+.app-sidebar .nav-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-sidebar .submenu{min-width:0;padding-left:34px}
+.app-sidebar .submenu button{box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}

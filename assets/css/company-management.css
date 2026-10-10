@@ -620,3 +620,17 @@
 @media(max-width:850px){
   .template-choice-grid{grid-template-columns:1fr}
 }
+
+/* Company Management navigation: readable active tab on every inner page. */
+.company-main .cm-tabs-wrap .ui-tabs .ui-tab.active,
+.company-main .cm-tabs-wrap .ui-tabs .ui-tab[aria-selected="true"] {
+  background:#168a38 !important;
+  border-color:#168a38 !important;
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+}
+.company-main .cm-tabs-wrap .ui-tabs .ui-tab.active *,
+.company-main .cm-tabs-wrap .ui-tabs .ui-tab[aria-selected="true"] * {color:#ffffff !important;}
+.company-main .cm-tabs-wrap .ui-tabs .ui-tab:not(.active):not([aria-selected="true"]):hover {
+  background:#eef8f0; color:#166534;
+}
