@@ -66,3 +66,28 @@ body{margin:0;background:#fff;color:var(--cat-text);font-family:'Poppins',sans-s
 .cat-filter-actions .cat-btn{height:40px;min-width:88px;padding:0 16px;justify-content:center}
 @media(max-width:1050px){.cat-filter-grid{grid-template-columns:180px minmax(240px,1fr) auto;width:100%}}
 @media(max-width:760px){.cat-filter-card{padding:14px}.cat-filter-grid{grid-template-columns:1fr;gap:12px}.cat-filter-actions{grid-column:auto;justify-content:flex-start}.cat-filter-actions .cat-btn{flex:1}}
+
+/* Unified category dialog layout — scoped to this module only. */
+.cat-modal{box-sizing:border-box;padding:20px;overflow-y:auto;}
+.cat-modal *{box-sizing:border-box;}
+.cat-modal .cat-dialog{width:min(640px,100%);max-height:calc(100vh - 40px);overflow-y:auto;padding:24px;background:#fff;border:1px solid #e0e6ee;border-radius:4px;box-shadow:0 18px 50px rgba(14,27,51,.18);}
+.cat-modal .dialog-head{min-height:42px;margin:0 0 22px;padding:0 0 14px;border:0;border-bottom:1px solid #e5eaf0;background:transparent;display:flex;align-items:center;justify-content:space-between;}
+.cat-modal .dialog-head h3{font-size:18px;line-height:1.4;font-weight:600;color:#182236;margin:0;}
+.cat-modal .dialog-head button{width:30px;height:30px;display:grid;place-items:center;padding:0;color:#253047;font-size:22px;border:0;background:transparent;cursor:pointer;}
+.cat-modal .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;}
+.cat-modal .form-grid label{display:flex;flex-direction:column;min-width:0;gap:8px;font-size:13px;line-height:1.4;font-weight:600;color:#202c40;}
+.cat-modal .form-grid label.full{grid-column:1/-1;}
+.cat-modal .form-grid input,.cat-modal .form-grid select,.cat-modal .form-grid textarea{display:block;width:100%;min-width:0;height:42px;padding:9px 12px;border:1px solid #cbd5e2;border-radius:3px;background:#fff;color:#23314a;font:400 13px 'Poppins',sans-serif;outline:none;}
+.cat-modal .form-grid textarea{height:86px;min-height:86px;resize:vertical;}
+.cat-modal .form-grid input:focus,.cat-modal .form-grid select:focus,.cat-modal .form-grid textarea:focus{border-color:#168a4b;box-shadow:0 0 0 2px rgba(22,138,75,.1);}
+.cat-modal .dialog-actions{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-top:24px;padding:18px 0 0;border:0;border-top:1px solid #e5eaf0;background:transparent;}
+.cat-modal .dialog-actions button{width:auto;min-width:92px;height:40px;font-size:13px;flex:none;}
+@media(max-width:600px){.cat-modal{padding:12px;}.cat-modal .cat-dialog{padding:18px;max-height:calc(100vh - 24px);}.cat-modal .form-grid{grid-template-columns:1fr;}.cat-modal .form-grid label.full{grid-column:auto;}}
+
+/* Flat dialogs and readable category listing */
+.cat-modal{background:rgba(15,23,42,.34)!important;}
+.cat-modal .cat-dialog{box-shadow:none!important;}
+.cat-modal .dialog-head,.cat-modal .dialog-actions{box-shadow:none!important;}
+.cat-table th,.cat-table td{font-size:14px!important;line-height:1.5!important;}
+.cat-table .cat-status,.cat-table .count,.cat-action-menu button{font-size:13px!important;}
+.cat-table td{height:54px!important;}
